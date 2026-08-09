@@ -1,106 +1,78 @@
-# Enterprise Decision Agent
+# 企业决策 Agent（Enterprise Decision Agent）
 
-> A controlled enterprise decision Agent integrating LangGraph orchestration, Hybrid RAG and MCP/MySQL under explicit evidence, citation, security and release boundaries.
+> 面向企业知识问答、只读经营数据分析与综合决策场景的受控 AI Agent。
 
+[![CI](https://github.com/ccy777/enterprise-decision-agent/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ccy777/enterprise-decision-agent/actions/workflows/ci.yml)
 ![Version](https://img.shields.io/badge/version-v1.0.2-2563eb)
 ![Python](https://img.shields.io/badge/python-3.11%2B-3776ab)
 ![Runtime](https://img.shields.io/badge/runtime-controlled%20agent-0f766e)
-![Evidence](https://img.shields.io/badge/evidence-frozen%20engineering%20evaluation-7c3aed)
 
-Enterprise Decision Agent handles enterprise knowledge questions, read-only operational analysis and mixed decision scenarios. It is not a general chatbot: every request crosses explicit identity, scope, workflow, evidence, review and response-release boundaries before an answer can leave the runtime.
+它不是一个“接上大模型就回答”的普通聊天机器人。系统会在回答发布前依次处理身份与权限、路由、规划、知识或数据取证、证据筛选、答案审查、引用校验和发布控制，让每个结论都能说明：**用了什么能力、依据来自哪里、为什么允许返回。**
 
-| Reproducible public repository evidence | Result |
+| 可复现的公开工程证据 | 结果 |
 | --- | ---: |
-| Unit tests | 1,802 passed |
-| Stable offline integration tests | 235 passed |
-| Deterministic security cases | 28 / 28 |
-| Frozen retrieval benchmark | 50 queries |
+| Unit Tests | **1,802 passed** |
+| Stable Offline Integration | **235 passed** |
+| Deterministic Security Cases | **28 / 28** |
+| Frozen Retrieval Benchmark | **50 queries** |
+
+![企业决策 Agent 内置 Demo UI](docs/assets/demo-ui.png)
+
+> 仓库内置的 FastAPI Demo UI。图中未配置正式 Provider，因此 Runtime 按 fail-closed 规则如实显示“未就绪”；完成本地配置后，页面会展示回答、引用、路由、Skill、Memory 状态和执行轨迹。
+
+## 这个项目解决什么问题
+
+企业问答真正困难的部分通常不是“生成一段文字”，而是同时处理三类边界：
+
+| 场景 | 典型问题 | 系统处理方式 |
+| --- | --- | --- |
+| 企业知识问答 | 保修、采购、库存制度是什么？ | 在授权文档内检索、筛选证据并生成引用 |
+| 经营数据分析 | 哪些产品低于安全库存？ | 经 MCP、DataScope 和 SQL Guard 查询只读 MySQL |
+| 综合决策分析 | 结合库存数据与补货制度给出建议 | 区分数据事实和制度依据，再统一审查后发布 |
+
+系统的核心目标不是追求“自由行动”，而是让 Agent 在明确权限和证据边界内完成可追踪的企业任务。
+
+## 效果展示
+
+### 1. Knowledge：有依据的企业知识问答
+
+固定演示问题：
 
 ```text
-Controlled orchestration  Router -> Planner -> Skill -> Evidence -> Reviewer -> Release
-Hybrid RAG                Dense + BM25 -> Scope -> RRF -> Reranker -> Parent -> Evidence
-Controlled data path      MCP -> DataScope -> SQL Guard -> read-only MySQL
-Security and audit        Principal -> Scope -> ProviderPolicy -> Release Gate -> Audit
+华衡智能科技有限公司的业务定位和本项目演示范围是什么？
 ```
 
-## Overview
-
-The runtime composes a controlled Router–Planner–Executor–Reviewer workflow. Knowledge requests use scoped hybrid retrieval; data requests cross an MCP tool boundary into an allowlisted, bounded, read-only query service; mixed requests combine both paths without granting either path broader authority. Answers are released only after evidence, citation, output and audit checks succeed.
-
-The project is intentionally not presented as a free autonomous multi-agent system. Planning and tool use operate inside closed schemas, fixed stage allowlists, immutable security context and explicit execution budgets.
-
-## Architecture
-
-```mermaid
-flowchart TD
-    U["User"] --> P["RequestPrincipal + SecurityContext"]
-    P --> F["FormalRequestExecutor"]
-    F --> R["Router"]
-    R --> C["Coordinator"]
-    C --> W["Controlled Workflow"]
-    W --> PL["Planner"]
-    PL --> K["Knowledge Skill"]
-    PL --> D["Data Skill"]
-    PL --> M["Mixed Skill"]
-    K --> HR["Hybrid RAG"]
-    HR --> MV["Milvus + BM25"]
-    MV --> ES["Evidence Selection + Answerability"]
-    D --> MC["EnterpriseDataMCPClient"]
-    MC --> MS["MCP Server + Tool Service"]
-    MS --> SQ["SafeQueryService + SQL Guard"]
-    SQ --> DB["SQLAlchemy + read-only MySQL"]
-    M --> K
-    M --> D
-    ES --> RV["Reviewer + Citation Validation"]
-    DB --> RV
-    RV --> OC["Provider Output Checks"]
-    OC --> RG["Response Release Gate"]
-    RG --> TA["Trace + local Audit hash chain"]
-```
-
-The nine `ProviderStage` values—`routing`, `planning`, `data_planning`, `data_answer`, `evidence_selection`, `answerability_review`, `knowledge_answer`, `inventory_synthesis` and `workflow_review`—form a closed allowlist and execution-budget boundary. They do not mean every request makes nine model calls.
-
-See [Architecture](docs/ARCHITECTURE.md) and [Agent Workflow](docs/AGENT_WORKFLOW.md).
-
-## Key Engineering Capabilities
-
-### Controlled Agent Orchestration
-
-Routing, planning, skill dispatch, evidence selection, review and release are explicit runtime stages. Planner output cannot create permissions, enlarge scopes or bypass the registered skill and tool boundaries.
-
-### Hybrid RAG
-
-Dense retrieval and BM25 are filtered by `KnowledgeScope`, fused through RRF, reranked by a Cross-Encoder and expanded to parent chunks before evidence selection and citation. The frozen 50-query engineering benchmark improved Child Hit@1 from 84.78% to 93.48% and MRR@5 from 91.67% to 96.74%.
-
-### Controlled Data Agent
-
-Structured-data requests cross an MCP boundary and are validated by `DataScope`, safe projection and SQL Guard before reaching a read-only MySQL connection. The model does not receive unrestricted database access and does not directly execute arbitrary generated SQL.
-
-### Security and Audit
-
-Authorization is repeated at request, workflow, skill, tool, data, knowledge and provider boundaries. Required context or authorization failures are fail-closed. Response release requires a completed, cited result and a durable allowed audit event. The audit implementation is a single-process, local-file verifiable hash chain—not a distributed or hostile-writer guarantee.
-
-## Hybrid RAG
+系统只允许访问 `DOC-ORG-001` 和 `DOC-AGENT-001`，回答需要经过：
 
 ```text
-Dense Retrieval + BM25
-          -> KnowledgeScope Filter
-          -> RRF Fusion
-          -> Cross-Encoder Reranker
-          -> Parent Expansion
-          -> Evidence Context
-          -> Evidence Selection
-          -> Citation
+KnowledgeScope
+  -> Dense + BM25 检索
+  -> RRF 融合
+  -> Cross-Encoder 重排
+  -> Evidence Selection
+  -> Answerability
+  -> Citation Validation
 ```
 
-- Embedding: `BAAI/bge-small-zh-v1.5`, 512 dimensions
-- Reranker: `BAAI/bge-reranker-base`
-- Chunking baseline: `fixed-window-v1`
-- Runtime vector store: Milvus; sparse retrieval: BM25
+如果授权资料无法支持结论，系统应返回信息不足，而不是用常识补齐企业事实。
 
-The benchmark is a frozen 50-query engineering retrieval benchmark, not a production accuracy claim. Details and reproducible hashes are in [Hybrid RAG](docs/HYBRID_RAG.md) and `artifacts/public-evaluation/`.
+### 2. Data：受控的只读经营数据分析
 
-## Controlled Data Agent
+固定演示问题：
+
+```text
+截至 2026 年 6 月 30 日，哪些产品低于安全库存？
+```
+
+公开仓库中的合成数据断言为：
+
+| 产品 | 当前库存 | 安全库存 | 判断 |
+| --- | ---: | ---: | --- |
+| P100 · Aster 工业泵 | 40 | 50 | 低于安全库存 |
+| P300 · Cirrus 传感器 | 90 | 100 | 低于安全库存 |
+| P600 · Flux 工业线缆 | 110 | 120 | 低于安全库存 |
+
+这条链路不是让模型直接连接数据库：
 
 ```text
 Data Skill
@@ -113,98 +85,245 @@ Data Skill
   -> read-only MySQL
 ```
 
-SQL Guard permits one parsed read-only query, validates allowlisted tables and columns, rejects unsafe constructs, applies a bounded `LIMIT`, and returns accessed-table identities for scope verification. See [Data Agent and MCP](docs/DATA_AGENT_AND_MCP.md).
+模型不会获得无限制数据库权限，也不会直接执行任意生成的 SQL。
 
-## Security Boundaries
+### 3. Mixed：制度证据与数据事实联合分析
 
-The formal path carries `RequestPrincipal`, `SecurityContext`, tenant/session bindings, scenario/workflow/skill/tool authorization, `DataScope`, `KnowledgeScope`, `ProviderPolicy`, recursive redaction, response-release checks and payload-free `AuditEvent` records. See [Security Boundaries](docs/SECURITY_BOUNDARIES.md).
+固定演示问题：
 
-## Engineering Evidence
+```text
+结合库存数据与补货制度，分析截至 2026 年 6 月 30 日的库存风险并给出建议。
+```
 
-The protected-main workflow defines exactly six checks: `quality`, `unit`, `security-evaluation`, `secret-scan`, `dependency-scan` and `offline-integration`. The Unit and offline-integration counts above are directly reproducible from this public repository; they are test counts, not coverage percentages.
+Mixed 路径会同时使用受控经营数据和 `DOC-INV-001` 补货制度，并在最终回答中区分：
 
-## Evaluation
+- 哪些是数据库返回的库存事实；
+- 哪些是制度文件给出的阈值或流程；
+- 哪些建议仍需要人工审批；
+- 当前证据不能支持哪些结论。
 
-### Retrieval benchmark
+CLI/API 的正式响应结构如下（字段来自正式 API 合约，示例值不代表一次真实 Provider 输出）：
 
-| Frozen 50-query benchmark | RRF Child | Cross-Encoder Child | Change |
+```json
+{
+  "status": "completed",
+  "route": "knowledge | data | mixed",
+  "skill": "selected-skill",
+  "answer": "evidence-backed answer",
+  "citations": ["approved evidence references"],
+  "error_code": null
+}
+```
+
+## 一张图看懂架构
+
+```mermaid
+flowchart TD
+    U["用户请求"] --> S["RequestPrincipal + SecurityContext"]
+    S --> F["FormalRequestExecutor"]
+    F --> R["Router"]
+    R --> C["Coordinator"]
+    C --> P["Planner"]
+    P --> K["Knowledge Skill"]
+    P --> D["Data Skill"]
+    P --> M["Mixed Skill"]
+    K --> HR["Hybrid RAG"]
+    HR --> E["Evidence + Citation"]
+    D --> MCP["MCP Tool Boundary"]
+    MCP --> SQL["DataScope + SQL Guard"]
+    SQL --> DB["read-only MySQL"]
+    M --> K
+    M --> D
+    E --> V["Reviewer"]
+    DB --> V
+    V --> G["Response Release Gate"]
+    G --> A["Trace + Audit"]
+```
+
+主链可以概括为：
+
+```text
+Router -> Planner -> Skill -> Evidence -> Reviewer -> Release
+```
+
+详细设计见 [系统架构](docs/ARCHITECTURE.md) 和 [Agent 工作流](docs/AGENT_WORKFLOW.md)。
+
+## 四个核心工程能力
+
+### 1. 受控 Agent 编排
+
+路由、规划、Skill 调度、证据筛选、审查和发布都是显式阶段。Planner 的输出不能创建权限、扩大 Scope，也不能绕过已注册的 Skill 和 Tool。
+
+系统定义了九个闭集 `ProviderStage`：`routing`、`planning`、`data_planning`、`data_answer`、`evidence_selection`、`answerability_review`、`knowledge_answer`、`inventory_synthesis` 和 `workflow_review`。它们构成调用白名单与预算边界，**不表示每个请求固定调用模型九次**。
+
+### 2. Hybrid RAG
+
+```text
+Dense Retrieval + BM25
+          -> KnowledgeScope Filter
+          -> RRF Fusion
+          -> Cross-Encoder Reranker
+          -> Parent Expansion
+          -> Evidence Context
+          -> Evidence Selection
+          -> Citation
+```
+
+- Embedding：`BAAI/bge-small-zh-v1.5`，512 dimensions
+- Reranker：`BAAI/bge-reranker-base`
+- Chunking baseline：`fixed-window-v1`
+- Vector store：Milvus
+
+冻结的 50-query 工程基准中，Cross-Encoder 将 Child Hit@1 从 **84.78%** 提升到 **93.48%**，MRR@5 从 **91.67%** 提升到 **96.74%**。
+
+详细说明见 [Hybrid RAG](docs/HYBRID_RAG.md)。
+
+### 3. Controlled Data Agent
+
+数据请求必须跨越 MCP Tool 边界，并通过：
+
+- `DataScope`：限制可访问的数据域和资源；
+- Safe Projection：只暴露回答需要的安全字段；
+- SQL Guard：校验只读语句、表、列、行数和超时；
+- Read-only Account：数据库账号不具备写权限。
+
+详细说明见 [Data Agent 与 MCP](docs/DATA_AGENT_AND_MCP.md)。
+
+### 4. Fail-closed Security 与审计
+
+安全检查重复存在于 Request、Workflow、Skill、Tool、Data、Knowledge、Provider 和 Response Release 边界。缺少必要身份、Scope 或授权时，请求默认失败关闭。
+
+覆盖的正式对象包括：
+
+```text
+RequestPrincipal / SecurityContext / Tenant / Session
+Scenario / Workflow / Skill / Tool authorization
+DataScope / KnowledgeScope / ProviderPolicy
+Recursive Redaction / Response Release Gate
+AuditEvent / Audit Hash Chain
+```
+
+Audit 是**单进程、本地文件、可验证 Hash Chain**，不宣称分布式强一致、绝对不可篡改或商业级不可抵赖。
+
+详细说明见 [安全边界](docs/SECURITY_BOUNDARIES.md)。
+
+## 可验证的工程证据
+
+### 六项主分支 CI
+
+```text
+quality
+unit
+security-evaluation
+secret-scan
+dependency-scan
+offline-integration
+```
+
+Unit 和 Offline Integration 的数字是测试数量，不是 Coverage 百分比。
+
+### Retrieval 冻结基准
+
+| 50-query benchmark | RRF Child | Cross-Encoder Child | 变化 |
 | --- | ---: | ---: | ---: |
 | Hit@1 | 84.78% | 93.48% | +8.70 percentage points |
 | MRR@5 | 91.67% | 96.74% | +5.07 percentage points |
 | Hit@5 | 100% | 100% | — |
 
-The set contains 46 answerable and 4 unanswerable queries.
+数据集包含 46 个 answerable query 和 4 个 unanswerable query。这是合成文档上的冻结工程基准，不是生产准确率。
 
-### Frozen system run
+### M9 冻结系统运行
 
-| Frozen-run observed metric | Result |
+| Frozen-run observed metric | 结果 |
 | --- | ---: |
 | Formal Runtime | 8 / 9 |
 | Deterministic Boundaries | 4 / 4 |
 | Overall | 12 / 13 |
 | Unanswerable | 2 / 3 |
-| False positives | 1 |
-| Provider calls | 45 |
-| Input / output tokens | 38,549 / 4,258 |
+| False Positive | 1 |
+| Provider Calls | 45 |
+| Input / Output Tokens | 38,549 / 4,258 |
 | End-to-end P50 / P95 | 9.594 s / 24.250 s |
 
-These are frozen-run observed metrics from a small engineering evaluation, not production accuracy, cost or SLA measurements. See [Evaluation](docs/EVALUATION.md).
+这些数字是小规模 frozen-run observed metrics，不是生产 SLA、生产成本或线上准确率。完整口径见 [评测说明](docs/EVALUATION.md)。
 
-## Demo
+## 快速体验
 
-The CLI exposes three fixed, server-owned cases; arbitrary caller text cannot enlarge their scopes:
-
-```powershell
-python scripts/initialize_knowledge_corpus.py
-python scripts/run_local_demo.py knowledge
-python scripts/run_local_demo.py data
-python scripts/run_local_demo.py mixed
-```
-
-The initialization command reuses the formal Milvus ingestion path and does not call a Provider. Provider-backed answer generation requires the user to configure their own supported API credentials and may incur Provider cost. See [Local Demo](docs/LOCAL_DEMO.md).
-
-## Project Structure
-
-```text
-src/decision_agent/       Runtime, security, retrieval, MCP, API and skills
-tests/                    Unit, offline-integration and opt-in service tests
-scripts/                  Corpus initialization, demo, evaluation and verification entrypoints
-datasets/                 Synthetic knowledge, operations and security fixtures
-docker/mysql/init/        Synthetic schema, seed and read-only user bootstrap
-artifacts/evaluation/     Frozen sanitized engineering evidence
-artifacts/public-evaluation/ Public provenance maps for the retained evidence
-docs/                     Public architecture, operation and limitation guides
-.github/                  CI and dependency update configuration
-```
-
-## Local Run
+### 方式 A：不需要 Provider，验证冻结证据
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.lock
 .\.venv\Scripts\python.exe -m pip install -e . --no-deps
+
+.\.venv\Scripts\python.exe scripts\verify_retrieval_evidence.py
+.\.venv\Scripts\python.exe scripts\calculate_m9_metrics.py artifacts\evaluation\m9-final-eval-v1\case_records.jsonl --dataset datasets\agent_tasks\m9_final_eval_v1.json --adjudications artifacts\evaluation\m9-final-eval-v1\adjudications.json --output $env:TEMP\m9-metrics.json --manifest-output $env:TEMP\m9-manifest.json
+```
+
+### 方式 B：运行完整本地 Demo
+
+```powershell
 Copy-Item .env.example .env
 docker compose config
 docker compose up -d
+
 .\.venv\Scripts\python.exe scripts\initialize_knowledge_corpus.py
 .\.venv\Scripts\python.exe scripts\run_local_demo.py knowledge
 .\.venv\Scripts\python.exe scripts\run_local_demo.py data
 .\.venv\Scripts\python.exe scripts\run_local_demo.py mixed
 ```
 
-The copied example is configuration-complete for local Docker, MySQL and Milvus bootstrap. Replace the three Provider placeholders with your own supported API configuration before running Provider-backed answers, and never commit the ignored `.env` file. For offline evidence verification without a Provider or models:
+如需打开截图中的 Web UI：
 
 ```powershell
-.\.venv\Scripts\python.exe scripts\verify_retrieval_evidence.py
-.\.venv\Scripts\python.exe scripts\calculate_m9_metrics.py artifacts\evaluation\m9-final-eval-v1\case_records.jsonl --dataset datasets\agent_tasks\m9_final_eval_v1.json --adjudications artifacts\evaluation\m9-final-eval-v1\adjudications.json --output $env:TEMP\m9-metrics.json --manifest-output $env:TEMP\m9-manifest.json
+.\.venv\Scripts\python.exe -m uvicorn decision_agent.main:app --host 127.0.0.1 --port 8000
 ```
 
-## Known Limitations
+然后访问 `http://127.0.0.1:8000`。
 
-The frozen evaluation intentionally retains one real false-positive case: `m9-knowledge-unanswerable-003`. An unanswerable knowledge request was released with citations. This is an Answerability/evidence-sufficiency failure; it is not an authorization bypass or sensitive-data leak. The case remains in the benchmark rather than being removed or reclassified.
+完整 Demo 需要用户在本地环境配置自己的兼容 Provider 凭据，可能产生 Provider 费用。仓库不包含可用凭据、模型权重、数据库 Volume 或运行时 Audit Log。详细步骤见 [本地 Demo](docs/LOCAL_DEMO.md)。
 
-The project does not claim autonomous multi-agent collaboration, Neo4j/GraphRAG, Langfuse, RAGAS, Kubernetes, production high concurrency, a production SLA or a distributed tamper-proof audit system. See [Limitations](docs/LIMITATIONS.md).
+## 项目结构
 
-## Scope
+```text
+src/decision_agent/          Agent Runtime、Security、Retrieval、MCP、API 与 Skills
+tests/                       Unit、Offline Integration 与可选服务测试
+scripts/                     Demo、初始化、评测与离线验证入口
+datasets/                    合成知识、经营数据与安全用例
+docker/mysql/init/           合成 Schema、Seed 与只读用户初始化
+artifacts/evaluation/        冻结且已脱敏的工程评测证据
+artifacts/public-evaluation/ 公开证据的来源与 Hash 映射
+docs/                        架构、工作流、安全、评测与运行文档
+.github/                     CI 与 Dependabot 配置
+```
 
-This repository is a stable, v1.0.2-based public snapshot. It preserves the frozen Agent runtime and evaluation evidence while adding only public-release documentation, local configuration and corpus-initialization utilities. No project-level open-source license is currently granted.
+## 深入阅读
+
+| 文档 | 内容 |
+| --- | --- |
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | 系统分层与端到端调用链 |
+| [AGENT_WORKFLOW.md](docs/AGENT_WORKFLOW.md) | Router、Planner、Skill、Reviewer 与 Release |
+| [HYBRID_RAG.md](docs/HYBRID_RAG.md) | 检索、融合、重排、Parent Expansion 与评测 |
+| [DATA_AGENT_AND_MCP.md](docs/DATA_AGENT_AND_MCP.md) | MCP、DataScope、SQL Guard 与只读 MySQL |
+| [SECURITY_BOUNDARIES.md](docs/SECURITY_BOUNDARIES.md) | 身份、权限、Scope、Provider 与 Audit |
+| [EVALUATION.md](docs/EVALUATION.md) | Retrieval、M9、测试和指标口径 |
+| [LOCAL_DEMO.md](docs/LOCAL_DEMO.md) | 本地环境、服务启动与三类 Demo |
+| [LIMITATIONS.md](docs/LIMITATIONS.md) | 已知失败和能力边界 |
+
+## 已知限制
+
+冻结评测有意保留了唯一真实 false positive：`m9-knowledge-unanswerable-003`。一个不可回答的知识请求被错误地带引用发布。这是 Answerability / Evidence Sufficiency 失败，不是权限绕过或敏感数据泄漏。
+
+项目不宣称具备：
+
+- 自主多智能体协作或无限动态规划；
+- Neo4j / GraphRAG、Langfuse、RAGAS；
+- Kubernetes 或生产级高并发保证；
+- 生产 SLA、零幻觉或 100% 安全；
+- 分布式、绝对不可篡改的审计系统。
+
+## 项目边界
+
+这是基于 v1.0.2 冻结版本构建的公开工程快照。Agent 核心 Runtime 和评测证据保持不变，公开仓库只进行文档、Demo 可用性和依赖安全维护。
+
+当前项目没有授予项目级开源 License；源码公开可见不等于获得复制、修改或再分发授权。
