@@ -314,14 +314,6 @@ docs/                        架构、工作流、安全、评测与运行文档
 
 冻结评测有意保留了唯一真实 false positive：`m9-knowledge-unanswerable-003`。一个不可回答的知识请求被错误地带引用发布。这是 Answerability / Evidence Sufficiency 失败，不是权限绕过或敏感数据泄漏。
 
-项目不宣称具备：
-
-- 自主多智能体协作或无限动态规划；
-- Neo4j / GraphRAG、Langfuse、RAGAS；
-- Kubernetes 或生产级高并发保证；
-- 生产 SLA、零幻觉或 100% 安全；
-- 分布式、绝对不可篡改的审计系统。
-
 ## 项目边界
 
 这是基于 v1.0.2 冻结版本构建的公开工程快照。Agent 核心 Runtime 和评测证据保持不变，公开仓库只进行文档、Demo 可用性和依赖安全维护。
