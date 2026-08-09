@@ -13,7 +13,7 @@ dependencies = [
     "langgraph>=1.0.10rc1,<2.0",
     "mcp==1.28.1",
     "pymilvus>=2.6,<3.0",
-    "pypdf>=5.1,<7.0",
+    "pypdf>=6.15.0,<7.0",
     "pydantic>=2.10,<3.0",
     "pydantic-settings>=2.7,<3.0",
     "pymysql>=1.1,<2.0",
