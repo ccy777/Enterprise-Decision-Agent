@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+test-results/
+*.junit.xml
+.tmp-*
+dist/
+build/
+
+# Environments and secrets
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# IDE/OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Runtime data
+uploads/
+logs/
+*.log
+security-artifacts/
+audit/
+artifacts/audit/
+*.audit.jsonl
+*.jsonl.anchor
+*.db
+*.sqlite*
+artifacts/traces/
+
+# Model/data caches
+.cache/
+models/
+
+# Keep evaluation reports selectively committed
+artifacts/evaluation/**/raw_traces/
+artifacts/evaluation/*.tmp

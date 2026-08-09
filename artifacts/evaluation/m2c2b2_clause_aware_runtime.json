@@ -1,0 +1,115 @@
+{
+  "comparison_contract": {
+    "device": "cpu",
+    "fixed_config": {
+      "bm25_top_k": 10,
+      "bm25_weight": 1.0,
+      "config_version": "m2c2a1-v1",
+      "dense_top_k": 10,
+      "dense_weight": 1.0,
+      "evidence_max_chars_per_item": 1800,
+      "evidence_max_count": 5,
+      "evidence_max_total_chars": 6000,
+      "parent_top_k": 5,
+      "reranker_candidate_count": 10,
+      "reranker_top_k": 5,
+      "rrf_k": 60.0,
+      "rrf_top_k": 10
+    },
+    "formal_query_count": 50,
+    "ground_truth_not_used_in_runtime_ranking": true,
+    "models": {
+      "embedding": {
+        "dimension": 512,
+        "name": "BAAI/bge-small-zh-v1.5",
+        "revision": "7999e1d3359715c523056ef9478215996d62a620"
+      },
+      "reranker": {
+        "name": "BAAI/bge-reranker-base",
+        "revision": "2cfc18c9415c912f9d8155881c133215df768a70"
+      }
+    },
+    "offline_only": true,
+    "strategy_id": "clause-aware-v1",
+    "warmup_excluded_from_formal_queries": true
+  },
+  "initialization": {
+    "bm25_index_build_seconds": 0.03773229999933392,
+    "data_load_seconds": 0.01873409999825526,
+    "dense_index_build_seconds": 3.2980466000008164,
+    "dependency_ready_check_seconds": 2.3399996280204505e-05,
+    "embedding_model_load_seconds": 32.62780539999949,
+    "reranker_model_load_seconds": 10.297257199999876,
+    "total_initialization_seconds": 46.45995109999785
+  },
+  "measurement_scope": "本机 CPU 单次观测",
+  "offline_model_gate": {
+    "embedding_dimension": 512,
+    "passed": true
+  },
+  "query_stage_distributions": {
+    "bm25_query_seconds": {
+      "max": 0.019477699999697506,
+      "mean": 0.013339539999287808,
+      "median": 0.014092950001213467,
+      "min": 0.00420509999821661,
+      "p95": 0.01928412500055856,
+      "total": 0.6669769999643904
+    },
+    "dense_query_seconds": {
+      "max": 0.25156450000213226,
+      "mean": 0.06710230799988494,
+      "median": 0.06379685000138124,
+      "min": 0.022489700000733137,
+      "p95": 0.1055834950002463,
+      "total": 3.355115399994247
+    },
+    "evidence_context_seconds": {
+      "max": 0.00656170000002021,
+      "mean": 0.00349041200010106,
+      "median": 0.00375865000023623,
+      "min": 0.0009508000002824701,
+      "p95": 0.005778820000341509,
+      "total": 0.17452060000505298
+    },
+    "parent_expansion_seconds": {
+      "max": 0.006513899999845307,
+      "mean": 0.0038889100006781517,
+      "median": 0.0042047499991895165,
+      "min": 0.0011492999983602203,
+      "p95": 0.0057279649994598,
+      "total": 0.1944455000339076
+    },
+    "reranker_seconds": {
+      "max": 2.0368137000041315,
+      "mean": 1.2111011759999384,
+      "median": 1.3561669000009715,
+      "min": 0.3852342999962275,
+      "p95": 1.751442879997921,
+      "total": 60.555058799996914
+    },
+    "rrf_seconds": {
+      "max": 0.014631599995482247,
+      "mean": 0.009473721999820555,
+      "median": 0.010215999998763436,
+      "min": 0.0033462999999755993,
+      "p95": 0.013747375001548788,
+      "total": 0.47368609999102773
+    },
+    "total_runtime_seconds": {
+      "max": 2.1516632999992,
+      "mean": 1.3116533399994659,
+      "median": 1.4601477499963949,
+      "min": 0.4216669000015827,
+      "p95": 1.8575565149993047,
+      "total": 65.5826669999733
+    }
+  },
+  "run_id": "m2c2b2-clause-aware-real-retrieval-v1",
+  "schema_version": "1.0",
+  "warmup": {
+    "excluded": true,
+    "query": "企业制度流程检索验证",
+    "seconds": 2.6066550000032294
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "calculator_version": "1.0.1",
+  "derived_from_frozen_run": true,
+  "run_id": "m9-formal-20260801T110101Z",
+  "dataset_version": "m9-final-eval-v1",
+  "dataset_sha256": "3cca357227d49985e5072e82d951a213b9a37e4abfe734eda68ef071ed8114bf",
+  "source_code_commit": "6d4ad853bb1a841ca685a5f812ff930067dabb3d",
+  "source_case_records_sha256": "ad53c5ae56f106c72f3eb382a380f0871fe115bca1cef1a9904124fedcb16397",
+  "source_adjudications_sha256": "8e4a8acbb9795537a3132bd50cf109454f7b5b3f6a8b462bbd3ed8235e71c3ec",
+  "derived_metrics_sha256": "d61bad98a8356b582ad8e59b9add2366adc6e57c85b58ae7e83995648aa6328e",
+  "formal_runtime": {
+    "passed": 8,
+    "total": 9,
+    "numerator": 8,
+    "denominator": 9,
+    "value": 0.8888888888888888
+  },
+  "deterministic_boundaries": {
+    "passed": 4,
+    "total": 4,
+    "numerator": 4,
+    "denominator": 4,
+    "value": 1.0
+  },
+  "overall": {
+    "passed": 12,
+    "total": 13,
+    "numerator": 12,
+    "denominator": 13,
+    "value": 0.9230769230769231
+  },
+  "unanswerable": {
+    "passed": 2,
+    "total": 3,
+    "numerator": 2,
+    "denominator": 3,
+    "value": 0.6666666666666666
+  },
+  "false_positive_count": 1,
+  "formal_provider_evaluation_rerun": false
+}

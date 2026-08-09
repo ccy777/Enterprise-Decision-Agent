@@ -1,0 +1,291 @@
+{
+  "dataset_version": "m9-final-eval-v1",
+  "run_id": "m9-formal-20260801T110101Z",
+  "code_commit": "6d4ad853bb1a841ca685a5f812ff930067dabb3d",
+  "total_case_count": 13,
+  "executed_case_count": 9,
+  "frozen_boundary_case_count": 4,
+  "passed_case_count": 12,
+  "failed_case_count": 1,
+  "calculator_version": "1.0.1",
+  "derived_from_frozen_run": true,
+  "rate_details": {
+    "overall": {
+      "passed": 12,
+      "total": 13,
+      "numerator": 12,
+      "denominator": 13,
+      "value": 0.9230769230769231
+    },
+    "formal_runtime": {
+      "passed": 8,
+      "total": 9,
+      "numerator": 8,
+      "denominator": 9,
+      "value": 0.8888888888888888
+    },
+    "deterministic_boundaries": {
+      "passed": 4,
+      "total": 4,
+      "numerator": 4,
+      "denominator": 4,
+      "value": 1.0
+    },
+    "routing_check": {
+      "passed": 9,
+      "total": 9,
+      "numerator": 9,
+      "denominator": 9,
+      "value": 1.0
+    },
+    "scenario_check": {
+      "passed": 9,
+      "total": 9,
+      "numerator": 9,
+      "denominator": 9,
+      "value": 1.0
+    },
+    "tool_selection_check": {
+      "passed": 9,
+      "total": 9,
+      "numerator": 9,
+      "denominator": 9,
+      "value": 1.0
+    },
+    "workflow_completion": {
+      "passed": 8,
+      "total": 9,
+      "numerator": 8,
+      "denominator": 9,
+      "value": 0.8888888888888888
+    },
+    "workflow_reviewer_accept": {
+      "passed": 1,
+      "total": 1,
+      "numerator": 1,
+      "denominator": 1,
+      "value": 1.0
+    },
+    "fail_closed": {
+      "passed": 6,
+      "total": 7,
+      "numerator": 6,
+      "denominator": 7,
+      "value": 0.8571428571428571
+    },
+    "m9_final_case_evidence_check": {
+      "passed": 4,
+      "total": 4,
+      "numerator": 4,
+      "denominator": 4,
+      "value": 1.0
+    },
+    "m9_final_case_citation_check": {
+      "passed": 8,
+      "total": 9,
+      "numerator": 8,
+      "denominator": 9,
+      "value": 0.8888888888888888
+    },
+    "m9_final_case_citation_support_check": {
+      "passed": 8,
+      "total": 9,
+      "numerator": 8,
+      "denominator": 9,
+      "value": 0.8888888888888888
+    },
+    "m9_final_case_fact_check": {
+      "passed": 6,
+      "total": 6,
+      "numerator": 6,
+      "denominator": 6,
+      "value": 1.0
+    },
+    "answerability_check": {
+      "passed": 8,
+      "total": 9,
+      "numerator": 8,
+      "denominator": 9,
+      "value": 0.8888888888888888
+    },
+    "unanswerable": {
+      "passed": 2,
+      "total": 3,
+      "numerator": 2,
+      "denominator": 3,
+      "value": 0.6666666666666666
+    },
+    "unsupported_claim": {
+      "passed": 1,
+      "total": 3,
+      "numerator": 1,
+      "denominator": 3,
+      "value": 0.3333333333333333
+    },
+    "data_tool_check": {
+      "passed": 3,
+      "total": 3,
+      "numerator": 3,
+      "denominator": 3,
+      "value": 1.0
+    },
+    "safe_query_check": {
+      "passed": 3,
+      "total": 3,
+      "numerator": 3,
+      "denominator": 3,
+      "value": 1.0
+    },
+    "data_assertion_check": {
+      "passed": 3,
+      "total": 3,
+      "numerator": 3,
+      "denominator": 3,
+      "value": 1.0
+    },
+    "mcp_lifecycle_check": {
+      "passed": 3,
+      "total": 3,
+      "numerator": 3,
+      "denominator": 3,
+      "value": 1.0
+    },
+    "recommendation_alignment_check": {
+      "passed": 1,
+      "total": 1,
+      "numerator": 1,
+      "denominator": 1,
+      "value": 1.0
+    },
+    "abstention_precision": {
+      "passed": 2,
+      "total": 2,
+      "numerator": 2,
+      "denominator": 2,
+      "value": 1.0
+    },
+    "hallucination": {
+      "passed": 1,
+      "total": 3,
+      "numerator": 1,
+      "denominator": 3,
+      "value": 0.3333333333333333
+    },
+    "security_boundary_check": {
+      "passed": 1,
+      "total": 1,
+      "numerator": 1,
+      "denominator": 1,
+      "value": 1.0
+    },
+    "usage_coverage": {
+      "passed": 45,
+      "total": 45,
+      "numerator": 45,
+      "denominator": 45,
+      "value": 1.0
+    },
+    "planner_schema_check": {
+      "passed": 0,
+      "total": 0,
+      "numerator": 0,
+      "denominator": 0,
+      "value": null
+    },
+    "planner_skill_check": {
+      "passed": 0,
+      "total": 0,
+      "numerator": 0,
+      "denominator": 0,
+      "value": null
+    },
+    "sql_guard_rejection_check": {
+      "passed": 0,
+      "total": 0,
+      "numerator": 0,
+      "denominator": 0,
+      "value": null
+    }
+  },
+  "metric_semantics": {
+    "independent_50_query_retrieval_baseline": "separate frozen retrieval benchmark; not recalculated from M9 final cases",
+    "m9_final_case_evidence_check": "case-level boolean evidence assertion; not per-evidence precision or recall",
+    "m9_final_case_citation_check": "case-level citation-format and scope assertion",
+    "m9_final_case_fact_check": "case-level expected-fact assertion after adjudication",
+    "answerability_check": "case-level answerability assertion",
+    "data_assertion_check": "case-level deterministic data-fact assertion",
+    "security_boundary_check": "case-level denied-request security assertion"
+  },
+  "deprecated_rate_fields": {
+    "retrieval_hit_rate": "use rate_details.m9_final_case_evidence_check",
+    "parent_document_hit_rate": "use rate_details.m9_final_case_evidence_check",
+    "evidence_precision": "proxy only; use rate_details.m9_final_case_citation_check",
+    "evidence_recall": "proxy only; use rate_details.m9_final_case_fact_check",
+    "evidence_selection_rate": "use rate_details.m9_final_case_evidence_check"
+  },
+  "false_positive_count": 1,
+  "pass_rate": 0.9230769230769231,
+  "routing_accuracy": 1.0,
+  "scenario_accuracy": 1.0,
+  "planner_schema_valid_rate": null,
+  "planner_skill_accuracy": null,
+  "tool_selection_accuracy": 1.0,
+  "workflow_success_rate": 0.8888888888888888,
+  "reviewer_accept_rate": 1.0,
+  "fail_closed_rate": 0.8571428571428571,
+  "unauthorized_release_count": 0,
+  "retrieval_hit_rate": 1.0,
+  "parent_document_hit_rate": 1.0,
+  "evidence_precision": 0.8888888888888888,
+  "evidence_recall": 1.0,
+  "evidence_selection_rate": 1.0,
+  "citation_compliance_rate": 0.8888888888888888,
+  "citation_validity_rate": 0.8888888888888888,
+  "citation_support_rate": 0.8888888888888888,
+  "citation_coverage_rate": 1.0,
+  "answerability_accuracy": 0.8888888888888888,
+  "unsupported_claim_rate": 0.3333333333333333,
+  "data_tool_success_rate": 1.0,
+  "safe_query_success_rate": 1.0,
+  "expected_data_assertion_accuracy": 1.0,
+  "sql_guard_rejection_correctness": null,
+  "mcp_lifecycle_success_rate": 1.0,
+  "unauthorized_data_access_count": 0,
+  "answer_correctness": 1.0,
+  "key_fact_coverage": 1.0,
+  "recommendation_alignment": 1.0,
+  "abstention_precision": 1.0,
+  "abstention_recall": 0.6666666666666666,
+  "hallucination_rate": 0.3333333333333333,
+  "sensitive_leak_count": 0,
+  "security_violation_count": 0,
+  "security_denial_success_rate": 1.0,
+  "provider_call_count": 45,
+  "provider_calls_per_request": 5.0,
+  "input_tokens": 38549,
+  "output_tokens": 4258,
+  "usage_coverage_rate": 1.0,
+  "successful_request_tokens": 36493,
+  "failed_request_tokens": 6314,
+  "provider_budget_exceeded_count": 1,
+  "cost_amount": null,
+  "cost_currency": null,
+  "cost_unavailable_reason": "provider_pricing_not_frozen",
+  "latency_mean_ms": 9630.222222222073,
+  "latency_p50_ms": 9593.999999997322,
+  "latency_p95_ms": 24250.0,
+  "retrieval_latency_mean_ms": null,
+  "data_latency_mean_ms": null,
+  "stage_latency_mean_ms": {},
+  "unavailable_metric_reasons": {
+    "planner_schema_valid_rate": "not_recorded_in_frozen_case_schema",
+    "planner_skill_accuracy": "not_recorded_in_frozen_case_schema",
+    "sql_guard_rejection_correctness": "no_dedicated_case_in_m9_final_eval_v1",
+    "retrieval_latency_mean_ms": "not_recorded_in_frozen_case_schema",
+    "data_latency_mean_ms": "not_recorded_in_frozen_case_schema",
+    "stage_latency_mean_ms": "not_recorded_in_frozen_case_schema"
+  },
+  "failure_counts": {
+    "assertion_failure": 1
+  }
+}

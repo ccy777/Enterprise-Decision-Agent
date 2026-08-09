@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "calculator_version": "1.0.2",
+  "hash_algorithm": "sha256",
+  "hash_semantics": "utf8_text_with_newlines_normalized_to_lf",
+  "source_manifest_self_hash_included": false,
+  "derived_from_frozen_run": true,
+  "run_id": "m9-formal-20260801T110101Z",
+  "dataset_version": "m9-final-eval-v1",
+  "dataset_sha256": "3cca357227d49985e5072e82d951a213b9a37e4abfe734eda68ef071ed8114bf",
+  "source_dataset_sha256": "3cca357227d49985e5072e82d951a213b9a37e4abfe734eda68ef071ed8114bf",
+  "source_code_commit": "6d4ad853bb1a841ca685a5f812ff930067dabb3d",
+  "source_manifest_sha256": "f299aa107bc659bcd87af1ce4914daa488848720a384eb97db3b0901649aa929",
+  "source_case_records_sha256": "1e01570e9dd16ce55f81c01b6fb13b2fc25c9617ae91721ddf0d26ab7b9a7c54",
+  "source_adjudications_sha256": "53206de8a443cdd567d5267cd395e4a720f620ea5f6225aa48585110730c3a7e",
+  "source_run_manifest_sha256": "870002c3a3b7d6ef845d27db62012165df2711f3e51edef9e530a28e2b455316",
+  "approved_adjudication_count": 2,
+  "sole_true_failure_case_id": "m9-knowledge-unanswerable-003",
+  "formal_runtime": {
+    "passed": 8,
+    "total": 9,
+    "numerator": 8,
+    "denominator": 9,
+    "value": 0.8888888888888888
+  },
+  "deterministic_boundaries": {
+    "passed": 4,
+    "total": 4,
+    "numerator": 4,
+    "denominator": 4,
+    "value": 1.0
+  },
+  "overall": {
+    "passed": 12,
+    "total": 13,
+    "numerator": 12,
+    "denominator": 13,
+    "value": 0.9230769230769231
+  },
+  "unanswerable": {
+    "passed": 2,
+    "total": 3,
+    "numerator": 2,
+    "denominator": 3,
+    "value": 0.6666666666666666
+  },
+  "false_positive_count": 1,
+  "provider_call_count": 45,
+  "input_tokens": 38549,
+  "output_tokens": 4258,
+  "latency_p50_ms": 9593.999999997322,
+  "latency_p95_ms": 24250.0,
+  "formal_provider_evaluation_rerun": false,
+  "derived_metrics_sha256": "20a572c5d7a86a769de70b133eeeb10051e9a410060b51999c6fe45fa0194b5a"
+}

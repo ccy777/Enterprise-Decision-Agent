@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "enterprise-decision-agent"
+version = "1.0.2"
+description = "Evidence-grounded enterprise decision and knowledge agent platform."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115,<1.0",
+    "langgraph>=1.0.10rc1,<2.0",
+    "mcp==1.28.1",
+    "pymilvus>=2.6,<3.0",
+    "pypdf>=5.1,<7.0",
+    "pydantic>=2.10,<3.0",
+    "pydantic-settings>=2.7,<3.0",
+    "pymysql>=1.1,<2.0",
+    "redis>=5.2,<6.0",
+    "sentence-transformers>=5.6,<6.0",
+    "sqlalchemy>=2.0,<3.0",
+    "sqlglot>=27.0,<28.0",
+    "uvicorn>=0.34,<1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "httpx>=0.28,<1.0",
+    "pip-audit==2.9.0",
+    "pip-tools==7.5.2",
+    "pytest>=9.0.3,<10.0",
+    "pytest-asyncio>=1.0,<2.0",
+    "ruff>=0.9,<1.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/decision_agent"]
+
+[tool.pytest.ini_options]
+addopts = "--strict-config --strict-markers"
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+markers = [
+    "integration: tests requiring explicitly provisioned external services",
+    "offline_integration: stable integration tests with deterministic external-I/O substitutes",
+    "e2e: end-to-end tests excluded from the offline unit suite",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src", "tests"]
+extend-exclude = ["references"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

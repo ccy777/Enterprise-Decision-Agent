@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "company": {"id": "company-huaheng", "name": "华衡智能科技有限公司", "aliases": ["华衡智能", "华衡科技", "公司", "企业", "本公司", "这个企业", "这家公司", "示例企业"]},
+  "agents": [
+    {"id": "agent-enterprise-decision-assistant", "name": "企业 Agent", "aliases": ["Agent", "决策助手", "企业智能助手"]}
+  ],
+  "departments": [
+    {"id": "dept-customer-service", "name": "客户服务部", "aliases": ["客服部"]},
+    {"id": "dept-sales-operations", "name": "销售运营部", "aliases": ["销售运营"]},
+    {"id": "dept-regional-sales", "name": "区域销售中心", "aliases": ["区域销售"]},
+    {"id": "dept-supply-chain", "name": "供应链中心", "aliases": ["供应链"]},
+    {"id": "dept-procurement", "name": "采购管理部", "aliases": ["采购部"]},
+    {"id": "dept-warehouse", "name": "仓储管理部", "aliases": ["仓储部"]},
+    {"id": "dept-finance", "name": "财务管理部", "aliases": ["财务部"]},
+    {"id": "dept-hr", "name": "人力资源部", "aliases": ["人力部"]},
+    {"id": "dept-security", "name": "信息安全办公室", "aliases": ["信安办"]},
+    {"id": "dept-general-manager", "name": "总经理办公室", "aliases": ["总经办"]}
+  ],
+  "products": [
+    {"id": "product-a", "name": "产品 A", "aliases": ["A 型终端", "标准型巡检终端"]},
+    {"id": "product-b", "name": "产品 B", "aliases": ["B 型终端", "防护增强型巡检终端"]}
+  ],
+  "accessories": [
+    {"id": "battery-a", "name": "A 型原装电池", "aliases": ["产品 A 原装电池"]},
+    {"id": "battery-b", "name": "B 型原装电池", "aliases": ["产品 B 原装电池"]},
+    {"id": "dock-standard", "name": "标准充电底座", "aliases": ["标准底座"]},
+    {"id": "dock-industrial", "name": "工业增强底座", "aliases": ["工业底座"]}
+  ],
+  "regions": [
+    {"id": "region-east", "name": "华东区", "aliases": ["华东区域"]},
+    {"id": "region-south", "name": "华南区", "aliases": ["华南区域"]},
+    {"id": "region-north", "name": "华北区", "aliases": ["华北区域"]},
+    {"id": "region-west", "name": "西部区", "aliases": ["西部区域"]}
+  ],
+  "customer_levels": [
+    {"id": "customer-regular", "name": "普通客户", "aliases": ["普通级客户"]},
+    {"id": "customer-key", "name": "重点客户", "aliases": ["重点级客户"]},
+    {"id": "customer-strategic", "name": "战略客户", "aliases": ["战略级客户"]}
+  ],
+  "suppliers": [
+    {"id": "supplier-xingyuan", "name": "星源动力部件有限公司", "aliases": ["星源动力"]},
+    {"id": "supplier-ruihe", "name": "瑞和精密电子有限公司", "aliases": ["瑞和精密"]},
+    {"id": "supplier-yuntong", "name": "云通供应链服务有限公司", "aliases": ["云通供应链"]}
+  ],
+  "document_categories": [
+    {"id": "customer_service_policy", "name": "客户服务制度", "aliases": []},
+    {"id": "sales_policy", "name": "销售制度", "aliases": []},
+    {"id": "inventory_policy", "name": "库存制度", "aliases": []},
+    {"id": "procurement_policy", "name": "采购制度", "aliases": []},
+    {"id": "finance_policy", "name": "财务制度", "aliases": []},
+    {"id": "hr_policy", "name": "人力制度", "aliases": []},
+    {"id": "security_policy", "name": "安全制度", "aliases": []},
+    {"id": "enterprise_profile_document", "name": "企业画像与能力边界资料", "aliases": []}
+  ],
+  "query_categories": [
+    {"id": "customer_service", "name": "客户服务", "aliases": []},
+    {"id": "sales", "name": "销售", "aliases": []},
+    {"id": "inventory", "name": "库存", "aliases": []},
+    {"id": "procurement", "name": "采购", "aliases": []},
+    {"id": "finance", "name": "财务", "aliases": []},
+    {"id": "hr", "name": "人力资源", "aliases": []},
+    {"id": "security_governance", "name": "安全治理", "aliases": []},
+    {"id": "enterprise_profile", "name": "企业画像", "aliases": []}
+  ],
+  "query_types": [
+    {"id": "single_fact", "name": "单事实", "aliases": []},
+    {"id": "multi_constraint", "name": "多约束", "aliases": []},
+    {"id": "cross_section", "name": "跨章节", "aliases": []},
+    {"id": "multi_evidence", "name": "多证据", "aliases": []},
+    {"id": "unanswerable", "name": "无答案", "aliases": []}
+  ]
+}

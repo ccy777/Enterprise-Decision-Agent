@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "run_id": "m9-formal-20260801T110101Z",
+  "dataset_version": "m9-final-eval-v1",
+  "dataset_sha256": "3cca357227d49985e5072e82d951a213b9a37e4abfe734eda68ef071ed8114bf",
+  "code_commit": "6d4ad853bb1a841ca685a5f812ff930067dabb3d",
+  "case_count": 13,
+  "adjudication_policy": "two_confirmed_literal_false_negatives_only",
+  "real_system_failure_count": 1,
+  "artifacts": {
+    "case_records.jsonl": "1e01570e9dd16ce55f81c01b6fb13b2fc25c9617ae91721ddf0d26ab7b9a7c54",
+    "metrics.json": "7977dbb47b4b5e1fc00c5fccd312a1bfcd7ac96ac7b344f11624dfdcf1b21b93",
+    "metrics_raw.json": "7435512bae0008196e25f3f8476bdbd9bd0f66f55c3599cea8309590ef6651b3",
+    "adjudications.json": "53206de8a443cdd567d5267cd395e4a720f620ea5f6225aa48585110730c3a7e",
+    "failure_records.jsonl": "212caed6240ea7c8798af3ed62bf9a9306d9043cfdb829528ae18b3b523c9bf6",
+    "run_manifest.json": "870002c3a3b7d6ef845d27db62012165df2711f3e51edef9e530a28e2b455316"
+  },
+  "redaction": "no_questions_answers_sql_rows_prompts_payloads_secrets_or_raw_logs"
+}

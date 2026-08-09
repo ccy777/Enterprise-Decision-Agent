@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "run_id": "m9-formal-20260801T110101Z",
+  "run_kind": "formal",
+  "dataset_version": "m9-final-eval-v1",
+  "dataset_sha256": "3cca357227d49985e5072e82d951a213b9a37e4abfe734eda68ef071ed8114bf",
+  "code_commit": "6d4ad853bb1a841ca685a5f812ff930067dabb3d",
+  "started_at": "2026-08-01T11:01:01.204119+00:00",
+  "completed_at": "2026-08-01T11:02:56.073365+00:00",
+  "runtime_path": [
+    "configured_runtime",
+    "formal_request_executor",
+    "router",
+    "coordinator",
+    "controlled_workflow",
+    "rag_or_mcp",
+    "evidence",
+    "reviewer",
+    "release",
+    "trace_and_audit"
+  ],
+  "models": {
+    "provider": "openai_compatible",
+    "provider_model": "deepseek-v4-flash",
+    "embedding_model": "BAAI/bge-small-zh-v1.5",
+    "embedding_revision": "7999e1d3359715c523056ef9478215996d62a620",
+    "embedding_local_files_only": true,
+    "reranker_model": "BAAI/bge-reranker-base",
+    "reranker_revision": "2cfc18c9415c912f9d8155881c133215df768a70",
+    "model_cache_offline": true
+  },
+  "corpus": {
+    "collection": "decision_agent_chunks",
+    "database": "default",
+    "schema_contract": "decision_agent_child_chunk_v1",
+    "validated_row_count": 101,
+    "validation": "runtime_exact_record_id_match",
+    "ingestion_performed": false
+  },
+  "redaction": {
+    "question": "omitted",
+    "answer": "omitted",
+    "sql_and_rows": "omitted",
+    "provider_payloads_and_prompts": "omitted",
+    "raw_exceptions_and_stderr": "omitted"
+  }
+}

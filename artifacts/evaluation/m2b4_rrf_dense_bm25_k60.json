@@ -1,0 +1,2573 @@
+{
+  "evaluation_schema_version": "1.0",
+  "baseline_name": "m2b4-rrf-dense-bm25-k60",
+  "retrieval_type": "rrf",
+  "algorithm": "reciprocal_rank_fusion",
+  "rrf_k": 60.0,
+  "source_names": [
+    "dense",
+    "bm25"
+  ],
+  "source_weights": {
+    "dense": 1.0,
+    "bm25": 1.0
+  },
+  "source_reports": [
+    {
+      "source_name": "dense",
+      "relative_path": "artifacts/evaluation/m2b2c_dense_bge_small_zh_v1_5.json",
+      "baseline_name": "m2b2c-dense-bge-small-zh-v1.5",
+      "normalized_text_sha256": "bd5565f8016a5613121d71c083796f1663bbba3fc6ee4ae895e6f6d6569feb0c",
+      "input_depth": 5,
+      "weight": 1.0
+    },
+    {
+      "source_name": "bm25",
+      "relative_path": "artifacts/evaluation/m2b3_bm25_baseline.json",
+      "baseline_name": "m2b3-bm25-deterministic-chinese-v1",
+      "normalized_text_sha256": "48e5dbbe45e09e20a0a66f9fa9ad5b8b64bd31217e51cdaca34dcccdc5924a40",
+      "input_depth": 5,
+      "weight": 1.0
+    }
+  ],
+  "corpus_file": "m2b2c_dense_corpus.jsonl",
+  "queries_file": "m2b2c_dense_queries.jsonl",
+  "corpus_sha256": "76a7e2c019ab597e1cee4ca3a1df2ea4e4543babb780dc8a736c8cf951a89be9",
+  "queries_sha256": "d33ab171dfaf426ef3e28a9caae535a4407fab1e574a808af23a09a500a5bf8c",
+  "corpus_size": 36,
+  "query_count": 18,
+  "fusion_input_depth": 5,
+  "output_top_k": 5,
+  "metrics": {
+    "hit_rate_at_1": 0.9444444444444444,
+    "recall_at_1": 0.8888888888888888,
+    "hit_rate_at_3": 1.0,
+    "recall_at_3": 1.0,
+    "hit_rate_at_5": 1.0,
+    "recall_at_5": 1.0,
+    "mrr_at_5": 0.9722222222222222
+  },
+  "category_metrics": {
+    "产品与售后": {
+      "hit_rate_at_1": 0.6666666666666666,
+      "recall_at_1": 0.5,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 0.8333333333333334
+    },
+    "人力资源": {
+      "hit_rate_at_1": 1.0,
+      "recall_at_1": 1.0,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 1.0
+    },
+    "内部制度": {
+      "hit_rate_at_1": 1.0,
+      "recall_at_1": 1.0,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 1.0
+    },
+    "库存与采购": {
+      "hit_rate_at_1": 1.0,
+      "recall_at_1": 1.0,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 1.0
+    },
+    "财务经营": {
+      "hit_rate_at_1": 1.0,
+      "recall_at_1": 0.8333333333333334,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 1.0
+    },
+    "销售": {
+      "hit_rate_at_1": 1.0,
+      "recall_at_1": 1.0,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 1.0
+    }
+  },
+  "query_results": [
+    {
+      "query_id": "query-product-a-battery-warranty",
+      "query": "产品A电池出现故障后可以免费保修多长时间？",
+      "category": "产品与售后",
+      "relevant_document_ids": [
+        "product-a-battery-warranty"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "product-b-battery-warranty",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 20.48464537694864,
+              "record_id": "m2b3-bm25-product-b-battery-warranty"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.7909915627598751,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 2,
+          "document_id": "product-a-battery-warranty",
+          "fused_score": 0.03200204813108039,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 19.780844823702587,
+              "record_id": "m2b3-bm25-product-a-battery-warranty"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.7303779463852488,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 3,
+          "document_id": "product-a-device-warranty",
+          "fused_score": 0.03200204813108039,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 16.147521686050712,
+              "record_id": "m2b3-bm25-product-a-device-warranty"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.754665714752618,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "product-a-repair-response",
+          "fused_score": 0.03125,
+          "best_source_rank": 4,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 10.477771384379038,
+              "record_id": "m2b3-bm25-product-a-repair-response"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 0.6198929962024395,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "product-a-return-policy",
+          "fused_score": 0.03076923076923077,
+          "best_source_rank": 5,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 7.882183961949062,
+              "record_id": "m2b3-bm25-product-a-return-policy"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 0.5635179871729588,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 0.0,
+        "recall_at_1": 0.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 0.5
+      },
+      "dense_best_relevant_rank": 3,
+      "bm25_best_relevant_rank": 2,
+      "rrf_best_relevant_rank": 2,
+      "comparison_to_dense": "improved"
+    },
+    {
+      "query_id": "query-product-a-warranty-overview",
+      "query": "产品A整机和电池分别有什么保修期限？",
+      "category": "产品与售后",
+      "relevant_document_ids": [
+        "product-a-device-warranty",
+        "product-a-battery-warranty"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "product-a-device-warranty",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 36.096207081427366,
+              "record_id": "m2b3-bm25-product-a-device-warranty"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.8197938925611048,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "product-a-battery-warranty",
+          "fused_score": 0.03200204813108039,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 24.842906628380312,
+              "record_id": "m2b3-bm25-product-a-battery-warranty"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.7481943012591478,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 3,
+          "document_id": "product-b-battery-warranty",
+          "fused_score": 0.03200204813108039,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 26.203011330872286,
+              "record_id": "m2b3-bm25-product-b-battery-warranty"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.7245096467463844,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "product-a-return-policy",
+          "fused_score": 0.03076923076923077,
+          "best_source_rank": 5,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 6.61225736104876,
+              "record_id": "m2b3-bm25-product-a-return-policy"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 0.5523990856841238,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "procurement-battery-lead-time",
+          "fused_score": 0.015625,
+          "best_source_rank": 4,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 8.716588277945684,
+              "record_id": "m2b3-bm25-procurement-battery-lead-time"
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 0.5,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-product-a-repair-response",
+      "query": "提交产品A售后报修后多久会收到首次处理回复？",
+      "category": "产品与售后",
+      "relevant_document_ids": [
+        "product-a-repair-response"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "product-a-repair-response",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 55.2037762654537,
+              "record_id": "m2b3-bm25-product-a-repair-response"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.8438295018788604,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "product-a-return-policy",
+          "fused_score": 0.031754032258064516,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 7.688888823790846,
+              "record_id": "m2b3-bm25-product-a-return-policy"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.6302154728886873,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "product-b-battery-warranty",
+          "fused_score": 0.031754032258064516,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 11.464113205232334,
+              "record_id": "m2b3-bm25-product-b-battery-warranty"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 0.6143141739953603,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "policy-meeting-minutes",
+          "fused_score": 0.015873015873015872,
+          "best_source_rank": 3,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 8.28355633713045,
+              "record_id": "m2b3-bm25-policy-meeting-minutes"
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "product-b-return-policy",
+          "fused_score": 0.015873015873015872,
+          "best_source_rank": 3,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.625780017702179,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-finance-q2-revenue",
+      "query": "公司在2026年第二季度实现了多少营业收入？",
+      "category": "财务经营",
+      "relevant_document_ids": [
+        "finance-revenue-2026-q2"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "finance-revenue-2026-q2",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 35.62443300099666,
+              "record_id": "m2b3-bm25-finance-revenue-2026-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.7941207616395688,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "finance-revenue-2026-q1",
+          "fused_score": 0.03225806451612903,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 32.74145534445787,
+              "record_id": "m2b3-bm25-finance-revenue-2026-q1"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.7240575448386218,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "finance-margin-2026-q2",
+          "fused_score": 0.031746031746031744,
+          "best_source_rank": 3,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 17.080068302452165,
+              "record_id": "m2b3-bm25-finance-margin-2026-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.668368701679337,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "finance-east-operating-cost",
+          "fused_score": 0.03076923076923077,
+          "best_source_rank": 5,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 13.073567410565587,
+              "record_id": "m2b3-bm25-finance-east-operating-cost"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 0.6400911555480708,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "finance-margin-2026-q1",
+          "fused_score": 0.015625,
+          "best_source_rank": 4,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 13.84387609084557,
+              "record_id": "m2b3-bm25-finance-margin-2026-q1"
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-finance-q2-profitability",
+      "query": "2026年第二季度公司的收入规模和综合毛利率分别是多少？",
+      "category": "财务经营",
+      "relevant_document_ids": [
+        "finance-revenue-2026-q2",
+        "finance-margin-2026-q2"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "finance-margin-2026-q2",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 44.72473479728603,
+              "record_id": "m2b3-bm25-finance-margin-2026-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.8408466422492719,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "finance-margin-2026-q1",
+          "fused_score": 0.03225806451612903,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 41.48854258567944,
+              "record_id": "m2b3-bm25-finance-margin-2026-q1"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.819864230540588,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "finance-revenue-2026-q2",
+          "fused_score": 0.031746031746031744,
+          "best_source_rank": 3,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 27.75250142189231,
+              "record_id": "m2b3-bm25-finance-revenue-2026-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.6840930095205262,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 4,
+          "document_id": "finance-revenue-2026-q1",
+          "fused_score": 0.03125,
+          "best_source_rank": 4,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 24.478116770282757,
+              "record_id": "m2b3-bm25-finance-revenue-2026-q1"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 0.6094225301509614,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "finance-east-operating-cost",
+          "fused_score": 0.015384615384615385,
+          "best_source_rank": 5,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "dense",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 0.6056489189760964,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 0.5,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-finance-east-cost",
+      "query": "华东区域2026年二季度的运营成本金额是多少？",
+      "category": "财务经营",
+      "relevant_document_ids": [
+        "finance-east-operating-cost"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "finance-east-operating-cost",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 37.930896036162224,
+              "record_id": "m2b3-bm25-finance-east-operating-cost"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.8650538863379069,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "finance-south-operating-cost",
+          "fused_score": 0.03225806451612903,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 31.17119432251804,
+              "record_id": "m2b3-bm25-finance-south-operating-cost"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.8116799147039524,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "sales-east-product-a-q2",
+          "fused_score": 0.03149801587301587,
+          "best_source_rank": 3,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 19.5339649517794,
+              "record_id": "m2b3-bm25-sales-east-product-a-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.6625624346107565,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "sales-east-product-b-q2",
+          "fused_score": 0.03149801587301587,
+          "best_source_rank": 3,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 19.965905210737017,
+              "record_id": "m2b3-bm25-sales-east-product-b-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 0.6513052312398441,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "sales-east-product-a-q1",
+          "fused_score": 0.03076923076923077,
+          "best_source_rank": 5,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 17.584911147848594,
+              "record_id": "m2b3-bm25-sales-east-product-a-q1"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 0.6488352051986769,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-sales-east-product-a-q2",
+      "query": "2026年二季度华东市场的产品A销量同比表现如何？",
+      "category": "销售",
+      "relevant_document_ids": [
+        "sales-east-product-a-q2"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "sales-east-product-a-q2",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 29.95755460543912,
+              "record_id": "m2b3-bm25-sales-east-product-a-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.8203222658668896,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "sales-east-product-b-q2",
+          "fused_score": 0.03225806451612903,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 29.295850667192674,
+              "record_id": "m2b3-bm25-sales-east-product-b-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.8112024824103754,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "sales-east-product-a-q1",
+          "fused_score": 0.031746031746031744,
+          "best_source_rank": 3,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 28.238990004564844,
+              "record_id": "m2b3-bm25-sales-east-product-a-q1"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.8092243121315814,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "sales-south-product-a-q2",
+          "fused_score": 0.03125,
+          "best_source_rank": 4,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 26.405972045458732,
+              "record_id": "m2b3-bm25-sales-south-product-a-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 0.7891464704500458,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "finance-east-operating-cost",
+          "fused_score": 0.015384615384615385,
+          "best_source_rank": 5,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 15.320095778374386,
+              "record_id": "m2b3-bm25-finance-east-operating-cost"
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-sales-south-product-a-q2",
+      "query": "产品A在华南区域2026年第二季度的销量变化是多少？",
+      "category": "销售",
+      "relevant_document_ids": [
+        "sales-south-product-a-q2"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "sales-south-product-a-q2",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 34.080158827511646,
+              "record_id": "m2b3-bm25-sales-south-product-a-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.8468588311563554,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "sales-east-product-a-q2",
+          "fused_score": 0.03200204813108039,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 25.914302871708106,
+              "record_id": "m2b3-bm25-sales-east-product-a-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.7779167626015331,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "sales-east-product-b-q2",
+          "fused_score": 0.031754032258064516,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 25.163193469429658,
+              "record_id": "m2b3-bm25-sales-east-product-b-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.7800910009911705,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "finance-south-operating-cost",
+          "fused_score": 0.03125763125763126,
+          "best_source_rank": 3,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 25.68913281853724,
+              "record_id": "m2b3-bm25-finance-south-operating-cost"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 0.6575333870907908,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "sales-east-product-a-q1",
+          "fused_score": 0.031009615384615385,
+          "best_source_rank": 4,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 22.78219940654123,
+              "record_id": "m2b3-bm25-sales-east-product-a-q1"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 0.7622496610356827,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-sales-online-channel-q2",
+      "query": "今年二季度线上直营网渠道的销售额同比变化如何？",
+      "category": "销售",
+      "relevant_document_ids": [
+        "sales-online-channel-q2"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "sales-online-channel-q2",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 58.83532534002538,
+              "record_id": "m2b3-bm25-sales-online-channel-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.838090770284469,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "sales-offline-channel-q2",
+          "fused_score": 0.03225806451612903,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 36.25161872896994,
+              "record_id": "m2b3-bm25-sales-offline-channel-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.7404370019380012,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "sales-east-product-b-q2",
+          "fused_score": 0.03149801587301587,
+          "best_source_rank": 3,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 12.213527219972843,
+              "record_id": "m2b3-bm25-sales-east-product-b-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.6029452539051045,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "sales-south-product-a-q2",
+          "fused_score": 0.03149801587301587,
+          "best_source_rank": 3,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 12.412623757485198,
+              "record_id": "m2b3-bm25-sales-south-product-a-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 0.5922874478594113,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "sales-east-product-a-q2",
+          "fused_score": 0.03076923076923077,
+          "best_source_rank": 5,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 11.949301077731915,
+              "record_id": "m2b3-bm25-sales-east-product-a-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 0.5869389737146156,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-inventory-product-a",
+      "query": "产品A现有多少可用库存，降到什么数量会触发补货？",
+      "category": "库存与采购",
+      "relevant_document_ids": [
+        "inventory-product-a-stock"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "inventory-product-a-stock",
+          "fused_score": 0.03252247488101534,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 35.47948633937295,
+              "record_id": "m2b3-bm25-inventory-product-a-stock"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.7692494791862787,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "inventory-product-b-stock",
+          "fused_score": 0.03252247488101534,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 35.729955160295944,
+              "record_id": "m2b3-bm25-inventory-product-b-stock"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.7561055416907955,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "sales-east-product-a-q2",
+          "fused_score": 0.03149801587301587,
+          "best_source_rank": 3,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 7.877208253445032,
+              "record_id": "m2b3-bm25-sales-east-product-a-q2"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 0.5555144924399933,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "procurement-product-a-minimum",
+          "fused_score": 0.015873015873015872,
+          "best_source_rank": 3,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.564484706804129,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "product-a-device-warranty",
+          "fused_score": 0.015625,
+          "best_source_rank": 4,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 7.549730733427407,
+              "record_id": "m2b3-bm25-product-a-device-warranty"
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 2,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-procurement-chip-lead-time",
+      "query": "采购核心芯片通常需要等待多少天交付？",
+      "category": "库存与采购",
+      "relevant_document_ids": [
+        "procurement-chip-lead-time"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "procurement-chip-lead-time",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 37.33557936556713,
+              "record_id": "m2b3-bm25-procurement-chip-lead-time"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.792806676235642,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "procurement-battery-lead-time",
+          "fused_score": 0.03225806451612903,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 15.818849099033665,
+              "record_id": "m2b3-bm25-procurement-battery-lead-time"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.6449693864462713,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "policy-expense-approval",
+          "fused_score": 0.015873015873015872,
+          "best_source_rank": 3,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 9.172057523809553,
+              "record_id": "m2b3-bm25-policy-expense-approval"
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "policy-purchase-approval",
+          "fused_score": 0.015873015873015872,
+          "best_source_rank": 3,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.5160252779019721,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "procurement-product-a-minimum",
+          "fused_score": 0.015625,
+          "best_source_rank": 4,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 6.077239629674754,
+              "record_id": "m2b3-bm25-procurement-product-a-minimum"
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-inventory-product-b-reorder",
+      "query": "产品B当前库存是否已经低于补货触发线？",
+      "category": "库存与采购",
+      "relevant_document_ids": [
+        "inventory-product-b-stock"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "inventory-product-b-stock",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 43.19544519069783,
+              "record_id": "m2b3-bm25-inventory-product-b-stock"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.7771248647395324,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "inventory-product-a-stock",
+          "fused_score": 0.03225806451612903,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 39.51022555855661,
+              "record_id": "m2b3-bm25-inventory-product-a-stock"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.7499461851189356,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "product-b-return-policy",
+          "fused_score": 0.031746031746031744,
+          "best_source_rank": 3,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 6.873169071893267,
+              "record_id": "m2b3-bm25-product-b-return-policy"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.5475793343100003,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "product-a-return-policy",
+          "fused_score": 0.03076923076923077,
+          "best_source_rank": 5,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 4.736420825528045,
+              "record_id": "m2b3-bm25-product-a-return-policy"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 0.5371075983145518,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "procurement-product-b-minimum",
+          "fused_score": 0.015625,
+          "best_source_rank": 4,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 4.86213729424167,
+              "record_id": "m2b3-bm25-procurement-product-b-minimum"
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-hr-annual-leave",
+      "query": "正式员工一年可以享受多少天带薪年假？",
+      "category": "人力资源",
+      "relevant_document_ids": [
+        "hr-annual-leave"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "hr-annual-leave",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 48.527786035671774,
+              "record_id": "m2b3-bm25-hr-annual-leave"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.7587535446627889,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "hr-sick-leave",
+          "fused_score": 0.03225806451612903,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 16.956495423408015,
+              "record_id": "m2b3-bm25-hr-sick-leave"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.6952131679761779,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "policy-remote-work",
+          "fused_score": 0.03149801587301587,
+          "best_source_rank": 3,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 7.471612579715993,
+              "record_id": "m2b3-bm25-policy-remote-work"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 0.5191696009303022,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "hr-probation-period",
+          "fused_score": 0.03125763125763126,
+          "best_source_rank": 3,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 5.882433453289754,
+              "record_id": "m2b3-bm25-hr-probation-period"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.5549587965855691,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "product-a-battery-warranty",
+          "fused_score": 0.015625,
+          "best_source_rank": 4,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 6.127183616233717,
+              "record_id": "m2b3-bm25-product-a-battery-warranty"
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-hr-probation-period",
+      "query": "新员工入职后标准试用期持续几个月？",
+      "category": "人力资源",
+      "relevant_document_ids": [
+        "hr-probation-period"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "hr-probation-period",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 54.45038091410189,
+              "record_id": "m2b3-bm25-hr-probation-period"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.823263971853895,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "product-b-battery-warranty",
+          "fused_score": 0.03225806451612903,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 10.871587279645707,
+              "record_id": "m2b3-bm25-product-b-battery-warranty"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.5073213700814737,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "procurement-chip-lead-time",
+          "fused_score": 0.031009615384615385,
+          "best_source_rank": 4,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 8.877972308478446,
+              "record_id": "m2b3-bm25-procurement-chip-lead-time"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 0.4990196165182994,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "hr-annual-leave",
+          "fused_score": 0.015873015873015872,
+          "best_source_rank": 3,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.5051006293028841,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "procurement-battery-lead-time",
+          "fused_score": 0.015873015873015872,
+          "best_source_rank": 3,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 9.531986411615438,
+              "record_id": "m2b3-bm25-procurement-battery-lead-time"
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-hr-technical-training",
+      "query": "技术岗位每季度需要完成多少小时的专业培训？",
+      "category": "人力资源",
+      "relevant_document_ids": [
+        "hr-technical-training"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "hr-technical-training",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 63.389782222970034,
+              "record_id": "m2b3-bm25-hr-technical-training"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.8240732316580803,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "hr-probation-period",
+          "fused_score": 0.016129032258064516,
+          "best_source_rank": 2,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.5363745181773475,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "hr-sales-commission",
+          "fused_score": 0.016129032258064516,
+          "best_source_rank": 2,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 11.594641397698943,
+              "record_id": "m2b3-bm25-hr-sales-commission"
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "hr-sick-leave",
+          "fused_score": 0.015873015873015872,
+          "best_source_rank": 3,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.506987912494782,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "policy-expense-approval",
+          "fused_score": 0.015873015873015872,
+          "best_source_rank": 3,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 11.294290549711198,
+              "record_id": "m2b3-bm25-policy-expense-approval"
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-policy-expense-approval",
+      "query": "费用报销达到什么金额后需要财务总监审批？",
+      "category": "内部制度",
+      "relevant_document_ids": [
+        "policy-expense-approval"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "policy-expense-approval",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 63.562570220494116,
+              "record_id": "m2b3-bm25-policy-expense-approval"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.7747285383355385,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "policy-purchase-approval",
+          "fused_score": 0.03225806451612903,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 17.39132579883633,
+              "record_id": "m2b3-bm25-policy-purchase-approval"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.6692878977842532,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "hr-sales-commission",
+          "fused_score": 0.031746031746031744,
+          "best_source_rank": 3,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 8.83049779931367,
+              "record_id": "m2b3-bm25-hr-sales-commission"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.5433605428270906,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "hr-overtime-approval",
+          "fused_score": 0.03125,
+          "best_source_rank": 4,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 7.1261506482908645,
+              "record_id": "m2b3-bm25-hr-overtime-approval"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 0.47865154974062174,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "policy-meeting-minutes",
+          "fused_score": 0.015384615384615385,
+          "best_source_rank": 5,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 4.5307872886911875,
+              "record_id": "m2b3-bm25-policy-meeting-minutes"
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-policy-password-rotation",
+      "query": "公司系统账户密码需要间隔多久更换？",
+      "category": "内部制度",
+      "relevant_document_ids": [
+        "policy-password-rotation"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "policy-password-rotation",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 50.7962185094161,
+              "record_id": "m2b3-bm25-policy-password-rotation"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.7645913821710899,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "hr-probation-period",
+          "fused_score": 0.016129032258064516,
+          "best_source_rank": 2,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.47423109834182153,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "policy-expense-approval",
+          "fused_score": 0.016129032258064516,
+          "best_source_rank": 2,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 9.172057523809553,
+              "record_id": "m2b3-bm25-policy-expense-approval"
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "finance-revenue-2026-q1",
+          "fused_score": 0.015873015873015872,
+          "best_source_rank": 3,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 6.078593379890956,
+              "record_id": "m2b3-bm25-finance-revenue-2026-q1"
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "product-a-repair-response",
+          "fused_score": 0.015873015873015872,
+          "best_source_rank": 3,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.45701117147680737,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    },
+    {
+      "query_id": "query-policy-purchase-approval",
+      "query": "采购合同超过哪个金额必须提交总经理审批？",
+      "category": "内部制度",
+      "relevant_document_ids": [
+        "policy-purchase-approval"
+      ],
+      "ranked_results": [
+        {
+          "final_rank": 1,
+          "document_id": "policy-purchase-approval",
+          "fused_score": 0.03278688524590164,
+          "best_source_rank": 1,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 61.07589377137678,
+              "record_id": "m2b3-bm25-policy-purchase-approval"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 1,
+              "contribution": 0.01639344262295082,
+              "source_score": 0.7928614374273758,
+              "record_id": null
+            }
+          ],
+          "is_relevant": true
+        },
+        {
+          "final_rank": 2,
+          "document_id": "policy-expense-approval",
+          "fused_score": 0.03200204813108039,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 16.96661533812967,
+              "record_id": "m2b3-bm25-policy-expense-approval"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 0.6276014917000174,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 3,
+          "document_id": "hr-overtime-approval",
+          "fused_score": 0.0315136476426799,
+          "best_source_rank": 2,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 2,
+              "contribution": 0.016129032258064516,
+              "source_score": 21.71738243699025,
+              "record_id": "m2b3-bm25-hr-overtime-approval"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 0.5010972216260051,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 4,
+          "document_id": "hr-sales-commission",
+          "fused_score": 0.031009615384615385,
+          "best_source_rank": 4,
+          "matched_source_count": 2,
+          "source_contributions": [
+            {
+              "source_name": "bm25",
+              "source_rank": 5,
+              "contribution": 0.015384615384615385,
+              "source_score": 9.704299020297274,
+              "record_id": "m2b3-bm25-hr-sales-commission"
+            },
+            {
+              "source_name": "dense",
+              "source_rank": 4,
+              "contribution": 0.015625,
+              "source_score": 0.5064234965696713,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        },
+        {
+          "final_rank": 5,
+          "document_id": "procurement-chip-lead-time",
+          "fused_score": 0.015873015873015872,
+          "best_source_rank": 3,
+          "matched_source_count": 1,
+          "source_contributions": [
+            {
+              "source_name": "dense",
+              "source_rank": 3,
+              "contribution": 0.015873015873015872,
+              "source_score": 0.5159069763266207,
+              "record_id": null
+            }
+          ],
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "dense_best_relevant_rank": 1,
+      "bm25_best_relevant_rank": 1,
+      "rrf_best_relevant_rank": 1,
+      "comparison_to_dense": "unchanged"
+    }
+  ],
+  "comparison": {
+    "dense_metrics": {
+      "hit_rate_at_1": 0.9444444444444444,
+      "recall_at_1": 0.8888888888888888,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 0.9629629629629629
+    },
+    "bm25_metrics": {
+      "hit_rate_at_1": 0.8888888888888888,
+      "recall_at_1": 0.8333333333333334,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 0.9444444444444444
+    },
+    "rrf_metrics": {
+      "hit_rate_at_1": 0.9444444444444444,
+      "recall_at_1": 0.8888888888888888,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 0.9722222222222222
+    },
+    "improved_query_ids": [
+      "query-product-a-battery-warranty"
+    ],
+    "regressed_query_ids": [],
+    "unchanged_query_ids": [
+      "query-product-a-warranty-overview",
+      "query-product-a-repair-response",
+      "query-finance-q2-revenue",
+      "query-finance-q2-profitability",
+      "query-finance-east-cost",
+      "query-sales-east-product-a-q2",
+      "query-sales-south-product-a-q2",
+      "query-sales-online-channel-q2",
+      "query-inventory-product-a",
+      "query-procurement-chip-lead-time",
+      "query-inventory-product-b-reorder",
+      "query-hr-annual-leave",
+      "query-hr-probation-period",
+      "query-hr-technical-training",
+      "query-policy-expense-approval",
+      "query-policy-password-rotation",
+      "query-policy-purchase-approval"
+    ]
+  },
+  "runtime_observations": {
+    "total_fusion_seconds": 0.008711599992238916,
+    "average_query_ms": 0.48397777734660646
+  },
+  "python_version": "3.11.9",
+  "limitations": [
+    "Metrics describe only the fixed 36-document/18-query synthetic dataset.",
+    "RRF uses rank positions only and cannot resolve semantic hard negatives by itself.",
+    "Input depth is limited to the versioned Top-5 Dense and BM25 reports.",
+    "Timings are one in-process report-fusion run, not a production benchmark.",
+    "Cross-encoder reranking and parent expansion are not included."
+  ]
+}

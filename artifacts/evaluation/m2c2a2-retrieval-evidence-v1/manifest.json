@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "m2c2a2-retrieval-evidence-v1",
+  "formal_evaluation_commit": "f5f540e84d0bb36cf640393f759a6b4e6f84ec38",
+  "model_evaluation_rerun": false,
+  "source_data_classification": "synthetic_enterprise_fixture_no_real_business_data",
+  "formal_artifacts": {
+    "artifacts/evaluation/m2c2a2_retrieval_baseline.json": "2e3b75fdce011d9201bb7187572405ed9a362e1e2b4cc9659e68128664752278",
+    "artifacts/evaluation/m2c2a2_query_results.jsonl": "26558008740e62b22c6d72c0b826fa4bb7f1d4229d1a35e72ca03c816db5fa87",
+    "artifacts/evaluation/m2c2a2_failure_cases.jsonl": "b9f0be9bd6a68a4732bee1148b7f24d6967cdde4e46a266b1a6803631b39c0b3",
+    "artifacts/evaluation/m2c2a2_runtime_profile.json": "7f9191aeeb48bd120fcee40380ff5b00023b908f79b65359a2b380d80464bb0d"
+  },
+  "source_snapshot": {
+    "artifacts/evaluation/m2c2a2-retrieval-evidence-v1/source_snapshot/child_chunks.jsonl": "fc1f6fdcc28f02158a8cdca12160403355777f48af7f0bb3d71f16e6b6fb77db",
+    "artifacts/evaluation/m2c2a2-retrieval-evidence-v1/source_snapshot/clause_chunk_map.jsonl": "0264548723264f500c9ab146df012da9e2e792ea441e0006722b22d778768981",
+    "artifacts/evaluation/m2c2a2-retrieval-evidence-v1/source_snapshot/m2c1_parent_child_summary.json": "1ce62aeb6fb26a98bf9e20f6df7e64b86e3e0e2974024614e54f9200688dfd48",
+    "artifacts/evaluation/m2c2a2-retrieval-evidence-v1/source_snapshot/parent_chunks.jsonl": "4c79261da76ac7cc7a1f479c2b8447865c35cf828602d2c5979244cbb4d56c47",
+    "artifacts/evaluation/m2c2a2-retrieval-evidence-v1/source_snapshot/query_blueprint.jsonl": "473a2c70b8139609dc842c2ce9d4f761154522c18f194580b3cbb79bf6937ee6",
+    "artifacts/evaluation/m2c2a2-retrieval-evidence-v1/source_snapshot/retrieval_ground_truth.jsonl": "c12772c471d710dd7611871619a227133f79f893804bd77b8452fefc6de1574b"
+  },
+  "ranking_digest": "0acbcdea406fa6d9dc10d7818479a2ee9b0892fa1bd5241d68daf637d4b3b75e",
+  "query_count": 50,
+  "answerable_query_count": 46,
+  "unanswerable_query_count": 4,
+  "verification_entrypoint": "scripts/verify_retrieval_evidence.py"
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "run_id": "m9-formal-20260801T110101Z",
+  "code_commit": "6d4ad853bb1a841ca685a5f812ff930067dabb3d",
+  "dataset_sha256": "3cca357227d49985e5072e82d951a213b9a37e4abfe734eda68ef071ed8114bf",
+  "adjudications": [
+    {
+      "case_id": "m9-knowledge-contradiction-004",
+      "check": "facts",
+      "original_value": false,
+      "corrected_value": true,
+      "category": "confirmed_literal_assertion_false_negative",
+      "basis": "semantic_fact_group_match"
+    },
+    {
+      "case_id": "m9-data-inventory-006",
+      "check": "facts",
+      "original_value": false,
+      "corrected_value": true,
+      "category": "confirmed_literal_assertion_false_negative",
+      "basis": "semantic_identifier_or_name_match"
+    }
+  ]
+}

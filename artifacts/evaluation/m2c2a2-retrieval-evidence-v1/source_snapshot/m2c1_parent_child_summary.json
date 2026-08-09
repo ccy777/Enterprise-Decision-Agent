@@ -1,0 +1,270 @@
+{
+  "answerable_query_count": 46,
+  "business_fact_registry_hash": "f043f909ba232b89df8f95c24433cfa6345d4b5472cbbd63d009646a939954bd",
+  "child_chunk_count": 87,
+  "chunker_config": {
+    "child_chunk_size": 300,
+    "chunk_overlap": 50,
+    "parent_chunk_size": 800
+  },
+  "chunker_identity": "decision_agent.ingestion.ParentChildChunker",
+  "clause_child_count_distribution": {
+    "1": 55,
+    "2": 74
+  },
+  "clause_count": 129,
+  "clause_parent_count_distribution": {
+    "1": 117,
+    "2": 12
+  },
+  "dataset_id": "m2c1-enterprise-kb-parent-child-ground-truth-v1",
+  "document_block_count": 10,
+  "document_chunk_distribution": {
+    "DOC-CS-001": {
+      "child_chunk_count": 9,
+      "document_block_count": 1,
+      "parent_chunk_count": 3
+    },
+    "DOC-CS-002": {
+      "child_chunk_count": 9,
+      "document_block_count": 1,
+      "parent_chunk_count": 3
+    },
+    "DOC-FIN-001": {
+      "child_chunk_count": 8,
+      "document_block_count": 1,
+      "parent_chunk_count": 3
+    },
+    "DOC-HR-001": {
+      "child_chunk_count": 8,
+      "document_block_count": 1,
+      "parent_chunk_count": 3
+    },
+    "DOC-INV-001": {
+      "child_chunk_count": 8,
+      "document_block_count": 1,
+      "parent_chunk_count": 3
+    },
+    "DOC-PROC-001": {
+      "child_chunk_count": 9,
+      "document_block_count": 1,
+      "parent_chunk_count": 3
+    },
+    "DOC-PROC-002": {
+      "child_chunk_count": 9,
+      "document_block_count": 1,
+      "parent_chunk_count": 3
+    },
+    "DOC-SALES-001": {
+      "child_chunk_count": 9,
+      "document_block_count": 1,
+      "parent_chunk_count": 3
+    },
+    "DOC-SALES-002": {
+      "child_chunk_count": 9,
+      "document_block_count": 1,
+      "parent_chunk_count": 3
+    },
+    "DOC-SEC-001": {
+      "child_chunk_count": 9,
+      "document_block_count": 1,
+      "parent_chunk_count": 3
+    }
+  },
+  "document_count": 10,
+  "document_manifest_hash": "2fba52d088d63f86fac6185b7965092b6df6bdebda9bcc82ce88910ae9098879",
+  "entity_dictionary_hash": "55c525b74317a2f3760219c548475440be8e895045e1eb934ff1403d925f541b",
+  "generated_file_hashes": {
+    "child_chunks.jsonl": "fc1f6fdcc28f02158a8cdca12160403355777f48af7f0bb3d71f16e6b6fb77db",
+    "clause_chunk_map.jsonl": "0264548723264f500c9ab146df012da9e2e792ea441e0006722b22d778768981",
+    "parent_chunks.jsonl": "4c79261da76ac7cc7a1f479c2b8447865c35cf828602d2c5979244cbb4d56c47",
+    "retrieval_ground_truth.jsonl": "c12772c471d710dd7611871619a227133f79f893804bd77b8452fefc6de1574b"
+  },
+  "hard_negative_child_link_count": 62,
+  "hard_negative_parent_link_count": 25,
+  "limitations": [
+    "Ground truth records character-overlap relevance only; it does not run retrieval.",
+    "Character-window chunking can produce mixed chunks spanning multiple Clauses, which limits pure hard-negative analysis at Parent level; collisions are recorded, not silently removed.",
+    "Multi-file rollback handles normal process exceptions, but it is not a durable transaction against abrupt process or operating-system failure.",
+    "No HitRate, Recall, MRR, model, Milvus, or LLM result is produced in M2C-1B."
+  ],
+  "manifest_document_order": [
+    "DOC-CS-001",
+    "DOC-CS-002",
+    "DOC-SALES-001",
+    "DOC-SALES-002",
+    "DOC-INV-001",
+    "DOC-PROC-001",
+    "DOC-PROC-002",
+    "DOC-FIN-001",
+    "DOC-HR-001",
+    "DOC-SEC-001"
+  ],
+  "max_child_overlap_query": {
+    "overlap_count": 3,
+    "query_id": "M2C1-Q028"
+  },
+  "max_parent_overlap_query": {
+    "overlap_count": 2,
+    "query_id": "M2C1-Q001"
+  },
+  "multi_child_clause_count": 74,
+  "multi_parent_clause_count": 12,
+  "no_independent_hard_negative_child_query_count": 9,
+  "no_independent_hard_negative_child_query_ids": [
+    "M2C1-Q008",
+    "M2C1-Q028",
+    "M2C1-Q033",
+    "M2C1-Q035",
+    "M2C1-Q038",
+    "M2C1-Q042",
+    "M2C1-Q044",
+    "M2C1-Q047",
+    "M2C1-Q050"
+  ],
+  "no_independent_hard_negative_parent_query_count": 22,
+  "no_independent_hard_negative_parent_query_ids": [
+    "M2C1-Q001",
+    "M2C1-Q004",
+    "M2C1-Q007",
+    "M2C1-Q008",
+    "M2C1-Q009",
+    "M2C1-Q013",
+    "M2C1-Q014",
+    "M2C1-Q015",
+    "M2C1-Q026",
+    "M2C1-Q028",
+    "M2C1-Q030",
+    "M2C1-Q031",
+    "M2C1-Q033",
+    "M2C1-Q035",
+    "M2C1-Q038",
+    "M2C1-Q040",
+    "M2C1-Q042",
+    "M2C1-Q044",
+    "M2C1-Q045",
+    "M2C1-Q047",
+    "M2C1-Q049",
+    "M2C1-Q050"
+  ],
+  "overlapping_child_query_count": 35,
+  "overlapping_child_query_ids": [
+    "M2C1-Q001",
+    "M2C1-Q002",
+    "M2C1-Q003",
+    "M2C1-Q004",
+    "M2C1-Q005",
+    "M2C1-Q007",
+    "M2C1-Q008",
+    "M2C1-Q009",
+    "M2C1-Q011",
+    "M2C1-Q012",
+    "M2C1-Q013",
+    "M2C1-Q014",
+    "M2C1-Q015",
+    "M2C1-Q019",
+    "M2C1-Q020",
+    "M2C1-Q021",
+    "M2C1-Q022",
+    "M2C1-Q025",
+    "M2C1-Q026",
+    "M2C1-Q027",
+    "M2C1-Q028",
+    "M2C1-Q030",
+    "M2C1-Q031",
+    "M2C1-Q033",
+    "M2C1-Q034",
+    "M2C1-Q035",
+    "M2C1-Q038",
+    "M2C1-Q040",
+    "M2C1-Q042",
+    "M2C1-Q044",
+    "M2C1-Q045",
+    "M2C1-Q046",
+    "M2C1-Q047",
+    "M2C1-Q049",
+    "M2C1-Q050"
+  ],
+  "overlapping_parent_query_count": 36,
+  "overlapping_parent_query_ids": [
+    "M2C1-Q001",
+    "M2C1-Q002",
+    "M2C1-Q003",
+    "M2C1-Q004",
+    "M2C1-Q005",
+    "M2C1-Q006",
+    "M2C1-Q007",
+    "M2C1-Q008",
+    "M2C1-Q009",
+    "M2C1-Q011",
+    "M2C1-Q012",
+    "M2C1-Q013",
+    "M2C1-Q014",
+    "M2C1-Q015",
+    "M2C1-Q019",
+    "M2C1-Q020",
+    "M2C1-Q021",
+    "M2C1-Q022",
+    "M2C1-Q025",
+    "M2C1-Q026",
+    "M2C1-Q027",
+    "M2C1-Q028",
+    "M2C1-Q030",
+    "M2C1-Q031",
+    "M2C1-Q033",
+    "M2C1-Q034",
+    "M2C1-Q035",
+    "M2C1-Q038",
+    "M2C1-Q040",
+    "M2C1-Q042",
+    "M2C1-Q044",
+    "M2C1-Q045",
+    "M2C1-Q046",
+    "M2C1-Q047",
+    "M2C1-Q049",
+    "M2C1-Q050"
+  ],
+  "parent_chunk_count": 30,
+  "parser_config": {
+    "encoding": "utf-8-sig",
+    "fallback_encodings": [],
+    "heading_split": false,
+    "max_file_size_bytes": 10485760
+  },
+  "parser_identity": "decision_agent.ingestion.MarkdownDocumentParser",
+  "query_blueprint_hash": "473a2c70b8139609dc842c2ce9d4f761154522c18f194580b3cbb79bf6937ee6",
+  "query_category_distribution": {
+    "customer_service": 10,
+    "finance": 6,
+    "hr": 5,
+    "inventory": 6,
+    "procurement": 8,
+    "sales": 8,
+    "security_governance": 7
+  },
+  "query_count": 50,
+  "query_type_distribution": {
+    "cross_section": 8,
+    "multi_constraint": 14,
+    "multi_evidence": 8,
+    "single_fact": 16,
+    "unanswerable": 4
+  },
+  "relevant_child_link_count": 121,
+  "relevant_parent_link_count": 77,
+  "schema_version": "1.0",
+  "source_file_hashes": {
+    "documents/DOC-CS-001_product_warranty_policy.md": "322c3c4e5c8a9cf732eb4582ef62c7acc25b2b01b81fa77dee01edcbcf73e35d",
+    "documents/DOC-CS-002_return_repair_operations.md": "f5fbcab30353b218c9f67bce64b8a83620d10a55925e99d712f2bc2ad9a10611",
+    "documents/DOC-FIN-001_expense_budget_control.md": "3d30117f4bf74fc8354151801698f4c68d402eb19a2812bca8ab68dc685c7fa1",
+    "documents/DOC-HR-001_attendance_travel_performance.md": "a691aadd92e15640e38408379abd43d32d67489f942530d3eb05ae5a3d6ca012",
+    "documents/DOC-INV-001_inventory_replenishment_policy.md": "7008c2aebb6851e9a2f081fb3bbabd265b06a862b51416712652e918db6cc615",
+    "documents/DOC-PROC-001_supplier_procurement_approval.md": "07664f52765875c8743402d0861ef597cc6b550bde0cb763de88e164e22c8fb8",
+    "documents/DOC-PROC-002_delivery_supplier_assessment.md": "754f242ff07e3d95c749ab5f99e2b163c1dcf352bbe5c5370c9c6d783d49443e",
+    "documents/DOC-SALES-001_discount_approval_policy.md": "00d62e8f116369fc546054ddc06991f063f77997307d9eba0340ca32572f95a9",
+    "documents/DOC-SALES-002_customer_region_authority.md": "9d259cfffebcc8f3fed162e1751b01882801d4bfe1a9ca89c4bb8f2d05e149e0",
+    "documents/DOC-SEC-001_data_access_security.md": "55e41412e5e56983d948f2e8138ab69addecb23781701a2c27ad959512a2b975"
+  },
+  "total_source_chars": 21766,
+  "unanswerable_query_count": 4
+}

@@ -1,0 +1,5 @@
+tests/fixtures/ingestion/mixed_format/*.pdf binary
+*.sh text eol=lf
+datasets/enterprise_kb/m2c1/generated/*.jsonl text eol=lf
+artifacts/datasets/m2c1_parent_child_summary.json text eol=lf
+datasets/enterprise_kb/m2c1/documents/*.md text eol=crlf

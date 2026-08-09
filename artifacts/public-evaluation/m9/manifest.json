@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "evidence_kind": "frozen_m9",
+  "source_tag": "v1.0.2",
+  "source_commit": "6c6ce94815394b9c295bc9b299ec34b2d29d8aa0",
+  "source_files": [
+    {
+      "path": "artifacts/evaluation/m9-final-eval-v1/adjudications.json",
+      "sha256": "8e4a8acbb9795537a3132bd50cf109454f7b5b3f6a8b462bbd3ed8235e71c3ec",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m9-final-eval-v1/case_records.jsonl",
+      "sha256": "ad53c5ae56f106c72f3eb382a380f0871fe115bca1cef1a9904124fedcb16397",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m9-final-eval-v1/failure_records.jsonl",
+      "sha256": "2926ef3d3925cb35f05aff767462417079129d10b9325ee702c488b8a196bc8e",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m9-final-eval-v1/manifest.json",
+      "sha256": "59a6919db67f3086e8b97335748aab808cddb33f74027662aa0bd60578ac7948",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m9-final-eval-v1/metrics.json",
+      "sha256": "37addb1ea70a4307091027cc8e6be3820ef41f74f0e5b3c7a091139f2cfb352b",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m9-final-eval-v1/metrics_raw.json",
+      "sha256": "6a4d0f3a40f2bd567d2aeab9976391ecb08db5c10522241bf3eb0f93fb59088a",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m9-final-eval-v1/run_manifest.json",
+      "sha256": "b747e04fde78efa2c31c73da7cf5a61f6d3bf677a017294fa5cab892ecfe4453",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m9-final-eval-v1-v1.0.2-derived/manifest.json",
+      "sha256": "9d3efb8fb938b8a388ebf2141610e46cbf58cac745224e3643a97f35fdd858ca",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m9-final-eval-v1-v1.0.2-derived/metrics.json",
+      "sha256": "bd5ec1c694b54d3a75153804dd0f408c82eb35c3a6efabd4814493bc5d4c6bc3",
+      "byte_identical_to_frozen_source": true
+    }
+  ],
+  "formal_provider_evaluation_rerun": false
+}

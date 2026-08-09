@@ -1,0 +1,1395 @@
+{
+  "evaluation_schema_version": "1.0",
+  "baseline_name": "m2b5-bge-reranker-base",
+  "retrieval_type": "cross_encoder_reranker",
+  "model_name": "BAAI/bge-reranker-base",
+  "model_revision": null,
+  "device": "cpu",
+  "score_semantics": "raw_model_score_higher_is_more_relevant",
+  "batch_size": 8,
+  "input_depth": 5,
+  "output_top_k": 5,
+  "source_rrf_report": {
+    "relative_path": "artifacts/evaluation/m2b4_rrf_dense_bm25_k60.json",
+    "normalized_text_sha256": "6f3394da3568c3d9660f5d45f483d4b30a911fc7b8ed24b9f9d81806189b6c77"
+  },
+  "corpus": {
+    "relative_path": "datasets/retrieval/m2b2c_dense_corpus.jsonl",
+    "normalized_text_sha256": "76a7e2c019ab597e1cee4ca3a1df2ea4e4543babb780dc8a736c8cf951a89be9"
+  },
+  "queries": {
+    "relative_path": "datasets/retrieval/m2b2c_dense_queries.jsonl",
+    "normalized_text_sha256": "d33ab171dfaf426ef3e28a9caae535a4407fab1e574a808af23a09a500a5bf8c"
+  },
+  "corpus_size": 36,
+  "query_count": 18,
+  "total_candidate_pairs": 90,
+  "metrics": {
+    "hit_rate_at_1": 0.9444444444444444,
+    "recall_at_1": 0.8888888888888888,
+    "hit_rate_at_3": 1.0,
+    "recall_at_3": 1.0,
+    "hit_rate_at_5": 1.0,
+    "recall_at_5": 1.0,
+    "mrr_at_5": 0.9722222222222222
+  },
+  "category_metrics": {
+    "产品与售后": {
+      "hit_rate_at_1": 0.6666666666666666,
+      "recall_at_1": 0.5,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 0.8333333333333334
+    },
+    "人力资源": {
+      "hit_rate_at_1": 1.0,
+      "recall_at_1": 1.0,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 1.0
+    },
+    "内部制度": {
+      "hit_rate_at_1": 1.0,
+      "recall_at_1": 1.0,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 1.0
+    },
+    "库存与采购": {
+      "hit_rate_at_1": 1.0,
+      "recall_at_1": 1.0,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 1.0
+    },
+    "财务经营": {
+      "hit_rate_at_1": 1.0,
+      "recall_at_1": 0.8333333333333334,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 1.0
+    },
+    "销售": {
+      "hit_rate_at_1": 1.0,
+      "recall_at_1": 1.0,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 1.0
+    }
+  },
+  "query_results": [
+    {
+      "query_id": "query-product-a-battery-warranty",
+      "query": "产品A电池出现故障后可以免费保修多长时间？",
+      "category": "产品与售后",
+      "relevant_document_ids": [
+        "product-a-battery-warranty"
+      ],
+      "upstream_rrf_ranking": [
+        "product-b-battery-warranty",
+        "product-a-battery-warranty",
+        "product-a-device-warranty",
+        "product-a-repair-response",
+        "product-a-return-policy"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "product-a-device-warranty",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.03200204813108039,
+          "reranker_score": 0.9992786049842834,
+          "final_rank": 1,
+          "is_relevant": false
+        },
+        {
+          "document_id": "product-a-battery-warranty",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03200204813108039,
+          "reranker_score": 0.9987308382987976,
+          "final_rank": 2,
+          "is_relevant": true
+        },
+        {
+          "document_id": "product-a-repair-response",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.03125,
+          "reranker_score": 0.9941338896751404,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "product-b-battery-warranty",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9854259490966797,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "product-a-return-policy",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.03076923076923077,
+          "reranker_score": 0.9532158970832825,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 0.0,
+        "recall_at_1": 0.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 0.5
+      },
+      "upstream_best_relevant_rank": 2,
+      "reranked_best_relevant_rank": 2,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-product-a-warranty-overview",
+      "query": "产品A整机和电池分别有什么保修期限？",
+      "category": "产品与售后",
+      "relevant_document_ids": [
+        "product-a-device-warranty",
+        "product-a-battery-warranty"
+      ],
+      "upstream_rrf_ranking": [
+        "product-a-device-warranty",
+        "product-a-battery-warranty",
+        "product-b-battery-warranty",
+        "product-a-return-policy",
+        "procurement-battery-lead-time"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "product-a-device-warranty",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9998569488525391,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "product-a-battery-warranty",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03200204813108039,
+          "reranker_score": 0.99936443567276,
+          "final_rank": 2,
+          "is_relevant": true
+        },
+        {
+          "document_id": "product-b-battery-warranty",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.03200204813108039,
+          "reranker_score": 0.9676408171653748,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "product-a-return-policy",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.03076923076923077,
+          "reranker_score": 0.8787133693695068,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "procurement-battery-lead-time",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.015625,
+          "reranker_score": 0.2444642186164856,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 0.5,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-product-a-repair-response",
+      "query": "提交产品A售后报修后多久会收到首次处理回复？",
+      "category": "产品与售后",
+      "relevant_document_ids": [
+        "product-a-repair-response"
+      ],
+      "upstream_rrf_ranking": [
+        "product-a-repair-response",
+        "product-a-return-policy",
+        "product-b-battery-warranty",
+        "policy-meeting-minutes",
+        "product-b-return-policy"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "product-a-repair-response",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9999185800552368,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "product-a-return-policy",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.031754032258064516,
+          "reranker_score": 0.9613882899284363,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "product-b-battery-warranty",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.031754032258064516,
+          "reranker_score": 0.08607685565948486,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "product-b-return-policy",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.015873015873015872,
+          "reranker_score": 0.03896708786487579,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "policy-meeting-minutes",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.015873015873015872,
+          "reranker_score": 0.008131040260195732,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-finance-q2-revenue",
+      "query": "公司在2026年第二季度实现了多少营业收入？",
+      "category": "财务经营",
+      "relevant_document_ids": [
+        "finance-revenue-2026-q2"
+      ],
+      "upstream_rrf_ranking": [
+        "finance-revenue-2026-q2",
+        "finance-revenue-2026-q1",
+        "finance-margin-2026-q2",
+        "finance-east-operating-cost",
+        "finance-margin-2026-q1"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "finance-revenue-2026-q2",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9996899366378784,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "finance-margin-2026-q2",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.031746031746031744,
+          "reranker_score": 0.9779688715934753,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "finance-revenue-2026-q1",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03225806451612903,
+          "reranker_score": 0.9510177373886108,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "finance-east-operating-cost",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.03076923076923077,
+          "reranker_score": 0.909157395362854,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "finance-margin-2026-q1",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.015625,
+          "reranker_score": 0.39862433075904846,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-finance-q2-profitability",
+      "query": "2026年第二季度公司的收入规模和综合毛利率分别是多少？",
+      "category": "财务经营",
+      "relevant_document_ids": [
+        "finance-revenue-2026-q2",
+        "finance-margin-2026-q2"
+      ],
+      "upstream_rrf_ranking": [
+        "finance-margin-2026-q2",
+        "finance-margin-2026-q1",
+        "finance-revenue-2026-q2",
+        "finance-revenue-2026-q1",
+        "finance-east-operating-cost"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "finance-margin-2026-q2",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9995825886726379,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "finance-revenue-2026-q2",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.031746031746031744,
+          "reranker_score": 0.9924548864364624,
+          "final_rank": 2,
+          "is_relevant": true
+        },
+        {
+          "document_id": "finance-margin-2026-q1",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03225806451612903,
+          "reranker_score": 0.6882192492485046,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "finance-east-operating-cost",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.015384615384615385,
+          "reranker_score": 0.41705745458602905,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "finance-revenue-2026-q1",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.03125,
+          "reranker_score": 0.08656836301088333,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 0.5,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-finance-east-cost",
+      "query": "华东区域2026年二季度的运营成本金额是多少？",
+      "category": "财务经营",
+      "relevant_document_ids": [
+        "finance-east-operating-cost"
+      ],
+      "upstream_rrf_ranking": [
+        "finance-east-operating-cost",
+        "finance-south-operating-cost",
+        "sales-east-product-a-q2",
+        "sales-east-product-b-q2",
+        "sales-east-product-a-q1"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "finance-east-operating-cost",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.999904990196228,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "finance-south-operating-cost",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03225806451612903,
+          "reranker_score": 0.9993438124656677,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "sales-east-product-b-q2",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.03149801587301587,
+          "reranker_score": 0.34320005774497986,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "sales-east-product-a-q2",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.03149801587301587,
+          "reranker_score": 0.34092944860458374,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "sales-east-product-a-q1",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.03076923076923077,
+          "reranker_score": 0.038805074989795685,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-sales-east-product-a-q2",
+      "query": "2026年二季度华东市场的产品A销量同比表现如何？",
+      "category": "销售",
+      "relevant_document_ids": [
+        "sales-east-product-a-q2"
+      ],
+      "upstream_rrf_ranking": [
+        "sales-east-product-a-q2",
+        "sales-east-product-b-q2",
+        "sales-east-product-a-q1",
+        "sales-south-product-a-q2",
+        "finance-east-operating-cost"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "sales-east-product-a-q2",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9996793270111084,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "sales-south-product-a-q2",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.03125,
+          "reranker_score": 0.9991194605827332,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "sales-east-product-b-q2",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03225806451612903,
+          "reranker_score": 0.9780749082565308,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "sales-east-product-a-q1",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.031746031746031744,
+          "reranker_score": 0.9342628717422485,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "finance-east-operating-cost",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.015384615384615385,
+          "reranker_score": 0.13839326798915863,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-sales-south-product-a-q2",
+      "query": "产品A在华南区域2026年第二季度的销量变化是多少？",
+      "category": "销售",
+      "relevant_document_ids": [
+        "sales-south-product-a-q2"
+      ],
+      "upstream_rrf_ranking": [
+        "sales-south-product-a-q2",
+        "sales-east-product-a-q2",
+        "sales-east-product-b-q2",
+        "finance-south-operating-cost",
+        "sales-east-product-a-q1"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "sales-south-product-a-q2",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9996837377548218,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "sales-east-product-a-q2",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03200204813108039,
+          "reranker_score": 0.9990091323852539,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "sales-east-product-b-q2",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.031754032258064516,
+          "reranker_score": 0.9836044907569885,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "sales-east-product-a-q1",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.031009615384615385,
+          "reranker_score": 0.9684497117996216,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "finance-south-operating-cost",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.03125763125763126,
+          "reranker_score": 0.7066609263420105,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-sales-online-channel-q2",
+      "query": "今年二季度线上直营网渠道的销售额同比变化如何？",
+      "category": "销售",
+      "relevant_document_ids": [
+        "sales-online-channel-q2"
+      ],
+      "upstream_rrf_ranking": [
+        "sales-online-channel-q2",
+        "sales-offline-channel-q2",
+        "sales-east-product-b-q2",
+        "sales-south-product-a-q2",
+        "sales-east-product-a-q2"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "sales-online-channel-q2",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9993069171905518,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "sales-offline-channel-q2",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03225806451612903,
+          "reranker_score": 0.9986659288406372,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "sales-south-product-a-q2",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.03149801587301587,
+          "reranker_score": 0.7622407674789429,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "sales-east-product-a-q2",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.03076923076923077,
+          "reranker_score": 0.6073148250579834,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "sales-east-product-b-q2",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.03149801587301587,
+          "reranker_score": 0.5852629542350769,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-inventory-product-a",
+      "query": "产品A现有多少可用库存，降到什么数量会触发补货？",
+      "category": "库存与采购",
+      "relevant_document_ids": [
+        "inventory-product-a-stock"
+      ],
+      "upstream_rrf_ranking": [
+        "inventory-product-a-stock",
+        "inventory-product-b-stock",
+        "sales-east-product-a-q2",
+        "procurement-product-a-minimum",
+        "product-a-device-warranty"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "inventory-product-a-stock",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03252247488101534,
+          "reranker_score": 0.9996957778930664,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "inventory-product-b-stock",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03252247488101534,
+          "reranker_score": 0.9785081148147583,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "procurement-product-a-minimum",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.015873015873015872,
+          "reranker_score": 0.7252408266067505,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "sales-east-product-a-q2",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.03149801587301587,
+          "reranker_score": 0.11294377595186234,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "product-a-device-warranty",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.015625,
+          "reranker_score": 0.055794961750507355,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-procurement-chip-lead-time",
+      "query": "采购核心芯片通常需要等待多少天交付？",
+      "category": "库存与采购",
+      "relevant_document_ids": [
+        "procurement-chip-lead-time"
+      ],
+      "upstream_rrf_ranking": [
+        "procurement-chip-lead-time",
+        "procurement-battery-lead-time",
+        "policy-expense-approval",
+        "policy-purchase-approval",
+        "procurement-product-a-minimum"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "procurement-chip-lead-time",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9997215867042542,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "procurement-battery-lead-time",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03225806451612903,
+          "reranker_score": 0.9271254539489746,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "procurement-product-a-minimum",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.015625,
+          "reranker_score": 0.013301577419042587,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "policy-purchase-approval",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.015873015873015872,
+          "reranker_score": 0.001067265635356307,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "policy-expense-approval",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.015873015873015872,
+          "reranker_score": 4.168326631770469e-05,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-inventory-product-b-reorder",
+      "query": "产品B当前库存是否已经低于补货触发线？",
+      "category": "库存与采购",
+      "relevant_document_ids": [
+        "inventory-product-b-stock"
+      ],
+      "upstream_rrf_ranking": [
+        "inventory-product-b-stock",
+        "inventory-product-a-stock",
+        "product-b-return-policy",
+        "product-a-return-policy",
+        "procurement-product-b-minimum"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "inventory-product-b-stock",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9983983635902405,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "inventory-product-a-stock",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03225806451612903,
+          "reranker_score": 0.8953612446784973,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "product-a-return-policy",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.03076923076923077,
+          "reranker_score": 0.09475485980510712,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "product-b-return-policy",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.031746031746031744,
+          "reranker_score": 0.09241843968629837,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "procurement-product-b-minimum",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.015625,
+          "reranker_score": 0.07121428102254868,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-hr-annual-leave",
+      "query": "正式员工一年可以享受多少天带薪年假？",
+      "category": "人力资源",
+      "relevant_document_ids": [
+        "hr-annual-leave"
+      ],
+      "upstream_rrf_ranking": [
+        "hr-annual-leave",
+        "hr-sick-leave",
+        "policy-remote-work",
+        "hr-probation-period",
+        "product-a-battery-warranty"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "hr-annual-leave",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9997866749763489,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "hr-sick-leave",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03225806451612903,
+          "reranker_score": 0.956502377986908,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "hr-probation-period",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.03125763125763126,
+          "reranker_score": 0.07984372228384018,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "policy-remote-work",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.03149801587301587,
+          "reranker_score": 0.00013908433902543038,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "product-a-battery-warranty",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.015625,
+          "reranker_score": 3.728805313585326e-05,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-hr-probation-period",
+      "query": "新员工入职后标准试用期持续几个月？",
+      "category": "人力资源",
+      "relevant_document_ids": [
+        "hr-probation-period"
+      ],
+      "upstream_rrf_ranking": [
+        "hr-probation-period",
+        "product-b-battery-warranty",
+        "procurement-chip-lead-time",
+        "hr-annual-leave",
+        "procurement-battery-lead-time"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "hr-probation-period",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9998018145561218,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "hr-annual-leave",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.015873015873015872,
+          "reranker_score": 0.02241070754826069,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "procurement-chip-lead-time",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.031009615384615385,
+          "reranker_score": 0.010046903975307941,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "procurement-battery-lead-time",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.015873015873015872,
+          "reranker_score": 0.00567759620025754,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "product-b-battery-warranty",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03225806451612903,
+          "reranker_score": 0.0009732224862091243,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-hr-technical-training",
+      "query": "技术岗位每季度需要完成多少小时的专业培训？",
+      "category": "人力资源",
+      "relevant_document_ids": [
+        "hr-technical-training"
+      ],
+      "upstream_rrf_ranking": [
+        "hr-technical-training",
+        "hr-probation-period",
+        "hr-sales-commission",
+        "hr-sick-leave",
+        "policy-expense-approval"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "hr-technical-training",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9999160766601562,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "hr-probation-period",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.016129032258064516,
+          "reranker_score": 0.002630944363772869,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "hr-sales-commission",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.016129032258064516,
+          "reranker_score": 3.741711043403484e-05,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "policy-expense-approval",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.015873015873015872,
+          "reranker_score": 3.731192191480659e-05,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "hr-sick-leave",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.015873015873015872,
+          "reranker_score": 3.7298581446520984e-05,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-policy-expense-approval",
+      "query": "费用报销达到什么金额后需要财务总监审批？",
+      "category": "内部制度",
+      "relevant_document_ids": [
+        "policy-expense-approval"
+      ],
+      "upstream_rrf_ranking": [
+        "policy-expense-approval",
+        "policy-purchase-approval",
+        "hr-sales-commission",
+        "hr-overtime-approval",
+        "policy-meeting-minutes"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "policy-expense-approval",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9992939233779907,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "policy-purchase-approval",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03225806451612903,
+          "reranker_score": 0.9909879565238953,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "hr-overtime-approval",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.03125,
+          "reranker_score": 0.06875148415565491,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "policy-meeting-minutes",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.015384615384615385,
+          "reranker_score": 0.0030509214848279953,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "hr-sales-commission",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.031746031746031744,
+          "reranker_score": 0.0019591201562434435,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-policy-password-rotation",
+      "query": "公司系统账户密码需要间隔多久更换？",
+      "category": "内部制度",
+      "relevant_document_ids": [
+        "policy-password-rotation"
+      ],
+      "upstream_rrf_ranking": [
+        "policy-password-rotation",
+        "hr-probation-period",
+        "policy-expense-approval",
+        "finance-revenue-2026-q1",
+        "product-a-repair-response"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "policy-password-rotation",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9966278672218323,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "product-a-repair-response",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.015873015873015872,
+          "reranker_score": 0.039227165281772614,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "hr-probation-period",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.016129032258064516,
+          "reranker_score": 0.0007933098822832108,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "finance-revenue-2026-q1",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.015873015873015872,
+          "reranker_score": 3.7410474760690704e-05,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "policy-expense-approval",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.016129032258064516,
+          "reranker_score": 3.728730735019781e-05,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    },
+    {
+      "query_id": "query-policy-purchase-approval",
+      "query": "采购合同超过哪个金额必须提交总经理审批？",
+      "category": "内部制度",
+      "relevant_document_ids": [
+        "policy-purchase-approval"
+      ],
+      "upstream_rrf_ranking": [
+        "policy-purchase-approval",
+        "policy-expense-approval",
+        "hr-overtime-approval",
+        "hr-sales-commission",
+        "procurement-chip-lead-time"
+      ],
+      "reranked_results": [
+        {
+          "document_id": "policy-purchase-approval",
+          "upstream_rank": 1,
+          "upstream_rrf_score": 0.03278688524590164,
+          "reranker_score": 0.9989608526229858,
+          "final_rank": 1,
+          "is_relevant": true
+        },
+        {
+          "document_id": "policy-expense-approval",
+          "upstream_rank": 2,
+          "upstream_rrf_score": 0.03200204813108039,
+          "reranker_score": 0.9856385588645935,
+          "final_rank": 2,
+          "is_relevant": false
+        },
+        {
+          "document_id": "hr-overtime-approval",
+          "upstream_rank": 3,
+          "upstream_rrf_score": 0.0315136476426799,
+          "reranker_score": 0.06187514215707779,
+          "final_rank": 3,
+          "is_relevant": false
+        },
+        {
+          "document_id": "hr-sales-commission",
+          "upstream_rank": 4,
+          "upstream_rrf_score": 0.031009615384615385,
+          "reranker_score": 0.001867609447799623,
+          "final_rank": 4,
+          "is_relevant": false
+        },
+        {
+          "document_id": "procurement-chip-lead-time",
+          "upstream_rank": 5,
+          "upstream_rrf_score": 0.015873015873015872,
+          "reranker_score": 4.120516678085551e-05,
+          "final_rank": 5,
+          "is_relevant": false
+        }
+      ],
+      "metrics": {
+        "hit_rate_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "hit_rate_at_3": 1.0,
+        "recall_at_3": 1.0,
+        "hit_rate_at_5": 1.0,
+        "recall_at_5": 1.0,
+        "mrr_at_5": 1.0
+      },
+      "upstream_best_relevant_rank": 1,
+      "reranked_best_relevant_rank": 1,
+      "comparison_to_rrf": "unchanged"
+    }
+  ],
+  "comparison": {
+    "rrf_metrics": {
+      "hit_rate_at_1": 0.9444444444444444,
+      "recall_at_1": 0.8888888888888888,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 0.9722222222222222
+    },
+    "reranker_metrics": {
+      "hit_rate_at_1": 0.9444444444444444,
+      "recall_at_1": 0.8888888888888888,
+      "hit_rate_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "hit_rate_at_5": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 0.9722222222222222
+    },
+    "improved_query_ids": [],
+    "regressed_query_ids": [],
+    "unchanged_query_ids": [
+      "query-product-a-battery-warranty",
+      "query-product-a-warranty-overview",
+      "query-product-a-repair-response",
+      "query-finance-q2-revenue",
+      "query-finance-q2-profitability",
+      "query-finance-east-cost",
+      "query-sales-east-product-a-q2",
+      "query-sales-south-product-a-q2",
+      "query-sales-online-channel-q2",
+      "query-inventory-product-a",
+      "query-procurement-chip-lead-time",
+      "query-inventory-product-b-reorder",
+      "query-hr-annual-leave",
+      "query-hr-probation-period",
+      "query-hr-technical-training",
+      "query-policy-expense-approval",
+      "query-policy-password-rotation",
+      "query-policy-purchase-approval"
+    ],
+    "top1_fixed_query_ids": [],
+    "top1_broken_query_ids": []
+  },
+  "runtime_observations": {
+    "model_load_seconds": 49.752647700000125,
+    "total_rerank_seconds": 8.076904499999728,
+    "average_query_rerank_ms": 448.7169166666515,
+    "average_pair_rerank_ms": 89.74338333333031,
+    "total_runtime_seconds": 57.903329600000234
+  },
+  "python_version": "3.11.9",
+  "limitations": [
+    "Metrics cover only the fixed 36-document/18-query synthetic dataset.",
+    "The cross-encoder reranks only fixed RRF Top-5 candidates; it does not retrieve the corpus.",
+    "CPU timings are one local observation, not a production benchmark."
+  ]
+}

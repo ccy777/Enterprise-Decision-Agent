@@ -1,0 +1,4539 @@
+{
+  "answerable_query_count": 46,
+  "artifact_hash_semantics": {
+    "cross_run_determinism_contract": "deterministic_ranking_digest",
+    "main_report_byte_stability": "Not guaranteed because it records the final runtime-dependent Query Results hash.",
+    "purpose": "Integrity hashes for the final files written by this invocation.",
+    "ranking_dependent_artifacts": [
+      "m2c2a2_failure_cases.jsonl"
+    ],
+    "runtime_dependent_artifacts": [
+      "m2c2a2_query_results.jsonl",
+      "m2c2a2_runtime_profile.json"
+    ],
+    "self_hash_included": false
+  },
+  "baseline_id": "m2c2a2-enterprise-real-retrieval-baseline-v1",
+  "category_metrics": {
+    "customer_service": {
+      "answerable_query_count": 9,
+      "parent": {
+        "hit_rate_at_1": {
+          "denominator": 9,
+          "numerator": 8.0,
+          "value": 0.8888888888888888
+        },
+        "hit_rate_at_3": {
+          "denominator": 9,
+          "numerator": 9.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 9,
+          "numerator": 9.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 9,
+          "numerator": 8.5,
+          "value": 0.9444444444444444
+        },
+        "recall_at_1": {
+          "denominator": 9,
+          "numerator": 5.833333333333333,
+          "value": 0.6481481481481481
+        },
+        "recall_at_3": {
+          "denominator": 9,
+          "numerator": 8.333333333333334,
+          "value": 0.925925925925926
+        },
+        "recall_at_5": {
+          "denominator": 9,
+          "numerator": 8.666666666666666,
+          "value": 0.9629629629629629
+        }
+      },
+      "query_count": 10,
+      "reranker": {
+        "hit_rate_at_1": {
+          "denominator": 9,
+          "numerator": 8.0,
+          "value": 0.8888888888888888
+        },
+        "hit_rate_at_3": {
+          "denominator": 9,
+          "numerator": 9.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 9,
+          "numerator": 9.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 9,
+          "numerator": 8.5,
+          "value": 0.9444444444444444
+        },
+        "recall_at_1": {
+          "denominator": 9,
+          "numerator": 3.3333333333333335,
+          "value": 0.3703703703703704
+        },
+        "recall_at_3": {
+          "denominator": 9,
+          "numerator": 6.666666666666667,
+          "value": 0.7407407407407408
+        },
+        "recall_at_5": {
+          "denominator": 9,
+          "numerator": 7.75,
+          "value": 0.8611111111111112
+        }
+      },
+      "rrf": {
+        "hit_rate_at_1": {
+          "denominator": 9,
+          "numerator": 6.0,
+          "value": 0.6666666666666666
+        },
+        "hit_rate_at_3": {
+          "denominator": 9,
+          "numerator": 9.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 9,
+          "numerator": 9.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 9,
+          "numerator": 7.5,
+          "value": 0.8333333333333334
+        },
+        "recall_at_1": {
+          "denominator": 9,
+          "numerator": 2.5,
+          "value": 0.2777777777777778
+        },
+        "recall_at_3": {
+          "denominator": 9,
+          "numerator": 6.416666666666667,
+          "value": 0.712962962962963
+        },
+        "recall_at_5": {
+          "denominator": 9,
+          "numerator": 7.75,
+          "value": 0.8611111111111112
+        }
+      },
+      "top1_exposure": {
+        "parent": {
+          "overlap_count": 8,
+          "pure_hard_negative_count": 1
+        },
+        "reranker": {
+          "overlap_count": 4,
+          "pure_hard_negative_count": 1
+        },
+        "rrf": {
+          "overlap_count": 1,
+          "pure_hard_negative_count": 2
+        }
+      }
+    },
+    "finance": {
+      "answerable_query_count": 6,
+      "parent": {
+        "hit_rate_at_1": {
+          "denominator": 6,
+          "numerator": 6.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 6,
+          "numerator": 6.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 6,
+          "numerator": 6.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 6,
+          "numerator": 6.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 6,
+          "numerator": 4.75,
+          "value": 0.7916666666666666
+        },
+        "recall_at_3": {
+          "denominator": 6,
+          "numerator": 5.75,
+          "value": 0.9583333333333334
+        },
+        "recall_at_5": {
+          "denominator": 6,
+          "numerator": 5.75,
+          "value": 0.9583333333333334
+        }
+      },
+      "query_count": 6,
+      "reranker": {
+        "hit_rate_at_1": {
+          "denominator": 6,
+          "numerator": 5.0,
+          "value": 0.8333333333333334
+        },
+        "hit_rate_at_3": {
+          "denominator": 6,
+          "numerator": 6.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 6,
+          "numerator": 6.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 6,
+          "numerator": 5.5,
+          "value": 0.9166666666666666
+        },
+        "recall_at_1": {
+          "denominator": 6,
+          "numerator": 1.95,
+          "value": 0.325
+        },
+        "recall_at_3": {
+          "denominator": 6,
+          "numerator": 4.85,
+          "value": 0.8083333333333332
+        },
+        "recall_at_5": {
+          "denominator": 6,
+          "numerator": 5.35,
+          "value": 0.8916666666666666
+        }
+      },
+      "rrf": {
+        "hit_rate_at_1": {
+          "denominator": 6,
+          "numerator": 6.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 6,
+          "numerator": 6.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 6,
+          "numerator": 6.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 6,
+          "numerator": 6.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 6,
+          "numerator": 2.95,
+          "value": 0.4916666666666667
+        },
+        "recall_at_3": {
+          "denominator": 6,
+          "numerator": 4.9,
+          "value": 0.8166666666666668
+        },
+        "recall_at_5": {
+          "denominator": 6,
+          "numerator": 5.4,
+          "value": 0.9
+        }
+      },
+      "top1_exposure": {
+        "parent": {
+          "overlap_count": 4,
+          "pure_hard_negative_count": 0
+        },
+        "reranker": {
+          "overlap_count": 2,
+          "pure_hard_negative_count": 1
+        },
+        "rrf": {
+          "overlap_count": 4,
+          "pure_hard_negative_count": 0
+        }
+      }
+    },
+    "hr": {
+      "answerable_query_count": 4,
+      "parent": {
+        "hit_rate_at_1": {
+          "denominator": 4,
+          "numerator": 4.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 4,
+          "numerator": 4.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 4,
+          "numerator": 4.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 4,
+          "numerator": 4.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 4,
+          "numerator": 2.3333333333333335,
+          "value": 0.5833333333333334
+        },
+        "recall_at_3": {
+          "denominator": 4,
+          "numerator": 3.3333333333333335,
+          "value": 0.8333333333333334
+        },
+        "recall_at_5": {
+          "denominator": 4,
+          "numerator": 3.3333333333333335,
+          "value": 0.8333333333333334
+        }
+      },
+      "query_count": 5,
+      "reranker": {
+        "hit_rate_at_1": {
+          "denominator": 4,
+          "numerator": 4.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 4,
+          "numerator": 4.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 4,
+          "numerator": 4.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 4,
+          "numerator": 4.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 4,
+          "numerator": 2.0833333333333335,
+          "value": 0.5208333333333334
+        },
+        "recall_at_3": {
+          "denominator": 4,
+          "numerator": 3.5,
+          "value": 0.875
+        },
+        "recall_at_5": {
+          "denominator": 4,
+          "numerator": 3.5,
+          "value": 0.875
+        }
+      },
+      "rrf": {
+        "hit_rate_at_1": {
+          "denominator": 4,
+          "numerator": 3.0,
+          "value": 0.75
+        },
+        "hit_rate_at_3": {
+          "denominator": 4,
+          "numerator": 4.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 4,
+          "numerator": 4.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 4,
+          "numerator": 3.5,
+          "value": 0.875
+        },
+        "recall_at_1": {
+          "denominator": 4,
+          "numerator": 1.0833333333333333,
+          "value": 0.2708333333333333
+        },
+        "recall_at_3": {
+          "denominator": 4,
+          "numerator": 3.5,
+          "value": 0.875
+        },
+        "recall_at_5": {
+          "denominator": 4,
+          "numerator": 3.5,
+          "value": 0.875
+        }
+      },
+      "top1_exposure": {
+        "parent": {
+          "overlap_count": 1,
+          "pure_hard_negative_count": 0
+        },
+        "reranker": {
+          "overlap_count": 1,
+          "pure_hard_negative_count": 0
+        },
+        "rrf": {
+          "overlap_count": 1,
+          "pure_hard_negative_count": 1
+        }
+      }
+    },
+    "inventory": {
+      "answerable_query_count": 5,
+      "parent": {
+        "hit_rate_at_1": {
+          "denominator": 5,
+          "numerator": 4.0,
+          "value": 0.8
+        },
+        "hit_rate_at_3": {
+          "denominator": 5,
+          "numerator": 5.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 5,
+          "numerator": 5.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 5,
+          "numerator": 4.5,
+          "value": 0.9
+        },
+        "recall_at_1": {
+          "denominator": 5,
+          "numerator": 3.5,
+          "value": 0.7
+        },
+        "recall_at_3": {
+          "denominator": 5,
+          "numerator": 5.0,
+          "value": 1.0
+        },
+        "recall_at_5": {
+          "denominator": 5,
+          "numerator": 5.0,
+          "value": 1.0
+        }
+      },
+      "query_count": 6,
+      "reranker": {
+        "hit_rate_at_1": {
+          "denominator": 5,
+          "numerator": 4.0,
+          "value": 0.8
+        },
+        "hit_rate_at_3": {
+          "denominator": 5,
+          "numerator": 5.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 5,
+          "numerator": 5.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 5,
+          "numerator": 4.5,
+          "value": 0.9
+        },
+        "recall_at_1": {
+          "denominator": 5,
+          "numerator": 2.25,
+          "value": 0.45
+        },
+        "recall_at_3": {
+          "denominator": 5,
+          "numerator": 4.5,
+          "value": 0.9
+        },
+        "recall_at_5": {
+          "denominator": 5,
+          "numerator": 5.0,
+          "value": 1.0
+        }
+      },
+      "rrf": {
+        "hit_rate_at_1": {
+          "denominator": 5,
+          "numerator": 4.0,
+          "value": 0.8
+        },
+        "hit_rate_at_3": {
+          "denominator": 5,
+          "numerator": 5.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 5,
+          "numerator": 5.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 5,
+          "numerator": 4.5,
+          "value": 0.9
+        },
+        "recall_at_1": {
+          "denominator": 5,
+          "numerator": 2.25,
+          "value": 0.45
+        },
+        "recall_at_3": {
+          "denominator": 5,
+          "numerator": 4.0,
+          "value": 0.8
+        },
+        "recall_at_5": {
+          "denominator": 5,
+          "numerator": 5.0,
+          "value": 1.0
+        }
+      },
+      "top1_exposure": {
+        "parent": {
+          "overlap_count": 3,
+          "pure_hard_negative_count": 1
+        },
+        "reranker": {
+          "overlap_count": 2,
+          "pure_hard_negative_count": 1
+        },
+        "rrf": {
+          "overlap_count": 3,
+          "pure_hard_negative_count": 1
+        }
+      }
+    },
+    "procurement": {
+      "answerable_query_count": 7,
+      "parent": {
+        "hit_rate_at_1": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 7,
+          "numerator": 4.833333333333333,
+          "value": 0.6904761904761905
+        },
+        "recall_at_3": {
+          "denominator": 7,
+          "numerator": 6.5,
+          "value": 0.9285714285714286
+        },
+        "recall_at_5": {
+          "denominator": 7,
+          "numerator": 6.5,
+          "value": 0.9285714285714286
+        }
+      },
+      "query_count": 8,
+      "reranker": {
+        "hit_rate_at_1": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 7,
+          "numerator": 3.5,
+          "value": 0.5
+        },
+        "recall_at_3": {
+          "denominator": 7,
+          "numerator": 5.25,
+          "value": 0.75
+        },
+        "recall_at_5": {
+          "denominator": 7,
+          "numerator": 5.75,
+          "value": 0.8214285714285714
+        }
+      },
+      "rrf": {
+        "hit_rate_at_1": {
+          "denominator": 7,
+          "numerator": 6.0,
+          "value": 0.8571428571428571
+        },
+        "hit_rate_at_3": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 7,
+          "numerator": 6.333333333333333,
+          "value": 0.9047619047619048
+        },
+        "recall_at_1": {
+          "denominator": 7,
+          "numerator": 2.5,
+          "value": 0.35714285714285715
+        },
+        "recall_at_3": {
+          "denominator": 7,
+          "numerator": 5.25,
+          "value": 0.75
+        },
+        "recall_at_5": {
+          "denominator": 7,
+          "numerator": 6.25,
+          "value": 0.8928571428571429
+        }
+      },
+      "top1_exposure": {
+        "parent": {
+          "overlap_count": 6,
+          "pure_hard_negative_count": 0
+        },
+        "reranker": {
+          "overlap_count": 5,
+          "pure_hard_negative_count": 0
+        },
+        "rrf": {
+          "overlap_count": 4,
+          "pure_hard_negative_count": 1
+        }
+      }
+    },
+    "sales": {
+      "answerable_query_count": 8,
+      "parent": {
+        "hit_rate_at_1": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 8,
+          "numerator": 5.666666666666667,
+          "value": 0.7083333333333334
+        },
+        "recall_at_3": {
+          "denominator": 8,
+          "numerator": 5.666666666666667,
+          "value": 0.7083333333333334
+        },
+        "recall_at_5": {
+          "denominator": 8,
+          "numerator": 6.166666666666667,
+          "value": 0.7708333333333334
+        }
+      },
+      "query_count": 8,
+      "reranker": {
+        "hit_rate_at_1": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 8,
+          "numerator": 4.7,
+          "value": 0.5875
+        },
+        "recall_at_3": {
+          "denominator": 8,
+          "numerator": 5.033333333333333,
+          "value": 0.6291666666666667
+        },
+        "recall_at_5": {
+          "denominator": 8,
+          "numerator": 5.566666666666666,
+          "value": 0.6958333333333333
+        }
+      },
+      "rrf": {
+        "hit_rate_at_1": {
+          "denominator": 8,
+          "numerator": 7.0,
+          "value": 0.875
+        },
+        "hit_rate_at_3": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 8,
+          "numerator": 7.333333333333333,
+          "value": 0.9166666666666666
+        },
+        "recall_at_1": {
+          "denominator": 8,
+          "numerator": 4.5,
+          "value": 0.5625
+        },
+        "recall_at_3": {
+          "denominator": 8,
+          "numerator": 5.7,
+          "value": 0.7125
+        },
+        "recall_at_5": {
+          "denominator": 8,
+          "numerator": 5.9,
+          "value": 0.7375
+        }
+      },
+      "top1_exposure": {
+        "parent": {
+          "overlap_count": 5,
+          "pure_hard_negative_count": 0
+        },
+        "reranker": {
+          "overlap_count": 5,
+          "pure_hard_negative_count": 0
+        },
+        "rrf": {
+          "overlap_count": 5,
+          "pure_hard_negative_count": 0
+        }
+      }
+    },
+    "security_governance": {
+      "answerable_query_count": 7,
+      "parent": {
+        "hit_rate_at_1": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 7,
+          "numerator": 4.333333333333333,
+          "value": 0.619047619047619
+        },
+        "recall_at_3": {
+          "denominator": 7,
+          "numerator": 6.5,
+          "value": 0.9285714285714286
+        },
+        "recall_at_5": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        }
+      },
+      "query_count": 7,
+      "reranker": {
+        "hit_rate_at_1": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 7,
+          "numerator": 2.95,
+          "value": 0.42142857142857143
+        },
+        "recall_at_3": {
+          "denominator": 7,
+          "numerator": 5.316666666666666,
+          "value": 0.7595238095238095
+        },
+        "recall_at_5": {
+          "denominator": 7,
+          "numerator": 6.05,
+          "value": 0.8642857142857142
+        }
+      },
+      "rrf": {
+        "hit_rate_at_1": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 7,
+          "numerator": 7.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 7,
+          "numerator": 2.95,
+          "value": 0.42142857142857143
+        },
+        "recall_at_3": {
+          "denominator": 7,
+          "numerator": 5.233333333333333,
+          "value": 0.7476190476190476
+        },
+        "recall_at_5": {
+          "denominator": 7,
+          "numerator": 6.05,
+          "value": 0.8642857142857142
+        }
+      },
+      "top1_exposure": {
+        "parent": {
+          "overlap_count": 6,
+          "pure_hard_negative_count": 0
+        },
+        "reranker": {
+          "overlap_count": 5,
+          "pure_hard_negative_count": 0
+        },
+        "rrf": {
+          "overlap_count": 5,
+          "pure_hard_negative_count": 0
+        }
+      }
+    }
+  },
+  "cli_evidence_summaries": [
+    {
+      "evidence_ids": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "query": "产品 A 的原装电池保修期多久？",
+      "retrieval_only_notice": "当前只返回检索证据，不生成 LLM 答案",
+      "source_query_id": "M2C1-Q001",
+      "stage_candidate_counts": {
+        "bm25": 10,
+        "dense": 10,
+        "parent": 3,
+        "reranker": 5,
+        "rrf": 10
+      },
+      "top_evidence": [
+        {
+          "document_id": "DOC-CS-001",
+          "end_offset": 800,
+          "evidence_id": "E1",
+          "page_number": null,
+          "parent_id": "parent_c20574f8f98ec1640d34dd3b7145b403cfc2a1a07025efd0e6f3d91f4cdc2f35",
+          "source": "documents/DOC-CS-001_product_warranty_policy.md",
+          "start_offset": 0
+        },
+        {
+          "document_id": "DOC-CS-001",
+          "end_offset": 1600,
+          "evidence_id": "E2",
+          "page_number": null,
+          "parent_id": "parent_f6c592709123a7cd548b4d90e92e8268294e96da75d98fe0beca011b25dbbe6c",
+          "source": "documents/DOC-CS-001_product_warranty_policy.md",
+          "start_offset": 800
+        }
+      ]
+    },
+    {
+      "evidence_ids": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "query": "普通采购申请金额为 18 万元，需要谁审批？",
+      "retrieval_only_notice": "当前只返回检索证据，不生成 LLM 答案",
+      "source_query_id": "M2C1-Q025",
+      "stage_candidate_counts": {
+        "bm25": 10,
+        "dense": 10,
+        "parent": 3,
+        "reranker": 5,
+        "rrf": 10
+      },
+      "top_evidence": [
+        {
+          "document_id": "DOC-PROC-001",
+          "end_offset": 1600,
+          "evidence_id": "E1",
+          "page_number": null,
+          "parent_id": "parent_ecef64494382ab7fa9becab0593e47b933836a3ca666d7173303bc2563f6ea26",
+          "source": "documents/DOC-PROC-001_supplier_procurement_approval.md",
+          "start_offset": 800
+        },
+        {
+          "document_id": "DOC-PROC-001",
+          "end_offset": 800,
+          "evidence_id": "E2",
+          "page_number": null,
+          "parent_id": "parent_d55998f0473f865b759aac07c0e88398023bd6f0ac5a4f6a356e870667aab6a3",
+          "source": "documents/DOC-PROC-001_supplier_procurement_approval.md",
+          "start_offset": 0
+        }
+      ]
+    },
+    {
+      "evidence_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ],
+      "query": "访问 L3 数据需要经过哪些审批？",
+      "retrieval_only_notice": "当前只返回检索证据，不生成 LLM 答案",
+      "source_query_id": "M2C1-Q045",
+      "stage_candidate_counts": {
+        "bm25": 10,
+        "dense": 10,
+        "parent": 4,
+        "reranker": 5,
+        "rrf": 10
+      },
+      "top_evidence": [
+        {
+          "document_id": "DOC-SEC-001",
+          "end_offset": 1600,
+          "evidence_id": "E1",
+          "page_number": null,
+          "parent_id": "parent_88bb93bf8830eca0e5d27cb028653074576c1a38b6a2e6c60e90db14b003db0b",
+          "source": "documents/DOC-SEC-001_data_access_security.md",
+          "start_offset": 800
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "end_offset": 800,
+          "evidence_id": "E2",
+          "page_number": null,
+          "parent_id": "parent_9131913274d10db4d3dd812456027137e242971a419f709d5fc5c96123a13a82",
+          "source": "documents/DOC-SEC-001_data_access_security.md",
+          "start_offset": 0
+        }
+      ]
+    },
+    {
+      "evidence_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ],
+      "query": "产品 A 的维修完成后，公司承诺免费保修多少天？",
+      "retrieval_only_notice": "当前只返回检索证据，不生成 LLM 答案",
+      "source_query_id": "M2C1-Q010",
+      "stage_candidate_counts": {
+        "bm25": 10,
+        "dense": 10,
+        "parent": 4,
+        "reranker": 5,
+        "rrf": 10
+      },
+      "top_evidence": [
+        {
+          "document_id": "DOC-CS-001",
+          "end_offset": 800,
+          "evidence_id": "E1",
+          "page_number": null,
+          "parent_id": "parent_c20574f8f98ec1640d34dd3b7145b403cfc2a1a07025efd0e6f3d91f4cdc2f35",
+          "source": "documents/DOC-CS-001_product_warranty_policy.md",
+          "start_offset": 0
+        },
+        {
+          "document_id": "DOC-CS-002",
+          "end_offset": 2221,
+          "evidence_id": "E2",
+          "page_number": null,
+          "parent_id": "parent_db8d6c0b50cb0ec7d8049487351d7f339e6f71da0d34c03dbe8b0cb42aa6ac3c",
+          "source": "documents/DOC-CS-002_return_repair_operations.md",
+          "start_offset": 1600
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "answerable": 46,
+    "child": 87,
+    "clause": 129,
+    "document": 10,
+    "parent": 30,
+    "query": 50,
+    "unanswerable": 4
+  },
+  "dataset_id": "m2c1-enterprise-kb-parent-child-ground-truth-v1",
+  "determinism": {
+    "artifact_hashes_are_not_ranking_determinism": true,
+    "candidate_order_and_scored_analysis_identical": true,
+    "ignored_fields": [
+      "timings",
+      "runtime_profile",
+      "floating_point_scores"
+    ],
+    "run_a_deterministic_digest": "c4ff6fb91ef7e1a3b4ef4bea3ab6db2b45bbc4939f02139e3b76a4c8bc229caf",
+    "run_a_ranking_digest": "0acbcdea406fa6d9dc10d7818479a2ee9b0892fa1bd5241d68daf637d4b3b75e",
+    "run_b_deterministic_digest": "c4ff6fb91ef7e1a3b4ef4bea3ab6db2b45bbc4939f02139e3b76a4c8bc229caf",
+    "run_b_ranking_digest": "0acbcdea406fa6d9dc10d7818479a2ee9b0892fa1bd5241d68daf637d4b3b75e"
+  },
+  "deterministic_ranking_digest": "0acbcdea406fa6d9dc10d7818479a2ee9b0892fa1bd5241d68daf637d4b3b75e",
+  "device": "cpu",
+  "evidence_analysis": {
+    "evidence_count_distribution": {
+      "2": 9,
+      "3": 29,
+      "4": 9,
+      "5": 3
+    },
+    "included_character_distribution": {
+      "max": 4000.0,
+      "mean": 2355.22,
+      "median": 2221.0,
+      "min": 1600.0,
+      "p95": 3336.9499999999994,
+      "total": 117761.0
+    },
+    "relevant_parent_coverage": {
+      "denominator": 46,
+      "numerator": 42.416666666666664,
+      "value": 0.9221014492753623
+    },
+    "truncated_query_count": 0
+  },
+  "failure_case_counts": {
+    "bm25_hard_negative_before_relevant": 3,
+    "bm25_no_relevant_at_5": 0,
+    "bm25_overlap_before_relevant": 0,
+    "bm25_top1_miss": 7,
+    "dense_hard_negative_before_relevant": 6,
+    "dense_no_relevant_at_5": 0,
+    "dense_overlap_before_relevant": 0,
+    "dense_top1_miss": 9,
+    "evidence_hard_negative_before_relevant": 2,
+    "evidence_overlap_before_relevant": 0,
+    "parent_hard_negative_before_relevant": 2,
+    "parent_no_relevant_at_5": 0,
+    "parent_overlap_before_relevant": 0,
+    "reranker_hard_negative_before_relevant": 3,
+    "reranker_no_relevant_at_5": 0,
+    "reranker_overlap_before_relevant": 0,
+    "reranker_regressed_vs_rrf": 2,
+    "reranker_top1_miss": 3,
+    "rrf_hard_negative_before_relevant": 5,
+    "rrf_no_relevant_at_5": 0,
+    "rrf_overlap_before_relevant": 0,
+    "rrf_regressed_vs_bm25": 5,
+    "rrf_regressed_vs_dense": 1,
+    "rrf_top1_miss": 7,
+    "unanswerable_returns_evidence": 4
+  },
+  "fixed_config": {
+    "bm25_top_k": 10,
+    "bm25_weight": 1.0,
+    "config_version": "m2c2a1-v1",
+    "dense_top_k": 10,
+    "dense_weight": 1.0,
+    "evidence_max_chars_per_item": 1800,
+    "evidence_max_count": 5,
+    "evidence_max_total_chars": 6000,
+    "parent_top_k": 5,
+    "reranker_candidate_count": 10,
+    "reranker_top_k": 5,
+    "rrf_k": 60.0,
+    "rrf_top_k": 10
+  },
+  "generated_file_hashes": {
+    "m2c2a2_failure_cases.jsonl": "b9f0be9bd6a68a4732bee1148b7f24d6967cdde4e46a266b1a6803631b39c0b3",
+    "m2c2a2_query_results.jsonl": "26558008740e62b22c6d72c0b826fa4bb7f1d4229d1a35e72ca03c816db5fa87"
+  },
+  "ground_truth_sha256": "c12772c471d710dd7611871619a227133f79f893804bd77b8452fefc6de1574b",
+  "hard_negative_and_overlap": {
+    "bm25": {
+      "answerable_query_count": 46,
+      "average_first_relevant_rank_when_found": 1.1956521739130435,
+      "first_relevant_found_count": 46,
+      "first_relevant_is_overlap": {
+        "count": 27,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049"
+        ],
+        "rate": 0.5869565217391305
+      },
+      "no_relevant_at_5_query_ids": [],
+      "overlap_before_first_relevant": {
+        "count": 0,
+        "denominator": 46,
+        "informative": false,
+        "query_ids": [],
+        "rate": 0.0,
+        "reason": "Overlap IDs are a subset of relevant IDs, so an Overlap candidate is itself a Relevant hit and cannot rank before the first Relevant hit.",
+        "structural_zero": true
+      },
+      "overlap_share_of_relevant_hits_at_5": {
+        "denominator": 93,
+        "numerator": 42,
+        "value": 0.45161290322580644
+      },
+      "overlap_top1": {
+        "count": 23,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q025",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049"
+        ],
+        "rate": 0.5
+      },
+      "overlap_top5_exposure": {
+        "count": 30,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q007",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049"
+        ],
+        "rate": 0.6521739130434783
+      },
+      "pure_hard_negative_before_first_relevant": {
+        "count": 3,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q022",
+          "M2C1-Q026"
+        ],
+        "rate": 0.06521739130434782
+      },
+      "pure_hard_negative_top1": {
+        "count": 3,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q022",
+          "M2C1-Q026"
+        ],
+        "rate": 0.06521739130434782
+      },
+      "pure_hard_negative_top3_exposure": {
+        "count": 17,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q017",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q034",
+          "M2C1-Q039",
+          "M2C1-Q045"
+        ],
+        "rate": 0.3695652173913043
+      },
+      "pure_hard_negative_top5_exposure": {
+        "count": 21,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q017",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q034",
+          "M2C1-Q039",
+          "M2C1-Q045"
+        ],
+        "rate": 0.45652173913043476
+      },
+      "relevant_hit_only_via_overlap_at_5": {
+        "count": 17,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q005",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q015",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q028",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q040",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047"
+        ],
+        "rate": 0.3695652173913043
+      },
+      "relevant_hit_with_pure_relevant_at_5": {
+        "count": 29,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q006",
+          "M2C1-Q007",
+          "M2C1-Q008",
+          "M2C1-Q009",
+          "M2C1-Q014",
+          "M2C1-Q016",
+          "M2C1-Q017",
+          "M2C1-Q018",
+          "M2C1-Q019",
+          "M2C1-Q022",
+          "M2C1-Q023",
+          "M2C1-Q027",
+          "M2C1-Q029",
+          "M2C1-Q030",
+          "M2C1-Q031",
+          "M2C1-Q035",
+          "M2C1-Q036",
+          "M2C1-Q037",
+          "M2C1-Q038",
+          "M2C1-Q039",
+          "M2C1-Q041",
+          "M2C1-Q042",
+          "M2C1-Q044",
+          "M2C1-Q048",
+          "M2C1-Q049",
+          "M2C1-Q050"
+        ],
+        "rate": 0.6304347826086957
+      }
+    },
+    "dense": {
+      "answerable_query_count": 46,
+      "average_first_relevant_rank_when_found": 1.2608695652173914,
+      "first_relevant_found_count": 46,
+      "first_relevant_is_overlap": {
+        "count": 26,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q005",
+          "M2C1-Q007",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047"
+        ],
+        "rate": 0.5652173913043478
+      },
+      "no_relevant_at_5_query_ids": [],
+      "overlap_before_first_relevant": {
+        "count": 0,
+        "denominator": 46,
+        "informative": false,
+        "query_ids": [],
+        "rate": 0.0,
+        "reason": "Overlap IDs are a subset of relevant IDs, so an Overlap candidate is itself a Relevant hit and cannot rank before the first Relevant hit.",
+        "structural_zero": true
+      },
+      "overlap_share_of_relevant_hits_at_5": {
+        "denominator": 93,
+        "numerator": 43,
+        "value": 0.46236559139784944
+      },
+      "overlap_top1": {
+        "count": 22,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q005",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047"
+        ],
+        "rate": 0.4782608695652174
+      },
+      "overlap_top5_exposure": {
+        "count": 30,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q007",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049",
+          "M2C1-Q050"
+        ],
+        "rate": 0.6521739130434783
+      },
+      "pure_hard_negative_before_first_relevant": {
+        "count": 6,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q006",
+          "M2C1-Q017",
+          "M2C1-Q021",
+          "M2C1-Q026",
+          "M2C1-Q039"
+        ],
+        "rate": 0.13043478260869565
+      },
+      "pure_hard_negative_top1": {
+        "count": 6,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q006",
+          "M2C1-Q017",
+          "M2C1-Q021",
+          "M2C1-Q026",
+          "M2C1-Q039"
+        ],
+        "rate": 0.13043478260869565
+      },
+      "pure_hard_negative_top3_exposure": {
+        "count": 21,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q006",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q017",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q034",
+          "M2C1-Q039",
+          "M2C1-Q040",
+          "M2C1-Q045",
+          "M2C1-Q046"
+        ],
+        "rate": 0.45652173913043476
+      },
+      "pure_hard_negative_top5_exposure": {
+        "count": 24,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q009",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q017",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q034",
+          "M2C1-Q039",
+          "M2C1-Q040",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q049"
+        ],
+        "rate": 0.5217391304347826
+      },
+      "relevant_hit_only_via_overlap_at_5": {
+        "count": 16,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q005",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q015",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q028",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q040",
+          "M2C1-Q045",
+          "M2C1-Q046"
+        ],
+        "rate": 0.34782608695652173
+      },
+      "relevant_hit_with_pure_relevant_at_5": {
+        "count": 30,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q006",
+          "M2C1-Q007",
+          "M2C1-Q008",
+          "M2C1-Q009",
+          "M2C1-Q014",
+          "M2C1-Q016",
+          "M2C1-Q017",
+          "M2C1-Q018",
+          "M2C1-Q019",
+          "M2C1-Q022",
+          "M2C1-Q023",
+          "M2C1-Q027",
+          "M2C1-Q029",
+          "M2C1-Q030",
+          "M2C1-Q031",
+          "M2C1-Q035",
+          "M2C1-Q036",
+          "M2C1-Q037",
+          "M2C1-Q038",
+          "M2C1-Q039",
+          "M2C1-Q041",
+          "M2C1-Q042",
+          "M2C1-Q044",
+          "M2C1-Q047",
+          "M2C1-Q048",
+          "M2C1-Q049",
+          "M2C1-Q050"
+        ],
+        "rate": 0.6521739130434783
+      }
+    },
+    "evidence": {
+      "answerable_query_count": 46,
+      "average_first_relevant_rank_when_found": 1.0434782608695652,
+      "first_relevant_found_count": 46,
+      "first_relevant_is_overlap": {
+        "count": 35,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q007",
+          "M2C1-Q008",
+          "M2C1-Q009",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q030",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049",
+          "M2C1-Q050"
+        ],
+        "rate": 0.7608695652173914
+      },
+      "no_relevant_at_5_query_ids": [],
+      "overlap_before_first_relevant": {
+        "count": 0,
+        "denominator": 46,
+        "informative": false,
+        "query_ids": [],
+        "rate": 0.0,
+        "reason": "Overlap IDs are a subset of relevant IDs, so an Overlap candidate is itself a Relevant hit and cannot rank before the first Relevant hit.",
+        "structural_zero": true
+      },
+      "overlap_share_of_relevant_hits_at_5": {
+        "denominator": 67,
+        "numerator": 43,
+        "value": 0.6417910447761194
+      },
+      "overlap_top1": {
+        "count": 33,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q007",
+          "M2C1-Q008",
+          "M2C1-Q009",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q030",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049",
+          "M2C1-Q050"
+        ],
+        "rate": 0.717391304347826
+      },
+      "overlap_top5_exposure": {
+        "count": 35,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q007",
+          "M2C1-Q008",
+          "M2C1-Q009",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q030",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049",
+          "M2C1-Q050"
+        ],
+        "rate": 0.7608695652173914
+      },
+      "pure_hard_negative_before_first_relevant": {
+        "count": 2,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q006",
+          "M2C1-Q022"
+        ],
+        "rate": 0.043478260869565216
+      },
+      "pure_hard_negative_top1": {
+        "count": 2,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q006",
+          "M2C1-Q022"
+        ],
+        "rate": 0.043478260869565216
+      },
+      "pure_hard_negative_top3_exposure": {
+        "count": 15,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q017",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q027",
+          "M2C1-Q036",
+          "M2C1-Q039"
+        ],
+        "rate": 0.32608695652173914
+      },
+      "pure_hard_negative_top5_exposure": {
+        "count": 16,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q017",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q027",
+          "M2C1-Q036",
+          "M2C1-Q039",
+          "M2C1-Q046"
+        ],
+        "rate": 0.34782608695652173
+      },
+      "relevant_hit_only_via_overlap_at_5": {
+        "count": 28,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q007",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049"
+        ],
+        "rate": 0.6086956521739131
+      },
+      "relevant_hit_with_pure_relevant_at_5": {
+        "count": 18,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q008",
+          "M2C1-Q009",
+          "M2C1-Q016",
+          "M2C1-Q017",
+          "M2C1-Q018",
+          "M2C1-Q023",
+          "M2C1-Q028",
+          "M2C1-Q029",
+          "M2C1-Q030",
+          "M2C1-Q031",
+          "M2C1-Q036",
+          "M2C1-Q037",
+          "M2C1-Q038",
+          "M2C1-Q039",
+          "M2C1-Q041",
+          "M2C1-Q042",
+          "M2C1-Q048",
+          "M2C1-Q050"
+        ],
+        "rate": 0.391304347826087
+      }
+    },
+    "parent": {
+      "answerable_query_count": 46,
+      "average_first_relevant_rank_when_found": 1.0434782608695652,
+      "first_relevant_found_count": 46,
+      "first_relevant_is_overlap": {
+        "count": 35,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q007",
+          "M2C1-Q008",
+          "M2C1-Q009",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q030",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049",
+          "M2C1-Q050"
+        ],
+        "rate": 0.7608695652173914
+      },
+      "no_relevant_at_5_query_ids": [],
+      "overlap_before_first_relevant": {
+        "count": 0,
+        "denominator": 46,
+        "informative": false,
+        "query_ids": [],
+        "rate": 0.0,
+        "reason": "Overlap IDs are a subset of relevant IDs, so an Overlap candidate is itself a Relevant hit and cannot rank before the first Relevant hit.",
+        "structural_zero": true
+      },
+      "overlap_share_of_relevant_hits_at_5": {
+        "denominator": 67,
+        "numerator": 43,
+        "value": 0.6417910447761194
+      },
+      "overlap_top1": {
+        "count": 33,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q007",
+          "M2C1-Q008",
+          "M2C1-Q009",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q030",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049",
+          "M2C1-Q050"
+        ],
+        "rate": 0.717391304347826
+      },
+      "overlap_top5_exposure": {
+        "count": 35,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q007",
+          "M2C1-Q008",
+          "M2C1-Q009",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q030",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049",
+          "M2C1-Q050"
+        ],
+        "rate": 0.7608695652173914
+      },
+      "pure_hard_negative_before_first_relevant": {
+        "count": 2,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q006",
+          "M2C1-Q022"
+        ],
+        "rate": 0.043478260869565216
+      },
+      "pure_hard_negative_top1": {
+        "count": 2,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q006",
+          "M2C1-Q022"
+        ],
+        "rate": 0.043478260869565216
+      },
+      "pure_hard_negative_top3_exposure": {
+        "count": 15,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q017",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q027",
+          "M2C1-Q036",
+          "M2C1-Q039"
+        ],
+        "rate": 0.32608695652173914
+      },
+      "pure_hard_negative_top5_exposure": {
+        "count": 16,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q017",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q027",
+          "M2C1-Q036",
+          "M2C1-Q039",
+          "M2C1-Q046"
+        ],
+        "rate": 0.34782608695652173
+      },
+      "relevant_hit_only_via_overlap_at_5": {
+        "count": 28,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q007",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049"
+        ],
+        "rate": 0.6086956521739131
+      },
+      "relevant_hit_with_pure_relevant_at_5": {
+        "count": 18,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q008",
+          "M2C1-Q009",
+          "M2C1-Q016",
+          "M2C1-Q017",
+          "M2C1-Q018",
+          "M2C1-Q023",
+          "M2C1-Q028",
+          "M2C1-Q029",
+          "M2C1-Q030",
+          "M2C1-Q031",
+          "M2C1-Q036",
+          "M2C1-Q037",
+          "M2C1-Q038",
+          "M2C1-Q039",
+          "M2C1-Q041",
+          "M2C1-Q042",
+          "M2C1-Q048",
+          "M2C1-Q050"
+        ],
+        "rate": 0.391304347826087
+      }
+    },
+    "reranker": {
+      "answerable_query_count": 46,
+      "average_first_relevant_rank_when_found": 1.065217391304348,
+      "first_relevant_found_count": 46,
+      "first_relevant_is_overlap": {
+        "count": 26,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q007",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q050"
+        ],
+        "rate": 0.5652173913043478
+      },
+      "no_relevant_at_5_query_ids": [],
+      "overlap_before_first_relevant": {
+        "count": 0,
+        "denominator": 46,
+        "informative": false,
+        "query_ids": [],
+        "rate": 0.0,
+        "reason": "Overlap IDs are a subset of relevant IDs, so an Overlap candidate is itself a Relevant hit and cannot rank before the first Relevant hit.",
+        "structural_zero": true
+      },
+      "overlap_share_of_relevant_hits_at_5": {
+        "denominator": 94,
+        "numerator": 43,
+        "value": 0.4574468085106383
+      },
+      "overlap_top1": {
+        "count": 24,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q007",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q050"
+        ],
+        "rate": 0.5217391304347826
+      },
+      "overlap_top5_exposure": {
+        "count": 31,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q007",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049",
+          "M2C1-Q050"
+        ],
+        "rate": 0.6739130434782609
+      },
+      "pure_hard_negative_before_first_relevant": {
+        "count": 3,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q006",
+          "M2C1-Q022",
+          "M2C1-Q034"
+        ],
+        "rate": 0.06521739130434782
+      },
+      "pure_hard_negative_top1": {
+        "count": 3,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q006",
+          "M2C1-Q022",
+          "M2C1-Q034"
+        ],
+        "rate": 0.06521739130434782
+      },
+      "pure_hard_negative_top3_exposure": {
+        "count": 18,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q017",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q034",
+          "M2C1-Q039"
+        ],
+        "rate": 0.391304347826087
+      },
+      "pure_hard_negative_top5_exposure": {
+        "count": 24,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q017",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q030",
+          "M2C1-Q034",
+          "M2C1-Q039",
+          "M2C1-Q040",
+          "M2C1-Q045",
+          "M2C1-Q046"
+        ],
+        "rate": 0.5217391304347826
+      },
+      "relevant_hit_only_via_overlap_at_5": {
+        "count": 17,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q005",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q015",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q028",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q040",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047"
+        ],
+        "rate": 0.3695652173913043
+      },
+      "relevant_hit_with_pure_relevant_at_5": {
+        "count": 29,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q006",
+          "M2C1-Q007",
+          "M2C1-Q008",
+          "M2C1-Q009",
+          "M2C1-Q014",
+          "M2C1-Q016",
+          "M2C1-Q017",
+          "M2C1-Q018",
+          "M2C1-Q019",
+          "M2C1-Q022",
+          "M2C1-Q023",
+          "M2C1-Q027",
+          "M2C1-Q029",
+          "M2C1-Q030",
+          "M2C1-Q031",
+          "M2C1-Q035",
+          "M2C1-Q036",
+          "M2C1-Q037",
+          "M2C1-Q038",
+          "M2C1-Q039",
+          "M2C1-Q041",
+          "M2C1-Q042",
+          "M2C1-Q044",
+          "M2C1-Q048",
+          "M2C1-Q049",
+          "M2C1-Q050"
+        ],
+        "rate": 0.6304347826086957
+      }
+    },
+    "rrf": {
+      "answerable_query_count": 46,
+      "average_first_relevant_rank_when_found": 1.1956521739130435,
+      "first_relevant_found_count": 46,
+      "first_relevant_is_overlap": {
+        "count": 26,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q005",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049"
+        ],
+        "rate": 0.5652173913043478
+      },
+      "no_relevant_at_5_query_ids": [],
+      "overlap_before_first_relevant": {
+        "count": 0,
+        "denominator": 46,
+        "informative": false,
+        "query_ids": [],
+        "rate": 0.0,
+        "reason": "Overlap IDs are a subset of relevant IDs, so an Overlap candidate is itself a Relevant hit and cannot rank before the first Relevant hit.",
+        "structural_zero": true
+      },
+      "overlap_share_of_relevant_hits_at_5": {
+        "denominator": 97,
+        "numerator": 42,
+        "value": 0.4329896907216495
+      },
+      "overlap_top1": {
+        "count": 23,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q005",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049"
+        ],
+        "rate": 0.5
+      },
+      "overlap_top5_exposure": {
+        "count": 30,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q007",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q014",
+          "M2C1-Q015",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q028",
+          "M2C1-Q031",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q035",
+          "M2C1-Q038",
+          "M2C1-Q040",
+          "M2C1-Q044",
+          "M2C1-Q045",
+          "M2C1-Q046",
+          "M2C1-Q047",
+          "M2C1-Q049",
+          "M2C1-Q050"
+        ],
+        "rate": 0.6521739130434783
+      },
+      "pure_hard_negative_before_first_relevant": {
+        "count": 5,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q006",
+          "M2C1-Q021",
+          "M2C1-Q026",
+          "M2C1-Q039"
+        ],
+        "rate": 0.10869565217391304
+      },
+      "pure_hard_negative_top1": {
+        "count": 5,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q006",
+          "M2C1-Q021",
+          "M2C1-Q026",
+          "M2C1-Q039"
+        ],
+        "rate": 0.10869565217391304
+      },
+      "pure_hard_negative_top3_exposure": {
+        "count": 19,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q017",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q034",
+          "M2C1-Q039"
+        ],
+        "rate": 0.41304347826086957
+      },
+      "pure_hard_negative_top5_exposure": {
+        "count": 22,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q005",
+          "M2C1-Q006",
+          "M2C1-Q009",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q017",
+          "M2C1-Q019",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q022",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q027",
+          "M2C1-Q034",
+          "M2C1-Q039",
+          "M2C1-Q040",
+          "M2C1-Q045"
+        ],
+        "rate": 0.4782608695652174
+      },
+      "relevant_hit_only_via_overlap_at_5": {
+        "count": 16,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q001",
+          "M2C1-Q005",
+          "M2C1-Q011",
+          "M2C1-Q012",
+          "M2C1-Q013",
+          "M2C1-Q015",
+          "M2C1-Q020",
+          "M2C1-Q021",
+          "M2C1-Q025",
+          "M2C1-Q026",
+          "M2C1-Q028",
+          "M2C1-Q033",
+          "M2C1-Q034",
+          "M2C1-Q040",
+          "M2C1-Q045",
+          "M2C1-Q046"
+        ],
+        "rate": 0.34782608695652173
+      },
+      "relevant_hit_with_pure_relevant_at_5": {
+        "count": 30,
+        "denominator": 46,
+        "query_ids": [
+          "M2C1-Q002",
+          "M2C1-Q003",
+          "M2C1-Q004",
+          "M2C1-Q006",
+          "M2C1-Q007",
+          "M2C1-Q008",
+          "M2C1-Q009",
+          "M2C1-Q014",
+          "M2C1-Q016",
+          "M2C1-Q017",
+          "M2C1-Q018",
+          "M2C1-Q019",
+          "M2C1-Q022",
+          "M2C1-Q023",
+          "M2C1-Q027",
+          "M2C1-Q029",
+          "M2C1-Q030",
+          "M2C1-Q031",
+          "M2C1-Q035",
+          "M2C1-Q036",
+          "M2C1-Q037",
+          "M2C1-Q038",
+          "M2C1-Q039",
+          "M2C1-Q041",
+          "M2C1-Q042",
+          "M2C1-Q044",
+          "M2C1-Q047",
+          "M2C1-Q048",
+          "M2C1-Q049",
+          "M2C1-Q050"
+        ],
+        "rate": 0.6521739130434783
+      }
+    }
+  },
+  "limitations": [
+    "Metrics cover one fixed synthetic enterprise dataset and do not establish production quality.",
+    "Runtime values are one local CPU observation, not a production performance benchmark.",
+    "Fixed character-window chunks can mix relevant and hard-negative clauses.",
+    "Overlap chunks are reported separately and are not treated as pure negatives.",
+    "Parent-versus-Reranker is a cross-granularity evidence-coverage observation, not a strict same-metric model gain.",
+    "Run B follows Run A in the same Python process and is not an independent cold start; operating-system and library cache effects may reduce load time.",
+    "This retrieval-only baseline does not call an LLM or assess answer quality."
+  ],
+  "models": {
+    "embedding": {
+      "dimension": 512,
+      "name": "BAAI/bge-small-zh-v1.5",
+      "revision": "7999e1d3359715c523056ef9478215996d62a620"
+    },
+    "reranker": {
+      "name": "BAAI/bge-reranker-base",
+      "revision": "2cfc18c9415c912f9d8155881c133215df768a70"
+    }
+  },
+  "offline_only": true,
+  "overlap_interpretation": "Overlap chunks cover both relevant and hard-negative clauses; they are analyzed separately, remain Relevant, and are excluded from pure hard negatives. Overlap-before-first-Relevant is a structural zero, not a performance result.",
+  "pipeline_identity": {
+    "config_sha256": "e05d7d82df15e0f8bcb0fb2790f057225129ff3059c83a36b91ef426588e9c10",
+    "source": "src/decision_agent/retrieval/pipeline.py",
+    "source_sha256": "3671695d19adbbbdd70c477c457e729aebefefc966fe4c3b9b5d228eb19f79ee"
+  },
+  "pipeline_version": "m2c2a1-v1",
+  "query_count": 50,
+  "query_type_metrics": {
+    "cross_section": {
+      "answerable_query_count": 8,
+      "parent": {
+        "hit_rate_at_1": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 8,
+          "numerator": 3.8333333333333335,
+          "value": 0.4791666666666667
+        },
+        "recall_at_3": {
+          "denominator": 8,
+          "numerator": 6.333333333333333,
+          "value": 0.7916666666666666
+        },
+        "recall_at_5": {
+          "denominator": 8,
+          "numerator": 6.833333333333333,
+          "value": 0.8541666666666666
+        }
+      },
+      "query_count": 8,
+      "reranker": {
+        "hit_rate_at_1": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 8,
+          "numerator": 2.0666666666666664,
+          "value": 0.2583333333333333
+        },
+        "recall_at_3": {
+          "denominator": 8,
+          "numerator": 4.266666666666667,
+          "value": 0.5333333333333333
+        },
+        "recall_at_5": {
+          "denominator": 8,
+          "numerator": 6.45,
+          "value": 0.80625
+        }
+      },
+      "rrf": {
+        "hit_rate_at_1": {
+          "denominator": 8,
+          "numerator": 7.0,
+          "value": 0.875
+        },
+        "hit_rate_at_3": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 8,
+          "numerator": 7.333333333333333,
+          "value": 0.9166666666666666
+        },
+        "recall_at_1": {
+          "denominator": 8,
+          "numerator": 1.8666666666666667,
+          "value": 0.23333333333333334
+        },
+        "recall_at_3": {
+          "denominator": 8,
+          "numerator": 4.85,
+          "value": 0.60625
+        },
+        "recall_at_5": {
+          "denominator": 8,
+          "numerator": 6.7,
+          "value": 0.8375
+        }
+      },
+      "top1_exposure": {
+        "parent": {
+          "overlap_count": 2,
+          "pure_hard_negative_count": 0
+        },
+        "reranker": {
+          "overlap_count": 0,
+          "pure_hard_negative_count": 0
+        },
+        "rrf": {
+          "overlap_count": 1,
+          "pure_hard_negative_count": 0
+        }
+      }
+    },
+    "multi_constraint": {
+      "answerable_query_count": 14,
+      "parent": {
+        "hit_rate_at_1": {
+          "denominator": 14,
+          "numerator": 12.0,
+          "value": 0.8571428571428571
+        },
+        "hit_rate_at_3": {
+          "denominator": 14,
+          "numerator": 14.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 14,
+          "numerator": 14.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 14,
+          "numerator": 13.0,
+          "value": 0.9285714285714286
+        },
+        "recall_at_1": {
+          "denominator": 14,
+          "numerator": 9.5,
+          "value": 0.6785714285714286
+        },
+        "recall_at_3": {
+          "denominator": 14,
+          "numerator": 13.5,
+          "value": 0.9642857142857143
+        },
+        "recall_at_5": {
+          "denominator": 14,
+          "numerator": 14.0,
+          "value": 1.0
+        }
+      },
+      "query_count": 14,
+      "reranker": {
+        "hit_rate_at_1": {
+          "denominator": 14,
+          "numerator": 12.0,
+          "value": 0.8571428571428571
+        },
+        "hit_rate_at_3": {
+          "denominator": 14,
+          "numerator": 14.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 14,
+          "numerator": 14.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 14,
+          "numerator": 13.0,
+          "value": 0.9285714285714286
+        },
+        "recall_at_1": {
+          "denominator": 14,
+          "numerator": 5.666666666666667,
+          "value": 0.40476190476190477
+        },
+        "recall_at_3": {
+          "denominator": 14,
+          "numerator": 11.583333333333334,
+          "value": 0.8273809523809524
+        },
+        "recall_at_5": {
+          "denominator": 14,
+          "numerator": 12.166666666666666,
+          "value": 0.869047619047619
+        }
+      },
+      "rrf": {
+        "hit_rate_at_1": {
+          "denominator": 14,
+          "numerator": 11.0,
+          "value": 0.7857142857142857
+        },
+        "hit_rate_at_3": {
+          "denominator": 14,
+          "numerator": 14.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 14,
+          "numerator": 14.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 14,
+          "numerator": 12.5,
+          "value": 0.8928571428571429
+        },
+        "recall_at_1": {
+          "denominator": 14,
+          "numerator": 5.333333333333333,
+          "value": 0.38095238095238093
+        },
+        "recall_at_3": {
+          "denominator": 14,
+          "numerator": 11.416666666666666,
+          "value": 0.8154761904761905
+        },
+        "recall_at_5": {
+          "denominator": 14,
+          "numerator": 13.0,
+          "value": 0.9285714285714286
+        }
+      },
+      "top1_exposure": {
+        "parent": {
+          "overlap_count": 11,
+          "pure_hard_negative_count": 2
+        },
+        "reranker": {
+          "overlap_count": 10,
+          "pure_hard_negative_count": 2
+        },
+        "rrf": {
+          "overlap_count": 10,
+          "pure_hard_negative_count": 2
+        }
+      }
+    },
+    "multi_evidence": {
+      "answerable_query_count": 8,
+      "parent": {
+        "hit_rate_at_1": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 8,
+          "numerator": 2.9166666666666665,
+          "value": 0.3645833333333333
+        },
+        "recall_at_3": {
+          "denominator": 8,
+          "numerator": 5.25,
+          "value": 0.65625
+        },
+        "recall_at_5": {
+          "denominator": 8,
+          "numerator": 5.583333333333333,
+          "value": 0.6979166666666666
+        }
+      },
+      "query_count": 8,
+      "reranker": {
+        "hit_rate_at_1": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 8,
+          "numerator": 2.033333333333333,
+          "value": 0.25416666666666665
+        },
+        "recall_at_3": {
+          "denominator": 8,
+          "numerator": 3.7666666666666666,
+          "value": 0.4708333333333333
+        },
+        "recall_at_5": {
+          "denominator": 8,
+          "numerator": 4.35,
+          "value": 0.54375
+        }
+      },
+      "rrf": {
+        "hit_rate_at_1": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 8,
+          "numerator": 8.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 8,
+          "numerator": 2.033333333333333,
+          "value": 0.25416666666666665
+        },
+        "recall_at_3": {
+          "denominator": 8,
+          "numerator": 3.7333333333333334,
+          "value": 0.4666666666666667
+        },
+        "recall_at_5": {
+          "denominator": 8,
+          "numerator": 4.65,
+          "value": 0.58125
+        }
+      },
+      "top1_exposure": {
+        "parent": {
+          "overlap_count": 5,
+          "pure_hard_negative_count": 0
+        },
+        "reranker": {
+          "overlap_count": 3,
+          "pure_hard_negative_count": 0
+        },
+        "rrf": {
+          "overlap_count": 2,
+          "pure_hard_negative_count": 0
+        }
+      }
+    },
+    "single_fact": {
+      "answerable_query_count": 16,
+      "parent": {
+        "hit_rate_at_1": {
+          "denominator": 16,
+          "numerator": 16.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 16,
+          "numerator": 16.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 16,
+          "numerator": 16.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 16,
+          "numerator": 16.0,
+          "value": 1.0
+        },
+        "recall_at_1": {
+          "denominator": 16,
+          "numerator": 15.0,
+          "value": 0.9375
+        },
+        "recall_at_3": {
+          "denominator": 16,
+          "numerator": 16.0,
+          "value": 1.0
+        },
+        "recall_at_5": {
+          "denominator": 16,
+          "numerator": 16.0,
+          "value": 1.0
+        }
+      },
+      "query_count": 16,
+      "reranker": {
+        "hit_rate_at_1": {
+          "denominator": 16,
+          "numerator": 15.0,
+          "value": 0.9375
+        },
+        "hit_rate_at_3": {
+          "denominator": 16,
+          "numerator": 16.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 16,
+          "numerator": 16.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 16,
+          "numerator": 15.5,
+          "value": 0.96875
+        },
+        "recall_at_1": {
+          "denominator": 16,
+          "numerator": 11.0,
+          "value": 0.6875
+        },
+        "recall_at_3": {
+          "denominator": 16,
+          "numerator": 15.5,
+          "value": 0.96875
+        },
+        "recall_at_5": {
+          "denominator": 16,
+          "numerator": 16.0,
+          "value": 1.0
+        }
+      },
+      "rrf": {
+        "hit_rate_at_1": {
+          "denominator": 16,
+          "numerator": 13.0,
+          "value": 0.8125
+        },
+        "hit_rate_at_3": {
+          "denominator": 16,
+          "numerator": 16.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 16,
+          "numerator": 16.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 16,
+          "numerator": 14.333333333333334,
+          "value": 0.8958333333333334
+        },
+        "recall_at_1": {
+          "denominator": 16,
+          "numerator": 9.5,
+          "value": 0.59375
+        },
+        "recall_at_3": {
+          "denominator": 16,
+          "numerator": 15.0,
+          "value": 0.9375
+        },
+        "recall_at_5": {
+          "denominator": 16,
+          "numerator": 15.5,
+          "value": 0.96875
+        }
+      },
+      "top1_exposure": {
+        "parent": {
+          "overlap_count": 15,
+          "pure_hard_negative_count": 0
+        },
+        "reranker": {
+          "overlap_count": 11,
+          "pure_hard_negative_count": 1
+        },
+        "rrf": {
+          "overlap_count": 10,
+          "pure_hard_negative_count": 3
+        }
+      }
+    },
+    "unanswerable": {
+      "answerable_query_count": 0,
+      "parent": null,
+      "query_count": 4,
+      "reranker": null,
+      "rrf": null,
+      "top1_exposure": {
+        "parent": {
+          "overlap_count": 0,
+          "pure_hard_negative_count": 0
+        },
+        "reranker": {
+          "overlap_count": 0,
+          "pure_hard_negative_count": 0
+        },
+        "rrf": {
+          "overlap_count": 0,
+          "pure_hard_negative_count": 0
+        }
+      }
+    }
+  },
+  "ranking_digest": "0acbcdea406fa6d9dc10d7818479a2ee9b0892fa1bd5241d68daf637d4b3b75e",
+  "reranker_movements": {
+    "hard_negative_lowered": {
+      "count": 11,
+      "query_ids": [
+        "M2C1-Q001",
+        "M2C1-Q002",
+        "M2C1-Q003",
+        "M2C1-Q006",
+        "M2C1-Q011",
+        "M2C1-Q012",
+        "M2C1-Q021",
+        "M2C1-Q025",
+        "M2C1-Q026",
+        "M2C1-Q027",
+        "M2C1-Q039"
+      ]
+    },
+    "hard_negative_raised": {
+      "count": 11,
+      "query_ids": [
+        "M2C1-Q005",
+        "M2C1-Q006",
+        "M2C1-Q011",
+        "M2C1-Q013",
+        "M2C1-Q014",
+        "M2C1-Q022",
+        "M2C1-Q025",
+        "M2C1-Q030",
+        "M2C1-Q034",
+        "M2C1-Q045",
+        "M2C1-Q046"
+      ]
+    },
+    "overlap_changed": {
+      "count": 18,
+      "query_ids": [
+        "M2C1-Q001",
+        "M2C1-Q002",
+        "M2C1-Q003",
+        "M2C1-Q004",
+        "M2C1-Q007",
+        "M2C1-Q019",
+        "M2C1-Q021",
+        "M2C1-Q022",
+        "M2C1-Q026",
+        "M2C1-Q028",
+        "M2C1-Q033",
+        "M2C1-Q034",
+        "M2C1-Q035",
+        "M2C1-Q038",
+        "M2C1-Q040",
+        "M2C1-Q047",
+        "M2C1-Q049",
+        "M2C1-Q050"
+      ]
+    },
+    "relevant_improved": {
+      "count": 6,
+      "query_ids": [
+        "M2C1-Q001",
+        "M2C1-Q007",
+        "M2C1-Q016",
+        "M2C1-Q021",
+        "M2C1-Q026",
+        "M2C1-Q039"
+      ]
+    },
+    "relevant_regressed": {
+      "count": 2,
+      "query_ids": [
+        "M2C1-Q022",
+        "M2C1-Q034"
+      ]
+    }
+  },
+  "schema_version": "1.0",
+  "source_hashes": {
+    "child_chunks.jsonl": "fc1f6fdcc28f02158a8cdca12160403355777f48af7f0bb3d71f16e6b6fb77db",
+    "clause_chunk_map.jsonl": "0264548723264f500c9ab146df012da9e2e792ea441e0006722b22d778768981",
+    "m2c1_parent_child_summary.json": "1ce62aeb6fb26a98bf9e20f6df7e64b86e3e0e2974024614e54f9200688dfd48",
+    "parent_chunks.jsonl": "4c79261da76ac7cc7a1f479c2b8447865c35cf828602d2c5979244cbb4d56c47",
+    "query_blueprint.jsonl": "473a2c70b8139609dc842c2ce9d4f761154522c18f194580b3cbb79bf6937ee6",
+    "retrieval_ground_truth.jsonl": "c12772c471d710dd7611871619a227133f79f893804bd77b8452fefc6de1574b"
+  },
+  "stage_comparisons": {
+    "bm25_vs_dense": {
+      "after_relevance_granularity": "child",
+      "after_stage": "bm25",
+      "average_first_relevant_rank_improvement": 0.06521739130434782,
+      "before_relevance_granularity": "child",
+      "before_stage": "dense",
+      "comparison_scope": "same_granularity_stage_comparison",
+      "hit_at_1": {
+        "improved": {
+          "count": 6,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q009",
+            "M2C1-Q017",
+            "M2C1-Q021",
+            "M2C1-Q039"
+          ]
+        },
+        "regressed": {
+          "count": 4,
+          "query_ids": [
+            "M2C1-Q022",
+            "M2C1-Q037",
+            "M2C1-Q045",
+            "M2C1-Q050"
+          ]
+        },
+        "unchanged": {
+          "count": 36,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q008",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q016",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q029",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048",
+            "M2C1-Q049"
+          ]
+        }
+      },
+      "reciprocal_rank_at_5": {
+        "improved": {
+          "count": 7,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q009",
+            "M2C1-Q017",
+            "M2C1-Q021",
+            "M2C1-Q026",
+            "M2C1-Q039"
+          ]
+        },
+        "regressed": {
+          "count": 5,
+          "query_ids": [
+            "M2C1-Q016",
+            "M2C1-Q022",
+            "M2C1-Q037",
+            "M2C1-Q045",
+            "M2C1-Q050"
+          ]
+        },
+        "unchanged": {
+          "count": 34,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q008",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q029",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048",
+            "M2C1-Q049"
+          ]
+        }
+      },
+      "strict_same_metric_gain": true
+    },
+    "parent_vs_reranker": {
+      "after_relevance_granularity": "parent",
+      "after_stage": "parent",
+      "average_first_relevant_rank_improvement": 0.021739130434782608,
+      "before_relevance_granularity": "child",
+      "before_stage": "reranker",
+      "comparison_scope": "cross_granularity_observation",
+      "hit_at_1": {
+        "improved": {
+          "count": 1,
+          "query_ids": [
+            "M2C1-Q034"
+          ]
+        },
+        "regressed": {
+          "count": 0,
+          "query_ids": []
+        },
+        "unchanged": {
+          "count": 45,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q016",
+            "M2C1-Q017",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q029",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q038",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ]
+        }
+      },
+      "reciprocal_rank_at_5": {
+        "improved": {
+          "count": 1,
+          "query_ids": [
+            "M2C1-Q034"
+          ]
+        },
+        "regressed": {
+          "count": 0,
+          "query_ids": []
+        },
+        "unchanged": {
+          "count": 45,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q016",
+            "M2C1-Q017",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q029",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q038",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ]
+        }
+      },
+      "strict_same_metric_gain": false
+    },
+    "reranker_vs_rrf": {
+      "after_relevance_granularity": "child",
+      "after_stage": "reranker",
+      "average_first_relevant_rank_improvement": 0.13043478260869565,
+      "before_relevance_granularity": "child",
+      "before_stage": "rrf",
+      "comparison_scope": "same_granularity_stage_comparison",
+      "hit_at_1": {
+        "improved": {
+          "count": 6,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q007",
+            "M2C1-Q016",
+            "M2C1-Q021",
+            "M2C1-Q026",
+            "M2C1-Q039"
+          ]
+        },
+        "regressed": {
+          "count": 2,
+          "query_ids": [
+            "M2C1-Q022",
+            "M2C1-Q034"
+          ]
+        },
+        "unchanged": {
+          "count": 38,
+          "query_ids": [
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q017",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q029",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ]
+        }
+      },
+      "reciprocal_rank_at_5": {
+        "improved": {
+          "count": 6,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q007",
+            "M2C1-Q016",
+            "M2C1-Q021",
+            "M2C1-Q026",
+            "M2C1-Q039"
+          ]
+        },
+        "regressed": {
+          "count": 2,
+          "query_ids": [
+            "M2C1-Q022",
+            "M2C1-Q034"
+          ]
+        },
+        "unchanged": {
+          "count": 38,
+          "query_ids": [
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q017",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q029",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ]
+        }
+      },
+      "strict_same_metric_gain": true
+    },
+    "rrf_vs_bm25": {
+      "after_relevance_granularity": "child",
+      "after_stage": "rrf",
+      "average_first_relevant_rank_improvement": 0.0,
+      "before_relevance_granularity": "child",
+      "before_stage": "bm25",
+      "comparison_scope": "same_granularity_stage_comparison",
+      "hit_at_1": {
+        "improved": {
+          "count": 4,
+          "query_ids": [
+            "M2C1-Q022",
+            "M2C1-Q037",
+            "M2C1-Q045",
+            "M2C1-Q050"
+          ]
+        },
+        "regressed": {
+          "count": 4,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q021",
+            "M2C1-Q039"
+          ]
+        },
+        "unchanged": {
+          "count": 38,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q016",
+            "M2C1-Q017",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q029",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048",
+            "M2C1-Q049"
+          ]
+        }
+      },
+      "reciprocal_rank_at_5": {
+        "improved": {
+          "count": 4,
+          "query_ids": [
+            "M2C1-Q022",
+            "M2C1-Q037",
+            "M2C1-Q045",
+            "M2C1-Q050"
+          ]
+        },
+        "regressed": {
+          "count": 5,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q021",
+            "M2C1-Q026",
+            "M2C1-Q039"
+          ]
+        },
+        "unchanged": {
+          "count": 37,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q016",
+            "M2C1-Q017",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q029",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048",
+            "M2C1-Q049"
+          ]
+        }
+      },
+      "strict_same_metric_gain": true
+    },
+    "rrf_vs_dense": {
+      "after_relevance_granularity": "child",
+      "after_stage": "rrf",
+      "average_first_relevant_rank_improvement": 0.06521739130434782,
+      "before_relevance_granularity": "child",
+      "before_stage": "dense",
+      "comparison_scope": "same_granularity_stage_comparison",
+      "hit_at_1": {
+        "improved": {
+          "count": 2,
+          "query_ids": [
+            "M2C1-Q009",
+            "M2C1-Q017"
+          ]
+        },
+        "regressed": {
+          "count": 0,
+          "query_ids": []
+        },
+        "unchanged": {
+          "count": 44,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q008",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q016",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q029",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q038",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ]
+        }
+      },
+      "reciprocal_rank_at_5": {
+        "improved": {
+          "count": 3,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q009",
+            "M2C1-Q017"
+          ]
+        },
+        "regressed": {
+          "count": 1,
+          "query_ids": [
+            "M2C1-Q016"
+          ]
+        },
+        "unchanged": {
+          "count": 42,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q008",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q029",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q038",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ]
+        }
+      },
+      "strict_same_metric_gain": true
+    }
+  },
+  "stage_metrics": {
+    "bm25": {
+      "metrics": {
+        "hit_rate_at_1": {
+          "denominator": 46,
+          "numerator": 39.0,
+          "value": 0.8478260869565217
+        },
+        "hit_rate_at_10": {
+          "denominator": 46,
+          "numerator": 46.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 46,
+          "numerator": 46.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 46,
+          "numerator": 46.0,
+          "value": 1.0
+        },
+        "mrr_at_10": {
+          "denominator": 46,
+          "numerator": 42.166666666666664,
+          "value": 0.9166666666666666
+        },
+        "mrr_at_5": {
+          "denominator": 46,
+          "numerator": 42.166666666666664,
+          "value": 0.9166666666666666
+        },
+        "recall_at_1": {
+          "denominator": 46,
+          "numerator": 20.15,
+          "value": 0.43804347826086953
+        },
+        "recall_at_10": {
+          "denominator": 46,
+          "numerator": 43.016666666666666,
+          "value": 0.9351449275362319
+        },
+        "recall_at_3": {
+          "denominator": 46,
+          "numerator": 32.96666666666667,
+          "value": 0.7166666666666667
+        },
+        "recall_at_5": {
+          "denominator": 46,
+          "numerator": 39.18333333333333,
+          "value": 0.8518115942028984
+        }
+      },
+      "query_count": 46
+    },
+    "dense": {
+      "metrics": {
+        "hit_rate_at_1": {
+          "denominator": 46,
+          "numerator": 37.0,
+          "value": 0.8043478260869565
+        },
+        "hit_rate_at_10": {
+          "denominator": 46,
+          "numerator": 46.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 46,
+          "numerator": 45.0,
+          "value": 0.9782608695652174
+        },
+        "hit_rate_at_5": {
+          "denominator": 46,
+          "numerator": 46.0,
+          "value": 1.0
+        },
+        "mrr_at_10": {
+          "denominator": 46,
+          "numerator": 41.083333333333336,
+          "value": 0.8931159420289856
+        },
+        "mrr_at_5": {
+          "denominator": 46,
+          "numerator": 41.083333333333336,
+          "value": 0.8931159420289856
+        },
+        "recall_at_1": {
+          "denominator": 46,
+          "numerator": 18.15,
+          "value": 0.3945652173913043
+        },
+        "recall_at_10": {
+          "denominator": 46,
+          "numerator": 42.71666666666667,
+          "value": 0.9286231884057972
+        },
+        "recall_at_3": {
+          "denominator": 46,
+          "numerator": 34.333333333333336,
+          "value": 0.746376811594203
+        },
+        "recall_at_5": {
+          "denominator": 46,
+          "numerator": 38.65,
+          "value": 0.8402173913043478
+        }
+      },
+      "query_count": 46
+    },
+    "evidence": {
+      "metrics": {
+        "hit_rate_at_1": {
+          "denominator": 46,
+          "numerator": 44.0,
+          "value": 0.9565217391304348
+        },
+        "hit_rate_at_3": {
+          "denominator": 46,
+          "numerator": 46.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 46,
+          "numerator": 46.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 46,
+          "numerator": 45.0,
+          "value": 0.9782608695652174
+        },
+        "recall_at_1": {
+          "denominator": 46,
+          "numerator": 31.25,
+          "value": 0.6793478260869565
+        },
+        "recall_at_3": {
+          "denominator": 46,
+          "numerator": 41.083333333333336,
+          "value": 0.8931159420289856
+        },
+        "recall_at_5": {
+          "denominator": 46,
+          "numerator": 42.416666666666664,
+          "value": 0.9221014492753623
+        }
+      },
+      "query_count": 46
+    },
+    "parent": {
+      "metrics": {
+        "hit_rate_at_1": {
+          "denominator": 46,
+          "numerator": 44.0,
+          "value": 0.9565217391304348
+        },
+        "hit_rate_at_3": {
+          "denominator": 46,
+          "numerator": 46.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 46,
+          "numerator": 46.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 46,
+          "numerator": 45.0,
+          "value": 0.9782608695652174
+        },
+        "recall_at_1": {
+          "denominator": 46,
+          "numerator": 31.25,
+          "value": 0.6793478260869565
+        },
+        "recall_at_3": {
+          "denominator": 46,
+          "numerator": 41.083333333333336,
+          "value": 0.8931159420289856
+        },
+        "recall_at_5": {
+          "denominator": 46,
+          "numerator": 42.416666666666664,
+          "value": 0.9221014492753623
+        }
+      },
+      "query_count": 46
+    },
+    "reranker": {
+      "metrics": {
+        "hit_rate_at_1": {
+          "denominator": 46,
+          "numerator": 43.0,
+          "value": 0.9347826086956522
+        },
+        "hit_rate_at_3": {
+          "denominator": 46,
+          "numerator": 46.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 46,
+          "numerator": 46.0,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 46,
+          "numerator": 44.5,
+          "value": 0.967391304347826
+        },
+        "recall_at_1": {
+          "denominator": 46,
+          "numerator": 20.766666666666666,
+          "value": 0.4514492753623188
+        },
+        "recall_at_3": {
+          "denominator": 46,
+          "numerator": 35.11666666666667,
+          "value": 0.7634057971014493
+        },
+        "recall_at_5": {
+          "denominator": 46,
+          "numerator": 38.96666666666667,
+          "value": 0.8471014492753624
+        }
+      },
+      "query_count": 46
+    },
+    "rrf": {
+      "metrics": {
+        "hit_rate_at_1": {
+          "denominator": 46,
+          "numerator": 39.0,
+          "value": 0.8478260869565217
+        },
+        "hit_rate_at_10": {
+          "denominator": 46,
+          "numerator": 46.0,
+          "value": 1.0
+        },
+        "hit_rate_at_3": {
+          "denominator": 46,
+          "numerator": 46.0,
+          "value": 1.0
+        },
+        "hit_rate_at_5": {
+          "denominator": 46,
+          "numerator": 46.0,
+          "value": 1.0
+        },
+        "mrr_at_10": {
+          "denominator": 46,
+          "numerator": 42.166666666666664,
+          "value": 0.9166666666666666
+        },
+        "mrr_at_5": {
+          "denominator": 46,
+          "numerator": 42.166666666666664,
+          "value": 0.9166666666666666
+        },
+        "recall_at_1": {
+          "denominator": 46,
+          "numerator": 18.733333333333334,
+          "value": 0.4072463768115942
+        },
+        "recall_at_10": {
+          "denominator": 46,
+          "numerator": 42.46666666666667,
+          "value": 0.9231884057971015
+        },
+        "recall_at_3": {
+          "denominator": 46,
+          "numerator": 35.0,
+          "value": 0.7608695652173914
+        },
+        "recall_at_5": {
+          "denominator": 46,
+          "numerator": 39.85,
+          "value": 0.866304347826087
+        }
+      },
+      "query_count": 46
+    }
+  },
+  "unanswerable_behavior": [
+    {
+      "child_candidate_counts": {
+        "bm25": 10,
+        "dense": 10,
+        "reranker": 5,
+        "rrf": 10
+      },
+      "evidence_count": 4,
+      "parent_count": 4,
+      "query_id": "M2C1-Q010",
+      "top5_label_counts": {
+        "bm25": {
+          "hard_negative": 2,
+          "unlabeled": 3
+        },
+        "dense": {
+          "hard_negative": 1,
+          "unlabeled": 4
+        },
+        "evidence": {
+          "hard_negative": 2,
+          "unlabeled": 2
+        },
+        "parent": {
+          "hard_negative": 2,
+          "unlabeled": 2
+        },
+        "reranker": {
+          "hard_negative": 1,
+          "unlabeled": 4
+        },
+        "rrf": {
+          "hard_negative": 2,
+          "unlabeled": 3
+        }
+      },
+      "top_evidence": {
+        "document_id": "DOC-CS-001",
+        "end_offset": 800,
+        "evidence_id": "E1",
+        "parent_id": "parent_c20574f8f98ec1640d34dd3b7145b403cfc2a1a07025efd0e6f3d91f4cdc2f35",
+        "relevance_label": "hard_negative",
+        "source": "documents/DOC-CS-001_product_warranty_policy.md",
+        "start_offset": 0
+      }
+    },
+    {
+      "child_candidate_counts": {
+        "bm25": 10,
+        "dense": 10,
+        "reranker": 5,
+        "rrf": 10
+      },
+      "evidence_count": 2,
+      "parent_count": 2,
+      "query_id": "M2C1-Q024",
+      "top5_label_counts": {
+        "bm25": {
+          "hard_negative": 3,
+          "unlabeled": 2
+        },
+        "dense": {
+          "hard_negative": 2,
+          "unlabeled": 3
+        },
+        "evidence": {
+          "hard_negative": 1,
+          "unlabeled": 1
+        },
+        "parent": {
+          "hard_negative": 1,
+          "unlabeled": 1
+        },
+        "reranker": {
+          "hard_negative": 3,
+          "unlabeled": 2
+        },
+        "rrf": {
+          "hard_negative": 3,
+          "unlabeled": 2
+        }
+      },
+      "top_evidence": {
+        "document_id": "DOC-INV-001",
+        "end_offset": 800,
+        "evidence_id": "E1",
+        "parent_id": "parent_1bd13d3434a3f456cb0a457fcac7f603cfed7b2ac87772475d4e021b2767d5f3",
+        "relevance_label": "unlabeled",
+        "source": "documents/DOC-INV-001_inventory_replenishment_policy.md",
+        "start_offset": 0
+      }
+    },
+    {
+      "child_candidate_counts": {
+        "bm25": 10,
+        "dense": 10,
+        "reranker": 5,
+        "rrf": 10
+      },
+      "evidence_count": 5,
+      "parent_count": 5,
+      "query_id": "M2C1-Q032",
+      "top5_label_counts": {
+        "bm25": {
+          "hard_negative": 1,
+          "unlabeled": 4
+        },
+        "dense": {
+          "hard_negative": 2,
+          "unlabeled": 3
+        },
+        "evidence": {
+          "hard_negative": 1,
+          "unlabeled": 4
+        },
+        "parent": {
+          "hard_negative": 1,
+          "unlabeled": 4
+        },
+        "reranker": {
+          "hard_negative": 1,
+          "unlabeled": 4
+        },
+        "rrf": {
+          "hard_negative": 1,
+          "unlabeled": 4
+        }
+      },
+      "top_evidence": {
+        "document_id": "DOC-CS-001",
+        "end_offset": 1600,
+        "evidence_id": "E1",
+        "parent_id": "parent_f6c592709123a7cd548b4d90e92e8268294e96da75d98fe0beca011b25dbbe6c",
+        "relevance_label": "unlabeled",
+        "source": "documents/DOC-CS-001_product_warranty_policy.md",
+        "start_offset": 800
+      }
+    },
+    {
+      "child_candidate_counts": {
+        "bm25": 10,
+        "dense": 10,
+        "reranker": 5,
+        "rrf": 10
+      },
+      "evidence_count": 3,
+      "parent_count": 3,
+      "query_id": "M2C1-Q043",
+      "top5_label_counts": {
+        "bm25": {
+          "hard_negative": 3,
+          "unlabeled": 2
+        },
+        "dense": {
+          "hard_negative": 2,
+          "unlabeled": 3
+        },
+        "evidence": {
+          "hard_negative": 2,
+          "unlabeled": 1
+        },
+        "parent": {
+          "hard_negative": 2,
+          "unlabeled": 1
+        },
+        "reranker": {
+          "hard_negative": 3,
+          "unlabeled": 2
+        },
+        "rrf": {
+          "hard_negative": 3,
+          "unlabeled": 2
+        }
+      },
+      "top_evidence": {
+        "document_id": "DOC-FIN-001",
+        "end_offset": 800,
+        "evidence_id": "E1",
+        "parent_id": "parent_3d775a3625d35c2a360585869514811b1052d5e9a4cf066311f167364fd94845",
+        "relevance_label": "unlabeled",
+        "source": "documents/DOC-FIN-001_expense_budget_control.md",
+        "start_offset": 0
+      }
+    }
+  ],
+  "unanswerable_query_count": 4
+}

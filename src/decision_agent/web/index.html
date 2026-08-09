@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="企业决策 AI Agent 的最小演示界面，展示正式路由、回答、引用和运行状态。"
+    />
+    <title>企业决策 AI Agent</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <script src="/assets/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#query">跳到提问区</a>
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="brand-block">
+          <p class="eyebrow">Enterprise Decision &amp; Knowledge Agent</p>
+          <h1>企业决策 AI Agent</h1>
+          <p class="subtitle">通过正式后端自动判断 Knowledge、Data 或 Mixed 路由。</p>
+        </div>
+        <div class="status-panel" aria-label="服务状态">
+          <span id="health-badge" class="status-badge status-checking">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span id="health-text">进程检查中</span>
+          </span>
+          <span id="ready-badge" class="status-badge status-checking">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span id="ready-text">Runtime 检查中</span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="workspace-card" aria-labelledby="query-heading">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">正式请求</p>
+            <h2 id="query-heading">向企业 Agent 提问</h2>
+          </div>
+          <div class="session-block">
+            <span>当前会话</span>
+            <code id="session-id">生成中</code>
+            <button id="clear-session" class="session-button" type="button">新建会话</button>
+          </div>
+        </div>
+
+        <div class="examples" aria-label="示例问题">
+          <button class="example-button" type="button" data-query="请说明 Product A 的电池保修政策。">
+            知识问答
+          </button>
+          <button
+            class="example-button"
+            type="button"
+            data-query="请分析最近一个月各区域的销售收入，并给出有依据的结论。"
+          >
+            数据分析
+          </button>
+          <button
+            class="example-button"
+            type="button"
+            data-query="结合公司政策与经营数据，分析库存补货风险。"
+          >
+            综合分析
+          </button>
+        </div>
+
+        <form id="query-form">
+          <label for="query">问题</label>
+          <textarea
+            id="query"
+            name="query"
+            rows="5"
+            maxlength="4000"
+            placeholder="输入需要企业知识或数据支持的问题…"
+            required
+          ></textarea>
+          <div class="form-footer">
+            <p class="keyboard-hint">Ctrl / ⌘ + Enter 发送</p>
+            <div class="actions">
+              <button id="cancel-request" class="secondary-button" type="button" disabled>
+                取消
+              </button>
+              <button id="send-request" class="primary-button" type="submit">发送请求</button>
+            </div>
+          </div>
+        </form>
+
+      </section>
+
+      <section class="result-card" aria-labelledby="result-heading">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">正式响应</p>
+            <h2 id="result-heading">回答与证据</h2>
+          </div>
+          <span id="result-status" class="result-status">等待请求</span>
+        </div>
+
+        <div id="request-message" class="message" role="status" aria-live="polite"></div>
+
+        <div class="answer-section">
+          <h3>回答</h3>
+          <p id="answer" class="answer-content">提交问题后，正式 Agent 的回答会显示在这里。</p>
+        </div>
+
+        <div class="result-grid">
+          <section aria-labelledby="citations-heading">
+            <h3 id="citations-heading">引用</h3>
+            <ul id="citations" class="citation-list">
+              <li>无引用</li>
+            </ul>
+          </section>
+          <section aria-labelledby="metadata-heading">
+            <h3 id="metadata-heading">执行信息</h3>
+            <dl id="metadata" class="metadata-list">
+              <div><dt>状态</dt><dd>等待请求</dd></div>
+              <div><dt>Request ID</dt><dd>—</dd></div>
+              <div><dt>路由</dt><dd>—</dd></div>
+              <div><dt>Skill</dt><dd>—</dd></div>
+              <div><dt>Memory 读取</dt><dd>—</dd></div>
+              <div><dt>Memory 写入</dt><dd>—</dd></div>
+              <div><dt>Memory 摘要</dt><dd>—</dd></div>
+            </dl>
+          </section>
+        </div>
+
+        <section id="trace-card" class="trace-card" aria-labelledby="trace-heading" hidden>
+          <details>
+            <summary id="trace-heading">执行轨迹</summary>
+            <p id="trace-summary" class="trace-summary"></p>
+            <ol id="trace-stages" class="trace-stage-list"></ol>
+          </details>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      此页面与正式 FastAPI Runtime 同源；服务未就绪时仍可查看界面和健康状态。
+    </footer>
+  </body>
+</html>

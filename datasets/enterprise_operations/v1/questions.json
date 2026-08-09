@@ -1,0 +1,74 @@
+[
+  {
+    "question_id": "ops-v1-q01",
+    "question": "2026 年 5 月有效销售额最高的产品是什么？",
+    "business_domain": "sales",
+    "expected_result": {"columns": ["product_id", "product_name", "sales_amount"], "rows": [["P100", "Aster 工业泵", "12000.00"]]},
+    "verification_sql": "SELECT p.product_id, p.product_name, SUM(i.quantity * i.unit_price) AS sales_amount FROM sales_orders AS o JOIN sales_order_items AS i ON o.sales_order_id = i.sales_order_id JOIN products AS p ON i.product_id = p.product_id WHERE o.order_date >= '2026-05-01' AND o.order_date < '2026-06-01' AND o.status IN ('confirmed', 'shipped', 'completed') GROUP BY p.product_id, p.product_name ORDER BY sales_amount DESC, p.product_id ASC LIMIT 1",
+    "important_filters": ["order_date: [2026-05-01, 2026-06-01)", "effective sales statuses only"],
+    "notes": "销售额按订单明细 quantity × unit_price 聚合，取消订单不计入。"
+  },
+  {
+    "question_id": "ops-v1-q02",
+    "question": "当前库存低于安全库存的产品有哪些？",
+    "business_domain": "inventory",
+    "expected_result": {"columns": ["product_id", "product_name", "on_hand_quantity", "safety_stock"], "rows": [["P100", "Aster 工业泵", 40, 50], ["P300", "Cirrus 传感器", 90, 100], ["P600", "Flux 工业线缆", 110, 120]]},
+    "verification_sql": "WITH latest_inventory AS (SELECT s.product_id, s.on_hand_quantity FROM inventory_snapshots AS s JOIN (SELECT product_id, MAX(snapshot_date) AS snapshot_date FROM inventory_snapshots GROUP BY product_id) AS latest ON s.product_id = latest.product_id AND s.snapshot_date = latest.snapshot_date) SELECT p.product_id, p.product_name, li.on_hand_quantity, p.safety_stock FROM products AS p JOIN latest_inventory AS li ON p.product_id = li.product_id WHERE li.on_hand_quantity < p.safety_stock ORDER BY p.product_id ASC",
+    "important_filters": ["latest snapshot per product", "on_hand_quantity < safety_stock"],
+    "notes": "当前库存按每个产品自己的最新快照选择；等于安全库存不算风险。"
+  },
+  {
+    "question_id": "ops-v1-q03",
+    "question": "2026 年 5 月有效采购金额是多少？",
+    "business_domain": "procurement",
+    "expected_result": {"columns": ["effective_purchase_amount"], "rows": [["19840.00"]]},
+    "verification_sql": "SELECT SUM(quantity * unit_cost) AS effective_purchase_amount FROM purchase_orders WHERE order_date >= '2026-05-01' AND order_date < '2026-06-01' AND status IN ('ordered', 'partially_delivered', 'delivered')",
+    "important_filters": ["order_date: [2026-05-01, 2026-06-01)", "cancelled purchase orders excluded"],
+    "notes": "有效采购金额按有效采购订单的 quantity × unit_cost 汇总。"
+  },
+  {
+    "question_id": "ops-v1-q04",
+    "question": "各供应商的准时交付率是多少？",
+    "business_domain": "supplier_delivery",
+    "expected_result": {"columns": ["supplier_id", "supplier_name", "delivered_order_count", "on_time_delivery_rate"], "rows": [["S100", "安海制造", 2, "100.00"], ["S200", "北辰供应", 2, "50.00"], ["S300", "长江工业", 1, "0.00"], ["S400", "东方零部件", 0, null]]},
+    "verification_sql": "SELECT s.supplier_id, s.supplier_name, COUNT(po.purchase_order_id) AS delivered_order_count, ROUND(100 * SUM(CASE WHEN po.actual_delivery_date <= po.promised_delivery_date THEN 1 ELSE 0 END) / NULLIF(COUNT(po.purchase_order_id), 0), 2) AS on_time_delivery_rate FROM suppliers AS s LEFT JOIN purchase_orders AS po ON s.supplier_id = po.supplier_id AND po.status = 'delivered' AND po.actual_delivery_date IS NOT NULL GROUP BY s.supplier_id, s.supplier_name ORDER BY s.supplier_id ASC",
+    "important_filters": ["delivered orders with actual_delivery_date only", "cancelled and open purchase orders excluded from denominator"],
+    "notes": "准时是 actual_delivery_date ≤ promised_delivery_date；没有已交付订单时比率为 NULL。"
+  },
+  {
+    "question_id": "ops-v1-q05",
+    "question": "在至少有一笔已交付订单的供应商中，准时交付率最低的是谁？",
+    "business_domain": "supplier_delivery",
+    "expected_result": {"columns": ["supplier_id", "supplier_name", "on_time_delivery_rate"], "rows": [["S300", "长江工业", "0.00"]]},
+    "verification_sql": "WITH delivery_rates AS (SELECT s.supplier_id, s.supplier_name, ROUND(100 * SUM(CASE WHEN po.actual_delivery_date <= po.promised_delivery_date THEN 1 ELSE 0 END) / COUNT(po.purchase_order_id), 2) AS on_time_delivery_rate FROM suppliers AS s JOIN purchase_orders AS po ON s.supplier_id = po.supplier_id WHERE po.status = 'delivered' AND po.actual_delivery_date IS NOT NULL GROUP BY s.supplier_id, s.supplier_name) SELECT supplier_id, supplier_name, on_time_delivery_rate FROM delivery_rates ORDER BY on_time_delivery_rate ASC, supplier_id ASC LIMIT 1",
+    "important_filters": ["requires at least one delivered purchase order", "on-time definition matches ops-v1-q04"],
+    "notes": "无已交付订单的供应商不参与最低比率比较。"
+  },
+  {
+    "question_id": "ops-v1-q06",
+    "question": "2026 年 6 月相较 5 月销量下降最大的产品是什么？",
+    "business_domain": "sales",
+    "expected_result": {"columns": ["product_id", "product_name", "may_quantity", "june_quantity", "quantity_decline"], "rows": [["P100", "Aster 工业泵", "120", "40", "80"]]},
+    "verification_sql": "WITH monthly_sales AS (SELECT i.product_id, SUM(CASE WHEN o.order_date >= '2026-05-01' AND o.order_date < '2026-06-01' THEN i.quantity ELSE 0 END) AS may_quantity, SUM(CASE WHEN o.order_date >= '2026-06-01' AND o.order_date < '2026-07-01' THEN i.quantity ELSE 0 END) AS june_quantity FROM sales_orders AS o JOIN sales_order_items AS i ON o.sales_order_id = i.sales_order_id WHERE o.status IN ('confirmed', 'shipped', 'completed') GROUP BY i.product_id) SELECT p.product_id, p.product_name, m.may_quantity, m.june_quantity, m.may_quantity - m.june_quantity AS quantity_decline FROM monthly_sales AS m JOIN products AS p ON m.product_id = p.product_id WHERE m.may_quantity > m.june_quantity ORDER BY quantity_decline DESC, p.product_id ASC LIMIT 1",
+    "important_filters": ["May [2026-05-01, 2026-06-01) versus June [2026-06-01, 2026-07-01)", "effective sales statuses only"],
+    "notes": "销量按明细 quantity 汇总；仅比较销量实际下降的产品。"
+  },
+  {
+    "question_id": "ops-v1-q07",
+    "question": "哪些采购订单已下单但尚未交付？",
+    "business_domain": "procurement",
+    "expected_result": {"columns": ["purchase_order_number", "supplier_name", "product_name", "status", "promised_delivery_date"], "rows": [["PO-2026-0602", "长江工业", "Delta 驱动器", "ordered", "2026-06-25"], ["PO-2026-0603", "东方零部件", "Harbor 密封件", "partially_delivered", "2026-06-28"]]},
+    "verification_sql": "SELECT po.purchase_order_number, s.supplier_name, p.product_name, po.status, po.promised_delivery_date FROM purchase_orders AS po JOIN suppliers AS s ON po.supplier_id = s.supplier_id JOIN products AS p ON po.product_id = p.product_id WHERE po.status IN ('ordered', 'partially_delivered') AND po.actual_delivery_date IS NULL ORDER BY po.purchase_order_number ASC",
+    "important_filters": ["status in ordered, partially_delivered", "actual_delivery_date is NULL", "cancelled orders excluded"],
+    "notes": "“尚未交付”不把取消订单或已标记 delivered 的订单算入。"
+  },
+  {
+    "question_id": "ops-v1-q08",
+    "question": "2026 年第二季度传感器类别的销售额及库存风险联合结果是什么？",
+    "business_domain": "sales_inventory",
+    "expected_result": {"columns": ["product_id", "product_name", "quarter_sales_amount", "on_hand_quantity", "safety_stock", "inventory_risk"], "rows": [["P300", "Cirrus 传感器", "11200.00", 90, 100, "low_stock"]]},
+    "verification_sql": "WITH category_sales AS (SELECT i.product_id, SUM(i.quantity * i.unit_price) AS quarter_sales_amount FROM sales_orders AS o JOIN sales_order_items AS i ON o.sales_order_id = i.sales_order_id WHERE o.order_date >= '2026-04-01' AND o.order_date < '2026-07-01' AND o.status IN ('confirmed', 'shipped', 'completed') GROUP BY i.product_id), latest_inventory AS (SELECT s.product_id, s.on_hand_quantity FROM inventory_snapshots AS s JOIN (SELECT product_id, MAX(snapshot_date) AS snapshot_date FROM inventory_snapshots GROUP BY product_id) AS latest ON s.product_id = latest.product_id AND s.snapshot_date = latest.snapshot_date) SELECT p.product_id, p.product_name, cs.quarter_sales_amount, li.on_hand_quantity, p.safety_stock, CASE WHEN li.on_hand_quantity < p.safety_stock THEN 'low_stock' ELSE 'normal' END AS inventory_risk FROM products AS p JOIN category_sales AS cs ON p.product_id = cs.product_id JOIN latest_inventory AS li ON p.product_id = li.product_id WHERE p.category = '传感器' ORDER BY p.product_id ASC",
+    "important_filters": ["Q2 [2026-04-01, 2026-07-01)", "effective sales statuses", "latest snapshot per product"],
+    "notes": "销售额与库存风险分别按统一销售和库存口径计算后再联合展示。"
+  }
+]

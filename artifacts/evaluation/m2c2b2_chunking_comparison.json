@@ -1,0 +1,3097 @@
+{
+  "artifact_hash_semantics": {
+    "absolute_paths_included": false,
+    "self_hash_included": false,
+    "timestamps_included": false
+  },
+  "comparison_contract": {
+    "answerable_query_count": 46,
+    "clause_aware_strategy_id": "clause-aware-v1",
+    "device": "cpu",
+    "fixed_config": {
+      "bm25_top_k": 10,
+      "bm25_weight": 1.0,
+      "config_version": "m2c2a1-v1",
+      "dense_top_k": 10,
+      "dense_weight": 1.0,
+      "evidence_max_chars_per_item": 1800,
+      "evidence_max_count": 5,
+      "evidence_max_total_chars": 6000,
+      "parent_top_k": 5,
+      "reranker_candidate_count": 10,
+      "reranker_top_k": 5,
+      "rrf_k": 60.0,
+      "rrf_top_k": 10
+    },
+    "fixed_window_strategy_id": "fixed-window-v1",
+    "ground_truth_not_used_in_runtime_ranking": true,
+    "models": {
+      "embedding": {
+        "dimension": 512,
+        "name": "BAAI/bge-small-zh-v1.5",
+        "revision": "7999e1d3359715c523056ef9478215996d62a620"
+      },
+      "reranker": {
+        "name": "BAAI/bge-reranker-base",
+        "revision": "2cfc18c9415c912f9d8155881c133215df768a70"
+      }
+    },
+    "offline_only": true,
+    "only_variable": "dataset_chunk_variant",
+    "query_count": 50,
+    "unanswerable_query_count": 4
+  },
+  "comparison_id": "m2c2b2-fixed-window-vs-clause-aware-v1",
+  "cross_variant_semantics": {
+    "candidate_ids": "Candidate IDs are variant-local and are never compared for equality.",
+    "child": "Child IDs differ by chunk variant, but both Ground Truth mappings originate from the same stable human-authored Clause labels; child-stage metrics therefore compare retrieval under the same Clause semantics.",
+    "parent_and_evidence": "Parent boundaries, counts, and relevant_parent_ids differ by variant. Parent and Evidence metrics are evidence-coverage observations and are not same-identity candidate comparisons."
+  },
+  "failure_case_counts": {
+    "clause_aware": {
+      "bm25_hard_negative_before_relevant": 7,
+      "bm25_no_relevant_at_5": 1,
+      "bm25_overlap_before_relevant": 0,
+      "bm25_top1_miss": 15,
+      "dense_hard_negative_before_relevant": 8,
+      "dense_no_relevant_at_5": 0,
+      "dense_overlap_before_relevant": 0,
+      "dense_top1_miss": 11,
+      "evidence_hard_negative_before_relevant": 1,
+      "evidence_overlap_before_relevant": 0,
+      "parent_hard_negative_before_relevant": 1,
+      "parent_no_relevant_at_5": 0,
+      "parent_overlap_before_relevant": 0,
+      "reranker_hard_negative_before_relevant": 5,
+      "reranker_no_relevant_at_5": 1,
+      "reranker_overlap_before_relevant": 0,
+      "reranker_regressed_vs_rrf": 3,
+      "reranker_top1_miss": 8,
+      "rrf_hard_negative_before_relevant": 7,
+      "rrf_no_relevant_at_5": 1,
+      "rrf_overlap_before_relevant": 0,
+      "rrf_regressed_vs_bm25": 2,
+      "rrf_regressed_vs_dense": 5,
+      "rrf_top1_miss": 9,
+      "unanswerable_returns_evidence": 4
+    },
+    "fixed_window": {
+      "bm25_hard_negative_before_relevant": 3,
+      "bm25_no_relevant_at_5": 0,
+      "bm25_overlap_before_relevant": 0,
+      "bm25_top1_miss": 7,
+      "dense_hard_negative_before_relevant": 6,
+      "dense_no_relevant_at_5": 0,
+      "dense_overlap_before_relevant": 0,
+      "dense_top1_miss": 9,
+      "evidence_hard_negative_before_relevant": 2,
+      "evidence_overlap_before_relevant": 0,
+      "parent_hard_negative_before_relevant": 2,
+      "parent_no_relevant_at_5": 0,
+      "parent_overlap_before_relevant": 0,
+      "reranker_hard_negative_before_relevant": 3,
+      "reranker_no_relevant_at_5": 0,
+      "reranker_overlap_before_relevant": 0,
+      "reranker_regressed_vs_rrf": 2,
+      "reranker_top1_miss": 3,
+      "rrf_hard_negative_before_relevant": 5,
+      "rrf_no_relevant_at_5": 0,
+      "rrf_overlap_before_relevant": 0,
+      "rrf_regressed_vs_bm25": 5,
+      "rrf_regressed_vs_dense": 1,
+      "rrf_top1_miss": 7,
+      "unanswerable_returns_evidence": 4
+    }
+  },
+  "hard_negative_and_overlap_comparison": {
+    "bm25": {
+      "no_relevant_at_5_query_ids": {
+        "clause_aware": {
+          "count": 1,
+          "query_ids": [
+            "M2C1-Q015"
+          ]
+        },
+        "fixed_window": {
+          "count": 0,
+          "query_ids": []
+        }
+      },
+      "overlap_top1": {
+        "clause_aware": {
+          "count": 0,
+          "denominator": 46,
+          "query_ids": [],
+          "rate": 0.0
+        },
+        "delta_count": -23,
+        "fixed_window": {
+          "count": 23,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q025",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q049"
+          ],
+          "rate": 0.5
+        }
+      },
+      "overlap_top5_exposure": {
+        "clause_aware": {
+          "count": 0,
+          "denominator": 46,
+          "query_ids": [],
+          "rate": 0.0
+        },
+        "delta_count": -30,
+        "fixed_window": {
+          "count": 30,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q049"
+          ],
+          "rate": 0.6521739130434783
+        }
+      },
+      "pure_hard_negative_top1": {
+        "clause_aware": {
+          "count": 5,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q021",
+            "M2C1-Q046"
+          ],
+          "rate": 0.10869565217391304
+        },
+        "delta_count": 2,
+        "fixed_window": {
+          "count": 3,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q022",
+            "M2C1-Q026"
+          ],
+          "rate": 0.06521739130434782
+        }
+      },
+      "pure_hard_negative_top5_exposure": {
+        "clause_aware": {
+          "count": 32,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q017",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047"
+          ],
+          "rate": 0.6956521739130435
+        },
+        "delta_count": 11,
+        "fixed_window": {
+          "count": 21,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q017",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q034",
+            "M2C1-Q039",
+            "M2C1-Q045"
+          ],
+          "rate": 0.45652173913043476
+        }
+      }
+    },
+    "dense": {
+      "no_relevant_at_5_query_ids": {
+        "clause_aware": {
+          "count": 0,
+          "query_ids": []
+        },
+        "fixed_window": {
+          "count": 0,
+          "query_ids": []
+        }
+      },
+      "overlap_top1": {
+        "clause_aware": {
+          "count": 0,
+          "denominator": 46,
+          "query_ids": [],
+          "rate": 0.0
+        },
+        "delta_count": -22,
+        "fixed_window": {
+          "count": 22,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q005",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047"
+          ],
+          "rate": 0.4782608695652174
+        }
+      },
+      "overlap_top5_exposure": {
+        "clause_aware": {
+          "count": 0,
+          "denominator": 46,
+          "query_ids": [],
+          "rate": 0.0
+        },
+        "delta_count": -30,
+        "fixed_window": {
+          "count": 30,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ],
+          "rate": 0.6521739130434783
+        }
+      },
+      "pure_hard_negative_top1": {
+        "clause_aware": {
+          "count": 8,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q015",
+            "M2C1-Q021",
+            "M2C1-Q026",
+            "M2C1-Q033",
+            "M2C1-Q035",
+            "M2C1-Q045",
+            "M2C1-Q047"
+          ],
+          "rate": 0.17391304347826086
+        },
+        "delta_count": 2,
+        "fixed_window": {
+          "count": 6,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q006",
+            "M2C1-Q017",
+            "M2C1-Q021",
+            "M2C1-Q026",
+            "M2C1-Q039"
+          ],
+          "rate": 0.13043478260869565
+        }
+      },
+      "pure_hard_negative_top5_exposure": {
+        "clause_aware": {
+          "count": 33,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q017",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q050"
+          ],
+          "rate": 0.717391304347826
+        },
+        "delta_count": 9,
+        "fixed_window": {
+          "count": 24,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q017",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q034",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q049"
+          ],
+          "rate": 0.5217391304347826
+        }
+      }
+    },
+    "evidence": {
+      "no_relevant_at_5_query_ids": {
+        "clause_aware": {
+          "count": 0,
+          "query_ids": []
+        },
+        "fixed_window": {
+          "count": 0,
+          "query_ids": []
+        }
+      },
+      "overlap_top1": {
+        "clause_aware": {
+          "count": 29,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q049"
+          ],
+          "rate": 0.6304347826086957
+        },
+        "delta_count": -4,
+        "fixed_window": {
+          "count": 33,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ],
+          "rate": 0.717391304347826
+        }
+      },
+      "overlap_top5_exposure": {
+        "clause_aware": {
+          "count": 33,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ],
+          "rate": 0.717391304347826
+        },
+        "delta_count": -2,
+        "fixed_window": {
+          "count": 35,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ],
+          "rate": 0.7608695652173914
+        }
+      },
+      "pure_hard_negative_top1": {
+        "clause_aware": {
+          "count": 1,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q006"
+          ],
+          "rate": 0.021739130434782608
+        },
+        "delta_count": -1,
+        "fixed_window": {
+          "count": 2,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q022"
+          ],
+          "rate": 0.043478260869565216
+        }
+      },
+      "pure_hard_negative_top5_exposure": {
+        "clause_aware": {
+          "count": 15,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q006",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q017",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q039",
+            "M2C1-Q045"
+          ],
+          "rate": 0.32608695652173914
+        },
+        "delta_count": -1,
+        "fixed_window": {
+          "count": 16,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q017",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q027",
+            "M2C1-Q036",
+            "M2C1-Q039",
+            "M2C1-Q046"
+          ],
+          "rate": 0.34782608695652173
+        }
+      }
+    },
+    "parent": {
+      "no_relevant_at_5_query_ids": {
+        "clause_aware": {
+          "count": 0,
+          "query_ids": []
+        },
+        "fixed_window": {
+          "count": 0,
+          "query_ids": []
+        }
+      },
+      "overlap_top1": {
+        "clause_aware": {
+          "count": 29,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q049"
+          ],
+          "rate": 0.6304347826086957
+        },
+        "delta_count": -4,
+        "fixed_window": {
+          "count": 33,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ],
+          "rate": 0.717391304347826
+        }
+      },
+      "overlap_top5_exposure": {
+        "clause_aware": {
+          "count": 33,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ],
+          "rate": 0.717391304347826
+        },
+        "delta_count": -2,
+        "fixed_window": {
+          "count": 35,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ],
+          "rate": 0.7608695652173914
+        }
+      },
+      "pure_hard_negative_top1": {
+        "clause_aware": {
+          "count": 1,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q006"
+          ],
+          "rate": 0.021739130434782608
+        },
+        "delta_count": -1,
+        "fixed_window": {
+          "count": 2,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q022"
+          ],
+          "rate": 0.043478260869565216
+        }
+      },
+      "pure_hard_negative_top5_exposure": {
+        "clause_aware": {
+          "count": 15,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q006",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q017",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q039",
+            "M2C1-Q045"
+          ],
+          "rate": 0.32608695652173914
+        },
+        "delta_count": -1,
+        "fixed_window": {
+          "count": 16,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q017",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q027",
+            "M2C1-Q036",
+            "M2C1-Q039",
+            "M2C1-Q046"
+          ],
+          "rate": 0.34782608695652173
+        }
+      }
+    },
+    "reranker": {
+      "no_relevant_at_5_query_ids": {
+        "clause_aware": {
+          "count": 1,
+          "query_ids": [
+            "M2C1-Q015"
+          ]
+        },
+        "fixed_window": {
+          "count": 0,
+          "query_ids": []
+        }
+      },
+      "overlap_top1": {
+        "clause_aware": {
+          "count": 0,
+          "denominator": 46,
+          "query_ids": [],
+          "rate": 0.0
+        },
+        "delta_count": -24,
+        "fixed_window": {
+          "count": 24,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q050"
+          ],
+          "rate": 0.5217391304347826
+        }
+      },
+      "overlap_top5_exposure": {
+        "clause_aware": {
+          "count": 0,
+          "denominator": 46,
+          "query_ids": [],
+          "rate": 0.0
+        },
+        "delta_count": -31,
+        "fixed_window": {
+          "count": 31,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ],
+          "rate": 0.6739130434782609
+        }
+      },
+      "pure_hard_negative_top1": {
+        "clause_aware": {
+          "count": 5,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q021",
+            "M2C1-Q038"
+          ],
+          "rate": 0.10869565217391304
+        },
+        "delta_count": 2,
+        "fixed_window": {
+          "count": 3,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q022",
+            "M2C1-Q034"
+          ],
+          "rate": 0.06521739130434782
+        }
+      },
+      "pure_hard_negative_top5_exposure": {
+        "clause_aware": {
+          "count": 35,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q017",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q050"
+          ],
+          "rate": 0.7608695652173914
+        },
+        "delta_count": 11,
+        "fixed_window": {
+          "count": 24,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q017",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q030",
+            "M2C1-Q034",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q045",
+            "M2C1-Q046"
+          ],
+          "rate": 0.5217391304347826
+        }
+      }
+    },
+    "rrf": {
+      "no_relevant_at_5_query_ids": {
+        "clause_aware": {
+          "count": 1,
+          "query_ids": [
+            "M2C1-Q015"
+          ]
+        },
+        "fixed_window": {
+          "count": 0,
+          "query_ids": []
+        }
+      },
+      "overlap_top1": {
+        "clause_aware": {
+          "count": 0,
+          "denominator": 46,
+          "query_ids": [],
+          "rate": 0.0
+        },
+        "delta_count": -23,
+        "fixed_window": {
+          "count": 23,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q005",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q049"
+          ],
+          "rate": 0.5
+        }
+      },
+      "overlap_top5_exposure": {
+        "clause_aware": {
+          "count": 0,
+          "denominator": 46,
+          "query_ids": [],
+          "rate": 0.0
+        },
+        "delta_count": -30,
+        "fixed_window": {
+          "count": 30,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ],
+          "rate": 0.6521739130434783
+        }
+      },
+      "pure_hard_negative_top1": {
+        "clause_aware": {
+          "count": 7,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q015",
+            "M2C1-Q021",
+            "M2C1-Q026",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047"
+          ],
+          "rate": 0.15217391304347827
+        },
+        "delta_count": 2,
+        "fixed_window": {
+          "count": 5,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q006",
+            "M2C1-Q021",
+            "M2C1-Q026",
+            "M2C1-Q039"
+          ],
+          "rate": 0.10869565217391304
+        }
+      },
+      "pure_hard_negative_top5_exposure": {
+        "clause_aware": {
+          "count": 33,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q017",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q038",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047"
+          ],
+          "rate": 0.717391304347826
+        },
+        "delta_count": 11,
+        "fixed_window": {
+          "count": 22,
+          "denominator": 46,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q017",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q034",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q045"
+          ],
+          "rate": 0.4782608695652174
+        }
+      }
+    }
+  },
+  "input_file_hashes": {
+    "clause_child_chunks": "35859b309ec98b49e124fa61a39d1a87c00507565e9403834eadaccdbad3c38d",
+    "clause_ground_truth": "f2c26a3a29b03d83883a0c886eb917427629ca26bab3339989bf2b23adaae96c",
+    "clause_parent_chunks": "0d199dd687c9a38aa404ca30ff2a1fa2c844044c7d04374d40bb3abf18a2fe5a",
+    "clause_results": "6fa35ef17d92b4b5a0e630482a36f6fcfe4d97e2ca86cbc95fddd3be3108d955",
+    "clause_runtime": "2ad4389b77bc4c51fc1b81c577866135fbf99dca6fb166285f95ce3a59d426a9",
+    "clause_summary": "bb27022f3d811f7963dfe49c747952974b9d96c88227851f76af38df549795fc",
+    "fixed_child_chunks": "fc1f6fdcc28f02158a8cdca12160403355777f48af7f0bb3d71f16e6b6fb77db",
+    "fixed_parent_chunks": "4c79261da76ac7cc7a1f479c2b8447865c35cf828602d2c5979244cbb4d56c47",
+    "fixed_report": "2e3b75fdce011d9201bb7187572405ed9a362e1e2b4cc9659e68128664752278",
+    "fixed_results": "26558008740e62b22c6d72c0b826fa4bb7f1d4229d1a35e72ca03c816db5fa87",
+    "fixed_runtime": "7f9191aeeb48bd120fcee40380ff5b00023b908f79b65359a2b380d80464bb0d",
+    "fixed_summary": "1ce62aeb6fb26a98bf9e20f6df7e64b86e3e0e2974024614e54f9200688dfd48"
+  },
+  "limitations": [
+    "The only experimental variable is the checked-in chunk variant; this does not establish production quality.",
+    "Fixed and Clause-aware Ground Truth use their own runtime chunk identities, so Parent-versus-Child observations remain cross-granularity coverage observations.",
+    "Runtime values are one local CPU observation and are not a production performance claim; more Child candidates and Cross-Encoder work are plausible factors but not independently proven causes.",
+    "Unanswerable queries still exercise retrieval only and do not establish answer refusal behavior."
+  ],
+  "parent_evidence_comparison": {
+    "clause_aware": {
+      "evidence_count_distribution": {
+        "2": 9,
+        "3": 20,
+        "4": 17,
+        "5": 4
+      },
+      "included_character_distribution": {
+        "max": 2575.0,
+        "mean": 1689.42,
+        "median": 1651.0,
+        "min": 957.0,
+        "p95": 2342.3999999999996,
+        "total": 84471.0
+      },
+      "relevant_parent_coverage": {
+        "denominator": 46,
+        "numerator": 44.0,
+        "value": 0.9565217391304348
+      },
+      "truncated_query_count": 0
+    },
+    "fixed_window": {
+      "evidence_count_distribution": {
+        "2": 9,
+        "3": 29,
+        "4": 9,
+        "5": 3
+      },
+      "included_character_distribution": {
+        "max": 4000.0,
+        "mean": 2355.22,
+        "median": 2221.0,
+        "min": 1600.0,
+        "p95": 3336.9499999999994,
+        "total": 117761.0
+      },
+      "relevant_parent_coverage": {
+        "denominator": 46,
+        "numerator": 42.416666666666664,
+        "value": 0.9221014492753623
+      },
+      "truncated_query_count": 0
+    }
+  },
+  "query_movements": {
+    "bm25": {
+      "hit_at_1": {
+        "improved": {
+          "count": 1,
+          "query_ids": [
+            "M2C1-Q016"
+          ]
+        },
+        "regressed": {
+          "count": 9,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q008",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q021",
+            "M2C1-Q029",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048"
+          ]
+        },
+        "unchanged": {
+          "count": 36,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q017",
+            "M2C1-Q018",
+            "M2C1-Q020",
+            "M2C1-Q022",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q038",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ]
+        }
+      },
+      "reciprocal_rank_at_5": {
+        "improved": {
+          "count": 1,
+          "query_ids": [
+            "M2C1-Q016"
+          ]
+        },
+        "regressed": {
+          "count": 11,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q008",
+            "M2C1-Q015",
+            "M2C1-Q019",
+            "M2C1-Q021",
+            "M2C1-Q029",
+            "M2C1-Q037",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048"
+          ]
+        },
+        "unchanged": {
+          "count": 34,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q017",
+            "M2C1-Q018",
+            "M2C1-Q020",
+            "M2C1-Q022",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q038",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ]
+        }
+      },
+      "stage": "bm25"
+    },
+    "dense": {
+      "hit_at_1": {
+        "improved": {
+          "count": 5,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q007",
+            "M2C1-Q009",
+            "M2C1-Q017",
+            "M2C1-Q039"
+          ]
+        },
+        "regressed": {
+          "count": 7,
+          "query_ids": [
+            "M2C1-Q015",
+            "M2C1-Q029",
+            "M2C1-Q033",
+            "M2C1-Q035",
+            "M2C1-Q045",
+            "M2C1-Q047",
+            "M2C1-Q048"
+          ]
+        },
+        "unchanged": {
+          "count": 34,
+          "query_ids": [
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q008",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q016",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q034",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q046",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ]
+        }
+      },
+      "reciprocal_rank_at_5": {
+        "improved": {
+          "count": 7,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q009",
+            "M2C1-Q017",
+            "M2C1-Q026",
+            "M2C1-Q039"
+          ]
+        },
+        "regressed": {
+          "count": 8,
+          "query_ids": [
+            "M2C1-Q015",
+            "M2C1-Q021",
+            "M2C1-Q029",
+            "M2C1-Q033",
+            "M2C1-Q035",
+            "M2C1-Q045",
+            "M2C1-Q047",
+            "M2C1-Q048"
+          ]
+        },
+        "unchanged": {
+          "count": 31,
+          "query_ids": [
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q008",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q016",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q022",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q034",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q046",
+            "M2C1-Q049",
+            "M2C1-Q050"
+          ]
+        }
+      },
+      "stage": "dense"
+    },
+    "parent": {
+      "hit_at_1": {
+        "improved": {
+          "count": 1,
+          "query_ids": [
+            "M2C1-Q022"
+          ]
+        },
+        "regressed": {
+          "count": 2,
+          "query_ids": [
+            "M2C1-Q016",
+            "M2C1-Q050"
+          ]
+        },
+        "unchanged": {
+          "count": 43,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q017",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q029",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q038",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048",
+            "M2C1-Q049"
+          ]
+        }
+      },
+      "reciprocal_rank_at_5": {
+        "improved": {
+          "count": 1,
+          "query_ids": [
+            "M2C1-Q022"
+          ]
+        },
+        "regressed": {
+          "count": 2,
+          "query_ids": [
+            "M2C1-Q016",
+            "M2C1-Q050"
+          ]
+        },
+        "unchanged": {
+          "count": 43,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q017",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q029",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q038",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048",
+            "M2C1-Q049"
+          ]
+        }
+      },
+      "stage": "parent"
+    },
+    "reranker": {
+      "hit_at_1": {
+        "improved": {
+          "count": 2,
+          "query_ids": [
+            "M2C1-Q022",
+            "M2C1-Q034"
+          ]
+        },
+        "regressed": {
+          "count": 7,
+          "query_ids": [
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q016",
+            "M2C1-Q021",
+            "M2C1-Q029",
+            "M2C1-Q038",
+            "M2C1-Q050"
+          ]
+        },
+        "unchanged": {
+          "count": 37,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q007",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q017",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048",
+            "M2C1-Q049"
+          ]
+        }
+      },
+      "reciprocal_rank_at_5": {
+        "improved": {
+          "count": 2,
+          "query_ids": [
+            "M2C1-Q022",
+            "M2C1-Q034"
+          ]
+        },
+        "regressed": {
+          "count": 8,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q014",
+            "M2C1-Q015",
+            "M2C1-Q016",
+            "M2C1-Q021",
+            "M2C1-Q029",
+            "M2C1-Q038",
+            "M2C1-Q050"
+          ]
+        },
+        "unchanged": {
+          "count": 36,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q007",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q017",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q039",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q048",
+            "M2C1-Q049"
+          ]
+        }
+      },
+      "stage": "reranker"
+    },
+    "rrf": {
+      "hit_at_1": {
+        "improved": {
+          "count": 4,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q007",
+            "M2C1-Q016",
+            "M2C1-Q039"
+          ]
+        },
+        "regressed": {
+          "count": 6,
+          "query_ids": [
+            "M2C1-Q015",
+            "M2C1-Q029",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q050"
+          ]
+        },
+        "unchanged": {
+          "count": 36,
+          "query_ids": [
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q006",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q017",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q021",
+            "M2C1-Q022",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q026",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q048",
+            "M2C1-Q049"
+          ]
+        }
+      },
+      "reciprocal_rank_at_5": {
+        "improved": {
+          "count": 5,
+          "query_ids": [
+            "M2C1-Q001",
+            "M2C1-Q007",
+            "M2C1-Q016",
+            "M2C1-Q026",
+            "M2C1-Q039"
+          ]
+        },
+        "regressed": {
+          "count": 8,
+          "query_ids": [
+            "M2C1-Q006",
+            "M2C1-Q015",
+            "M2C1-Q021",
+            "M2C1-Q029",
+            "M2C1-Q045",
+            "M2C1-Q046",
+            "M2C1-Q047",
+            "M2C1-Q050"
+          ]
+        },
+        "unchanged": {
+          "count": 33,
+          "query_ids": [
+            "M2C1-Q002",
+            "M2C1-Q003",
+            "M2C1-Q004",
+            "M2C1-Q005",
+            "M2C1-Q008",
+            "M2C1-Q009",
+            "M2C1-Q011",
+            "M2C1-Q012",
+            "M2C1-Q013",
+            "M2C1-Q014",
+            "M2C1-Q017",
+            "M2C1-Q018",
+            "M2C1-Q019",
+            "M2C1-Q020",
+            "M2C1-Q022",
+            "M2C1-Q023",
+            "M2C1-Q025",
+            "M2C1-Q027",
+            "M2C1-Q028",
+            "M2C1-Q030",
+            "M2C1-Q031",
+            "M2C1-Q033",
+            "M2C1-Q034",
+            "M2C1-Q035",
+            "M2C1-Q036",
+            "M2C1-Q037",
+            "M2C1-Q038",
+            "M2C1-Q040",
+            "M2C1-Q041",
+            "M2C1-Q042",
+            "M2C1-Q044",
+            "M2C1-Q048",
+            "M2C1-Q049"
+          ]
+        }
+      },
+      "stage": "rrf"
+    }
+  },
+  "ranking_digests": {
+    "clause_aware": "8bb3d04c5bda699424b4fed500445b9855906ec56acca4be6b5e52979bc61ca8",
+    "fixed_window": "0acbcdea406fa6d9dc10d7818479a2ee9b0892fa1bd5241d68daf637d4b3b75e"
+  },
+  "representative_cases": {
+    "improved": {
+      "clause_aware": {
+        "first_relevant_rank": 1,
+        "query": "产品 A 的原装电池基础保修期多久？",
+        "query_id": "M2C1-Q001",
+        "top5": [
+          {
+            "candidate_id": "child_3f0bf6fb46cd8a42103ed0dff1649151ad7551bda111409e5b8be85e74cd17f1",
+            "relevance_label": "relevant"
+          },
+          {
+            "candidate_id": "child_fea72f1219d99f4a8116ffc535696a211dc8ee3a2ec1983b5448bf9a75f60e34",
+            "relevance_label": "hard_negative"
+          },
+          {
+            "candidate_id": "child_f3fb611bb4e33acc8133c2388b3c27fb5f8d2242ecf43dd200b0b225868f52c7",
+            "relevance_label": "hard_negative"
+          },
+          {
+            "candidate_id": "child_c0fa0a69e21bc40f6439ee7230abd9e6b7bcbbf94e6c322541edf5fb4238168b",
+            "relevance_label": "unlabeled"
+          },
+          {
+            "candidate_id": "child_839859ce5d94479db827b862dac89a2a6d2b7ea28f7bdc4c385c73944add436e",
+            "relevance_label": "unlabeled"
+          }
+        ]
+      },
+      "fixed_window": {
+        "first_relevant_rank": 2,
+        "query": "产品 A 的原装电池基础保修期多久？",
+        "query_id": "M2C1-Q001",
+        "top5": [
+          {
+            "candidate_id": "child_5b9119374263bddc6ca8c517b151f885ab51047885dc80e4bec2ab918c7acf14",
+            "relevance_label": "hard_negative"
+          },
+          {
+            "candidate_id": "child_926711a50bc164c70b2bf00a6381fc917c6e0d2cd2e5bb1450e9e4b617c4fcb7",
+            "relevance_label": "overlapping"
+          },
+          {
+            "candidate_id": "child_30d69939410d5911ac2e11f1b35e4e02120b324eac268a6119c247f108cfc412",
+            "relevance_label": "overlapping"
+          },
+          {
+            "candidate_id": "child_f7f6103bd7c00b4d4f09512d9e2446b716bdaf1c4e1251ae68e2f178fc9bd3ee",
+            "relevance_label": "unlabeled"
+          },
+          {
+            "candidate_id": "child_277e0c36787d2673c2cf933a408012505443bbaa5f2f80e9aceca2fdaf780440",
+            "relevance_label": "unlabeled"
+          }
+        ]
+      },
+      "stage": "dense"
+    },
+    "regressed": {
+      "clause_aware": {
+        "first_relevant_rank": 2,
+        "query": "战略客户申请 16% 折扣时，销售副总单独批准是否足够？",
+        "query_id": "M2C1-Q015",
+        "top5": [
+          {
+            "candidate_id": "child_2bb198f13e3567ae655822dc7a88adbdbcaa382b06c945878fcbc0b2692705c2",
+            "relevance_label": "hard_negative"
+          },
+          {
+            "candidate_id": "child_ee941002d56f15166b2470b6cb2b92f68c7fbc08ca065ffdad29365fafccadbd",
+            "relevance_label": "relevant"
+          },
+          {
+            "candidate_id": "child_725ebef1540b0f833add06bee72b3d1b7584bf26ce720ce1dce691ab57cda976",
+            "relevance_label": "unlabeled"
+          },
+          {
+            "candidate_id": "child_98b1bda9baa8be54c1d0a807a540fa91b5c08b7f08e52c10cd59aa3d15816333",
+            "relevance_label": "unlabeled"
+          },
+          {
+            "candidate_id": "child_e8000b585f6b21857a95b03218d04fc55bd754d298d8549e295e23a27780feb1",
+            "relevance_label": "unlabeled"
+          }
+        ]
+      },
+      "fixed_window": {
+        "first_relevant_rank": 1,
+        "query": "战略客户申请 16% 折扣时，销售副总单独批准是否足够？",
+        "query_id": "M2C1-Q015",
+        "top5": [
+          {
+            "candidate_id": "child_2fe69363a6cf3956b7d37a384605d905d3317b36945bc57b83131914c102d105",
+            "relevance_label": "overlapping"
+          },
+          {
+            "candidate_id": "child_b8e3363ea7c319add9ab1e6cf4facd80f3cd4546ddae08ee13ce6a994d461f43",
+            "relevance_label": "unlabeled"
+          },
+          {
+            "candidate_id": "child_6c54f64b4a3acdaa0b45400ac9b07558d00e529b3a73bdbc9d839fdefdc62b4c",
+            "relevance_label": "unlabeled"
+          },
+          {
+            "candidate_id": "child_5c9175b4136cfabe918499534d6e755c66d72813e8445760c2d4c1c9be1f87ed",
+            "relevance_label": "unlabeled"
+          },
+          {
+            "candidate_id": "child_87a9a193463a4aa02aa3d9fa2badac22d49414e706b69e44a6bda18fddde9bec",
+            "relevance_label": "unlabeled"
+          }
+        ]
+      },
+      "stage": "dense"
+    },
+    "reranker_changed": {
+      "clause_aware": {
+        "first_relevant_rank": 1,
+        "query": "产品 B 可用量为 70 台时，安全线和紧急线分别意味着什么？",
+        "query_id": "M2C1-Q022",
+        "top5": [
+          {
+            "candidate_id": "child_65683f1bb7e97f7591e0445cbfd616fcd6e4ce15530176478f274db2418a5284",
+            "relevance_label": "relevant"
+          },
+          {
+            "candidate_id": "child_5e3ac12c9c7c710fedaf6b552826ad94af3cbbf9fb99be927a3ff4509e13fe97",
+            "relevance_label": "relevant"
+          },
+          {
+            "candidate_id": "child_91ffa8ce93c7bf1d75a5992347e8d88b879770d6bde4f0b50067d91f275a11bc",
+            "relevance_label": "unlabeled"
+          },
+          {
+            "candidate_id": "child_fa3af4af010207d5c1708de9ed082badd83be65596781d8b4af0f5e70798f4b8",
+            "relevance_label": "hard_negative"
+          },
+          {
+            "candidate_id": "child_119139a564d931ca8221e813d6c52d0efc4d4d855a5b49d811c605f73f1388e9",
+            "relevance_label": "hard_negative"
+          }
+        ]
+      },
+      "fixed_window": {
+        "first_relevant_rank": 2,
+        "query": "产品 B 可用量为 70 台时，安全线和紧急线分别意味着什么？",
+        "query_id": "M2C1-Q022",
+        "top5": [
+          {
+            "candidate_id": "child_c6e9a327e34acbda5db4704a19155aab9ee55ec418bd275b74c8562e0cfaabd6",
+            "relevance_label": "hard_negative"
+          },
+          {
+            "candidate_id": "child_9f8677e667e3e63fa30462a8e182a393fd0d87d5249441402254e60ce6f1485d",
+            "relevance_label": "overlapping"
+          },
+          {
+            "candidate_id": "child_31c696e938321f353b25de4372e737bf1387d213151eaab78341637e891e603b",
+            "relevance_label": "relevant"
+          },
+          {
+            "candidate_id": "child_feb15cb4d3980a91c2c0b4cb9da317a706ceb9b8d63bd24b6cbbbc612e02d7d3",
+            "relevance_label": "unlabeled"
+          },
+          {
+            "candidate_id": "child_277e0c36787d2673c2cf933a408012505443bbaa5f2f80e9aceca2fdaf780440",
+            "relevance_label": "unlabeled"
+          }
+        ]
+      },
+      "stage": "reranker"
+    },
+    "unanswerable_returns_evidence": {
+      "first_relevant_rank": null,
+      "query": "产品 A 的维修完成后，公司承诺免费保修多少天？",
+      "query_id": "M2C1-Q010",
+      "top5": [
+        {
+          "candidate_id": "parent_b7ab43b384348253d18719a076e03a3dc35acab037b6a663e3d376178457dd30",
+          "relevance_label": "hard_negative"
+        },
+        {
+          "candidate_id": "parent_a379512a6188d554cb6bfcb14b201eb033953225dfc9d7cd3829e69d8e55a8fa",
+          "relevance_label": "unlabeled"
+        },
+        {
+          "candidate_id": "parent_9fcd2458f78286cd34b006ab4df45d19d545689eb56aeda4f0b974884772b9d0",
+          "relevance_label": "unlabeled"
+        }
+      ]
+    }
+  },
+  "runtime_comparison": {
+    "clause_aware_query_stage_seconds": {
+      "bm25_query_seconds": {
+        "max": 0.019477699999697506,
+        "mean": 0.013339539999287808,
+        "median": 0.014092950001213467,
+        "min": 0.00420509999821661,
+        "p95": 0.01928412500055856,
+        "total": 0.6669769999643904
+      },
+      "dense_query_seconds": {
+        "max": 0.25156450000213226,
+        "mean": 0.06710230799988494,
+        "median": 0.06379685000138124,
+        "min": 0.022489700000733137,
+        "p95": 0.1055834950002463,
+        "total": 3.355115399994247
+      },
+      "evidence_context_seconds": {
+        "max": 0.00656170000002021,
+        "mean": 0.00349041200010106,
+        "median": 0.00375865000023623,
+        "min": 0.0009508000002824701,
+        "p95": 0.005778820000341509,
+        "total": 0.17452060000505298
+      },
+      "parent_evidence_seconds": {
+        "max": 0.012990600000193808,
+        "mean": 0.0073793220007792116,
+        "median": 0.007896250004705507,
+        "min": 0.002165899997635279,
+        "p95": 0.011144744999546674,
+        "total": 0.3689661000389606
+      },
+      "parent_expansion_seconds": {
+        "max": 0.006513899999845307,
+        "mean": 0.0038889100006781517,
+        "median": 0.0042047499991895165,
+        "min": 0.0011492999983602203,
+        "p95": 0.0057279649994598,
+        "total": 0.1944455000339076
+      },
+      "reranker_seconds": {
+        "max": 2.0368137000041315,
+        "mean": 1.2111011759999384,
+        "median": 1.3561669000009715,
+        "min": 0.3852342999962275,
+        "p95": 1.751442879997921,
+        "total": 60.555058799996914
+      },
+      "rrf_seconds": {
+        "max": 0.014631599995482247,
+        "mean": 0.009473721999820555,
+        "median": 0.010215999998763436,
+        "min": 0.0033462999999755993,
+        "p95": 0.013747375001548788,
+        "total": 0.47368609999102773
+      },
+      "total_runtime_seconds": {
+        "max": 2.1516632999992,
+        "mean": 1.3116533399994659,
+        "median": 1.4601477499963949,
+        "min": 0.4216669000015827,
+        "p95": 1.8575565149993047,
+        "total": 65.5826669999733
+      }
+    },
+    "fixed_window_query_stage_seconds": {
+      "bm25_query_seconds": {
+        "max": 0.012310800000705058,
+        "mean": 0.004354818000210798,
+        "median": 0.0036788000015803846,
+        "min": 0.002913200001785299,
+        "p95": 0.00898984000086784,
+        "total": 0.21774090001053992
+      },
+      "dense_query_seconds": {
+        "max": 0.07410829999935231,
+        "mean": 0.022766477999975904,
+        "median": 0.018825099999958184,
+        "min": 0.014923899998393608,
+        "p95": 0.04629431000030308,
+        "total": 1.1383238999987952
+      },
+      "evidence_context_seconds": {
+        "max": 0.007393100000626873,
+        "mean": 0.0013355279999086632,
+        "median": 0.001042300000335672,
+        "min": 0.0007190000033006072,
+        "p95": 0.0029777150013615026,
+        "total": 0.06677639999543317
+      },
+      "parent_evidence_seconds": {
+        "max": 0.011615399998845533,
+        "mean": 0.0026895160001731712,
+        "median": 0.00214965000122902,
+        "min": 0.0015313000039895996,
+        "p95": 0.005920085001343975,
+        "total": 0.13447580000865855
+      },
+      "parent_expansion_seconds": {
+        "max": 0.004222299998218659,
+        "mean": 0.0013539880002645078,
+        "median": 0.0010900500001298496,
+        "min": 0.0008123000006889924,
+        "p95": 0.0030438450015935798,
+        "total": 0.06769940001322539
+      },
+      "reranker_seconds": {
+        "max": 2.1572916000004625,
+        "mean": 0.829811552000101,
+        "median": 0.6975256499990792,
+        "min": 0.6075270000001183,
+        "p95": 1.870677275000162,
+        "total": 41.490577600005054
+      },
+      "rrf_seconds": {
+        "max": 0.010112500000104774,
+        "mean": 0.0035385160001169423,
+        "median": 0.003005049999046605,
+        "min": 0.002430099997582147,
+        "p95": 0.007879965001484376,
+        "total": 0.17692580000584712
+      },
+      "total_runtime_seconds": {
+        "max": 2.2537710000033258,
+        "mean": 0.8643104620000668,
+        "median": 0.7286636500011809,
+        "min": 0.6352484000017284,
+        "p95": 1.941441605001637,
+        "total": 43.21552310000334
+      }
+    },
+    "initialization_seconds": {
+      "clause_aware": {
+        "bm25_index_build_seconds": 0.03773229999933392,
+        "data_load_seconds": 0.01873409999825526,
+        "dense_index_build_seconds": 3.2980466000008164,
+        "dependency_ready_check_seconds": 2.3399996280204505e-05,
+        "embedding_model_load_seconds": 32.62780539999949,
+        "reranker_model_load_seconds": 10.297257199999876,
+        "total_initialization_seconds": 46.45995109999785
+      },
+      "fixed_window": {
+        "bm25_index_build_seconds": 0.027084600002126535,
+        "data_load_seconds": 0.005747999999584863,
+        "dense_index_build_seconds": 2.3940236999987974,
+        "dependency_ready_check_seconds": 1.8399998225504532e-05,
+        "embedding_model_load_seconds": 0.12776490000032936,
+        "reranker_model_load_seconds": 3.2009237999991456,
+        "total_initialization_seconds": 5.759892000001855
+      }
+    },
+    "semantics": "Both variants use the same model revisions, CPU, and Pipeline configuration, but the fixed result is a historical run and the Clause-aware result is one separate process observation. OS cache, process state, and CPU variation can affect values; this is not a controlled performance benchmark or a causal latency attribution."
+  },
+  "saved_result_failure_counts": {
+    "clause_aware": 24,
+    "fixed_window": 18
+  },
+  "schema_version": "1.0",
+  "stage_metric_comparison": {
+    "bm25": {
+      "hit_rate_at_1": {
+        "clause_aware": 0.6739130434782609,
+        "delta": -0.17391304347826086,
+        "fixed_window": 0.8478260869565217
+      },
+      "hit_rate_at_3": {
+        "clause_aware": 0.9130434782608695,
+        "delta": -0.08695652173913049,
+        "fixed_window": 1.0
+      },
+      "hit_rate_at_5": {
+        "clause_aware": 0.9782608695652174,
+        "delta": -0.021739130434782594,
+        "fixed_window": 1.0
+      },
+      "mrr_at_5": {
+        "clause_aware": 0.8014492753623188,
+        "delta": -0.11521739130434783,
+        "fixed_window": 0.9166666666666666
+      },
+      "recall_at_1": {
+        "clause_aware": 0.45108695652173914,
+        "delta": 0.013043478260869601,
+        "fixed_window": 0.43804347826086953
+      },
+      "recall_at_3": {
+        "clause_aware": 0.6771739130434782,
+        "delta": -0.03949275362318849,
+        "fixed_window": 0.7166666666666667
+      },
+      "recall_at_5": {
+        "clause_aware": 0.7985507246376812,
+        "delta": -0.05326086956521725,
+        "fixed_window": 0.8518115942028984
+      }
+    },
+    "dense": {
+      "hit_rate_at_1": {
+        "clause_aware": 0.7608695652173914,
+        "delta": -0.04347826086956519,
+        "fixed_window": 0.8043478260869565
+      },
+      "hit_rate_at_3": {
+        "clause_aware": 1.0,
+        "delta": 0.021739130434782594,
+        "fixed_window": 0.9782608695652174
+      },
+      "hit_rate_at_5": {
+        "clause_aware": 1.0,
+        "delta": 0.0,
+        "fixed_window": 1.0
+      },
+      "mrr_at_5": {
+        "clause_aware": 0.8731884057971014,
+        "delta": -0.019927536231884146,
+        "fixed_window": 0.8931159420289856
+      },
+      "recall_at_1": {
+        "clause_aware": 0.4934782608695652,
+        "delta": 0.09891304347826091,
+        "fixed_window": 0.3945652173913043
+      },
+      "recall_at_3": {
+        "clause_aware": 0.7728260869565217,
+        "delta": 0.02644927536231867,
+        "fixed_window": 0.746376811594203
+      },
+      "recall_at_5": {
+        "clause_aware": 0.8623188405797101,
+        "delta": 0.022101449275362284,
+        "fixed_window": 0.8402173913043478
+      }
+    },
+    "evidence": {
+      "hit_rate_at_1": {
+        "clause_aware": 0.9347826086956522,
+        "delta": -0.021739130434782594,
+        "fixed_window": 0.9565217391304348
+      },
+      "hit_rate_at_3": {
+        "clause_aware": 1.0,
+        "delta": 0.0,
+        "fixed_window": 1.0
+      },
+      "hit_rate_at_5": {
+        "clause_aware": 1.0,
+        "delta": 0.0,
+        "fixed_window": 1.0
+      },
+      "mrr_at_5": {
+        "clause_aware": 0.967391304347826,
+        "delta": -0.010869565217391353,
+        "fixed_window": 0.9782608695652174
+      },
+      "recall_at_1": {
+        "clause_aware": 0.7391304347826086,
+        "delta": 0.059782608695652106,
+        "fixed_window": 0.6793478260869565
+      },
+      "recall_at_3": {
+        "clause_aware": 0.9492753623188406,
+        "delta": 0.05615942028985499,
+        "fixed_window": 0.8931159420289856
+      },
+      "recall_at_5": {
+        "clause_aware": 0.9565217391304348,
+        "delta": 0.034420289855072506,
+        "fixed_window": 0.9221014492753623
+      }
+    },
+    "parent": {
+      "hit_rate_at_1": {
+        "clause_aware": 0.9347826086956522,
+        "delta": -0.021739130434782594,
+        "fixed_window": 0.9565217391304348
+      },
+      "hit_rate_at_3": {
+        "clause_aware": 1.0,
+        "delta": 0.0,
+        "fixed_window": 1.0
+      },
+      "hit_rate_at_5": {
+        "clause_aware": 1.0,
+        "delta": 0.0,
+        "fixed_window": 1.0
+      },
+      "mrr_at_5": {
+        "clause_aware": 0.967391304347826,
+        "delta": -0.010869565217391353,
+        "fixed_window": 0.9782608695652174
+      },
+      "recall_at_1": {
+        "clause_aware": 0.7391304347826086,
+        "delta": 0.059782608695652106,
+        "fixed_window": 0.6793478260869565
+      },
+      "recall_at_3": {
+        "clause_aware": 0.9492753623188406,
+        "delta": 0.05615942028985499,
+        "fixed_window": 0.8931159420289856
+      },
+      "recall_at_5": {
+        "clause_aware": 0.9565217391304348,
+        "delta": 0.034420289855072506,
+        "fixed_window": 0.9221014492753623
+      }
+    },
+    "reranker": {
+      "hit_rate_at_1": {
+        "clause_aware": 0.8260869565217391,
+        "delta": -0.10869565217391308,
+        "fixed_window": 0.9347826086956522
+      },
+      "hit_rate_at_3": {
+        "clause_aware": 0.9782608695652174,
+        "delta": -0.021739130434782594,
+        "fixed_window": 1.0
+      },
+      "hit_rate_at_5": {
+        "clause_aware": 0.9782608695652174,
+        "delta": -0.021739130434782594,
+        "fixed_window": 1.0
+      },
+      "mrr_at_5": {
+        "clause_aware": 0.8985507246376813,
+        "delta": -0.06884057971014479,
+        "fixed_window": 0.967391304347826
+      },
+      "recall_at_1": {
+        "clause_aware": 0.5666666666666667,
+        "delta": 0.11521739130434783,
+        "fixed_window": 0.4514492753623188
+      },
+      "recall_at_3": {
+        "clause_aware": 0.7855072463768116,
+        "delta": 0.022101449275362284,
+        "fixed_window": 0.7634057971014493
+      },
+      "recall_at_5": {
+        "clause_aware": 0.8344202898550724,
+        "delta": -0.012681159420289911,
+        "fixed_window": 0.8471014492753624
+      }
+    },
+    "rrf": {
+      "hit_rate_at_1": {
+        "clause_aware": 0.8043478260869565,
+        "delta": -0.04347826086956519,
+        "fixed_window": 0.8478260869565217
+      },
+      "hit_rate_at_3": {
+        "clause_aware": 0.9565217391304348,
+        "delta": -0.04347826086956519,
+        "fixed_window": 1.0
+      },
+      "hit_rate_at_5": {
+        "clause_aware": 0.9782608695652174,
+        "delta": -0.021739130434782594,
+        "fixed_window": 1.0
+      },
+      "mrr_at_5": {
+        "clause_aware": 0.878623188405797,
+        "delta": -0.03804347826086962,
+        "fixed_window": 0.9166666666666666
+      },
+      "recall_at_1": {
+        "clause_aware": 0.5177536231884058,
+        "delta": 0.11050724637681159,
+        "fixed_window": 0.4072463768115942
+      },
+      "recall_at_3": {
+        "clause_aware": 0.738768115942029,
+        "delta": -0.022101449275362395,
+        "fixed_window": 0.7608695652173914
+      },
+      "recall_at_5": {
+        "clause_aware": 0.8065217391304348,
+        "delta": -0.05978260869565222,
+        "fixed_window": 0.866304347826087
+      }
+    }
+  },
+  "structural_comparison": {
+    "clause_aware": {
+      "child_chunk_count": 129,
+      "child_collision_query_count": 0,
+      "chunk_length_chars": {
+        "child": {
+          "count": 129.0,
+          "mean_content_chars": 137.51937984496124
+        },
+        "parent": {
+          "count": 52.0,
+          "mean_content_chars": 418.5769230769231
+        }
+      },
+      "cross_clause_child_count": 0,
+      "cross_section_child_count": 0,
+      "no_independent_hard_negative_child_query_count": 0,
+      "no_independent_hard_negative_parent_query_count": 15,
+      "parent_chunk_count": 52,
+      "parent_collision_query_count": 33
+    },
+    "fixed_window": {
+      "child_chunk_count": 87,
+      "child_collision_query_count": 35,
+      "chunk_length_chars": {
+        "child": {
+          "count": 87.0,
+          "mean_content_chars": 282.9425287356322
+        },
+        "parent": {
+          "count": 30.0,
+          "mean_content_chars": 725.5333333333333
+        }
+      },
+      "cross_clause_child_count": null,
+      "cross_section_child_count": null,
+      "no_independent_hard_negative_child_query_count": 9,
+      "no_independent_hard_negative_parent_query_count": 22,
+      "parent_chunk_count": 30,
+      "parent_collision_query_count": 36
+    }
+  },
+  "unanswerable_behavior": {
+    "clause_aware": [
+      {
+        "child_candidate_counts": {
+          "bm25": 10,
+          "dense": 10,
+          "reranker": 5,
+          "rrf": 10
+        },
+        "evidence_count": 3,
+        "parent_count": 3,
+        "query_id": "M2C1-Q010",
+        "top5_label_counts": {
+          "bm25": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          },
+          "dense": {
+            "unlabeled": 5
+          },
+          "evidence": {
+            "hard_negative": 1,
+            "unlabeled": 2
+          },
+          "parent": {
+            "hard_negative": 1,
+            "unlabeled": 2
+          },
+          "reranker": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          },
+          "rrf": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          }
+        },
+        "top_evidence": {
+          "document_id": "DOC-CS-001",
+          "end_offset": 984,
+          "evidence_id": "E1",
+          "parent_id": "parent_b7ab43b384348253d18719a076e03a3dc35acab037b6a663e3d376178457dd30",
+          "relevance_label": "hard_negative",
+          "source": "documents/DOC-CS-001_product_warranty_policy.md",
+          "start_offset": 548
+        }
+      },
+      {
+        "child_candidate_counts": {
+          "bm25": 10,
+          "dense": 10,
+          "reranker": 5,
+          "rrf": 10
+        },
+        "evidence_count": 2,
+        "parent_count": 2,
+        "query_id": "M2C1-Q024",
+        "top5_label_counts": {
+          "bm25": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          },
+          "dense": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          },
+          "evidence": {
+            "hard_negative": 1,
+            "unlabeled": 1
+          },
+          "parent": {
+            "hard_negative": 1,
+            "unlabeled": 1
+          },
+          "reranker": {
+            "hard_negative": 2,
+            "unlabeled": 3
+          },
+          "rrf": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          }
+        },
+        "top_evidence": {
+          "document_id": "DOC-INV-001",
+          "end_offset": 1433,
+          "evidence_id": "E1",
+          "parent_id": "parent_ff0ce98f636c6f4a6408333a312f86b9b278dc21362e788ebbd2d42bc710330c",
+          "relevance_label": "hard_negative",
+          "source": "documents/DOC-INV-001_inventory_replenishment_policy.md",
+          "start_offset": 769
+        }
+      },
+      {
+        "child_candidate_counts": {
+          "bm25": 10,
+          "dense": 10,
+          "reranker": 5,
+          "rrf": 10
+        },
+        "evidence_count": 5,
+        "parent_count": 5,
+        "query_id": "M2C1-Q032",
+        "top5_label_counts": {
+          "bm25": {
+            "unlabeled": 5
+          },
+          "dense": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          },
+          "evidence": {
+            "unlabeled": 5
+          },
+          "parent": {
+            "unlabeled": 5
+          },
+          "reranker": {
+            "unlabeled": 5
+          },
+          "rrf": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          }
+        },
+        "top_evidence": {
+          "document_id": "DOC-CS-001",
+          "end_offset": 1427,
+          "evidence_id": "E1",
+          "parent_id": "parent_9fcd2458f78286cd34b006ab4df45d19d545689eb56aeda4f0b974884772b9d0",
+          "relevance_label": "unlabeled",
+          "source": "documents/DOC-CS-001_product_warranty_policy.md",
+          "start_offset": 984
+        }
+      },
+      {
+        "child_candidate_counts": {
+          "bm25": 10,
+          "dense": 10,
+          "reranker": 5,
+          "rrf": 10
+        },
+        "evidence_count": 4,
+        "parent_count": 4,
+        "query_id": "M2C1-Q043",
+        "top5_label_counts": {
+          "bm25": {
+            "hard_negative": 2,
+            "unlabeled": 3
+          },
+          "dense": {
+            "hard_negative": 2,
+            "unlabeled": 3
+          },
+          "evidence": {
+            "hard_negative": 2,
+            "unlabeled": 2
+          },
+          "parent": {
+            "hard_negative": 2,
+            "unlabeled": 2
+          },
+          "reranker": {
+            "hard_negative": 2,
+            "unlabeled": 3
+          },
+          "rrf": {
+            "hard_negative": 2,
+            "unlabeled": 3
+          }
+        },
+        "top_evidence": {
+          "document_id": "DOC-FIN-001",
+          "end_offset": 762,
+          "evidence_id": "E1",
+          "parent_id": "parent_79c696b7b166ebec178f770814677376f7a34ae88d57ee627a1d4bdb5b269056",
+          "relevance_label": "unlabeled",
+          "source": "documents/DOC-FIN-001_expense_budget_control.md",
+          "start_offset": 0
+        }
+      }
+    ],
+    "fixed_window": [
+      {
+        "child_candidate_counts": {
+          "bm25": 10,
+          "dense": 10,
+          "reranker": 5,
+          "rrf": 10
+        },
+        "evidence_count": 4,
+        "parent_count": 4,
+        "query_id": "M2C1-Q010",
+        "top5_label_counts": {
+          "bm25": {
+            "hard_negative": 2,
+            "unlabeled": 3
+          },
+          "dense": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          },
+          "evidence": {
+            "hard_negative": 2,
+            "unlabeled": 2
+          },
+          "parent": {
+            "hard_negative": 2,
+            "unlabeled": 2
+          },
+          "reranker": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          },
+          "rrf": {
+            "hard_negative": 2,
+            "unlabeled": 3
+          }
+        },
+        "top_evidence": {
+          "document_id": "DOC-CS-001",
+          "end_offset": 800,
+          "evidence_id": "E1",
+          "parent_id": "parent_c20574f8f98ec1640d34dd3b7145b403cfc2a1a07025efd0e6f3d91f4cdc2f35",
+          "relevance_label": "hard_negative",
+          "source": "documents/DOC-CS-001_product_warranty_policy.md",
+          "start_offset": 0
+        }
+      },
+      {
+        "child_candidate_counts": {
+          "bm25": 10,
+          "dense": 10,
+          "reranker": 5,
+          "rrf": 10
+        },
+        "evidence_count": 2,
+        "parent_count": 2,
+        "query_id": "M2C1-Q024",
+        "top5_label_counts": {
+          "bm25": {
+            "hard_negative": 3,
+            "unlabeled": 2
+          },
+          "dense": {
+            "hard_negative": 2,
+            "unlabeled": 3
+          },
+          "evidence": {
+            "hard_negative": 1,
+            "unlabeled": 1
+          },
+          "parent": {
+            "hard_negative": 1,
+            "unlabeled": 1
+          },
+          "reranker": {
+            "hard_negative": 3,
+            "unlabeled": 2
+          },
+          "rrf": {
+            "hard_negative": 3,
+            "unlabeled": 2
+          }
+        },
+        "top_evidence": {
+          "document_id": "DOC-INV-001",
+          "end_offset": 800,
+          "evidence_id": "E1",
+          "parent_id": "parent_1bd13d3434a3f456cb0a457fcac7f603cfed7b2ac87772475d4e021b2767d5f3",
+          "relevance_label": "unlabeled",
+          "source": "documents/DOC-INV-001_inventory_replenishment_policy.md",
+          "start_offset": 0
+        }
+      },
+      {
+        "child_candidate_counts": {
+          "bm25": 10,
+          "dense": 10,
+          "reranker": 5,
+          "rrf": 10
+        },
+        "evidence_count": 5,
+        "parent_count": 5,
+        "query_id": "M2C1-Q032",
+        "top5_label_counts": {
+          "bm25": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          },
+          "dense": {
+            "hard_negative": 2,
+            "unlabeled": 3
+          },
+          "evidence": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          },
+          "parent": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          },
+          "reranker": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          },
+          "rrf": {
+            "hard_negative": 1,
+            "unlabeled": 4
+          }
+        },
+        "top_evidence": {
+          "document_id": "DOC-CS-001",
+          "end_offset": 1600,
+          "evidence_id": "E1",
+          "parent_id": "parent_f6c592709123a7cd548b4d90e92e8268294e96da75d98fe0beca011b25dbbe6c",
+          "relevance_label": "unlabeled",
+          "source": "documents/DOC-CS-001_product_warranty_policy.md",
+          "start_offset": 800
+        }
+      },
+      {
+        "child_candidate_counts": {
+          "bm25": 10,
+          "dense": 10,
+          "reranker": 5,
+          "rrf": 10
+        },
+        "evidence_count": 3,
+        "parent_count": 3,
+        "query_id": "M2C1-Q043",
+        "top5_label_counts": {
+          "bm25": {
+            "hard_negative": 3,
+            "unlabeled": 2
+          },
+          "dense": {
+            "hard_negative": 2,
+            "unlabeled": 3
+          },
+          "evidence": {
+            "hard_negative": 2,
+            "unlabeled": 1
+          },
+          "parent": {
+            "hard_negative": 2,
+            "unlabeled": 1
+          },
+          "reranker": {
+            "hard_negative": 3,
+            "unlabeled": 2
+          },
+          "rrf": {
+            "hard_negative": 3,
+            "unlabeled": 2
+          }
+        },
+        "top_evidence": {
+          "document_id": "DOC-FIN-001",
+          "end_offset": 800,
+          "evidence_id": "E1",
+          "parent_id": "parent_3d775a3625d35c2a360585869514811b1052d5e9a4cf066311f167364fd94845",
+          "relevance_label": "unlabeled",
+          "source": "documents/DOC-FIN-001_expense_budget_control.md",
+          "start_offset": 0
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "baseline_id": "m2c2a2-enterprise-real-retrieval-baseline-v1",
+  "execution_contract": {
+    "fresh_pipeline_and_provider_instances_per_run": true,
+    "production_sla_claim": false,
+    "run_b_is_independent_cold_start": false,
+    "run_order": [
+      "A",
+      "B"
+    ],
+    "same_python_process": true,
+    "sequential": true
+  },
+  "measurement_scope": "本机 CPU 单次观测",
+  "model_download_seconds": {
+    "excluded_from_all_formal_timings": true,
+    "value": 29.733823
+  },
+  "run_a": {
+    "cli_validation": {
+      "excluded_from_formal_50_query_timings": true,
+      "query_count": 0,
+      "seconds": 5.000001692678779e-07
+    },
+    "initialization": {
+      "bm25_index_build_seconds": 0.07937519999904907,
+      "data_load_seconds": 0.015518899999733549,
+      "dense_index_build_seconds": 6.025721900001372,
+      "dependency_ready_check_seconds": 3.0300001526484266e-05,
+      "embedding_model_load_seconds": 41.02210389999891,
+      "reranker_model_load_seconds": 10.290430599998217,
+      "total_initialization_seconds": 57.44273969999995
+    },
+    "query_stage_distributions": {
+      "bm25_query_seconds": {
+        "max": 0.012723399999231333,
+        "mean": 0.007868595999971148,
+        "median": 0.00922540000101435,
+        "min": 0.0028635000016947743,
+        "p95": 0.0124003349992563,
+        "total": 0.39342979999855743
+      },
+      "dense_query_seconds": {
+        "max": 0.11061409999820171,
+        "mean": 0.0496945740000956,
+        "median": 0.050942900001246016,
+        "min": 0.01747080000131973,
+        "p95": 0.0928527500005657,
+        "total": 2.48472870000478
+      },
+      "evidence_context_seconds": {
+        "max": 0.004441500001121312,
+        "mean": 0.0025436800002353265,
+        "median": 0.003039100000023609,
+        "min": 0.0006728999978804495,
+        "p95": 0.004146074998789118,
+        "total": 0.12718400001176633
+      },
+      "parent_expansion_seconds": {
+        "max": 0.005117900000186637,
+        "mean": 0.0027827600002638063,
+        "median": 0.003104600000369828,
+        "min": 0.0008252000006905291,
+        "p95": 0.004601680001542263,
+        "total": 0.13913800001319032
+      },
+      "reranker_seconds": {
+        "max": 3.080888700002106,
+        "mean": 1.77814298399986,
+        "median": 2.0511293500003376,
+        "min": 0.6334623000002466,
+        "p95": 2.9407738500003684,
+        "total": 88.907149199993
+      },
+      "rrf_seconds": {
+        "max": 0.012388500002998626,
+        "mean": 0.007206339999975171,
+        "median": 0.008379450002394151,
+        "min": 0.0028486999981396366,
+        "p95": 0.011603479998848342,
+        "total": 0.36031699999875855
+      },
+      "total_runtime_seconds": {
+        "max": 3.2190692000003764,
+        "mean": 1.8504069300000991,
+        "median": 2.1372399000010773,
+        "min": 0.6606623999978183,
+        "p95": 3.0496365699989836,
+        "total": 92.52034650000496
+      }
+    },
+    "run_label": "A",
+    "run_semantics": {
+      "fresh_embedding_provider_instance": true,
+      "fresh_pipeline_instance": true,
+      "fresh_reranker_instance": true,
+      "independent_cold_start_claim": false,
+      "lazy_model_load_outside_timer": false,
+      "model_load_boundary": "Each timer surrounds the complete provider.initialize() call before Pipeline initialization; the Pipeline dependency-ready recheck is reported separately.",
+      "possible_cache_effects": [
+        "operating_system_page_cache",
+        "underlying_library_process_state"
+      ],
+      "process_position": "current_process_first_observation",
+      "same_python_process_as_other_run": true
+    },
+    "warmup": {
+      "excluded_from_formal_queries": true,
+      "query": "企业制度流程检索验证",
+      "seconds": 3.937280899997859
+    }
+  },
+  "run_b": {
+    "cli_validation": {
+      "excluded_from_formal_50_query_timings": true,
+      "query_count": 4,
+      "seconds": 7.456429000001663
+    },
+    "initialization": {
+      "bm25_index_build_seconds": 0.027084600002126535,
+      "data_load_seconds": 0.005747999999584863,
+      "dense_index_build_seconds": 2.3940236999987974,
+      "dependency_ready_check_seconds": 1.8399998225504532e-05,
+      "embedding_model_load_seconds": 0.12776490000032936,
+      "reranker_model_load_seconds": 3.2009237999991456,
+      "total_initialization_seconds": 5.759892000001855
+    },
+    "query_stage_distributions": {
+      "bm25_query_seconds": {
+        "max": 0.012310800000705058,
+        "mean": 0.004354818000210798,
+        "median": 0.0036788000015803846,
+        "min": 0.002913200001785299,
+        "p95": 0.00898984000086784,
+        "total": 0.21774090001053992
+      },
+      "dense_query_seconds": {
+        "max": 0.07410829999935231,
+        "mean": 0.022766477999975904,
+        "median": 0.018825099999958184,
+        "min": 0.014923899998393608,
+        "p95": 0.04629431000030308,
+        "total": 1.1383238999987952
+      },
+      "evidence_context_seconds": {
+        "max": 0.007393100000626873,
+        "mean": 0.0013355279999086632,
+        "median": 0.001042300000335672,
+        "min": 0.0007190000033006072,
+        "p95": 0.0029777150013615026,
+        "total": 0.06677639999543317
+      },
+      "parent_expansion_seconds": {
+        "max": 0.004222299998218659,
+        "mean": 0.0013539880002645078,
+        "median": 0.0010900500001298496,
+        "min": 0.0008123000006889924,
+        "p95": 0.0030438450015935798,
+        "total": 0.06769940001322539
+      },
+      "reranker_seconds": {
+        "max": 2.1572916000004625,
+        "mean": 0.829811552000101,
+        "median": 0.6975256499990792,
+        "min": 0.6075270000001183,
+        "p95": 1.870677275000162,
+        "total": 41.490577600005054
+      },
+      "rrf_seconds": {
+        "max": 0.010112500000104774,
+        "mean": 0.0035385160001169423,
+        "median": 0.003005049999046605,
+        "min": 0.002430099997582147,
+        "p95": 0.007879965001484376,
+        "total": 0.17692580000584712
+      },
+      "total_runtime_seconds": {
+        "max": 2.2537710000033258,
+        "mean": 0.8643104620000668,
+        "median": 0.7286636500011809,
+        "min": 0.6352484000017284,
+        "p95": 1.941441605001637,
+        "total": 43.21552310000334
+      }
+    },
+    "run_label": "B",
+    "run_semantics": {
+      "fresh_embedding_provider_instance": true,
+      "fresh_pipeline_instance": true,
+      "fresh_reranker_instance": true,
+      "independent_cold_start_claim": false,
+      "lazy_model_load_outside_timer": false,
+      "model_load_boundary": "Each timer surrounds the complete provider.initialize() call before Pipeline initialization; the Pipeline dependency-ready recheck is reported separately.",
+      "possible_cache_effects": [
+        "operating_system_page_cache",
+        "underlying_library_process_state"
+      ],
+      "process_position": "same_process_subsequent_observation",
+      "same_python_process_as_other_run": true
+    },
+    "warmup": {
+      "excluded_from_formal_queries": true,
+      "query": "企业制度流程检索验证",
+      "seconds": 0.8882661000025109
+    }
+  },
+  "run_b_total_query_seconds_summary": {
+    "max": 2.2537710000033258,
+    "mean": 0.8643104620000668,
+    "median": 0.7286636500011809,
+    "min": 0.6352484000017284,
+    "p95": 1.941441605001637,
+    "total": 43.21552310000334
+  },
+  "schema_version": "1.0"
+}

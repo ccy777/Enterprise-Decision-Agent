@@ -1,0 +1,155 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+env:
+  DECISION_AGENT_APP_NAME: Enterprise Decision Agent
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.lock
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -r requirements.lock
+      - run: python -m pip install -e . --no-deps
+      - run: python scripts/validate_dependency_lock.py
+      - run: python -m pip check
+      - run: python -m ruff check .
+      - run: python -m ruff format --check .
+      - run: docker compose config --quiet --no-interpolate
+      - name: Verify frozen Retrieval evidence without models
+        run: python scripts/verify_retrieval_evidence.py
+      - name: Verify strict M9 frozen derivation without Provider calls
+        run: python scripts/calculate_m9_metrics.py artifacts/evaluation/m9-final-eval-v1/case_records.jsonl --dataset datasets/agent_tasks/m9_final_eval_v1.json --adjudications artifacts/evaluation/m9-final-eval-v1/adjudications.json --output /tmp/m9-v102-metrics.json --manifest-output /tmp/m9-v102-manifest.json
+      - name: Check JavaScript only when project files exist
+        shell: bash
+        run: |
+          mapfile -t files < <(find src tests scripts -type f \( -name '*.js' -o -name '*.mjs' -o -name '*.cjs' \) 2>/dev/null)
+          if ((${#files[@]})); then node --check "${files[@]}"; fi
+
+  unit:
+    name: unit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.lock
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -r requirements.lock
+      - run: python -m pip install -e . --no-deps
+      - run: python -m pytest -q tests/unit --junitxml=test-results/unit.xml
+      - name: Parse JUnit without publishing test text
+        run: python -c "import xml.etree.ElementTree as e; r=e.parse('test-results/unit.xml').getroot(); assert sum(int(x.attrib.get('failures', 0)) + int(x.attrib.get('errors', 0)) for x in r.iter('testsuite')) == 0"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: unit-junit
+          path: test-results/unit.xml
+          if-no-files-found: error
+          retention-days: 7
+
+  security-evaluation:
+    name: security-evaluation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.lock
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -r requirements.lock
+      - run: python -m pip install -e . --no-deps
+      - run: python -m pytest -q tests/unit/evaluation/test_security_evaluation.py
+      - run: python scripts/run_security_evaluation.py --output security-artifacts/m8c-security-summary.json
+      - name: Verify exact case evidence and aggregate thresholds
+        run: python -c "import json; r=json.load(open('security-artifacts/m8c-security-summary.json', encoding='utf-8')); d=json.load(open('datasets/security/m8c_d_security_cases.json', encoding='utf-8')); ids=[x['case_id'] for x in r['case_results']]; expected={x['case_id'] for x in d}; assert r['total_cases'] == r['passed'] == len(ids) == len(set(ids)) == len(expected) == 28 and set(ids) == expected and all(x['passed'] for x in r['case_results']) and r['failed'] == r['unauthorized_release_count'] == r['sensitive_leak_count'] == r['provider_bypass_count'] == r['tool_bypass_count'] == 0 and r['fail_closed_rate'] == r['audit_integrity_detection_rate'] == 1.0"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: m8c-security-summary
+          path: security-artifacts/m8c-security-summary.json
+          if-no-files-found: error
+          retention-days: 7
+
+  secret-scan:
+    name: secret-scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  dependency-scan:
+    name: dependency-scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.lock
+      - run: python -m pip install --upgrade pip "pip-audit==2.9.0"
+      - run: python -m pip_audit --strict -r requirements.lock
+
+  offline-integration:
+    name: offline-integration
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.lock
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -r requirements.lock
+      - run: python -m pip install -e . --no-deps
+      - name: Run stable offline integration contract
+        run: python -m pytest -q -m offline_integration --strict-markers --import-mode=importlib --junitxml=test-results/offline-integration.xml
+      - name: Parse offline JUnit without publishing test text
+        run: python -c "import xml.etree.ElementTree as e; r=e.parse('test-results/offline-integration.xml').getroot(); assert sum(int(x.attrib.get('failures', 0)) + int(x.attrib.get('errors', 0)) for x in r.iter('testsuite')) == 0"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: offline-integration-junit
+          path: test-results/offline-integration.xml
+          if-no-files-found: error
+          retention-days: 7

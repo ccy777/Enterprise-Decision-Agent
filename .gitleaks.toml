@@ -1,0 +1,13 @@
+title = "Enterprise Decision Agent Gitleaks configuration"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+
+[[rules.allowlists]]
+description = "Pinned synthetic Retrieval summary document-content hashes"
+paths = [
+  '''^artifacts/evaluation/m2c2a2-retrieval-evidence-v1/source_snapshot/m2c1_parent_child_summary\.json$''',
+]

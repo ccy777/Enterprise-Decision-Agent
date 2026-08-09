@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "evidence_kind": "frozen_retrieval",
+  "source_tag": "v1.0.2",
+  "source_commit": "6c6ce94815394b9c295bc9b299ec34b2d29d8aa0",
+  "source_files": [
+    {
+      "path": "artifacts/evaluation/m2c2a2_retrieval_baseline.json",
+      "sha256": "30bda36007032c250b9d3113b62e9c3a7601306bd04fc44cad5454ed3046e216",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m2c2a2_query_results.jsonl",
+      "sha256": "aa04f190fa0ab506b0e180910a427bee21542a37950d7e87f39e9d91055947ab",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m2c2a2_failure_cases.jsonl",
+      "sha256": "640c6b33a6db55e8a8d3711bd4d38d1a95bbf3adbc9ee75de7fa17fc6dd4ba93",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m2c2a2_runtime_profile.json",
+      "sha256": "3cfd288850348a4fb995f4908296b14309e2593a1b42e908cda405037bff359d",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m2c2a2-retrieval-evidence-v1/manifest.json",
+      "sha256": "5ff945bd8338ce157fdd6dfecbd0d3b51ed9173d0f366ca954ebe938e7367459",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m2c2a2-retrieval-evidence-v1/source_snapshot/child_chunks.jsonl",
+      "sha256": "6e0258cb29edc7649b691c40b7e2fc35ecaabcba2922ffcaa00f152d17f11226",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m2c2a2-retrieval-evidence-v1/source_snapshot/clause_chunk_map.jsonl",
+      "sha256": "9c2576ea2131aac0e04f274230ab32e77fd863c43cdd4a084919df9d452bd9f3",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m2c2a2-retrieval-evidence-v1/source_snapshot/m2c1_parent_child_summary.json",
+      "sha256": "34f3d642c0e6378b35b0a9550ab97bf7f96dbb385400f2a7f5fbe1e1e74de386",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m2c2a2-retrieval-evidence-v1/source_snapshot/parent_chunks.jsonl",
+      "sha256": "fbfdae4a53288c0b5bd42efca8f997212b5ed11fe842679d4d6c2dfd6e292fa4",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m2c2a2-retrieval-evidence-v1/source_snapshot/query_blueprint.jsonl",
+      "sha256": "3c10efe71df577dff0d575b51a5a4d3dd2d5a32f78ca09ba2fd698f136803e73",
+      "byte_identical_to_frozen_source": true
+    },
+    {
+      "path": "artifacts/evaluation/m2c2a2-retrieval-evidence-v1/source_snapshot/retrieval_ground_truth.jsonl",
+      "sha256": "67728b2271cb0b4ac97c648416fbb02b96c2ee071945360d94bb2b83f98ba2ed",
+      "byte_identical_to_frozen_source": true
+    }
+  ],
+  "formal_provider_evaluation_rerun": false
+}
