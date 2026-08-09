@@ -150,7 +150,7 @@ Audit 是**单进程、本地文件、可验证 Hash Chain**，不宣称分布�
 
 ### CI 工作流的六项检查
 
-当前 [CI workflow](.github/workflows/ci.yml) 为 `main` 的 Pull Request 和 Push 定义以下六项检查；仓库当前未把它们描述为已启用的 GitHub branch-protection required checks：
+当前 [CI workflow](.github/workflows/ci.yml) 为 `main` 的 Pull Request 和 Push 定义以下六项检查；GitHub `main` 分支保护已将它们登记为 required status checks：
 
 ```text
 quality
