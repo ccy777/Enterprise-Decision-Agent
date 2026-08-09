@@ -16,7 +16,7 @@ The public repository verification reports:
 
 The private v1.0.2 frozen delivery package recorded 1,822 Unit tests. The public repository excludes 33 private release, freeze and delivery-documentation tests; its count also includes the public corpus-initialization utility tests added after the frozen private snapshot.
 
-The CI workflow defines exactly six checks for pull requests and pushes to `main`: `quality`, `unit`, `security-evaluation`, `secret-scan`, `dependency-scan` and `offline-integration`. The repository does not describe them as branch-protection required checks unless that GitHub setting is enabled separately.
+The CI workflow defines exactly six checks for pull requests and pushes to `main`: `quality`, `unit`, `security-evaluation`, `secret-scan`, `dependency-scan` and `offline-integration`. GitHub branch protection registers those same six checks as required status checks for `main`.
 
 ## Retrieval benchmark
 
