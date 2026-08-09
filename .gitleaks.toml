@@ -10,4 +10,6 @@ id = "generic-api-key"
 description = "Pinned synthetic Retrieval summary document-content hashes"
 paths = [
   '''^artifacts/evaluation/m2c2a2-retrieval-evidence-v1/source_snapshot/m2c1_parent_child_summary\.json$''',
+  '''^artifacts/datasets/m2c1_parent_child_summary\.json$''',
+  '''^artifacts/datasets/m2c2b1_clause_aware_summary\.json$''',
 ]
