@@ -17,7 +17,7 @@ cffi==2.1.0
 charset-normalizer==3.4.9
 click==8.4.2
 colorama==0.4.6
-cryptography==49.0.0
+cryptography==50.0.0
 cyclonedx-python-lib==9.1.0
 defusedxml==0.7.1
 distro==1.9.0
@@ -79,7 +79,7 @@ pyjwt==2.13.0
 pymilvus==2.6.17
 pymysql==1.2.0
 pyparsing==3.3.2
-pypdf==6.14.2
+pypdf==6.15.0
 pyproject-hooks==1.2.0
 pytest==9.1.1
 pytest-asyncio==1.4.0
