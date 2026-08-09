@@ -3,7 +3,7 @@
 > 面向企业知识问答、只读经营数据分析与综合决策场景的受控 AI Agent。
 
 [![CI](https://github.com/ccy777/enterprise-decision-agent/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ccy777/enterprise-decision-agent/actions/workflows/ci.yml)
-![Version](https://img.shields.io/badge/version-v1.0.2-2563eb)
+![Runtime base](https://img.shields.io/badge/runtime%20base-v1.0.2-2563eb)
 ![Python](https://img.shields.io/badge/python-3.11%2B-3776ab)
 ![Runtime](https://img.shields.io/badge/runtime-controlled%20agent-0f766e)
 
@@ -32,88 +32,27 @@
 
 系统的核心目标不是追求“自由行动”，而是让 Agent 在明确权限和证据边界内完成可追踪的企业任务。
 
-## 效果展示
+## 代表性结果：冻结真实运行记录
 
-### 1. Knowledge：有依据的企业知识问答
+下面不是手写示例，而是冻结 M9 `real_runtime` 记录 `m9-knowledge-fact-001` 的可公开字段。问题来自[冻结数据集](datasets/agent_tasks/m9_final_eval_v1.json)，执行结果来自[脱敏 Case Record](artifacts/evaluation/m9-final-eval-v1/case_records.jsonl)：
 
-固定演示问题：
-
-```text
-华衡智能科技有限公司的业务定位和本项目演示范围是什么？
+```yaml
+case_id: m9-knowledge-fact-001
+question: 产品 B 整机的基础保修期是多少？
+execution_mode: real_runtime
+route: knowledge
+final_status: completed
+security_decision: allowed
+evidence_types: [document]
+citation_count: 1
+checks:
+  facts: true
+  answerability: true
+  citations: true
+passed: true
 ```
 
-系统只允许访问 `DOC-ORG-001` 和 `DOC-AGENT-001`，回答需要经过：
-
-```text
-KnowledgeScope
-  -> Dense + BM25 检索
-  -> RRF 融合
-  -> Cross-Encoder 重排
-  -> Evidence Selection
-  -> Answerability
-  -> Citation Validation
-```
-
-如果授权资料无法支持结论，系统应返回信息不足，而不是用常识补齐企业事实。
-
-### 2. Data：受控的只读经营数据分析
-
-固定演示问题：
-
-```text
-截至 2026 年 6 月 30 日，哪些产品低于安全库存？
-```
-
-公开仓库中的合成数据断言为：
-
-| 产品 | 当前库存 | 安全库存 | 判断 |
-| --- | ---: | ---: | --- |
-| P100 · Aster 工业泵 | 40 | 50 | 低于安全库存 |
-| P300 · Cirrus 传感器 | 90 | 100 | 低于安全库存 |
-| P600 · Flux 工业线缆 | 110 | 120 | 低于安全库存 |
-
-这条链路不是让模型直接连接数据库：
-
-```text
-Data Skill
-  -> EnterpriseDataMCPClient
-  -> MCP Server
-  -> EnterpriseDataToolService
-  -> SafeQueryService
-  -> SQL Guard
-  -> SQLAlchemy
-  -> read-only MySQL
-```
-
-模型不会获得无限制数据库权限，也不会直接执行任意生成的 SQL。
-
-### 3. Mixed：制度证据与数据事实联合分析
-
-固定演示问题：
-
-```text
-结合库存数据与补货制度，分析截至 2026 年 6 月 30 日的库存风险并给出建议。
-```
-
-Mixed 路径会同时使用受控经营数据和 `DOC-INV-001` 补货制度，并在最终回答中区分：
-
-- 哪些是数据库返回的库存事实；
-- 哪些是制度文件给出的阈值或流程；
-- 哪些建议仍需要人工审批；
-- 当前证据不能支持哪些结论。
-
-CLI/API 的正式响应结构如下（字段来自正式 API 合约，示例值不代表一次真实 Provider 输出）：
-
-```json
-{
-  "status": "completed",
-  "route": "knowledge | data | mixed",
-  "skill": "selected-skill",
-  "answer": "evidence-backed answer",
-  "citations": ["approved evidence references"],
-  "error_code": null
-}
-```
+公开 Artifact 保留路由、证据类型、引用数量和逐项检查结果，不保留 Provider 回答正文；README 不补造未公开的答案。冻结证据可通过 `python scripts/calculate_m9_metrics.py ...` 离线复算，全程不会重新调用 Provider。
 
 ## 一张图看懂架构
 
@@ -209,7 +148,9 @@ Audit 是**单进程、本地文件、可验证 Hash Chain**，不宣称分布�
 
 ## 可验证的工程证据
 
-### 六项主分支 CI
+### CI 工作流的六项检查
+
+当前 [CI workflow](.github/workflows/ci.yml) 为 `main` 的 Pull Request 和 Push 定义以下六项检查；仓库当前未把它们描述为已启用的 GitHub branch-protection required checks：
 
 ```text
 quality
