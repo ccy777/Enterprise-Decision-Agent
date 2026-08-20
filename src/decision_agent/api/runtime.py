@@ -9,6 +9,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from decision_agent.api.app import ReadinessCheck, create_app
+from decision_agent.api.security import ApiSecurityContextResolver
 from decision_agent.application.bootstrap import (
     BootstrapErrorCode,
     FormalRuntimeHandle,
@@ -23,6 +24,8 @@ def create_bootstrapped_app(
     settings: Settings,
     runtime_builder: RuntimeBuilder,
     readiness_checks: Mapping[str, ReadinessCheck] | None = None,
+    *,
+    security_context_resolver: ApiSecurityContextResolver | None = None,
 ) -> FastAPI:
     """Create an app whose lifespan owns one injected runtime builder."""
     handle = FormalRuntimeHandle()
@@ -32,6 +35,7 @@ def create_bootstrapped_app(
         runtime_handle=handle,
         lifespan=_runtime_lifespan(handle=handle, runtime_builder=runtime_builder),
         runtime_readiness_required=True,
+        security_context_resolver=security_context_resolver,
     )
 
 

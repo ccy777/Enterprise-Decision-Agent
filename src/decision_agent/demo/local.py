@@ -4,7 +4,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Callable, Mapping
+from collections.abc import Callable, Iterable, Mapping
 from contextlib import AsyncExitStack
 from dataclasses import dataclass
 from enum import StrEnum
@@ -20,6 +20,8 @@ from decision_agent.config import Settings
 from decision_agent.security import (
     DataScope,
     KnowledgeScope,
+    SecurityContext,
+    SessionScope,
     build_security_context,
     make_system_principal,
 )
@@ -70,7 +72,11 @@ DEMO_SPECIFICATIONS: Mapping[DemoCase, DemoSpecification] = MappingProxyType(
             data_resources=frozenset({"products", "inventory_snapshots"}),
         ),
         DemoCase.MIXED: DemoSpecification(
-            question="结合库存数据与补货制度，分析截至2026年6月30日的库存风险并给出建议。",
+            question=(
+                "请仅依据当前库存数据与《DOC-INV-001 库存安全线与补货管理办法》，"
+                "分析截至2026年6月30日的库存风险；分别给出风险概览、制度依据和行动建议，"
+                "并同时标注数据与知识引用。"
+            ),
             scenario="mixed",
             workflow="controlled_mixed",
             skill="inventory-risk-diagnosis",
@@ -102,43 +108,77 @@ def prepare_demo_settings(
     )
 
 
-def build_demo_request(case: DemoCase, *, request_id: str, trace_id: str) -> FormalRequest:
-    """Build a fixed request and immutable grants; caller input cannot enlarge either scope."""
-    specification = DEMO_SPECIFICATIONS[case]
+def build_demo_security_context(
+    cases: Iterable[DemoCase],
+    *,
+    request_id: str,
+    trace_id: str,
+    include_session_scope: bool = False,
+) -> SecurityContext:
+    """Build immutable grants for a closed set of server-owned Demo cases."""
+    selected_cases = tuple(dict.fromkeys(cases))
+    if not selected_cases:
+        raise ValueError("at least one demo case is required")
+    specifications = tuple(DEMO_SPECIFICATIONS[case] for case in selected_cases)
     principal = make_system_principal(
         subject_id=_DEMO_SUBJECT,
         tenant_id=_DEMO_TENANT,
         roles=frozenset({_DEMO_ROLE}),
     )
+    data_resources = frozenset(
+        resource for specification in specifications for resource in specification.data_resources
+    )
+    document_ids = frozenset(
+        document_id
+        for specification in specifications
+        for document_id in specification.document_ids
+    )
     data_scope = (
         DataScope(
             tenant_id=_DEMO_TENANT,
             allowed_domains=frozenset({"enterprise_operations"}),
-            allowed_resources=specification.data_resources,
+            allowed_resources=data_resources,
             allowed_query_capabilities=frozenset({"read"}),
         )
-        if specification.data_resources
+        if data_resources
         else None
     )
     knowledge_scope = (
         KnowledgeScope(
             tenant_id=_DEMO_TENANT,
             allowed_namespaces=frozenset({_KNOWLEDGE_NAMESPACE}),
-            allowed_document_ids=specification.document_ids,
+            allowed_document_ids=document_ids,
         )
-        if specification.document_ids
+        if document_ids
         else None
     )
-    context = build_security_context(
+    return build_security_context(
         principal=principal,
         request_id=request_id,
         trace_id=trace_id,
-        allowed_scenarios=frozenset({specification.scenario}),
-        allowed_workflows=frozenset({specification.workflow}),
-        allowed_skills=frozenset({specification.skill}),
-        allowed_tools=specification.tools,
+        allowed_scenarios=frozenset(specification.scenario for specification in specifications),
+        allowed_workflows=frozenset(specification.workflow for specification in specifications),
+        allowed_skills=frozenset(specification.skill for specification in specifications),
+        allowed_tools=frozenset(
+            tool for specification in specifications for tool in specification.tools
+        ),
         data_scope=data_scope,
         knowledge_scope=knowledge_scope,
+        session_scope=(
+            SessionScope(tenant_id=_DEMO_TENANT, subject_id=_DEMO_SUBJECT)
+            if include_session_scope
+            else None
+        ),
+    )
+
+
+def build_demo_request(case: DemoCase, *, request_id: str, trace_id: str) -> FormalRequest:
+    """Build a fixed request and immutable grants; caller input cannot enlarge either scope."""
+    specification = DEMO_SPECIFICATIONS[case]
+    context = build_demo_security_context(
+        (case,),
+        request_id=request_id,
+        trace_id=trace_id,
     )
     return FormalRequest(
         request_id=request_id,

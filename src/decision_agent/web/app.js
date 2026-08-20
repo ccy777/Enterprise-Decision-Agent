@@ -32,11 +32,6 @@
     route: "Route",
     skill_name: "Skill",
     tool_name: "Tool",
-    provider: "Provider",
-    model: "Model",
-    input_tokens: "Input Tokens",
-    output_tokens: "Output Tokens",
-    retry_count: "Retry",
     retrieved_count: "Retrieved",
     reranked_count: "Reranked",
     selected_evidence_count: "Evidence",
@@ -46,6 +41,17 @@
     answerable: "Answerable",
     review_outcome: "Review",
   });
+  const TRACE_STAGE_ALLOWLIST = new Set([
+    "routing",
+    "planning",
+    "tool_execution",
+    "data_access",
+    "retrieval",
+    "reranking",
+    "evidence_selection",
+    "review",
+    "answer_generation",
+  ]);
 
   let activeController = null;
   let pollTimer = null;
@@ -269,7 +275,11 @@
     }
     elements.traceSummary.textContent = summaryParts.join(" · ");
     for (const stage of trace.stages) {
-      if (!stage || typeof stage !== "object") {
+      if (
+        !stage ||
+        typeof stage !== "object" ||
+        !TRACE_STAGE_ALLOWLIST.has(stage.stage)
+      ) {
         continue;
       }
       const item = document.createElement("li");

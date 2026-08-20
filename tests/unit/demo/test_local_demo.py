@@ -9,6 +9,7 @@ from decision_agent.config import Environment, Settings
 from decision_agent.demo import (
     DemoCase,
     build_demo_request,
+    build_demo_security_context,
     prepare_demo_settings,
     run_demo,
 )
@@ -36,6 +37,40 @@ def test_demo_principal_and_scopes_are_fixed_and_least_privilege() -> None:
     assert context.knowledge_scope is not None
     assert context.knowledge_scope.allowed_document_ids == frozenset({"DOC-INV-001"})
     assert request.session_id is None
+
+
+def test_combined_demo_scope_is_the_union_of_only_frozen_cases() -> None:
+    context = build_demo_security_context(
+        tuple(DemoCase),
+        request_id="local-web-request",
+        trace_id="local-web-trace",
+    )
+
+    assert context.allowed_scenarios == frozenset({"knowledge", "data", "mixed"})
+    assert context.allowed_workflows == frozenset({"direct", "controlled_mixed"})
+    assert context.allowed_skills == frozenset(
+        {
+            "enterprise-knowledge-qa",
+            "enterprise-data-analysis",
+            "inventory-risk-diagnosis",
+        }
+    )
+    assert context.allowed_tools == frozenset({"run_knowledge_agent", "run_data_agent"})
+    assert context.data_scope is not None
+    assert context.data_scope.allowed_query_capabilities == frozenset({"read"})
+    assert context.data_scope.allowed_resources == frozenset(
+        {"products", "inventory_snapshots", "purchase_orders", "suppliers"}
+    )
+    assert context.knowledge_scope is not None
+    assert context.knowledge_scope.allowed_document_ids == frozenset(
+        {"DOC-ORG-001", "DOC-AGENT-001", "DOC-INV-001"}
+    )
+    assert context.session_scope is None
+
+
+def test_demo_security_context_requires_at_least_one_case() -> None:
+    with pytest.raises(ValueError, match="at least one demo case"):
+        build_demo_security_context((), request_id="request", trace_id="trace")
 
 
 @pytest.mark.parametrize("case", list(DemoCase))
