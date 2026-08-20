@@ -256,8 +256,12 @@ def test_trace_renderer_uses_a_safe_allowlist_and_status_semantics() -> None:
         script = client.get("/assets/app.js").text
 
     assert "const TRACE_ATTRIBUTE_LABELS = Object.freeze" in script
+    assert "const TRACE_STAGE_ALLOWLIST = new Set" in script
     assert "Object.hasOwn(TRACE_ATTRIBUTE_LABELS, attribute.key)" in script
+    assert "TRACE_STAGE_ALLOWLIST.has(stage.stage)" in script
     assert "detail.textContent = renderTraceAttributes(stage.attributes);" in script
+    for forbidden_attribute in ("input_tokens", "output_tokens", "provider", "model"):
+        assert forbidden_attribute not in script
     for status in ("completed", "failed", "unsupported", "cancelled", "not_requested"):
         assert f"{status}: {{ label:" in script
     assert "innerHTML" not in script

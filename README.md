@@ -11,6 +11,28 @@
 
 面向企业知识问答、经营数据分析与综合决策场景，统一编排 Agentic RAG、MCP Data Agent、Context / Memory 与结果审查。
 
+## Demo Showcase
+
+以下截图均来自本仓库真实运行，不是 Mock、AI 生成图或重绘终端卡片。
+
+### Mixed：知识与数据联合决策
+
+![真实 Mixed Demo：回答、D/E 引用、路由与 Skill](docs/assets/demo/mixed-result.png)
+
+同一次请求由 Router 选择 `mixed`，执行 `inventory-risk-diagnosis`，回答同时包含数据引用 `[D1]` 与知识引用 `[E1]`、`[E2]`。
+
+### Safe Trace：展示真实执行链
+
+![真实 Mixed Demo 安全 Trace](docs/assets/demo/mixed-trace.png)
+
+Trace 展示 routing、planning、MCP/只读查询、Knowledge retrieval、evidence selection、review 与 answer generation；安全投影不展示 Prompt、SQL、业务记录、Evidence/Audit 正文或凭据。
+
+### Fail-closed：越权请求在外部调用前阻断
+
+![真实安全评测：data_scope_denied](docs/assets/demo/security-fail-closed.png)
+
+`data_scope_denied` 是固定安全评测的真实案例：Provider 调用 0、Tool 调用 0、响应未发布，评测通过。
+
 ## 核心亮点 (Highlights)
 
 - 以受控 `Router -> Planner -> Skill -> Reviewer -> Release` workflow 替代不受限的 Tool Calling。
@@ -144,9 +166,12 @@ docker compose up -d
 .\.venv\Scripts\python.exe scripts\run_local_demo.py knowledge
 .\.venv\Scripts\python.exe scripts\run_local_demo.py data
 .\.venv\Scripts\python.exe scripts\run_local_demo.py mixed
+.\.venv\Scripts\python.exe scripts\run_local_web_demo.py mixed
 ```
 
-三种模式分别演示 Knowledge、Data 和 Mixed 路径。Provider calls 可能产生费用；前置条件与停止步骤见 Local Demo guide。若要查看 UI，请运行：
+前三种模式分别演示 Knowledge、Data 和 Mixed CLI 路径；最后一条启动仅绑定 `127.0.0.1`、仅授予固定 Mixed Demo 最小 Scope 的网页入口。Provider calls 可能产生费用；前置条件与停止步骤见 Local Demo guide。
+
+正式 ASGI 入口仍使用默认拒绝身份解析器，不因 Demo 降低安全策略：
 
 ```powershell
 .\.venv\Scripts\python.exe -m uvicorn decision_agent.main:app --host 127.0.0.1 --port 8000

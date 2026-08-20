@@ -48,20 +48,24 @@
         </div>
 
         <div class="examples" aria-label="示例问题">
-          <button class="example-button" type="button" data-query="请说明 Product A 的电池保修政策。">
+          <button
+            class="example-button"
+            type="button"
+            data-query="华衡智能科技有限公司的业务定位和本项目演示范围是什么？"
+          >
             知识问答
           </button>
           <button
             class="example-button"
             type="button"
-            data-query="请分析最近一个月各区域的销售收入，并给出有依据的结论。"
+            data-query="截至2026年6月30日，哪些产品低于安全库存？"
           >
             数据分析
           </button>
           <button
             class="example-button"
             type="button"
-            data-query="结合公司政策与经营数据，分析库存补货风险。"
+            data-query="请仅依据当前库存数据与《DOC-INV-001 库存安全线与补货管理办法》，分析截至2026年6月30日的库存风险；分别给出风险概览、制度依据和行动建议，并同时标注数据与知识引用。"
           >
             综合分析
           </button>
@@ -129,7 +133,7 @@
 
         <section id="trace-card" class="trace-card" aria-labelledby="trace-heading" hidden>
           <details>
-            <summary id="trace-heading">执行轨迹</summary>
+            <summary id="trace-heading">执行轨迹（安全摘要）</summary>
             <p id="trace-summary" class="trace-summary"></p>
             <ol id="trace-stages" class="trace-stage-list"></ol>
           </details>
