@@ -1,29 +1,25 @@
-# Engineering Decisions
+# 关键技术选型
 
-## Controlled runtime over open-ended autonomy
+## 显式工作流编排
 
-The project chooses a Router–Planner–Executor–Reviewer workflow with closed contracts because enterprise decisions need reviewable authority, bounded external effects and deterministic failure behavior. The trade-off is a narrower capability surface than an open-ended autonomous agent.
+项目使用Router、Planner、Skill、Tool和Reviewer组成显式执行链。LangGraph负责状态流转与条件分支，Pydantic负责阶段契约，使Knowledge、Data和Mixed三条链路能够独立测试和定位问题。
 
-## Scope before ranking or execution
+## 混合检索
 
-`KnowledgeScope` filtering occurs before RRF and reranking, so later evidence stages cannot reintroduce unauthorized documents. `DataScope` is checked before constructing the MCP client and again against returned resource identities. Scope is an execution boundary, not a post-processing filter.
+Dense检索擅长语义匹配，BM25擅长关键词和业务术语匹配。RRF用于融合两路排名，Cross-Encoder进一步优化前排结果，Parent Expansion补回回答所需上下文。这套组合兼顾召回、排序和最终Evidence完整性。
 
-## Hybrid retrieval with explicit stage evidence
+## MCP工具层
 
-Dense and BM25 retrieval expose complementary rankings. RRF provides deterministic fusion, the Cross-Encoder improves top-rank relevance, and parent expansion restores context. The adopted frozen 200-query v2 package publishes relevance labels, ranking-only records, per-stage metrics, failures and hashes instead of reducing retrieval quality to one unsupported headline number.
+Data Agent通过MCP获取Schema、业务定义和查询能力。MCP把Agent流程、SQL校验与数据库执行拆成清晰模块，方便替换数据源、测试工具契约和扩展新的经营数据能力。
 
-## MCP as a tool boundary
+## 上下文与会话记忆
 
-The Data Agent does not hand a database connection to the model. MCP separates the model-facing skill from server-owned query validation, SQL execution and safe projection. SQL Guard and a read-only account provide independent application and database controls.
+会话状态支持Redis与In-Memory两种实现，按租户、用户和会话隔离。TTL、滚动摘要和上下文预算用于控制多轮任务输入规模，并保留当前问题所需的历史信息。
 
-## Fail-closed Provider governance
+## 链路追踪与离线评测
 
-Provider stages, data classifications, context budgets and output checks are closed policies. Recursive redaction happens before transport. Missing policy, invalid audit state, sensitive payload, budget exhaustion or output inspection failure blocks progress rather than silently relaxing controls.
+请求级Trace覆盖Routing、Planning、Skill、Tool Calling、Retrieval、Evidence和Reviewer。离线评测分别验证检索排序、完整工作流和异常场景，便于在修改Prompt、检索参数或工具实现后进行回归。
 
-## Evidence freezing
+## 可复核评测证据
 
-Formal Provider evaluation is expensive and non-deterministic. The release therefore preserves sanitized case records, manifests, adjudications and derived metrics, then verifies hashes and derivation offline. The sole true failure remains visible. A 0/0 rate is represented as `null`, not 100%.
-
-## Deliberate non-goals
-
-The frozen line does not implement Neo4j/GraphRAG, Langfuse, RAGAS, Kubernetes, autonomous multi-agent collaboration or production high-concurrency guarantees. Historical plans are not treated as current implementation claims.
+Retrieval Benchmark v2保存查询集、相关性标注、排名记录、指标结果与SHA-256校验值。复核脚本可以直接从仓库中的固定记录重新计算Hit@1、Hit@5和MRR@5。

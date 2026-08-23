@@ -1,13 +1,11 @@
-# Public Evaluation Evidence
+# 公开评测证据
 
-This directory contains the public, offline-verifiable evaluation view.
+该目录保存可以离线复核的项目评测记录。
 
-- Source tag: `v1.0.2`
-- Source commit: `6c6ce94815394b9c295bc9b299ec34b2d29d8aa0`
-- Current Retrieval Benchmark v2: `retrieval-v2/manifest.json`
-- Historical v1 retrieval: `retrieval/manifest.json`
-- M9: `m9/manifest.json`
+- 对应版本：`v1.0.2`
+- 对应提交：`6c6ce94815394b9c295bc9b299ec34b2d29d8aa0`
+- 当前检索评测：`retrieval-v2/manifest.json`
+- 历史v1检索记录：`retrieval/manifest.json`
+- M9系统任务评测：`m9/manifest.json`
 
-The evidence uses synthetic or sanitized records. The v2 package includes a frozen relevance set
-and ranking-only records so its headline metrics can be recomputed without models or Provider
-calls. The formal Provider evaluation was not rerun for this public release.
+Retrieval Benchmark v2包含固定相关性标注和排名记录，可以直接通过复核脚本重新计算Hit@1、Hit@5与MRR@5。

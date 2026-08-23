@@ -1,25 +1,33 @@
-# Limitations
+# 项目状态与后续计划
 
-## Retained answerability failure
+## 已完成能力
 
-The frozen system evaluation contains one real false positive: `m9-knowledge-unanswerable-003`. An unanswerable knowledge request was released with citations. This demonstrates an Answerability/evidence-sufficiency weakness; it is not an authorization bypass or sensitive-data leak. The result remains 8/9 Formal Runtime, 2/3 Unanswerable and 12/13 Overall.
+- Knowledge、Data、Mixed三类任务路由；
+- LangGraph工作流与多阶段Prompt；
+- Hybrid RAG、Evidence Selection、Answerability和Citation；
+- MCP数据智能体、SQL生成与MySQL查询；
+- Redis / In-Memory会话记忆与滚动摘要；
+- 请求级Trace、离线评测和GitHub CI；
+- FastAPI接口、命令行Demo与网页演示界面。
 
-## Evaluation size and meaning
+## 当前评测
 
-The M9 set contains 13 cases, including 9 formal-runtime cases and 4 deterministic boundary cases. Retrieval Benchmark v2 contains 200 synthetic-enterprise queries, with ranking metrics computed over 160 Answerable cases; the 50-query v1 package remains historical. These sets support engineering regression and evidence review but do not establish production accuracy, broad statistical generalization, production cost or a service-level objective.
+- Retrieval Benchmark v2：200条企业场景查询；
+- Child Hit@1：85.62%提升至96.25%；
+- MRR@5：91.69%提升至98.12%；
+- 1,802项单元测试、235项稳定离线集成测试；
+- 28 / 28项确定性边界评测通过。
 
-## Audit threat model
+系统任务集中保留了一个Answerability误判案例，相关记录用于继续优化Evidence充分性判断。
 
-The audit chain is verifiable for one Python process writing one local JSONL file and committed-tip sidecar. It does not coordinate multiple processes or hosts, sign events, anchor hashes remotely or protect against a hostile writer with filesystem access.
+## 后续优化方向
 
-## Runtime and deployment scope
+- 扩充真实业务问法和多轮任务评测；
+- 优化Answerability与Evidence覆盖率；
+- 增加并发压测和性能监控；
+- 完善分布式Trace与评测看板；
+- 扩展新的MCP数据源和业务Skill。
 
-Real Provider, Milvus, MySQL and Redis operation requires local provisioning and user-supplied credentials. Default unit and offline-integration suites do not validate production capacity, high concurrency, disaster recovery or multi-region behavior.
+## 使用说明
 
-## Capability scope
-
-The project is a controlled agent, not a free autonomous multi-agent system. It does not implement unlimited dynamic planning, arbitrary database actions, Neo4j/GraphRAG, Langfuse, RAGAS or Kubernetes. SQL is one read-only, allowlisted and bounded query; this is not an unrestricted natural-language-to-SQL product.
-
-## Publication note
-
-No project-level open-source license is currently granted. Public source visibility does not by itself grant permission to copy, modify or redistribute the project.
+仓库用于项目展示、学习和评测复核。如需复制、修改或二次发布，请先联系作者。

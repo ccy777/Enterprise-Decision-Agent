@@ -1,15 +1,15 @@
-# Local Demo
+# 本地运行指南
 
-## Prerequisites
+## 环境准备
 
-- Python 3.11 or newer
-- Docker with Compose
-- Enough memory for MySQL, Milvus, etcd and MinIO
-- Your own OpenAI-compatible Provider credentials for formal runtime demos
+- Python 3.11及以上；
+- Docker与Docker Compose；
+- 能够运行MySQL、Milvus、etcd和MinIO的本地环境；
+- OpenAI兼容模型服务配置。
 
-The repository contains synthetic knowledge documents and synthetic MySQL schema/seed data. It contains no usable credentials, model weights, database volumes or runtime audit logs.
+仓库提供合成知识文档、MySQL Schema和Seed数据，可以在本地完成三类任务演示。
 
-## Install
+## 安装项目
 
 ```powershell
 python -m venv .venv
@@ -18,9 +18,9 @@ python -m venv .venv
 Copy-Item .env.example .env
 ```
 
-The copied example contains obvious local-only placeholder passwords and loopback service addresses. Edit only the ignored local `.env` file. Provider-backed answer generation requires the user to configure their own supported API credentials. Keep the audit path outside the repository and do not commit local configuration.
+根据`.env.example`填写本地模型服务和基础设施配置，`.env`已加入忽略列表。
 
-## Start services
+## 启动基础设施
 
 ```powershell
 docker compose config
@@ -28,55 +28,55 @@ docker compose up -d
 docker compose ps
 ```
 
-The Compose stack starts MySQL plus Milvus dependencies. MySQL initializes from the synthetic schema and seed, and the application connects through a read-only account.
+Compose会启动MySQL和Milvus相关依赖。MySQL使用合成Schema与Seed数据初始化。
 
-## Initialize the synthetic knowledge corpus
+## 初始化知识库
 
-Wait until MySQL, etcd, MinIO and Milvus are healthy, then run the public initialization utility once:
+MySQL、etcd、MinIO和Milvus状态正常后执行：
 
 ```powershell
 .\.venv\Scripts\python.exe scripts\initialize_knowledge_corpus.py
 ```
 
-The command reads `DECISION_AGENT_KNOWLEDGE_DATASET_ROOT`, builds the existing production retrieval runtime, calls its formal `initialize_for_ingestion()` entry point, verifies that the complete generated child corpus is present, prints only bounded counts and closes the runtime. It fails with a nonzero exit code if configuration, dataset, model dependency, Milvus schema, ingestion or cleanup is unavailable.
+该命令读取配置的数据集，完成文档解析、分块、Embedding生成和Milvus写入，并校验Child记录数量。重复执行会根据稳定记录ID更新已有数据。
 
-Re-running the command is supported: stable record IDs and Milvus upsert make the synthetic corpus initialization idempotent. A successful second run reports updates rather than silently creating duplicates.
-
-To verify the committed frozen retrieval evidence without loading models or calling a Provider:
+检索证据可以单独复核：
 
 ```powershell
 .\.venv\Scripts\python.exe scripts\verify_retrieval_v2_evidence.py
 ```
 
-## Fixed demo cases
-
-The CLI accepts only three fixed cases; it does not accept an arbitrary query that could enlarge server-owned grants.
+## 运行三类Demo
 
 ```powershell
-# Knowledge QA: scoped documents, evidence selection and citations
+# 企业知识问答
 .\.venv\Scripts\python.exe scripts\run_local_demo.py knowledge
 
-# Data QA: MCP, DataScope, SQL Guard and read-only MySQL
+# 经营数据分析
 .\.venv\Scripts\python.exe scripts\run_local_demo.py data
 
-# Mixed: inventory data plus replenishment-policy evidence
+# 知识与数据联合决策
 .\.venv\Scripts\python.exe scripts\run_local_demo.py mixed
 ```
 
-The JSON result includes request ID, completion status, selected route/skill, answer, citations and a fixed error code when execution fails. A configured demo may make Provider calls and incur cost.
+JSON结果包含请求ID、执行状态、路由、Skill、回答、Citation和Trace摘要。网页演示可以使用：
 
-The Knowledge and Mixed demos require the corpus initialization step above. All three answer-generation demos require user-supplied Provider configuration; the repository does not include a usable Provider credential. Infrastructure, corpus ingestion, frozen retrieval verification and the guarded data-path smoke can be validated without a Provider.
+```powershell
+.\.venv\Scripts\python.exe scripts\run_local_web_demo.py mixed
+```
 
-## What to inspect
+## 查看执行结果
 
-- Citations in the CLI result should identify only authorized synthetic documents.
-- Data answers should flow through MCP and contain only safe projected results.
-- Trace output is operational metadata, not raw business payload.
-- The audit JSONL and committed-tip sidecar live at the configured external path. Verification covers the local single-process hash chain.
+重点关注：
 
-## Offline evidence verification
+- Router选择的任务类型；
+- 实际执行的Skill和Tool；
+- Knowledge Evidence与Data Evidence；
+- 最终答案中的Citation；
+- Trace中的阶段状态、耗时和错误码；
+- Context / Memory状态变化。
 
-These checks require neither Provider credentials nor model loading:
+## 离线验证
 
 ```powershell
 .\.venv\Scripts\python.exe scripts\verify_retrieval_v2_evidence.py
@@ -84,16 +84,14 @@ These checks require neither Provider credentials nor model loading:
 .\.venv\Scripts\python.exe scripts\calculate_m9_metrics.py artifacts\evaluation\m9-final-eval-v1\case_records.jsonl --dataset datasets\agent_tasks\m9_final_eval_v1.json --adjudications artifacts\evaluation\m9-final-eval-v1\adjudications.json --output $env:TEMP\m9-public-metrics.json --manifest-output $env:TEMP\m9-public-manifest.json
 ```
 
-The read-only MySQL path can be checked without a Provider:
+单独检查MCP与MySQL查询链：
 
 ```powershell
 .\.venv\Scripts\python.exe scripts\run_safe_query_demo.py
 ```
 
-## Stop services
+## 停止服务
 
 ```powershell
 docker compose down
 ```
-
-Do not add `--volumes` unless you explicitly intend to remove the local synthetic service data.

@@ -1,38 +1,31 @@
-# Security Boundaries
+# 数据访问与结果校验
 
-## Request-owned context
+## 请求上下文
 
-The formal runtime carries immutable, server-owned `RequestPrincipal` and `SecurityContext` values. Context binds tenant, session and policy version plus optional `DataScope` and `KnowledgeScope`. Request body text, routing output, planning output and generated content cannot create identity or permissions.
+每次请求都携带`RequestPrincipal`和`SecurityContext`，其中包括租户、会话、策略版本以及可选的`DataScope`和`KnowledgeScope`。这些信息用于确定当前请求能够使用的Skill、Tool、知识文档和业务数据。
 
-## Repeated authorization
-
-Security checks are repeated across request, workflow, skill, tool, data and provider boundaries and fail closed when required context or authorization is unavailable.
+## 分层校验
 
 ```text
-Authentication
-  -> tenant/session validation
-  -> scenario and route authorization
-  -> workflow authorization
-  -> skill authorization
-  -> tool authorization
+身份与会话
+  -> 场景和路由
+  -> Workflow / Skill / Tool
   -> KnowledgeScope / DataScope
-  -> ProviderPolicy and recursive redaction
-  -> response release gate
-  -> AuditEvent append
+  -> Provider输入处理
+  -> Reviewer与Citation
+  -> Response与AuditEvent
 ```
 
-Router, Planner and Reviewer outputs cannot widen a grant. Knowledge candidates are filtered before fusion; data resources are checked before client creation and after tool results return. Provider inputs are classified, bounded and recursively redacted before transport, and Provider outputs receive the same deterministic inspection before use.
+KnowledgeScope在RRF和Reranker之前过滤文档；DataScope在MCP客户端创建和工具结果返回时校验数据资源。Provider输入会进行字段分类、上下文预算和递归脱敏处理。
 
-## Response release
+## 查询与回答
 
-Only a completed result with an answer and citations may be released. A failed workflow, absent citations, output-policy failure, provider-budget exhaustion or failed critical audit append produces a fixed safe failure instead of returning the blocked body.
+数据查询经过MCP、SQLGlot、SQL Guard、表字段范围、LIMIT和执行超时。知识回答经过Evidence Selection、Answerability Review和Citation Validation。Reviewer负责检查最终工作流状态、答案和引用。
 
-## Audit scope
+## 链路追踪与审计
 
-`AuditEvent` is a payload-free closed schema linked through request and trace identifiers. The JSONL sink canonicalizes and appends records under a process lock, fsyncs writes and maintains a committed-tip sidecar. Verification detects mutation, reordering, deletion, gaps and mismatched anchors for one local file pair.
+Trace通过request ID和trace ID关联路由、规划、Skill、Tool Calling、检索与Reviewer阶段。`AuditEvent`记录关键执行事件，并使用JSONL追加写和哈希链支持本地复核。
 
-The supported claim is a **single-process local-file verifiable hash chain**. It does not provide multi-process coordination, cross-host consistency, signing, remote anchoring, blockchain semantics or an absolute tamper-proof guarantee.
+## 评测结果
 
-## Deterministic evidence
-
-The frozen security suite contains 28 deterministic cases and records 28/28 passed, with zero unauthorized releases, sensitive leaks, provider bypasses or tool bypasses in that suite. This is engineering boundary evidence, not a commercial security rate or proof of universal safety.
+确定性评测集包含28个用例，覆盖数据范围、知识范围、Provider输入处理、工具调用和结果返回等场景，当前结果为28 / 28通过。
