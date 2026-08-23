@@ -7,40 +7,24 @@
 ![Python](https://img.shields.io/badge/python-3.11%2B-3776ab)
 ![Runtime](https://img.shields.io/badge/runtime-agent%20workflow-0f766e)
 
-这是一个面向企业知识问答、经营数据分析与库存风险诊断的 AI Agent 平台。系统通过 Router 识别 `Knowledge`、`Data` 与 `Mixed` 三类任务，并由对应 Skill 完成知识检索、数据查询或知识与数据联合决策。
+**技术栈：** Python 3.11 · FastAPI · LangGraph · Pydantic · Milvus · BM25 · BGE Reranker · Redis · MySQL · MCP · SQLGlot · Docker
 
-项目基于LangGraph编排Agent工作流，集成Hybrid RAG、MCP数据智能体、上下文记忆、Tool Calling、Trace与离线评测，并通过FastAPI提供统一服务接口。
+## 项目简介
 
-## 真实运行界面
+这是一个面向企业知识问答、经营数据分析与库存风险诊断的 AI Agent 平台。系统通过 Router 识别 `Knowledge`、`Data` 与 `Mixed` 三类任务，再由对应 Skill 完成知识检索、数据查询或知识与数据联合分析，并通过 FastAPI 提供统一服务接口。
 
+项目重点围绕 Agent 工作流、上下文管理、Hybrid RAG、MCP Tool Calling、Trace 与离线评测展开，使一次请求能够经过路由、规划、工具调用、证据整理和结果审查，形成完整的执行链。
 
-### 知识与数据联合决策
+## 核心亮点
 
-![知识与数据联合决策的真实运行结果](docs/assets/demo/mixed-result.png)
-
-同一次请求由 Router 选择 `mixed`，执行 `inventory-risk-diagnosis`，回答同时包含数据引用 `[D1]` 与知识引用 `[E1]`、`[E2]`。
-
-### 执行链追踪
-
-![真实请求的执行链追踪](docs/assets/demo/mixed-trace.png)
-
-Trace 展示 routing、planning、MCP Tool Calling、Knowledge retrieval、evidence selection、review 与 answer generation；公开投影不展示 Prompt、SQL、业务记录、Evidence/Audit 正文或凭据。
-
-### 越权请求阻断
-
-![越权数据请求在调用前被阻断](docs/assets/demo/security-fail-closed.png)
-
-该请求触发`data_scope_denied`，系统在外部调用前完成识别，Provider调用和Tool调用均为0。
-
-## 核心能力
-
-- **工作流与提示词工程**：基于 LangGraph 编排 `Router -> Planner -> Skill -> Tool -> Reviewer` 多步骤工作流，通过 Prompt 与 Pydantic 结构化输出约束阶段输入输出。
-- **上下文与会话记忆**：支持 Redis / In-Memory 会话状态、TTL、滚动摘要与上下文预算，按租户、用户和会话隔离多轮任务。
-- **混合检索与离线评测**：采用 `Dense + BM25 -> RRF -> Cross-Encoder -> Parent Expansion` 检索链，并通过 200 条企业场景查询验证排序效果。
-- **MCP 数据智能体与工具调用**：通过 Native Tool Calling 选择并执行 Data Agent，由 Data Planner 生成结构化 SQL 计划，再调用 MCP Tools 完成 Schema 获取、MySQL 查询与结果分析。
-- **链路追踪与智能体评测**：记录路由、规划、Skill、MCP、Evidence 与 Reviewer 的阶段状态、错误码和耗时，并建立离线回归与边界评测。
-- **三类任务路由**：统一处理企业知识问答、经营数据分析以及知识与数据联合决策。
-- **数据访问与工程交付**：使用SQLGlot、DataScope、Evidence、Citation与Reviewer完成查询和结果校验，CI覆盖质量、测试和依赖检查。
+| 方向 | 实现 |
+| --- | --- |
+| Agent 工作流 | 基于 LangGraph 编排 `Router -> Planner -> Skill -> Tool -> Reviewer`，通过 Prompt 与 Pydantic 结构化输出衔接各阶段 |
+| 上下文与记忆 | 支持 Redis / In-Memory 会话状态、TTL、滚动摘要与上下文预算，管理多轮任务输入 |
+| Hybrid RAG | `Dense + BM25 -> RRF -> Cross-Encoder -> Parent Expansion`，结合 Evidence Selection 与 Citation 生成有依据的回答 |
+| MCP Tool Calling | Native Tool Calling 选择 Data Agent，Data Planner 生成结构化查询计划，MCP Tools 完成 Schema 获取与 MySQL 查询 |
+| Trace 与评测 | 追踪路由、规划、检索、工具调用和 Reviewer，完成 235 项离线集成测试、28 / 28 项边界评测 |
+| 检索效果 | 基于 200 条企业场景查询评测，Child Hit@1 由 85.62% 提升至 96.25%，MRR@5 由 91.69% 提升至 98.12% |
 
 ## 为什么不是普通 RAG 项目
 
@@ -78,6 +62,28 @@ flowchart TD
 ```
 
 上图展示项目主执行链，完整的模块职责和请求流程见[整体架构](docs/ARCHITECTURE.md)与[智能体工作流](docs/AGENT_WORKFLOW.md)。
+
+## 真实运行界面
+
+### 知识与数据联合决策
+
+![知识与数据联合决策的真实运行结果](docs/assets/demo/mixed-result.png)
+
+同一次请求由 Router 选择 `mixed`，执行 `inventory-risk-diagnosis`，回答同时包含数据引用 `[D1]` 与知识引用 `[E1]`、`[E2]`。
+
+### 执行链追踪
+
+![真实请求的执行链追踪](docs/assets/demo/mixed-trace.png)
+
+Trace 展示 routing、planning、MCP Tool Calling、Knowledge retrieval、evidence selection、review 与 answer generation。
+
+### 数据范围校验
+
+![数据范围校验结果](docs/assets/demo/security-fail-closed.png)
+
+该请求触发 `data_scope_denied`，系统在执行数据查询前完成范围校验。
+
+### 网页演示
 
 ![企业决策智能体网页演示界面](docs/assets/demo-ui.png)
 
