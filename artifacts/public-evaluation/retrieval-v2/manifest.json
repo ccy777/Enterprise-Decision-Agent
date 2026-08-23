@@ -1,0 +1,61 @@
+{
+  "artifact_hashes": {
+    "experiment_report.md": "d418578496781d58ddc7837f87b52eb6f6c421910c0cf746067fa3accca4215b",
+    "failure_cases.md": "e6883488e6c6c79c4df7bd64f09e24d9cd75a5eff8bc38de34d93b1766629091",
+    "metrics.json": "0d747acab0501016be5a152580a3c9ca9963758ac56b2fd63b7fc436b9e49f70",
+    "ranking_records.jsonl": "23b8f47a6c37b1cf84b6e124d4d0b10f049b889d6fb136cba746afe806788c11",
+    "relevance_audit.md": "607927187036bdd704ca236714ab69b04ea086da3a510e167126be666fad637a",
+    "relevance_freeze.jsonl": "1a42163309bbf4f5fb4675b8fa2a07288a305263d08cd00ef0fd9e28a453f598",
+    "runtime.json": "36dcfa5f0efb6dc95f8e70e7d940baf73891d33b22f4725998cf8a93d9b36b49"
+  },
+  "counts": {
+    "answerable": 160,
+    "children": 101,
+    "documents": 12,
+    "parents": 36,
+    "queries": 200,
+    "unanswerable": 40
+  },
+  "created_at": "2026-08-20T16:14:23+08:00",
+  "denominator_policy": "Ranking metrics use the 160 Answerable queries; the 40 Unanswerable queries are excluded from Hit@K and MRR denominators.",
+  "evidence_kind": "frozen_retrieval_benchmark_v2",
+  "headline_metrics": {
+    "answerable_count": 160,
+    "hit_at_1_gain_percentage_points": 10.625000000000007,
+    "mrr_at_5_gain_percentage_points": 6.437500000000007,
+    "query_count": 200,
+    "reranker": {
+      "answerable_denominator": 160,
+      "hit_at_1": {"denominator": 160, "numerator": 154, "value": 0.9625},
+      "hit_at_5": {"denominator": 160, "numerator": 160, "value": 1.0},
+      "mrr_at_5": {"denominator": 160, "numerator": 157.0, "value": 0.98125}
+    },
+    "rrf": {
+      "answerable_denominator": 160,
+      "hit_at_1": {"denominator": 160, "numerator": 137, "value": 0.85625},
+      "hit_at_5": {"denominator": 160, "numerator": 160, "value": 1.0},
+      "mrr_at_5": {"denominator": 160, "numerator": 146.7, "value": 0.9168749999999999}
+    },
+    "unanswerable_count": 40
+  },
+  "identities": {
+    "candidate_sha256": "fec7a1ddd89d7d703ea19d732b00fec65a0e58a30f6215752fc6e17dbc16ddd3",
+    "ranking_digest": "ba03edc91b0573c0b01ab498dad563e85a7710107ba13c6906786b473a8e6740",
+    "relevance_dataset_sha256": "1a42163309bbf4f5fb4675b8fa2a07288a305263d08cd00ef0fd9e28a453f598"
+  },
+  "model_revisions": {
+    "embedding": {
+      "name": "BAAI/bge-small-zh-v1.5",
+      "revision": "7999e1d3359715c523056ef9478215996d62a620"
+    },
+    "reranker": {
+      "name": "BAAI/bge-reranker-base",
+      "revision": "2cfc18c9415c912f9d8155881c133215df768a70"
+    }
+  },
+  "provider_called": false,
+  "public_scope": "Synthetic enterprise queries, frozen relevance labels, ranking-only candidate records, aggregate metrics, runtime metadata and failure analysis. No credentials, private business data, prompts or Provider outputs are included.",
+  "schema_version": "1.0",
+  "status": "frozen_adopted",
+  "strictly_offline": true
+}

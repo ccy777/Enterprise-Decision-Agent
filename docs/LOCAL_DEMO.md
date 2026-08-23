@@ -45,7 +45,7 @@ Re-running the command is supported: stable record IDs and Milvus upsert make th
 To verify the committed frozen retrieval evidence without loading models or calling a Provider:
 
 ```powershell
-.\.venv\Scripts\python.exe scripts\verify_retrieval_evidence.py
+.\.venv\Scripts\python.exe scripts\verify_retrieval_v2_evidence.py
 ```
 
 ## Fixed demo cases
@@ -79,6 +79,7 @@ The Knowledge and Mixed demos require the corpus initialization step above. All 
 These checks require neither Provider credentials nor model loading:
 
 ```powershell
+.\.venv\Scripts\python.exe scripts\verify_retrieval_v2_evidence.py
 .\.venv\Scripts\python.exe scripts\verify_retrieval_evidence.py
 .\.venv\Scripts\python.exe scripts\calculate_m9_metrics.py artifacts\evaluation\m9-final-eval-v1\case_records.jsonl --dataset datasets\agent_tasks\m9_final_eval_v1.json --adjudications artifacts\evaluation\m9-final-eval-v1\adjudications.json --output $env:TEMP\m9-public-metrics.json --manifest-output $env:TEMP\m9-public-manifest.json
 ```

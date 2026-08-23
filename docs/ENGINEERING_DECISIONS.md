@@ -10,7 +10,7 @@ The project chooses a Router–Planner–Executor–Reviewer workflow with close
 
 ## Hybrid retrieval with explicit stage evidence
 
-Dense and BM25 retrieval expose complementary rankings. RRF provides deterministic fusion, the Cross-Encoder improves top-rank relevance, and parent expansion restores context. A frozen 50-query package records per-stage metrics and hashes instead of reducing retrieval quality to one unsupported headline number.
+Dense and BM25 retrieval expose complementary rankings. RRF provides deterministic fusion, the Cross-Encoder improves top-rank relevance, and parent expansion restores context. The adopted frozen 200-query v2 package publishes relevance labels, ranking-only records, per-stage metrics, failures and hashes instead of reducing retrieval quality to one unsupported headline number.
 
 ## MCP as a tool boundary
 

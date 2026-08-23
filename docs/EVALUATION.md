@@ -2,7 +2,7 @@
 
 ## Evidence policy
 
-All figures below come from frozen v1.0.2 artifacts. They are engineering evaluation records, not production accuracy, coverage, commercial security rates, cost estimates or service-level objectives. This public repository does not rerun the formal Provider evaluation.
+Delivery and M9 figures below come from frozen v1.0.2 artifacts. Retrieval Benchmark v2 is a separately frozen, adopted 200-query package. These are engineering evaluation records, not production accuracy, coverage, commercial security rates, cost estimates or service-level objectives. Public verification does not rerun a Provider evaluation.
 
 ## Delivery checks
 
@@ -20,15 +20,17 @@ The CI workflow defines exactly six checks for pull requests and pushes to `main
 
 ## Retrieval benchmark
 
-The independent frozen benchmark contains 50 synthetic-document queries: 46 answerable and 4 unanswerable.
+The adopted Retrieval Benchmark v2 contains 200 synthetic-enterprise queries: 160 Answerable and 40 Unanswerable. Ranking metrics use the 160 Answerable queries as their denominator.
 
 | Child metric | RRF | Cross-Encoder |
 | --- | ---: | ---: |
-| Hit@1 | 39 / 46 = 84.78% | 43 / 46 = 93.48% |
-| MRR@5 | 42.1667 / 46 = 91.67% | 44.5 / 46 = 96.74% |
-| Hit@5 | 46 / 46 = 100% | 46 / 46 = 100% |
+| Hit@1 | 137 / 160 = 85.62% | 154 / 160 = 96.25% |
+| MRR@5 | 146.7 / 160 = 91.69% | 157.0 / 160 = 98.12% |
+| Hit@5 | 160 / 160 = 100% | 160 / 160 = 100% |
 
-The Cross-Encoder change is +8.70 percentage points for Hit@1 and +5.07 percentage points for MRR@5. `scripts/verify_retrieval_evidence.py` verifies hashes, counts and ranking digest without model loading.
+The Cross-Encoder change is +10.63 percentage points for Hit@1 and +6.44 percentage points for MRR@5. `scripts/verify_retrieval_v2_evidence.py` verifies artifact hashes and recomputes the published ranking metrics from the committed relevance freeze and ranking records without model loading.
+
+The formal 50-query v1 package remains unchanged as a historical baseline: 46 Answerable / 4 Unanswerable, RRF Hit@1 84.78%, Cross-Encoder Hit@1 93.48%, RRF MRR@5 91.67% and Cross-Encoder MRR@5 96.74%.
 
 ## M9 frozen system run
 
@@ -53,4 +55,4 @@ The strict v1.0.2 calculator emits `numerator`, `denominator` and `value` for ra
 
 ## Reproduction boundary
 
-The Retrieval verifier and M9 calculator are offline. Running `scripts/run_m9_final_evaluation.py` would invoke a configured Provider and is intentionally outside normal public verification. No Provider call, corpus re-ingestion or baseline optimization is needed to validate the retained evidence.
+The v1/v2 Retrieval verifiers and M9 calculator are offline. Running `scripts/run_m9_final_evaluation.py` would invoke a configured Provider and is intentionally outside normal public verification. No Provider call, corpus re-ingestion or ranking-model load is needed to validate the retained v2 metrics.

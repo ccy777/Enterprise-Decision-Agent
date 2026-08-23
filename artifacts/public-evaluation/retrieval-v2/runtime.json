@@ -1,0 +1,41 @@
+{
+  "device": "cpu",
+  "embedding_model": "BAAI/bge-small-zh-v1.5",
+  "embedding_model_load_seconds": 14.274908499999583,
+  "embedding_revision": "7999e1d3359715c523056ef9478215996d62a620",
+  "evaluation_stage": "post-blind-freeze rerun and relevance-set rescore",
+  "mean_query_seconds": 0.6679052589999992,
+  "pipeline_config": {
+    "bm25_top_k": 10,
+    "bm25_weight": 1.0,
+    "config_version": "m2c2a1-v1",
+    "dense_top_k": 10,
+    "dense_weight": 1.0,
+    "evidence_max_chars_per_item": 1800,
+    "evidence_max_count": 5,
+    "evidence_max_total_chars": 6000,
+    "parent_top_k": 5,
+    "reranker_candidate_count": 10,
+    "reranker_top_k": 5,
+    "rrf_k": 60.0,
+    "rrf_top_k": 10
+  },
+  "pipeline_initialization": {
+    "bm25_index_build_seconds": 0.02161060000071302,
+    "data_load_seconds": 0.007054600000628852,
+    "dense_index_build_seconds": 2.009687400000985,
+    "model_load_seconds": 1.0100000508828089e-05
+  },
+  "pipeline_initialization_seconds": 2.0431588999999803,
+  "provider_called": false,
+  "ranking_digest": "ba03edc91b0573c0b01ab498dad563e85a7710107ba13c6906786b473a8e6740",
+  "relevance_dataset_sha256": "1a42163309bbf4f5fb4675b8fa2a07288a305263d08cd00ef0fd9e28a453f598",
+  "reranker_model": "BAAI/bge-reranker-base",
+  "reranker_model_load_seconds": 4.4037396000003355,
+  "reranker_revision": "2cfc18c9415c912f9d8155881c133215df768a70",
+  "run_completed_utc": "2026-08-20T08:08:53.716289+00:00",
+  "run_started_utc": "2026-08-20T08:06:18.012669+00:00",
+  "strictly_offline": true,
+  "total_query_seconds": 133.58105179999984,
+  "warmup_seconds": 0.9587412999990192
+}
