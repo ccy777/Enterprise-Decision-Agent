@@ -1,40 +1,55 @@
-# Architecture
+# 整体架构
 
-## System boundary
-
-Enterprise Decision Agent is a controlled Router–Planner–Executor–Reviewer runtime. It accepts a formal request only with server-owned identity and scope context, selects one bounded route, executes registered skills and releases a response only after evidence, review, citation, provider-output and audit checks.
+Enterprise Decision Agent由FastAPI、请求执行器、Router、Coordinator、Skill、Tool、知识检索、数据查询、Reviewer以及Trace等模块组成。
 
 ```mermaid
-flowchart LR
-    A["RequestPrincipal + SecurityContext"] --> B["FormalRequestExecutor"]
-    B --> C["Router"]
-    C --> D["Coordinator"]
-    D --> E["Direct or controlled workflow"]
-    E --> F["Knowledge / Data / Mixed skill"]
-    F --> G["Evidence and answer"]
-    G --> H["Reviewer + citation validation"]
-    H --> I["Response release gate"]
-    I --> J["Trace + AuditEvent"]
+flowchart TD
+    U["用户请求"] --> API["FastAPI"]
+    API --> X["FormalRequestExecutor"]
+    X --> R["Router"]
+    R --> C["Coordinator / Skill Registry"]
+    C --> S["选定 Skill"]
+    S --> T["Native Tool Calling"]
+    T --> K["Knowledge Agent\nHybrid RAG"]
+    T --> D["Data Agent\nData Planner"]
+    D --> MCP["MCP Tools"]
+    MCP --> DB["MySQL"]
+    K --> KE["知识 Evidence"]
+    DB --> DE["数据 Evidence"]
+    KE --> M["Mixed 综合分析"]
+    DE --> M
+    KE --> V["Reviewer / Response"]
+    DE --> V
+    M --> V
+    X -.-> CM["Context / Memory"]
+    X -.-> O["链路追踪 / 离线评测"]
 ```
 
-The router classifies; it does not grant authority. The coordinator rechecks scenario, workflow and skill permissions. Planner output is validated against closed schemas and registered capabilities. Tools inherit the immutable request context and cannot widen tenant, session, knowledge or data scope.
+## 核心模块职责
 
-## Knowledge path
+| 模块 | 主要职责 |
+| --- | --- |
+| FastAPI | 提供健康检查、就绪检查和Agent执行接口 |
+| FormalRequestExecutor | 组织一次完整请求，串联上下文、路由、执行、审查和响应 |
+| Router | 判断Knowledge、Data或Mixed任务 |
+| Coordinator / Skill Registry | 根据路由选择已注册Skill |
+| Native Tool Calling | 选择并调用Knowledge Agent或Data Agent工具 |
+| Reviewer | 检查执行结果、Evidence和Citation |
+| Context / Memory | 装配当前请求与历史会话信息 |
+| 链路追踪 / 离线评测 | 记录执行阶段并支持离线回归 |
 
-The knowledge path loads versioned parent/child chunks, runs Dense and BM25 retrieval, filters candidates by `KnowledgeScope`, fuses ranks with RRF, reranks child candidates with a Cross-Encoder, expands selected children to parent context, builds bounded evidence and then performs evidence selection, answerability review, answer generation and citation validation.
+## 知识问答链路
 
-## Data path
+Knowledge链路加载版本化Parent/Child分块，同时执行Dense与BM25检索，使用RRF融合结果，再通过Cross-Encoder精排和Parent Expansion补充上下文。随后完成Evidence Selection、Answerability Review、答案生成和Citation校验。
 
-The data path crosses `EnterpriseDataMCPClient` into the MCP server and `EnterpriseDataToolService`. `SafeQueryService` and SQL Guard validate one bounded, read-only query against allowlisted tables and columns before SQLAlchemy reaches a read-only MySQL account. Accessed resource identities are checked against `DataScope` before evidence is returned.
+## 数据分析链路
 
-## Mixed path
+Data链路通过Native Tool Calling进入Data Agent。Data Agent先从MCP获取Schema和业务定义，由Data Planner生成结构化SQL计划，再调用MCP查询MySQL并生成带数据引用的分析结果。
 
-The mixed inventory workflow executes registered knowledge and data subskills under the same immutable security context, then synthesizes their bounded evidence and runs workflow review. It is not a free-form conversation among independent agents.
+## 联合决策链路
 
-## Runtime resources
+Mixed链路分别执行Knowledge与Data子任务，将知识规则和经营数据组合为同一份库存风险诊断结果，并由Reviewer完成最终检查。
 
-External clients are created during explicit runtime bootstrap, never at module import. Resource ownership and shutdown are managed by the runtime builder. The default offline suites replace external I/O with deterministic substitutes; real Provider, MySQL, Milvus and Redis tests remain opt-in.
+## 运行时资源
 
-## Evidence and observability
-
-Trace spans carry safe stage metadata and timings. Security-critical actions append payload-free `AuditEvent` records. Response release depends on both completed workflow state and a durable release-allowed audit append. Audit verification covers one Python process and one local file/anchor pair; it does not provide distributed consensus or hostile-writer protection.
+MySQL、Milvus、Redis和MCP客户端在应用启动阶段统一创建，并在应用关闭时释放。默认测试使用可重复的本地替代实现，真实服务通过Docker与本地配置接入。

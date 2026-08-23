@@ -1,49 +1,38 @@
-# Retrieval Benchmark v2 public evidence
+# 检索评测 v2 公开证据
 
-This package makes the current 200-query retrieval claim independently reviewable without
-loading an embedding model, loading a reranker or calling a Provider.
+该证据包用于独立复核简历中的200-query检索指标，不需要加载Embedding、Reranker或调用Provider。
 
-## Headline result
+## 核心结果
 
-The benchmark contains 200 synthetic-enterprise queries: 160 Answerable and 40 Unanswerable.
-Ranking metrics use the 160 Answerable queries as their denominator.
+评测集包含200条合成企业场景查询，其中160条可回答、40条不可回答。排序指标使用160条可回答查询作为分母。
 
-| Child metric | RRF | Cross-Encoder |
+| Child指标 | RRF | Cross-Encoder |
 | --- | ---: | ---: |
 | Hit@1 | 137 / 160 = 85.62% | 154 / 160 = 96.25% |
 | Hit@5 | 160 / 160 = 100.00% | 160 / 160 = 100.00% |
 | MRR@5 | 146.7 / 160 = 91.69% | 157.0 / 160 = 98.12% |
 
-## Verify
+## 复核命令
 
-From the repository root:
+在仓库根目录执行：
 
 ```powershell
 python scripts/verify_retrieval_v2_evidence.py
 ```
 
-The verifier checks every committed artifact hash, the 200/160/40 population, evidence-mode
-counts, ordered case identity, Answerable/Unanswerable relevance invariants, stored ranking
-fields and all five published metric slices. It then recomputes Hit@1, Hit@5 and MRR@5 directly
-from `ranking_records.jsonl` and `relevance_freeze.jsonl`.
+脚本会校验固定文件哈希、200 / 160 / 40数量、Evidence模式、Case顺序和排名字段，并从`ranking_records.jsonl`与`relevance_freeze.jsonl`重新计算Hit@1、Hit@5和MRR@5。
 
-## Package contents
+## 文件说明
 
-- `relevance_freeze.jsonl`: the frozen synthetic query and adjudicated Child relevance set.
-- `ranking_records.jsonl`: RRF and Cross-Encoder candidate rankings for all 200 queries.
-- `metrics.json`: the complete adopted metrics, slices, bootstrap and coverage analysis.
-- `experiment_report.md`: metric interpretation and experiment boundaries.
-- `failure_cases.md`: all six remaining Cross-Encoder Top1 misses.
-- `relevance_audit.md`: freeze and relevance-review summary.
-- `runtime.json`: fixed model revisions, configuration and offline runtime metadata.
-- `manifest.json`: counts, identities, hashes and the public disclosure boundary.
+- `relevance_freeze.jsonl`：固定查询和Child相关性标注；
+- `ranking_records.jsonl`：200条查询的RRF与Cross-Encoder排名；
+- `metrics.json`：完整指标、切片和覆盖率分析；
+- `experiment_report.md`：实验过程与指标解释；
+- `failure_cases.md`：Cross-Encoder Top1未命中案例；
+- `relevance_audit.md`：相关性标注复核记录；
+- `runtime.json`：模型版本、配置和离线运行信息；
+- `manifest.json`：数量、身份和文件哈希。
 
-## Interpretation boundary
+## 指标说明
 
-This is a frozen engineering benchmark over synthetic enterprise material. Hit@1 means that the
-first Child is a relevant evidence window. For a multi-evidence query, it does not mean that one
-window alone supports the complete answer. These figures are not answer accuracy, production
-accuracy, an SLA or evidence of generalization outside this benchmark.
-
-The package intentionally contains no credentials, private business data, prompts, Provider
-outputs or internal filesystem paths.
+Hit@1表示第一条Child是相关Evidence。对于需要多条Evidence共同回答的问题，还需要结合Hit@5和Evidence覆盖率理解检索结果。

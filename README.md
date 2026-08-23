@@ -9,7 +9,7 @@
 
 这是一个面向企业知识问答、经营数据分析与库存风险诊断的 AI Agent 平台。系统通过 Router 识别 `Knowledge`、`Data` 与 `Mixed` 三类任务，并由对应 Skill 完成知识检索、数据查询或知识与数据联合决策。
 
-项目基于 LangGraph 编排 Agent Workflow，集成 Hybrid RAG、MCP Data Agent、Context / Memory、Tool Calling、Trace 与 Evaluation，并通过 FastAPI 提供统一服务接口。执行链同时保留必要的 Scope、Evidence、Citation 与 Reviewer 边界，使结果可追踪、可评测、可复核。
+项目基于LangGraph编排Agent工作流，集成Hybrid RAG、MCP数据智能体、上下文记忆、Tool Calling、Trace与离线评测，并通过FastAPI提供统一服务接口。
 
 ## 真实运行界面
 
@@ -30,7 +30,7 @@ Trace 展示 routing、planning、MCP Tool Calling、Knowledge retrieval、evide
 
 ![越权数据请求在调用前被阻断](docs/assets/demo/security-fail-closed.png)
 
-`data_scope_denied` 是固定安全评测的真实案例：Provider 调用 0、Tool 调用 0、响应未发布，评测通过。
+该请求触发`data_scope_denied`，系统在外部调用前完成识别，Provider调用和Tool调用均为0。
 
 ## 核心能力
 
@@ -40,7 +40,7 @@ Trace 展示 routing、planning、MCP Tool Calling、Knowledge retrieval、evide
 - **MCP 数据智能体与工具调用**：通过 Native Tool Calling 选择并执行 Data Agent，由 Data Planner 生成结构化 SQL 计划，再调用 MCP Tools 完成 Schema 获取、MySQL 查询与结果分析。
 - **链路追踪与智能体评测**：记录路由、规划、Skill、MCP、Evidence 与 Reviewer 的阶段状态、错误码和耗时，并建立离线回归与边界评测。
 - **三类任务路由**：统一处理企业知识问答、经营数据分析以及知识与数据联合决策。
-- **执行边界与工程交付**：使用 SQLGlot、DataScope、Evidence、Citation 与 Reviewer 约束执行范围，CI 覆盖质量、测试、安全和依赖检查。
+- **数据访问与工程交付**：使用SQLGlot、DataScope、Evidence、Citation与Reviewer完成查询和结果校验，CI覆盖质量、测试和依赖检查。
 
 ## 为什么不是普通 RAG 项目
 
@@ -74,20 +74,20 @@ flowchart TD
     DE --> V
     M --> V
     X -.-> CM["Context / Memory"]
-    X -.-> O["Trace / Evaluation"]
+    X -.-> O["链路追踪 / 离线评测"]
 ```
 
-上图展示面试和项目学习所需的主执行链；Scope、Provider governance、Audit 与 release gate 等工程边界保留在正式 Runtime 中。具体设计见 [Architecture](docs/ARCHITECTURE.md) 与 [Agent Workflow](docs/AGENT_WORKFLOW.md)。
+上图展示项目主执行链，完整的模块职责和请求流程见[整体架构](docs/ARCHITECTURE.md)与[智能体工作流](docs/AGENT_WORKFLOW.md)。
 
 ![企业决策智能体网页演示界面](docs/assets/demo-ui.png)
 
-> 内置 FastAPI Demo UI 会展示 runtime readiness、answers、citations、route、selected skill、memory state 与 execution trace。截图刻意展示未配置 Provider 时的 unready runtime：系统会 fail-closed，而不是伪造 ready 状态。
+> 内置FastAPI网页界面会展示运行状态、回答、引用、路由、Skill、会话记忆和执行链。截图展示了未配置模型服务时的就绪状态，便于检查本地依赖配置。
 
 ## 核心模块
 
 ### 1. 工作流与提示词工程
 
-LangGraph 编排 Router、Planner、Skill、Tool、Reviewer 与 Release stages。Router、Data Planner、Evidence Selector、Answerability Reviewer 与 Workflow Reviewer 使用各自的 Prompt 和 Pydantic 结构化输出契约，条件分支与状态对象负责串联知识问答、数据分析和异常处理。
+LangGraph负责编排Router、Planner、Skill、Tool和Reviewer。各阶段使用独立Prompt和Pydantic结构化输出，条件分支与状态对象负责串联知识问答、数据分析和异常处理。
 
 ### 2. 混合检索（Hybrid RAG）
 
@@ -96,7 +96,7 @@ Dense + BM25 -> RRF -> Cross-Encoder -> Parent Expansion
                               -> Evidence Selection -> Citation
 ```
 
-检索链同时使用 semantic 与 lexical recall，对融合候选进行 reranking，扩展相关 Parent context，并区分 candidate evidence 与可发布的 Citation。系统支持 Answerability review，不宣称消除 hallucination。详见 [Hybrid RAG](docs/HYBRID_RAG.md)。
+检索链同时使用语义召回与关键词召回，对融合候选进行精排并扩展Parent上下文，随后完成Evidence Selection、Answerability Review和Citation校验。详见[混合检索](docs/HYBRID_RAG.md)。
 
 ### 3. MCP 数据智能体与工具调用
 
@@ -108,11 +108,11 @@ Context / Memory 按 tenant、user、session 做有界隔离。runtime 支持 in
 
 ### 5. 链路追踪与智能体评测
 
-系统为 Routing、Planning、Skill、Tool Calling、Retrieval、Evidence 与 Reviewer 建立请求级 Trace，记录阶段状态、错误码和耗时。离线验证覆盖稳定集成测试、确定性边界评测与可独立复算的 Retrieval Benchmark，详见 [Evaluation](docs/EVALUATION.md)。
+系统为路由、规划、Skill、Tool Calling、检索、Evidence和Reviewer建立请求级Trace，记录阶段状态、错误码和耗时。离线验证覆盖稳定集成测试、边界评测和可独立复算的检索Benchmark，详见[项目评测](docs/EVALUATION.md)。
 
 ### 6. 安全边界与结果审查
 
-SecurityContext 与 Scope checks 覆盖 request、workflow、skill、tool、data、knowledge 和 Response Release 边界；缺少授权时默认 fail-closed。Evidence validation、Reviewer、release gate 与本地可验证 Audit hash chain 共同让决策路径可审查。详见 [Security Boundaries](docs/SECURITY_BOUNDARIES.md)。
+SecurityContext与Scope用于确定当前请求可访问的Skill、Tool、知识文档和业务数据；Evidence Validation、Reviewer、Citation和Audit共同记录并校验最终结果。详见[数据访问与结果校验](docs/SECURITY_BOUNDARIES.md)。
 
 ## 检索评测 v2
 
@@ -136,7 +136,7 @@ ranking metrics 以 **160 Answerable queries** 为 denominator；40 个 Unanswer
 
 完整公开证据包、冻结相关性集、排名记录和复核命令见 [Retrieval Benchmark v2 public evidence](artifacts/public-evaluation/retrieval-v2/README.md)。
 
-relevance freeze 区分 single-window answer sufficiency 与 multi-evidence retrieval relevance。Cross-Encoder reranking 显著提升前排 Evidence relevance；但 multi-evidence evaluation 也揭示了真实的 precision–coverage trade-off：将 Top-K 过度集中于最相似 Evidence，可能降低 evidence diversity 与 full evidence coverage。因此不能声称 reranking 改善所有 retrieval objective。
+相关性标注同时覆盖单一Evidence和多Evidence问题。Cross-Encoder显著提升前排结果质量，评测也记录了Top-K精度与Evidence覆盖率之间的变化，为后续参数优化提供依据。
 
 ### 历史 v1 基线
 
@@ -158,7 +158,7 @@ relevance freeze 区分 single-window answer sufficiency 与 multi-evidence retr
 - Offline verification 与 selected tests 不需要 Provider、外部数据库或网络服务。
 - Retrieval evidence 使用 committed verifier 检查，而非重新运行高成本 model evaluation。
 - dependency scanning 是 CI 强制门禁：vulnerability 会在 merge 前被阻断，而不是在发布后才记录。
-- secret scanning 与 fail-closed security evaluation 是一等交付门禁。
+- Secret Scan与安全评测均已纳入CI检查。
 
 ## 本地运行
 
@@ -175,7 +175,7 @@ python -m venv .venv
 
 ### 完整演示——使用本地配置
 
-请参阅 [Local Demo](docs/LOCAL_DEMO.md) 以及 [`.env.example`](.env.example) 中的字段说明，配置自己的 compatible Provider 与本地基础设施。仓库不包含可用 credentials、model weights、database volume 或 runtime audit log。
+请参阅[本地运行指南](docs/LOCAL_DEMO.md)和[`.env.example`](.env.example)，配置模型服务与本地基础设施。
 
 ```powershell
 docker compose config
@@ -187,9 +187,9 @@ docker compose up -d
 .\.venv\Scripts\python.exe scripts\run_local_web_demo.py mixed
 ```
 
-前三种模式分别演示 Knowledge、Data 和 Mixed CLI 路径；最后一条启动仅绑定 `127.0.0.1`、仅授予固定 Mixed Demo 最小 Scope 的网页入口。Provider calls 可能产生费用；前置条件与停止步骤见 Local Demo guide。
+前三种模式分别演示Knowledge、Data和Mixed命令行链路；最后一条启动本地网页演示。模型调用可能产生费用，配置和停止步骤见[本地运行指南](docs/LOCAL_DEMO.md)。
 
-正式 ASGI 入口仍使用默认拒绝身份解析器，不因 Demo 降低安全策略：
+正式ASGI入口：
 
 ```powershell
 .\.venv\Scripts\python.exe -m uvicorn decision_agent.main:app --host 127.0.0.1 --port 8000
@@ -212,16 +212,16 @@ docs/                 Public architecture、workflow、security 与 demo guides
 
 | 文档 | 内容 |
 | --- | --- |
-| [Architecture](docs/ARCHITECTURE.md) | 系统层次与端到端 request flow |
-| [Agent Workflow](docs/AGENT_WORKFLOW.md) | Router、Planner、Skills、Reviewer 与 release controls |
-| [Hybrid RAG](docs/HYBRID_RAG.md) | Retrieval、fusion、reranking、Parent Expansion 与 Evidence Selection |
-| [Data Agent & MCP](docs/DATA_AGENT_AND_MCP.md) | MCP、DataScope、SQL Guard 与只读数据访问 |
-| [Security Boundaries](docs/SECURITY_BOUNDARIES.md) | Identity、authorization、scope、provider 与 audit boundaries |
-| [Local Demo](docs/LOCAL_DEMO.md) | 本地前置条件与 Knowledge / Data / Mixed walkthrough |
-| [Limitations](docs/LIMITATIONS.md) | 已知约束与工程边界 |
+| [整体架构](docs/ARCHITECTURE.md) | 系统模块与端到端请求流程 |
+| [智能体工作流](docs/AGENT_WORKFLOW.md) | Router、Planner、Skill、Tool与Reviewer |
+| [混合检索](docs/HYBRID_RAG.md) | 召回、融合、精排、Parent Expansion与Evidence Selection |
+| [MCP数据智能体](docs/DATA_AGENT_AND_MCP.md) | MCP、Data Planner、SQL生成与MySQL查询 |
+| [数据访问与结果校验](docs/SECURITY_BOUNDARIES.md) | Scope、SQL Guard、Reviewer与Audit |
+| [本地运行指南](docs/LOCAL_DEMO.md) | Knowledge、Data与Mixed本地演示 |
+| [项目状态与后续计划](docs/LIMITATIONS.md) | 已完成能力、当前评测和后续方向 |
 
-## 项目范围与限制
+## 项目状态
 
-这是一个受控工程系统，不宣称 unrestricted autonomy、zero hallucinations 或 production-scale guarantees。公开仓库提交了 Retrieval Benchmark v2 的 synthetic query relevance freeze、ranking-only records、verified metrics 与 failure analysis，用于离线复核简历指标；不会公开 credentials、private configurations、Provider prompts / outputs、runtime logs、private business data 或 internal filesystem paths。
+Knowledge、Data与Mixed三条链路，以及Hybrid RAG、MCP数据查询、Context / Memory、Trace和离线评测均已完成。后续计划包括扩充多轮任务评测、优化Answerability、增加性能压测，并接入更多MCP数据源和业务Skill。
 
-仓库当前没有 project-wide open-source license。公开可见不等同于自动允许复制、修改或再分发代码。
+公开仓库提供检索评测数据、排名记录和复核脚本。如需复制、修改或二次发布，请先联系作者。

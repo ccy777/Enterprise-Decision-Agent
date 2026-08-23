@@ -1,28 +1,28 @@
-# Hybrid RAG
+# 混合检索（Hybrid RAG）
 
-## Retrieval chain
+## 检索链路
 
 ```text
 Dense Retrieval + BM25
-  -> KnowledgeScope filtering
-  -> Reciprocal Rank Fusion (k=60)
-  -> Cross-Encoder reranking
-  -> parent expansion
-  -> bounded evidence context
-  -> evidence selection
-  -> answerability review
-  -> cited answer
+  -> KnowledgeScope过滤
+  -> RRF融合（k=60）
+  -> Cross-Encoder精排
+  -> Parent Expansion
+  -> Evidence上下文构建
+  -> Evidence Selection
+  -> Answerability Review
+  -> 带引用的回答
 ```
 
-The fixed-window corpus uses versioned parent and child chunks. Dense retrieval uses `BAAI/bge-small-zh-v1.5` with 512-dimensional normalized embeddings; sparse retrieval uses BM25. RRF combines child rankings without exposing out-of-scope documents. `BAAI/bge-reranker-base` reranks the fused child candidates, and parent expansion restores enough surrounding context for evidence selection and citation.
+语料采用版本化Parent/Child分块。Dense检索使用`BAAI/bge-small-zh-v1.5`生成512维归一化向量，BM25负责关键词召回；RRF融合两路Child排名，`BAAI/bge-reranker-base`对候选结果精排，Parent Expansion补充相邻上下文。
 
-The default pipeline budgets are reviewable: Dense top 10, BM25 top 10, RRF top 10, reranker top 5, parent top 5, evidence count up to 5 and total evidence text up to 6,000 characters.
+默认配置为Dense Top 10、BM25 Top 10、RRF Top 10、Reranker Top 5、Parent Top 5，最终Evidence最多5条、总文本最多6,000字符。
 
-## Adopted Retrieval Benchmark v2
+## 检索评测 v2
 
-The current public benchmark is a frozen 200-query engineering benchmark over synthetic enterprise documents:
+当前公开Benchmark包含200条合成企业场景查询：
 
-| Population | Count |
+| 数据组成 | 数量 |
 | --- | ---: |
 | Queries | 200 |
 | Answerable | 160 |
@@ -31,20 +31,22 @@ The current public benchmark is a frozen 200-query engineering benchmark over sy
 | Parent records | 36 |
 | Child evidence windows | 101 |
 
-| Child-level metric | RRF | Cross-Encoder | Change |
+| Child指标 | RRF | Cross-Encoder | 提升 |
 | --- | ---: | ---: | ---: |
-| Hit@1 | 85.62% | 96.25% | +10.63 percentage points |
-| MRR@5 | 91.69% | 98.12% | +6.44 percentage points |
+| Hit@1 | 85.62% | 96.25% | +10.63个百分点 |
+| MRR@5 | 91.69% | 98.12% | +6.44个百分点 |
 | Hit@5 | 100% | 100% | — |
 
-Ranking metrics use only the 160 Answerable queries as their denominator. `96.25%` is specifically Cross-Encoder Child Hit@1; it is not model accuracy, answer accuracy or an online production result. The original 50-query v1 package remains a historical baseline.
+排序指标以160条可回答查询为分母。96.25%对应Cross-Encoder阶段的Child Hit@1，用于衡量首条检索结果命中情况。
 
-## Integrity verification
+## 证据复核
 
-`python scripts/verify_retrieval_v2_evidence.py` verifies fixed SHA-256 values, validates the 200/160/40 counts and evidence modes, and recomputes every published Hit@1, Hit@5 and MRR@5 slice from the committed relevance freeze and ranking records without loading embedding or reranking models.
+运行以下命令即可校验固定SHA-256、数据集数量和Evidence模式，并从相关性标注与排名记录重新计算Hit@1、Hit@5和MRR@5：
 
-The source manifest classifies the corpus as `synthetic_enterprise_fixture_no_real_business_data`. Runtime-dependent timing bytes are not claimed deterministic; ranking integrity is represented by the ranking digest.
+```powershell
+python scripts/verify_retrieval_v2_evidence.py
+```
 
-## Scope and limitations
+## 证据构建
 
-Knowledge filtering occurs before fusion and subsequent stages receive only in-scope candidates. Empty authorized results do not fall back to the global corpus. The implementation does not include Neo4j, GraphRAG, RAGAS or Langfuse, and the frozen synthetic benchmark is engineering evidence rather than a generalization claim.
+KnowledgeScope在结果融合前完成文档范围过滤。精排后的Child通过Parent Expansion恢复上下文，再由Evidence Selector选出用于回答的证据，最终引用与文档ID、版本和来源保持关联。
