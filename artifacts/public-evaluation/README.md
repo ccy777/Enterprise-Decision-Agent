@@ -1,10 +1,13 @@
 # Public Evaluation Evidence
 
-This directory maps the public release view to byte-identical frozen artifacts retained at their formal repository paths.
+This directory contains the public, offline-verifiable evaluation view.
 
 - Source tag: `v1.0.2`
 - Source commit: `6c6ce94815394b9c295bc9b299ec34b2d29d8aa0`
-- Retrieval: `retrieval/manifest.json`
+- Current Retrieval Benchmark v2: `retrieval-v2/manifest.json`
+- Historical v1 retrieval: `retrieval/manifest.json`
 - M9: `m9/manifest.json`
 
-The evidence uses synthetic or sanitized records. The formal Provider evaluation was not rerun for this public release. The manifests in this directory are public provenance maps; they do not replace or alter the frozen source manifests.
+The evidence uses synthetic or sanitized records. The v2 package includes a frozen relevance set
+and ranking-only records so its headline metrics can be recomputed without models or Provider
+calls. The formal Provider evaluation was not rerun for this public release.

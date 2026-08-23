@@ -6,7 +6,7 @@ The frozen system evaluation contains one real false positive: `m9-knowledge-una
 
 ## Evaluation size and meaning
 
-The M9 set contains 13 cases, including 9 formal-runtime cases and 4 deterministic boundary cases. The retrieval benchmark contains 50 queries over synthetic enterprise material. These sets support engineering regression and evidence review but do not establish production accuracy, broad statistical generalization, production cost or a service-level objective.
+The M9 set contains 13 cases, including 9 formal-runtime cases and 4 deterministic boundary cases. Retrieval Benchmark v2 contains 200 synthetic-enterprise queries, with ranking metrics computed over 160 Answerable cases; the 50-query v1 package remains historical. These sets support engineering regression and evidence review but do not establish production accuracy, broad statistical generalization, production cost or a service-level objective.
 
 ## Audit threat model
 

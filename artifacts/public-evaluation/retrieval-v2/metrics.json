@@ -1,0 +1,1100 @@
+{
+  "adjudicated_slices": {
+    "multi_evidence_required_overall": {
+      "answerable_count": 25,
+      "hit_at_1_gain_percentage_points": 7.9999999999999964,
+      "mrr_at_5_gain_percentage_points": 4.666666666666675,
+      "query_count": 25,
+      "reranker": {
+        "answerable_denominator": 25,
+        "hit_at_1": {
+          "denominator": 25,
+          "numerator": 24,
+          "value": 0.96
+        },
+        "hit_at_5": {
+          "denominator": 25,
+          "numerator": 25,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 25,
+          "numerator": 24.5,
+          "value": 0.98
+        }
+      },
+      "rrf": {
+        "answerable_denominator": 25,
+        "hit_at_1": {
+          "denominator": 25,
+          "numerator": 22,
+          "value": 0.88
+        },
+        "hit_at_5": {
+          "denominator": 25,
+          "numerator": 25,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 25,
+          "numerator": 23.333333333333332,
+          "value": 0.9333333333333332
+        }
+      },
+      "unanswerable_count": 0
+    },
+    "new_only_150": {
+      "answerable_count": 114,
+      "hit_at_1_gain_percentage_points": 10.526315789473683,
+      "mrr_at_5_gain_percentage_points": 6.549707602339183,
+      "query_count": 150,
+      "reranker": {
+        "answerable_denominator": 114,
+        "hit_at_1": {
+          "denominator": 114,
+          "numerator": 111,
+          "value": 0.9736842105263158
+        },
+        "hit_at_5": {
+          "denominator": 114,
+          "numerator": 114,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 114,
+          "numerator": 112.5,
+          "value": 0.9868421052631579
+        }
+      },
+      "rrf": {
+        "answerable_denominator": 114,
+        "hit_at_1": {
+          "denominator": 114,
+          "numerator": 99,
+          "value": 0.868421052631579
+        },
+        "hit_at_5": {
+          "denominator": 114,
+          "numerator": 114,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 114,
+          "numerator": 105.03333333333333,
+          "value": 0.921345029239766
+        }
+      },
+      "unanswerable_count": 36
+    },
+    "single_window_sufficient_overall": {
+      "answerable_count": 135,
+      "hit_at_1_gain_percentage_points": 11.111111111111105,
+      "mrr_at_5_gain_percentage_points": 6.765432098765444,
+      "query_count": 135,
+      "reranker": {
+        "answerable_denominator": 135,
+        "hit_at_1": {
+          "denominator": 135,
+          "numerator": 130,
+          "value": 0.9629629629629629
+        },
+        "hit_at_5": {
+          "denominator": 135,
+          "numerator": 135,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 135,
+          "numerator": 132.5,
+          "value": 0.9814814814814815
+        }
+      },
+      "rrf": {
+        "answerable_denominator": 135,
+        "hit_at_1": {
+          "denominator": 135,
+          "numerator": 115,
+          "value": 0.8518518518518519
+        },
+        "hit_at_5": {
+          "denominator": 135,
+          "numerator": 135,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 135,
+          "numerator": 123.36666666666666,
+          "value": 0.9138271604938271
+        }
+      },
+      "unanswerable_count": 0
+    },
+    "v1_50_on_current_12_document_corpus": {
+      "answerable_count": 46,
+      "hit_at_1_gain_percentage_points": 10.869565217391308,
+      "mrr_at_5_gain_percentage_points": 6.159420289855078,
+      "query_count": 50,
+      "reranker": {
+        "answerable_denominator": 46,
+        "hit_at_1": {
+          "denominator": 46,
+          "numerator": 43,
+          "value": 0.9347826086956522
+        },
+        "hit_at_5": {
+          "denominator": 46,
+          "numerator": 46,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 46,
+          "numerator": 44.5,
+          "value": 0.967391304347826
+        }
+      },
+      "rrf": {
+        "answerable_denominator": 46,
+        "hit_at_1": {
+          "denominator": 46,
+          "numerator": 38,
+          "value": 0.8260869565217391
+        },
+        "hit_at_5": {
+          "denominator": 46,
+          "numerator": 46,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 46,
+          "numerator": 41.666666666666664,
+          "value": 0.9057971014492753
+        }
+      },
+      "unanswerable_count": 4
+    },
+    "v2_overall_200": {
+      "answerable_count": 160,
+      "hit_at_1_gain_percentage_points": 10.625000000000007,
+      "mrr_at_5_gain_percentage_points": 6.437500000000007,
+      "query_count": 200,
+      "reranker": {
+        "answerable_denominator": 160,
+        "hit_at_1": {
+          "denominator": 160,
+          "numerator": 154,
+          "value": 0.9625
+        },
+        "hit_at_5": {
+          "denominator": 160,
+          "numerator": 160,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 160,
+          "numerator": 157.0,
+          "value": 0.98125
+        }
+      },
+      "rrf": {
+        "answerable_denominator": 160,
+        "hit_at_1": {
+          "denominator": 160,
+          "numerator": 137,
+          "value": 0.85625
+        },
+        "hit_at_5": {
+          "denominator": 160,
+          "numerator": 160,
+          "value": 1.0
+        },
+        "mrr_at_5": {
+          "denominator": 160,
+          "numerator": 146.7,
+          "value": 0.9168749999999999
+        }
+      },
+      "unanswerable_count": 40
+    }
+  },
+  "bootstrap_v2_overall": {
+    "answerable_denominator": 160,
+    "hit_at_1_delta_percentage_points": {
+      "ci_95_high": 16.25,
+      "ci_95_low": 5.0,
+      "estimate": 10.625
+    },
+    "mrr_at_5_delta_percentage_points": {
+      "ci_95_high": 9.78125,
+      "ci_95_low": 3.333333333333334,
+      "estimate": 6.4375
+    },
+    "performed": true,
+    "resamples": 10000,
+    "seed": 20260820
+  },
+  "candidate_sha256": "fec7a1ddd89d7d703ea19d732b00fec65a0e58a30f6215752fc6e17dbc16ddd3",
+  "experiment_id": "retrieval-benchmark-v2-200-blind-relevance-final",
+  "final_failure_pattern_counts": {
+    "ranking ambiguity": 2,
+    "window-boundary issue": 4
+  },
+  "final_reranker_top1_failure_count": 6,
+  "historical_v1_formal": {
+    "answerable_count": 46,
+    "corpus_counts": {
+      "answerable": 46,
+      "child": 87,
+      "clause": 129,
+      "document": 10,
+      "parent": 30,
+      "query": 50,
+      "unanswerable": 4
+    },
+    "query_count": 50,
+    "ranking_digest": "0acbcdea406fa6d9dc10d7818479a2ee9b0892fa1bd5241d68daf637d4b3b75e",
+    "reranker": {
+      "hit_rate_at_1": {
+        "denominator": 46,
+        "numerator": 43.0,
+        "value": 0.9347826086956522
+      },
+      "hit_rate_at_3": {
+        "denominator": 46,
+        "numerator": 46.0,
+        "value": 1.0
+      },
+      "hit_rate_at_5": {
+        "denominator": 46,
+        "numerator": 46.0,
+        "value": 1.0
+      },
+      "mrr_at_5": {
+        "denominator": 46,
+        "numerator": 44.5,
+        "value": 0.967391304347826
+      },
+      "recall_at_1": {
+        "denominator": 46,
+        "numerator": 20.766666666666666,
+        "value": 0.4514492753623188
+      },
+      "recall_at_3": {
+        "denominator": 46,
+        "numerator": 35.11666666666667,
+        "value": 0.7634057971014493
+      },
+      "recall_at_5": {
+        "denominator": 46,
+        "numerator": 38.96666666666667,
+        "value": 0.8471014492753624
+      }
+    },
+    "rrf": {
+      "hit_rate_at_1": {
+        "denominator": 46,
+        "numerator": 39.0,
+        "value": 0.8478260869565217
+      },
+      "hit_rate_at_10": {
+        "denominator": 46,
+        "numerator": 46.0,
+        "value": 1.0
+      },
+      "hit_rate_at_3": {
+        "denominator": 46,
+        "numerator": 46.0,
+        "value": 1.0
+      },
+      "hit_rate_at_5": {
+        "denominator": 46,
+        "numerator": 46.0,
+        "value": 1.0
+      },
+      "mrr_at_10": {
+        "denominator": 46,
+        "numerator": 42.166666666666664,
+        "value": 0.9166666666666666
+      },
+      "mrr_at_5": {
+        "denominator": 46,
+        "numerator": 42.166666666666664,
+        "value": 0.9166666666666666
+      },
+      "recall_at_1": {
+        "denominator": 46,
+        "numerator": 18.733333333333334,
+        "value": 0.4072463768115942
+      },
+      "recall_at_10": {
+        "denominator": 46,
+        "numerator": 42.46666666666667,
+        "value": 0.9231884057971015
+      },
+      "recall_at_3": {
+        "denominator": 46,
+        "numerator": 35.0,
+        "value": 0.7608695652173914
+      },
+      "recall_at_5": {
+        "denominator": 46,
+        "numerator": 39.85,
+        "value": 0.866304347826087
+      }
+    },
+    "unanswerable_count": 4
+  },
+  "movements_overall_answerable": {
+    "reranker_improvement": {
+      "case_ids": [
+        "M2C1-Q001",
+        "M2C1-Q007",
+        "M2C1-Q016",
+        "M2C1-Q021",
+        "M2C1-Q026",
+        "M2C1-Q039",
+        "M2C1-Q040",
+        "RBV2-N002",
+        "RBV2-N005",
+        "RBV2-N010",
+        "RBV2-N027",
+        "RBV2-N042",
+        "RBV2-N049",
+        "RBV2-N050",
+        "RBV2-N060",
+        "RBV2-N071",
+        "RBV2-N072",
+        "RBV2-N075",
+        "RBV2-N081",
+        "RBV2-N114"
+      ],
+      "count": 20
+    },
+    "reranker_regression": {
+      "case_ids": [
+        "M2C1-Q022",
+        "M2C1-Q034",
+        "RBV2-N098"
+      ],
+      "count": 3
+    },
+    "unchanged_correct": {
+      "case_ids": [
+        "M2C1-Q002",
+        "M2C1-Q003",
+        "M2C1-Q004",
+        "M2C1-Q005",
+        "M2C1-Q008",
+        "M2C1-Q009",
+        "M2C1-Q011",
+        "M2C1-Q012",
+        "M2C1-Q013",
+        "M2C1-Q014",
+        "M2C1-Q015",
+        "M2C1-Q017",
+        "M2C1-Q018",
+        "M2C1-Q019",
+        "M2C1-Q020",
+        "M2C1-Q023",
+        "M2C1-Q025",
+        "M2C1-Q027",
+        "M2C1-Q028",
+        "M2C1-Q029",
+        "M2C1-Q030",
+        "M2C1-Q031",
+        "M2C1-Q033",
+        "M2C1-Q035",
+        "M2C1-Q036",
+        "M2C1-Q037",
+        "M2C1-Q038",
+        "M2C1-Q041",
+        "M2C1-Q042",
+        "M2C1-Q044",
+        "M2C1-Q045",
+        "M2C1-Q046",
+        "M2C1-Q047",
+        "M2C1-Q048",
+        "M2C1-Q049",
+        "M2C1-Q050",
+        "RBV2-N001",
+        "RBV2-N003",
+        "RBV2-N004",
+        "RBV2-N006",
+        "RBV2-N007",
+        "RBV2-N008",
+        "RBV2-N009",
+        "RBV2-N011",
+        "RBV2-N012",
+        "RBV2-N013",
+        "RBV2-N014",
+        "RBV2-N015",
+        "RBV2-N016",
+        "RBV2-N017",
+        "RBV2-N018",
+        "RBV2-N019",
+        "RBV2-N020",
+        "RBV2-N021",
+        "RBV2-N023",
+        "RBV2-N024",
+        "RBV2-N025",
+        "RBV2-N026",
+        "RBV2-N028",
+        "RBV2-N029",
+        "RBV2-N030",
+        "RBV2-N031",
+        "RBV2-N032",
+        "RBV2-N033",
+        "RBV2-N034",
+        "RBV2-N035",
+        "RBV2-N036",
+        "RBV2-N037",
+        "RBV2-N039",
+        "RBV2-N040",
+        "RBV2-N041",
+        "RBV2-N043",
+        "RBV2-N044",
+        "RBV2-N045",
+        "RBV2-N046",
+        "RBV2-N047",
+        "RBV2-N048",
+        "RBV2-N051",
+        "RBV2-N052",
+        "RBV2-N053",
+        "RBV2-N054",
+        "RBV2-N055",
+        "RBV2-N056",
+        "RBV2-N057",
+        "RBV2-N058",
+        "RBV2-N059",
+        "RBV2-N061",
+        "RBV2-N062",
+        "RBV2-N063",
+        "RBV2-N064",
+        "RBV2-N065",
+        "RBV2-N066",
+        "RBV2-N067",
+        "RBV2-N068",
+        "RBV2-N069",
+        "RBV2-N070",
+        "RBV2-N073",
+        "RBV2-N074",
+        "RBV2-N076",
+        "RBV2-N077",
+        "RBV2-N078",
+        "RBV2-N079",
+        "RBV2-N080",
+        "RBV2-N082",
+        "RBV2-N083",
+        "RBV2-N084",
+        "RBV2-N085",
+        "RBV2-N086",
+        "RBV2-N087",
+        "RBV2-N088",
+        "RBV2-N089",
+        "RBV2-N090",
+        "RBV2-N091",
+        "RBV2-N092",
+        "RBV2-N093",
+        "RBV2-N094",
+        "RBV2-N095",
+        "RBV2-N096",
+        "RBV2-N097",
+        "RBV2-N099",
+        "RBV2-N100",
+        "RBV2-N101",
+        "RBV2-N102",
+        "RBV2-N103",
+        "RBV2-N104",
+        "RBV2-N105",
+        "RBV2-N106",
+        "RBV2-N107",
+        "RBV2-N108",
+        "RBV2-N109",
+        "RBV2-N110",
+        "RBV2-N111",
+        "RBV2-N112",
+        "RBV2-N113"
+      ],
+      "count": 134
+    },
+    "unchanged_wrong": {
+      "case_ids": [
+        "M2C1-Q006",
+        "RBV2-N022",
+        "RBV2-N038"
+      ],
+      "count": 3
+    }
+  },
+  "multi_evidence_atomic_coverage_at_5": {
+    "reranker": {
+      "details": [
+        {
+          "case_id": "M2C1-Q005",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "CS-DOA-B-30D",
+            "CS-DOA-VERIFICATION"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q007",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "CS-DOA-A-15D",
+            "CS-DOA-AFTER-WINDOW"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q008",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "CS-WARRANTY-A-DEVICE",
+            "CS-WARRANTY-A-BATTERY",
+            "CS-WARRANTY-STANDARD-DOCK",
+            "CS-WARRANTY-B-DEVICE",
+            "CS-WARRANTY-B-BATTERY",
+            "CS-WARRANTY-INDUSTRIAL-DOCK"
+          ],
+          "required_atom_count": 6
+        },
+        {
+          "case_id": "M2C1-Q009",
+          "coverage": 0.6666666666666666,
+          "covered_atoms": [
+            "CS-DOA-AFTER-WINDOW",
+            "CS-REPAIR-DATA"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q014",
+          "coverage": 0.5,
+          "covered_atoms": [
+            "SALES-DISCOUNT-KEY-PLUS2"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q016",
+          "coverage": 0.75,
+          "covered_atoms": [
+            "SALES-CUSTOMER-REGULAR",
+            "SALES-CUSTOMER-KEY",
+            "SALES-CUSTOMER-STRATEGIC"
+          ],
+          "required_atom_count": 4
+        },
+        {
+          "case_id": "M2C1-Q017",
+          "coverage": 0.6666666666666666,
+          "covered_atoms": [
+            "SALES-REGION-WEST",
+            "SALES-CROSS-REGION"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q018",
+          "coverage": 0.5,
+          "covered_atoms": [
+            "SALES-DISCOUNT-BUNDLE"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q021",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "INV-A-SAFETY-120",
+            "INV-A-EMERGENCY-80"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q022",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "INV-B-SAFETY-80",
+            "INV-B-EMERGENCY-50"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q023",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "INV-A-REORDER-180",
+            "INV-A-SAFETY-120",
+            "INV-A-EMERGENCY-80",
+            "INV-B-REORDER-120",
+            "INV-B-SAFETY-80",
+            "INV-B-EMERGENCY-50"
+          ],
+          "required_atom_count": 6
+        },
+        {
+          "case_id": "M2C1-Q027",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "PROC-EMERGENCY-UPTO-80K",
+            "PROC-EMERGENCY-RATIFY-2D"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q028",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "PROC-EMERGENCY-OVER-80K",
+            "PROC-NORMAL-200K-PLUS"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q029",
+          "coverage": 0.8333333333333334,
+          "covered_atoms": [
+            "PROC-NORMAL-50K-200K",
+            "PROC-NORMAL-200K-PLUS",
+            "PROC-EMERGENCY-UPTO-80K",
+            "PROC-EMERGENCY-RATIFY-2D",
+            "PROC-NO-SPLITTING"
+          ],
+          "required_atom_count": 6
+        },
+        {
+          "case_id": "M2C1-Q030",
+          "coverage": 0.6666666666666666,
+          "covered_atoms": [
+            "PROC-OTD-BELOW90-TWO-QUARTERS",
+            "PROC-SCORE-METHOD"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q031",
+          "coverage": 0.5,
+          "covered_atoms": [
+            "PROC-SCORE-SUSPEND-BELOW60"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q036",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "FIN-OVERBUDGET-UPTO10",
+            "FIN-OVERBUDGET-OVER10"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q037",
+          "coverage": 0.6,
+          "covered_atoms": [
+            "FIN-EXPENSE-20K-PLUS",
+            "FIN-OVERBUDGET-UPTO10",
+            "FIN-OVERBUDGET-OVER10"
+          ],
+          "required_atom_count": 5
+        },
+        {
+          "case_id": "M2C1-Q038",
+          "coverage": 0.3333333333333333,
+          "covered_atoms": [
+            "FIN-OVERBUDGET-OVER10"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q041",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "HR-DOMESTIC-ADVANCE-2D",
+            "HR-OVERSEAS-ADVANCE-10D",
+            "HR-DOMESTIC-EMERGENCY"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q042",
+          "coverage": 0.6666666666666666,
+          "covered_atoms": [
+            "HR-OVERSEAS-ADVANCE-10D",
+            "HR-OVERSEAS-SECURITY"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q047",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "SEC-DATA-L3",
+            "SEC-ACCESS-L3",
+            "SEC-LEAST-PRIVILEGE"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q048",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "SEC-DATA-L1",
+            "SEC-DATA-L2",
+            "SEC-DATA-L3",
+            "SEC-DATA-L4",
+            "SEC-LEAST-PRIVILEGE"
+          ],
+          "required_atom_count": 5
+        },
+        {
+          "case_id": "M2C1-Q049",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "SEC-ACCESS-L3",
+            "SEC-ACCESS-L4",
+            "SEC-LOG-L3L4-365D"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q050",
+          "coverage": 0.6666666666666666,
+          "covered_atoms": [
+            "SEC-THIRD-PARTY",
+            "SEC-ACCESS-L3"
+          ],
+          "required_atom_count": 3
+        }
+      ],
+      "fully_covered_query_at_5": {
+        "denominator": 25,
+        "numerator": 13,
+        "value": 0.52
+      },
+      "mean_atomic_evidence_coverage_at_5": 0.8140000000000001,
+      "query_denominator": 25
+    },
+    "rrf": {
+      "details": [
+        {
+          "case_id": "M2C1-Q005",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "CS-DOA-B-30D",
+            "CS-DOA-VERIFICATION"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q007",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "CS-DOA-A-15D",
+            "CS-DOA-AFTER-WINDOW"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q008",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "CS-WARRANTY-A-DEVICE",
+            "CS-WARRANTY-A-BATTERY",
+            "CS-WARRANTY-STANDARD-DOCK",
+            "CS-WARRANTY-B-DEVICE",
+            "CS-WARRANTY-B-BATTERY",
+            "CS-WARRANTY-INDUSTRIAL-DOCK"
+          ],
+          "required_atom_count": 6
+        },
+        {
+          "case_id": "M2C1-Q009",
+          "coverage": 0.6666666666666666,
+          "covered_atoms": [
+            "CS-DOA-AFTER-WINDOW",
+            "CS-REPAIR-DATA"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q014",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "SALES-DISCOUNT-SOUTH-REGULAR",
+            "SALES-DISCOUNT-KEY-PLUS2"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q016",
+          "coverage": 0.75,
+          "covered_atoms": [
+            "SALES-CUSTOMER-REGULAR",
+            "SALES-CUSTOMER-KEY",
+            "SALES-CUSTOMER-STRATEGIC"
+          ],
+          "required_atom_count": 4
+        },
+        {
+          "case_id": "M2C1-Q017",
+          "coverage": 0.6666666666666666,
+          "covered_atoms": [
+            "SALES-REGION-WEST",
+            "SALES-CROSS-REGION"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q018",
+          "coverage": 0.5,
+          "covered_atoms": [
+            "SALES-DISCOUNT-BUNDLE"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q021",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "INV-A-SAFETY-120",
+            "INV-A-EMERGENCY-80"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q022",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "INV-B-SAFETY-80",
+            "INV-B-EMERGENCY-50"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q023",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "INV-A-REORDER-180",
+            "INV-A-SAFETY-120",
+            "INV-A-EMERGENCY-80",
+            "INV-B-REORDER-120",
+            "INV-B-SAFETY-80",
+            "INV-B-EMERGENCY-50"
+          ],
+          "required_atom_count": 6
+        },
+        {
+          "case_id": "M2C1-Q027",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "PROC-EMERGENCY-UPTO-80K",
+            "PROC-EMERGENCY-RATIFY-2D"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q028",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "PROC-EMERGENCY-OVER-80K",
+            "PROC-NORMAL-200K-PLUS"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q029",
+          "coverage": 0.8333333333333334,
+          "covered_atoms": [
+            "PROC-NORMAL-50K-200K",
+            "PROC-NORMAL-200K-PLUS",
+            "PROC-EMERGENCY-UPTO-80K",
+            "PROC-EMERGENCY-RATIFY-2D",
+            "PROC-NO-SPLITTING"
+          ],
+          "required_atom_count": 6
+        },
+        {
+          "case_id": "M2C1-Q030",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "PROC-OTD-BELOW90-TWO-QUARTERS",
+            "PROC-SPECIAL-RECTIFICATION",
+            "PROC-SCORE-METHOD"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q031",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "PROC-SCORE-SUSPEND-BELOW60",
+            "PROC-ACCEPTANCE"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q036",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "FIN-OVERBUDGET-UPTO10",
+            "FIN-OVERBUDGET-OVER10"
+          ],
+          "required_atom_count": 2
+        },
+        {
+          "case_id": "M2C1-Q037",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "FIN-EXPENSE-BELOW-5K",
+            "FIN-EXPENSE-5K-20K",
+            "FIN-EXPENSE-20K-PLUS",
+            "FIN-OVERBUDGET-UPTO10",
+            "FIN-OVERBUDGET-OVER10"
+          ],
+          "required_atom_count": 5
+        },
+        {
+          "case_id": "M2C1-Q038",
+          "coverage": 0.3333333333333333,
+          "covered_atoms": [
+            "FIN-EXPENSE-20K-PLUS"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q041",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "HR-DOMESTIC-ADVANCE-2D",
+            "HR-OVERSEAS-ADVANCE-10D",
+            "HR-DOMESTIC-EMERGENCY"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q042",
+          "coverage": 0.6666666666666666,
+          "covered_atoms": [
+            "HR-OVERSEAS-ADVANCE-10D",
+            "HR-OVERSEAS-SECURITY"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q047",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "SEC-DATA-L3",
+            "SEC-ACCESS-L3",
+            "SEC-LEAST-PRIVILEGE"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q048",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "SEC-DATA-L1",
+            "SEC-DATA-L2",
+            "SEC-DATA-L3",
+            "SEC-DATA-L4",
+            "SEC-LEAST-PRIVILEGE"
+          ],
+          "required_atom_count": 5
+        },
+        {
+          "case_id": "M2C1-Q049",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "SEC-ACCESS-L3",
+            "SEC-ACCESS-L4",
+            "SEC-LOG-L3L4-365D"
+          ],
+          "required_atom_count": 3
+        },
+        {
+          "case_id": "M2C1-Q050",
+          "coverage": 1.0,
+          "covered_atoms": [
+            "SEC-THIRD-PARTY",
+            "SEC-ACCESS-L3",
+            "SEC-ACCESS-REVIEW"
+          ],
+          "required_atom_count": 3
+        }
+      ],
+      "fully_covered_query_at_5": {
+        "denominator": 25,
+        "numerator": 18,
+        "value": 0.72
+      },
+      "mean_atomic_evidence_coverage_at_5": 0.8966666666666667,
+      "query_denominator": 25
+    }
+  },
+  "ranking_digest": "ba03edc91b0573c0b01ab498dad563e85a7710107ba13c6906786b473a8e6740",
+  "ranking_semantics": {
+    "multi_evidence_coverage": "Gold Clause / Atomic Evidence Coverage@5 based on the frozen required_evidence mapping.",
+    "overall_hit_at_1": "Top1 is a truly relevant evidence window; for multi-evidence queries it does not imply full-answer sufficiency.",
+    "single_window_hit_at_1": "Top1 independently and completely supports the query's core answer."
+  },
+  "relevance_dataset_sha256": "1a42163309bbf4f5fb4675b8fa2a07288a305263d08cd00ef0fd9e28a453f598",
+  "schema_version": "2.1-complete-relevance-set",
+  "single_gold_comparison": {
+    "reranker": {
+      "adjudicated_hit_at_1": {
+        "denominator": 160,
+        "numerator": 154,
+        "value": 0.9625
+      },
+      "historical_overlap_hits_excluded_by_corrected_single_window_semantics": {
+        "case_ids": [],
+        "count": 0
+      },
+      "previous_misses_converted_to_valid_hits": {
+        "case_ids": [
+          "RBV2-N010",
+          "RBV2-N024",
+          "RBV2-N112"
+        ],
+        "count": 3
+      },
+      "remaining_top1_misses": 6,
+      "strict_candidate_hit_at_1": {
+        "denominator": 160,
+        "numerator": 151,
+        "value": 0.94375
+      }
+    },
+    "rrf": {
+      "adjudicated_hit_at_1": {
+        "denominator": 160,
+        "numerator": 137,
+        "value": 0.85625
+      },
+      "historical_overlap_hits_excluded_by_corrected_single_window_semantics": {
+        "case_ids": [
+          "M2C1-Q040"
+        ],
+        "count": 1
+      },
+      "previous_misses_converted_to_valid_hits": {
+        "case_ids": [
+          "RBV2-N024",
+          "RBV2-N112"
+        ],
+        "count": 2
+      },
+      "remaining_top1_misses": 23,
+      "strict_candidate_hit_at_1": {
+        "denominator": 160,
+        "numerator": 136,
+        "value": 0.85
+      }
+    }
+  },
+  "unanswerable_note": "The 40 Unanswerable cases are excluded from ranking denominators and passed a separate 101-Child exhaustiveness audit."
+}

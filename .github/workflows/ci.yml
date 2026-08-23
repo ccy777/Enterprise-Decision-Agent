@@ -40,6 +40,8 @@ jobs:
       - run: docker compose config --quiet --no-interpolate
       - name: Verify frozen Retrieval evidence without models
         run: python scripts/verify_retrieval_evidence.py
+      - name: Verify adopted Retrieval Benchmark v2 evidence without models
+        run: python scripts/verify_retrieval_v2_evidence.py
       - name: Verify strict M9 frozen derivation without Provider calls
         run: python scripts/calculate_m9_metrics.py artifacts/evaluation/m9-final-eval-v1/case_records.jsonl --dataset datasets/agent_tasks/m9_final_eval_v1.json --adjudications artifacts/evaluation/m9-final-eval-v1/adjudications.json --output /tmp/m9-v102-metrics.json --manifest-output /tmp/m9-v102-manifest.json
       - name: Check JavaScript only when project files exist

@@ -123,6 +123,8 @@ ranking metrics 以 **160 Answerable queries** 为 denominator；40 个 Unanswer
 | Hit@5 | 100.00% | 100.00% | — |
 | MRR@5 | 91.69% | 98.12% | +6.44pp |
 
+完整公开证据包、冻结相关性集、排名记录和复核命令见 [Retrieval Benchmark v2 public evidence](artifacts/public-evaluation/retrieval-v2/README.md)。
+
 relevance freeze 区分 single-window answer sufficiency 与 multi-evidence retrieval relevance。Cross-Encoder reranking 显著提升前排 Evidence relevance；但 multi-evidence evaluation 也揭示了真实的 precision–coverage trade-off：将 Top-K 过度集中于最相似 Evidence，可能降低 evidence diversity 与 full evidence coverage。因此不能声称 reranking 改善所有 retrieval objective。
 
 ### Historical v1 Baseline
@@ -145,13 +147,13 @@ relevance freeze 区分 single-window answer sufficiency 与 multi-evidence retr
 
 ### Quick Verify — 无需 Provider
 
-安装 locked environment 后运行仓库提交的 retrieval-evidence verifier。该操作只检查 public-safe committed evidence，不调用 Provider。
+安装 locked environment 后运行仓库提交的 Retrieval Benchmark v2 verifier。该操作从公开的冻结相关性集与排名记录重新计算简历使用的 Hit@1 / MRR@5，不加载模型，也不调用 Provider。
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.lock
 .\.venv\Scripts\python.exe -m pip install -e . --no-deps
-.\.venv\Scripts\python.exe scripts\verify_retrieval_evidence.py
+.\.venv\Scripts\python.exe scripts\verify_retrieval_v2_evidence.py
 ```
 
 ### Full Demo — 使用自己的本地配置
@@ -203,6 +205,6 @@ docs/                 Public architecture、workflow、security 与 demo guides
 
 ## 范围与限制 (Scope and Limitations)
 
-这是一个受控工程系统，不宣称 unrestricted autonomy、zero hallucinations 或 production-scale guarantees。公开文档仅展示 architecture、sanitized demonstrations、benchmark composition 与 verified metrics；不会公开 credentials、private configurations、raw benchmark artifacts、original query sets、internal adjudications、runtime logs 或 internal filesystem paths。
+这是一个受控工程系统，不宣称 unrestricted autonomy、zero hallucinations 或 production-scale guarantees。公开仓库提交了 Retrieval Benchmark v2 的 synthetic query relevance freeze、ranking-only records、verified metrics 与 failure analysis，用于离线复核简历指标；不会公开 credentials、private configurations、Provider prompts / outputs、runtime logs、private business data 或 internal filesystem paths。
 
 仓库当前没有 project-wide open-source license。公开可见不等同于自动允许复制、修改或再分发代码。
