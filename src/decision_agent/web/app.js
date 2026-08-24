@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const SESSION_STORAGE_KEY = "decision-agent-demo-session-v1";
+  const SESSION_STORAGE_KEY = "enterprise-decision-agent-session-v1";
   const HEALTH_ENDPOINT = "/health";
   const READY_ENDPOINT = "/ready";
   const EXECUTE_ENDPOINT = "/api/v1/agent/execute";
@@ -26,6 +26,7 @@
     traceCard: document.getElementById("trace-card"),
     traceSummary: document.getElementById("trace-summary"),
     traceStages: document.getElementById("trace-stages"),
+    chatHistory: document.getElementById("chat-history"),
   };
 
   const TRACE_ATTRIBUTE_LABELS = Object.freeze({
@@ -94,7 +95,7 @@
   }
 
   function showSession() {
-    elements.sessionId.textContent = sessionId;
+    elements.sessionId.textContent = `对话 ${sessionId.slice(-8)}`;
     elements.sessionId.title = sessionId;
   }
 
@@ -133,9 +134,9 @@
       health.value.payload &&
       health.value.payload.status === "ok"
     ) {
-      setBadge(elements.healthBadge, elements.healthText, "ready", "进程在线");
+      setBadge(elements.healthBadge, elements.healthText, "ready", "服务在线");
     } else {
-      setBadge(elements.healthBadge, elements.healthText, "unavailable", "进程不可达");
+      setBadge(elements.healthBadge, elements.healthText, "unavailable", "服务不可达");
     }
 
     const readiness = results[1];
@@ -145,13 +146,13 @@
       readiness.value.payload &&
       readiness.value.payload.status === "ready"
     ) {
-      setBadge(elements.readyBadge, elements.readyText, "ready", "Runtime 已就绪");
+      setBadge(elements.readyBadge, elements.readyText, "ready", "分析能力已就绪");
     } else if (
       readiness.status === "fulfilled" &&
       readiness.value.payload &&
       readiness.value.payload.status === "not_ready"
     ) {
-      setBadge(elements.readyBadge, elements.readyText, "liveness", "Runtime 未就绪");
+      setBadge(elements.readyBadge, elements.readyText, "liveness", "分析能力未就绪");
     } else {
       setBadge(elements.readyBadge, elements.readyText, "unavailable", "就绪状态未知");
     }
@@ -186,6 +187,63 @@
     elements.message.classList.toggle("message-error", isError);
   }
 
+  function currentTimeLabel() {
+    return new Intl.DateTimeFormat("zh-CN", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    }).format(new Date());
+  }
+
+  function appendChatMessage(role, content, tags = []) {
+    const article = document.createElement("article");
+    const avatar = document.createElement("div");
+    const body = document.createElement("div");
+    const meta = document.createElement("div");
+    const author = document.createElement("strong");
+    const time = document.createElement("span");
+    const paragraph = document.createElement("p");
+    article.className = `chat-message ${role === "user" ? "user-message" : "assistant-message"}`;
+    avatar.className = "message-avatar";
+    avatar.textContent = role === "user" ? "YOU" : "AI";
+    avatar.setAttribute("aria-hidden", "true");
+    body.className = "message-body";
+    meta.className = "message-meta";
+    author.textContent = role === "user" ? "我" : "企业决策助手";
+    time.textContent = currentTimeLabel();
+    paragraph.textContent = content;
+    meta.append(author, time);
+    body.append(meta, paragraph);
+    if (Array.isArray(tags) && tags.length > 0) {
+      const tagList = document.createElement("div");
+      tagList.className = "message-tags";
+      for (const tag of tags.filter(Boolean)) {
+        const item = document.createElement("span");
+        item.textContent = String(tag);
+        tagList.append(item);
+      }
+      body.append(tagList);
+    }
+    article.append(avatar, body);
+    elements.chatHistory.append(article);
+    elements.chatHistory.scrollTop = elements.chatHistory.scrollHeight;
+  }
+
+  function resetConversationView() {
+    elements.chatHistory.replaceChildren();
+    appendChatMessage(
+      "assistant",
+      "已创建新对话。你可以从知识问答、数据分析或综合决策开始。",
+      [],
+    );
+    elements.answer.textContent = "等待回答";
+    replaceCitations([]);
+    replaceMetadata({ status: "等待请求" });
+    renderTrace(null);
+    elements.resultStatus.textContent = "等待请求";
+    elements.resultStatus.classList.remove("result-status-success", "result-status-failed");
+  }
+
   function replaceCitations(citations) {
     elements.citations.replaceChildren();
     if (!Array.isArray(citations) || citations.length === 0) {
@@ -214,15 +272,33 @@
   function replaceMetadata(data) {
     elements.metadata.replaceChildren();
     addMetadataRow("状态", data.status);
-    addMetadataRow("Request ID", data.request_id);
-    addMetadataRow("路由", data.route);
-    addMetadataRow("Skill", data.skill);
-    addMetadataRow("Memory 读取", data.memory_context_status);
-    addMetadataRow("Memory 写入", data.memory_persistence_status);
-    addMetadataRow("Memory 摘要", data.memory_summarization_status);
+    addMetadataRow("分析类型", routePresentation(data.route));
+    addMetadataRow("使用能力", skillPresentation(data.skill));
+    addMetadataRow("对话上下文", contextPresentation(data.memory_context_status));
     if (data.error_code) {
       addMetadataRow("错误码", data.error_code);
     }
+  }
+
+  function routePresentation(route) {
+    const labels = { knowledge: "知识问答", data: "数据分析", mixed: "综合决策" };
+    return labels[route] || route || "—";
+  }
+
+  function contextPresentation(status) {
+    const available = new Set(["loaded", "completed", "available", "used"]);
+    return available.has(status) ? "已结合本次对话" : "本轮未使用历史";
+  }
+
+  function skillPresentation(skill) {
+    if (skill && skill.includes("inventory") && skill.includes("diagnosis")) {
+      return "库存风险诊断";
+    }
+    const labels = {
+      "inventory-analysis": "库存数据分析",
+      "knowledge-qa": "企业知识问答",
+    };
+    return labels[skill] || (skill ? "企业分析" : "—");
   }
 
   function traceStatusPresentation(status) {
@@ -329,11 +405,13 @@
       "result-status-failed",
       presentation.tone === "failed",
     );
-    elements.answer.textContent =
+    const answer =
       data.answer ||
       (data.status === "unsupported"
         ? "当前 Agent 暂不支持此类请求。"
         : "本次请求没有可展示的回答。");
+    elements.answer.textContent = answer;
+    appendChatMessage("assistant", answer, [routePresentation(data.route)]);
     replaceCitations(data.citations);
     replaceMetadata(data);
     renderTrace(data.trace);
@@ -370,9 +448,11 @@
 
     const requestId = randomIdentifier("request");
     const payload = { request_id: requestId, session_id: sessionId, query };
+    appendChatMessage("user", query);
+    elements.query.value = "";
     activeController = new AbortController();
     setRequestState(true);
-    showMessage("正在请求正式 Agent……");
+    showMessage("Agent Workflow 正在执行：路由、工具调用、证据整理与结果审查……");
     elements.resultStatus.textContent = "处理中";
     elements.resultStatus.classList.remove("result-status-success", "result-status-failed");
 
@@ -433,7 +513,8 @@
   elements.clearSession.addEventListener("click", () => {
     sessionId = createAndStoreSession();
     showSession();
-    showMessage("已创建新会话。");
+    resetConversationView();
+    showMessage("已创建新对话。");
   });
 
   for (const button of document.querySelectorAll(".example-button")) {

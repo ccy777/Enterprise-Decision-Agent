@@ -3,11 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="企业决策 AI Agent 的最小演示界面，展示正式路由、回答、引用和运行状态。"
-    />
-    <title>企业决策 AI Agent</title>
+    <meta name="description" content="支持多轮会话的企业决策智能体工作台。" />
+    <title>企业决策智能体</title>
     <link rel="stylesheet" href="/assets/styles.css" />
     <script src="/assets/app.js" defer></script>
   </head>
@@ -16,133 +13,110 @@
     <header class="app-header">
       <div class="header-inner">
         <div class="brand-block">
-          <p class="eyebrow">Enterprise Decision &amp; Knowledge Agent</p>
-          <h1>企业决策 AI Agent</h1>
-          <p class="subtitle">通过正式后端自动判断 Knowledge、Data 或 Mixed 路由。</p>
+          <span class="brand-mark" aria-hidden="true">ED</span>
+          <div>
+            <p class="eyebrow">Enterprise Intelligence Workspace</p>
+            <h1>企业决策智能体</h1>
+          </div>
         </div>
-        <div class="status-panel" aria-label="服务状态">
-          <span id="health-badge" class="status-badge status-checking">
-            <span class="status-dot" aria-hidden="true"></span>
-            <span id="health-text">进程检查中</span>
-          </span>
-          <span id="ready-badge" class="status-badge status-checking">
-            <span class="status-dot" aria-hidden="true"></span>
-            <span id="ready-text">Runtime 检查中</span>
-          </span>
+        <div class="header-actions">
+          <div class="status-panel" aria-label="服务状态">
+            <span id="health-badge" class="status-badge status-checking"><span class="status-dot" aria-hidden="true"></span><span id="health-text">服务检查中</span></span>
+            <span id="ready-badge" class="status-badge status-checking"><span class="status-dot" aria-hidden="true"></span><span id="ready-text">Runtime 检查中</span></span>
+          </div>
         </div>
       </div>
     </header>
 
     <main class="page-shell">
-      <section class="workspace-card" aria-labelledby="query-heading">
+      <aside class="workspace-card" aria-labelledby="workspace-heading">
         <div class="section-heading">
-          <div>
-            <p class="section-kicker">正式请求</p>
-            <h2 id="query-heading">向企业 Agent 提问</h2>
-          </div>
-          <div class="session-block">
-            <span>当前会话</span>
-            <code id="session-id">生成中</code>
-            <button id="clear-session" class="session-button" type="button">新建会话</button>
-          </div>
+          <div><p class="section-kicker">Workspace</p><h2 id="workspace-heading">决策助手</h2></div>
+          <span class="workspace-label">连续对话</span>
         </div>
-
-        <div class="examples" aria-label="示例问题">
-          <button
-            class="example-button"
-            type="button"
-            data-query="华衡智能科技有限公司的业务定位和本项目演示范围是什么？"
-          >
-            知识问答
+        <div class="session-block">
+          <div><span>当前对话</span><code id="session-id">生成中</code></div>
+          <button id="clear-session" class="session-button" type="button">新建对话</button>
+        </div>
+        <div class="memory-note">
+          <span class="memory-icon" aria-hidden="true">M</span>
+          <p><strong>支持连续追问</strong><span>可以直接使用“其中”“这些产品”等方式承接上一轮问题。</span></p>
+        </div>
+        <div class="capability-heading"><span>任务入口</span><small>点击填入首个问题</small></div>
+        <div class="examples" aria-label="任务类型与示例问题">
+          <button class="example-button" type="button" data-route="Knowledge" data-query="华衡智能科技有限公司的业务定位和本项目演示范围是什么？">
+            <span class="example-icon" aria-hidden="true">K</span><span><strong>知识问答</strong><small>查询企业文档并标注依据</small></span>
           </button>
-          <button
-            class="example-button"
-            type="button"
-            data-query="截至2026年6月30日，哪些产品低于安全库存？"
-          >
-            数据分析
+          <button class="example-button" type="button" data-route="Data" data-query="截至2026年6月30日，哪些产品低于安全库存？">
+            <span class="example-icon" aria-hidden="true">D</span><span><strong>数据分析</strong><small>查询经营数据并形成结论</small></span>
           </button>
-          <button
-            class="example-button"
-            type="button"
-            data-query="请仅依据当前库存数据与《DOC-INV-001 库存安全线与补货管理办法》，分析截至2026年6月30日的库存风险；分别给出风险概览、制度依据和行动建议，并同时标注数据与知识引用。"
-          >
-            综合分析
+          <button class="example-button" type="button" data-route="Mixed" data-query="请仅依据当前库存数据与《DOC-INV-001 库存安全线与补货管理办法》，分析截至2026年6月30日的库存风险，并给出行动建议。">
+            <span class="example-icon" aria-hidden="true">M</span><span><strong>综合决策</strong><small>结合企业文档与经营数据</small></span>
           </button>
         </div>
+        <div class="followup-card">
+          <strong>连续追问示例</strong>
+          <ol><li>哪些产品低于安全库存？</li><li>其中风险最高的是哪个？</li><li>结合库存制度给出建议。</li></ol>
+        </div>
+      </aside>
 
-        <form id="query-form">
-          <label for="query">问题</label>
-          <textarea
-            id="query"
-            name="query"
-            rows="5"
-            maxlength="4000"
-            placeholder="输入需要企业知识或数据支持的问题…"
-            required
-          ></textarea>
+      <section class="result-card" aria-labelledby="result-heading">
+        <div class="section-heading chat-heading">
+          <div><p class="section-kicker">Conversation</p><h2 id="result-heading">经营分析对话</h2></div>
+          <span id="result-status" class="result-status">等待请求</span>
+        </div>
+        <div id="request-message" class="message" role="status" aria-live="polite"></div>
+        <div id="chat-history" class="chat-history" aria-live="polite">
+          <article class="chat-message assistant-message welcome-message">
+            <div class="message-avatar" aria-hidden="true">AI</div>
+            <div class="message-body">
+              <div class="message-meta"><strong>企业决策助手</strong><span>现在</span></div>
+              <p>你好，我可以处理企业知识问答、经营数据分析和综合决策。你可以继续追问，我会结合前文理解“其中”“这些产品”等指代。</p>
+            </div>
+          </article>
+        </div>
+        <p id="answer" class="sr-only">等待回答</p>
+        <form id="query-form" class="composer">
+          <label for="query">输入问题</label>
+          <textarea id="query" name="query" rows="3" maxlength="4000" placeholder="输入问题或继续追问，例如：其中风险最高的是哪个？" required></textarea>
           <div class="form-footer">
-            <p class="keyboard-hint">Ctrl / ⌘ + Enter 发送</p>
+            <p class="keyboard-hint">支持连续追问 · Ctrl / ⌘ + Enter 发送</p>
             <div class="actions">
-              <button id="cancel-request" class="secondary-button" type="button" disabled>
-                取消
-              </button>
-              <button id="send-request" class="primary-button" type="submit">发送请求</button>
+              <button id="cancel-request" class="secondary-button" type="button" disabled>取消</button>
+              <button id="send-request" class="primary-button" type="submit">发送 <span aria-hidden="true">↑</span></button>
             </div>
           </div>
         </form>
-
       </section>
 
-      <section class="result-card" aria-labelledby="result-heading">
+      <aside class="inspector-card" aria-labelledby="inspector-heading">
         <div class="section-heading">
-          <div>
-            <p class="section-kicker">正式响应</p>
-            <h2 id="result-heading">回答与证据</h2>
-          </div>
-          <span id="result-status" class="result-status">等待请求</span>
+          <div><p class="section-kicker">Evidence</p><h2 id="inspector-heading">结果依据</h2></div>
         </div>
-
-        <div id="request-message" class="message" role="status" aria-live="polite"></div>
-
-        <div class="answer-section">
-          <h3>回答</h3>
-          <p id="answer" class="answer-content">提交问题后，正式 Agent 的回答会显示在这里。</p>
-        </div>
-
-        <div class="result-grid">
-          <section aria-labelledby="citations-heading">
-            <h3 id="citations-heading">引用</h3>
-            <ul id="citations" class="citation-list">
-              <li>无引用</li>
-            </ul>
-          </section>
-          <section aria-labelledby="metadata-heading">
-            <h3 id="metadata-heading">执行信息</h3>
-            <dl id="metadata" class="metadata-list">
-              <div><dt>状态</dt><dd>等待请求</dd></div>
-              <div><dt>Request ID</dt><dd>—</dd></div>
-              <div><dt>路由</dt><dd>—</dd></div>
-              <div><dt>Skill</dt><dd>—</dd></div>
-              <div><dt>Memory 读取</dt><dd>—</dd></div>
-              <div><dt>Memory 写入</dt><dd>—</dd></div>
-              <div><dt>Memory 摘要</dt><dd>—</dd></div>
-            </dl>
-          </section>
-        </div>
-
-        <section id="trace-card" class="trace-card" aria-labelledby="trace-heading" hidden>
-          <details>
-            <summary id="trace-heading">执行轨迹（安全摘要）</summary>
-            <p id="trace-summary" class="trace-summary"></p>
-            <ol id="trace-stages" class="trace-stage-list"></ol>
-          </details>
+        <ol class="workflow-strip" aria-label="Agent Workflow">
+          <li><span>1</span><strong>理解问题</strong><small>识别任务类型</small></li>
+          <li><span>2</span><strong>查询信息</strong><small>检索知识或数据</small></li>
+          <li><span>3</span><strong>整理依据</strong><small>组合有效证据</small></li>
+          <li><span>4</span><strong>检查结果</strong><small>确认依据充分</small></li>
+          <li><span>5</span><strong>生成回答</strong><small>输出结论与引用</small></li>
+        </ol>
+        <section class="evidence-panel" aria-labelledby="citations-heading">
+          <div class="content-heading"><h3 id="citations-heading">引用依据</h3><span>可追溯</span></div>
+          <ul id="citations" class="citation-list"><li>等待证据</li></ul>
         </section>
-      </section>
+        <section class="metadata-panel" aria-labelledby="metadata-heading">
+          <div class="content-heading"><h3 id="metadata-heading">本次分析</h3><span>执行摘要</span></div>
+          <dl id="metadata" class="metadata-list">
+            <div><dt>状态</dt><dd>等待请求</dd></div>
+            <div><dt>分析类型</dt><dd>—</dd></div><div><dt>使用能力</dt><dd>—</dd></div>
+            <div><dt>对话上下文</dt><dd>—</dd></div>
+          </dl>
+        </section>
+        <section id="trace-card" class="trace-card" aria-labelledby="trace-heading" hidden>
+          <details><summary id="trace-heading">查看技术执行轨迹</summary><p id="trace-summary" class="trace-summary"></p><ol id="trace-stages" class="trace-stage-list"></ol></details>
+        </section>
+      </aside>
     </main>
-
-    <footer>
-      此页面与正式 FastAPI Runtime 同源；服务未就绪时仍可查看界面和健康状态。
-    </footer>
+    <footer>Enterprise Decision Agent · 企业知识 · 经营数据 · 综合决策</footer>
   </body>
 </html>
