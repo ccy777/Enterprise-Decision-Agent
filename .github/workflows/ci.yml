@@ -68,7 +68,7 @@ jobs:
       - run: python -m pytest -q tests/unit --junitxml=test-results/unit.xml
       - name: Parse JUnit without publishing test text
         run: python -c "import xml.etree.ElementTree as e; r=e.parse('test-results/unit.xml').getroot(); assert sum(int(x.attrib.get('failures', 0)) + int(x.attrib.get('errors', 0)) for x in r.iter('testsuite')) == 0"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: unit-junit
           path: test-results/unit.xml
@@ -94,7 +94,7 @@ jobs:
       - run: python scripts/run_security_evaluation.py --output security-artifacts/m8c-security-summary.json
       - name: Verify exact case evidence and aggregate thresholds
         run: python -c "import json; r=json.load(open('security-artifacts/m8c-security-summary.json', encoding='utf-8')); d=json.load(open('datasets/security/m8c_d_security_cases.json', encoding='utf-8')); ids=[x['case_id'] for x in r['case_results']]; expected={x['case_id'] for x in d}; assert r['total_cases'] == r['passed'] == len(ids) == len(set(ids)) == len(expected) == 28 and set(ids) == expected and all(x['passed'] for x in r['case_results']) and r['failed'] == r['unauthorized_release_count'] == r['sensitive_leak_count'] == r['provider_bypass_count'] == r['tool_bypass_count'] == 0 and r['fail_closed_rate'] == r['audit_integrity_detection_rate'] == 1.0"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: m8c-security-summary
           path: security-artifacts/m8c-security-summary.json
@@ -149,7 +149,7 @@ jobs:
         run: python -m pytest -q -m offline_integration --strict-markers --import-mode=importlib --junitxml=test-results/offline-integration.xml
       - name: Parse offline JUnit without publishing test text
         run: python -c "import xml.etree.ElementTree as e; r=e.parse('test-results/offline-integration.xml').getroot(); assert sum(int(x.attrib.get('failures', 0)) + int(x.attrib.get('errors', 0)) for x in r.iter('testsuite')) == 0"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: offline-integration-junit
           path: test-results/offline-integration.xml
