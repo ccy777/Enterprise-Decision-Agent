@@ -423,13 +423,13 @@
       return "请求未通过验证，请检查问题内容后重试。";
     }
     if (statusCode === 503) {
-      return "正式 Agent Runtime 尚未就绪，请稍后重试。";
+      return "分析服务尚未就绪，请稍后重试。";
     }
     if (statusCode >= 500) {
       return "服务暂时无法完成请求，请稍后重试。";
     }
     if (payload && payload.code === "runtime_unavailable") {
-      return "正式 Agent Runtime 尚未就绪，请稍后重试。";
+      return "分析服务尚未就绪，请稍后重试。";
     }
     return `请求失败（HTTP ${statusCode}）。`;
   }

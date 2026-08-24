@@ -1,4 +1,4 @@
-"""Localhost-only identity adapter and app factory for the real Demo UI."""
+"""Localhost-only identity adapter and app factory for the Web workspace."""
 
 from __future__ import annotations
 

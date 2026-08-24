@@ -42,7 +42,7 @@ def _isolate_settings_environment(monkeypatch: pytest.MonkeyPatch) -> None:
 
 def _settings() -> Settings:
     return Settings(
-        app_name="Module 7 Demo UI E2E",
+        app_name="Enterprise Decision Agent Web E2E",
         environment=Environment.TEST,
         llm_api_key="e2e-provider-secret",
         llm_base_url="https://provider.invalid/v1",
@@ -350,7 +350,7 @@ def test_demo_ui_and_formal_runtime_share_one_successful_application() -> None:
         )
 
         assert root.status_code == styles.status_code == script.status_code == 200
-        assert "<title>企业决策 AI Agent</title>" in root.text
+        assert "<title>企业决策智能体</title>" in root.text
         assert health.status_code == 200
         assert health.json() == {"status": "ok"}
         assert ready.status_code == 200
@@ -414,7 +414,7 @@ def test_demo_ui_survives_runtime_startup_failure_and_rollback() -> None:
         )
 
     assert root.status_code == 200
-    assert "<title>企业决策 AI Agent</title>" in root.text
+    assert "<title>企业决策智能体</title>" in root.text
     assert health.status_code == 200
     assert health.json() == {"status": "ok"}
     assert ready.status_code == 503
