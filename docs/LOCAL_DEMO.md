@@ -7,7 +7,7 @@
 - 能够运行MySQL、Milvus、etcd和MinIO的本地环境；
 - OpenAI兼容模型服务配置。
 
-仓库提供合成知识文档、MySQL Schema和Seed数据，可以在本地完成三类任务演示。
+仓库提供合成知识文档、MySQL Schema和Seed数据，可以在本地运行并验证三类任务。
 
 ## 安装项目
 

@@ -2,7 +2,7 @@
 
 > **面向企业知识与经营数据的 AI Agent 平台**
 
-[![CI](https://github.com/ccy777/enterprise-decision-agent/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ccy777/enterprise-decision-agent/actions/workflows/ci.yml)
+[![CI](https://github.com/ccy777/Enterprise-Decision-Agent/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ccy777/Enterprise-Decision-Agent/actions/workflows/ci.yml)
 ![Runtime base](https://img.shields.io/badge/runtime%20base-v1.0.2-2563eb)
 ![Python](https://img.shields.io/badge/python-3.11%2B-3776ab)
 ![Runtime](https://img.shields.io/badge/runtime-agent%20workflow-0f766e)
@@ -78,31 +78,11 @@ flowchart TD
 5. Answer Generator 输出结论与 Citation，Trace 记录各阶段状态和耗时。
 6. 本轮结果写回会话状态，后续问题可以继续引用前文。
 
-## 运行界面与效果
-
-### 知识与数据联合决策
-
-![知识与数据联合决策的真实运行结果](docs/assets/demo/mixed-result.png)
-
-同一次请求由 Router 选择 `mixed`，执行 `inventory-risk-diagnosis`，回答同时包含数据引用 `[D1]` 与知识引用 `[E1]`、`[E2]`。
-
-### 执行链追踪
-
-![真实请求的执行链追踪](docs/assets/demo/mixed-trace.png)
-
-Trace 展示 routing、planning、MCP Tool Calling、Knowledge retrieval、evidence selection、review 与 answer generation。
-
-### 数据范围校验
-
-![数据范围校验结果](docs/assets/demo/security-fail-closed.png)
-
-该请求触发 `data_scope_denied`，系统在执行数据查询前完成范围校验。
-
-### Web 分析工作台
+## 运行界面
 
 ![企业决策智能体 Web 分析工作台](docs/assets/demo-ui.png)
 
-> Web 工作台支持在同一对话中连续追问，并展示引用依据、分析类型和执行摘要。截图用于展示连续追问的产品交互；Session Memory 的读取、写入与隔离由后端测试验证。
+Web 工作台面向企业知识问答、经营数据分析和综合决策。在同一对话中，用户可以使用“其中”“这些产品”等指代连续追问；界面展示回答、引用依据、分析类型和执行摘要，详细 Trace 可按需展开。
 
 ## 核心模块
 
@@ -194,7 +174,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe scripts\verify_retrieval_v2_evidence.py
 ```
 
-### 完整演示——使用本地配置
+### 完整运行——使用本地配置
 
 请参阅[本地运行指南](docs/LOCAL_DEMO.md)和[`.env.example`](.env.example)，配置模型服务与本地基础设施。
 
@@ -208,7 +188,7 @@ docker compose up -d
 .\.venv\Scripts\python.exe scripts\run_local_web_demo.py mixed
 ```
 
-前三种模式分别演示Knowledge、Data和Mixed命令行链路；最后一条启动本地网页演示。模型调用可能产生费用，配置和停止步骤见[本地运行指南](docs/LOCAL_DEMO.md)。
+前三种模式分别运行Knowledge、Data和Mixed命令行链路；最后一条启动本地Web工作台。模型调用可能产生费用，配置和停止步骤见[本地运行指南](docs/LOCAL_DEMO.md)。
 
 正式ASGI入口：
 

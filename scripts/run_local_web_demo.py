@@ -1,4 +1,4 @@
-"""Serve the real Demo UI with a localhost-only, fixed-scope identity adapter."""
+"""Serve the local Web workspace with a localhost-only, fixed-scope identity adapter."""
 
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ from decision_agent.demo.web import create_local_demo_app
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description=("Run the formal Agent UI on 127.0.0.1 with only the frozen local Demo scopes.")
+        description=("Run the Agent Web workspace on 127.0.0.1 with the frozen local scopes.")
     )
     parser.add_argument("case", choices=[case.value for case in DemoCase])
     parser.add_argument("--port", type=int, default=8000)

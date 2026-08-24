@@ -1,4 +1,4 @@
-"""Unit coverage for the package-local Module 7 demonstration UI."""
+"""Unit coverage for the package-local Web workspace."""
 
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ def _isolate_settings_environment(monkeypatch: pytest.MonkeyPatch) -> None:
 
 def _settings() -> Settings:
     return Settings(
-        app_name="Module 7 Demo UI Test",
+        app_name="Enterprise Decision Agent Web Test",
         environment=Environment.TEST,
         required_dependencies=[],
         _env_file=None,
@@ -72,7 +72,7 @@ def test_app_construction_does_not_read_static_files(monkeypatch: pytest.MonkeyP
 
     app = create_app(_settings())
 
-    assert app.title == "Module 7 Demo UI Test"
+    assert app.title == "Enterprise Decision Agent Web Test"
 
 
 def test_html_has_accessible_form_status_and_result_regions() -> None:
