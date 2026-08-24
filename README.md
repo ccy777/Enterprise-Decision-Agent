@@ -40,30 +40,45 @@
 
 ```mermaid
 flowchart TD
-    U["User request"] --> API["FastAPI"]
-    API --> X["Formal Request Executor"]
-    X --> R["Router"]
-    R --> C["Coordinator / Skill Registry"]
-    C --> S["Selected Skill"]
-    S --> T["Native Tool Calling"]
-    T --> K["Knowledge Agent\nHybrid RAG"]
-    T --> D["Data Agent\nData Planner"]
-    D --> MCP["MCP Tools"]
-    MCP --> DB["MySQL"]
-    K --> KE["Knowledge Evidence"]
-    DB --> DE["Data Evidence"]
-    KE --> M["Mixed Synthesis"]
-    DE --> M
-    KE --> V["Reviewer / Response"]
-    DE --> V
-    M --> V
-    X -.-> CM["Context / Memory"]
-    X -.-> O["链路追踪 / 离线评测"]
+    U["用户 / Web UI"] --> API["FastAPI"]
+    API --> EX["Request Executor"]
+    EX --> CM["Context Manager"]
+    CM <--> MEM["Redis / In-Memory"]
+    CM --> R["Router"]
+    R --> C["Coordinator + Skill Registry"]
+
+    C --> K["Knowledge Skill"]
+    C --> D["Data Skill"]
+    C --> M["Mixed Skill"]
+
+    K --> KG["LangGraph: Retrieve → Select → Review → Answer"]
+    KG --> RAG["Dense + BM25 → RRF → Cross-Encoder"]
+    RAG --> MV["Milvus"]
+
+    D --> DG["LangGraph: Plan → Tool Calling → Answer"]
+    DG --> MCP["MCP Tools"]
+    MCP --> SQL["SQLGlot + Safe Query"]
+    SQL --> DB["Read-only MySQL"]
+
+    M --> KT["Knowledge Tool"]
+    M --> DT["Data Tool"]
+    KT --> SYN["Evidence Review + Synthesis"]
+    DT --> SYN
+    EX -.-> T["Trace + Agent Evaluation"]
 ```
 
 上图展示项目主执行链，完整的模块职责和请求流程见[整体架构](docs/ARCHITECTURE.md)与[智能体工作流](docs/AGENT_WORKFLOW.md)。
 
-## 真实运行界面
+## 一次请求如何执行
+
+1. FastAPI 接收问题与会话标识，Context Manager 读取当前对话历史。
+2. Router 判断请求属于 Knowledge、Data 或 Mixed，并由 Coordinator 选择对应 Skill。
+3. Knowledge 使用 Hybrid RAG 检索企业文档；Data 由 Planner 规划并通过 MCP Tool 查询 MySQL；Mixed 同时调用两条路径。
+4. 系统将检索结果或查询结果整理为 Evidence，Reviewer 检查证据是否足以支持回答。
+5. Answer Generator 输出结论与 Citation，Trace 记录各阶段状态和耗时。
+6. 本轮结果写回会话状态，后续问题可以继续引用前文。
+
+## 运行界面与效果
 
 ### 知识与数据联合决策
 
@@ -83,11 +98,11 @@ Trace 展示 routing、planning、MCP Tool Calling、Knowledge retrieval、evide
 
 该请求触发 `data_scope_denied`，系统在执行数据查询前完成范围校验。
 
-### 网页演示
+### Web 分析工作台
 
-![企业决策智能体网页演示界面](docs/assets/demo-ui.png)
+![企业决策智能体 Web 分析工作台](docs/assets/demo-ui.png)
 
-> 内置FastAPI网页界面会展示运行状态、回答、引用、路由、Skill、会话记忆和执行链。截图展示了未配置模型服务时的就绪状态，便于检查本地依赖配置。
+> Web 工作台支持在同一对话中连续追问，并展示引用依据、分析类型和执行摘要。截图用于展示连续追问的产品交互；Session Memory 的读取、写入与隔离由后端测试验证。
 
 ## 核心模块
 
@@ -228,6 +243,6 @@ docs/                 Public architecture、workflow、security 与 demo guides
 
 ## 项目状态
 
-Knowledge、Data与Mixed三条链路，以及Hybrid RAG、MCP数据查询、Context / Memory、Trace和离线评测均已完成。后续计划包括扩充多轮任务评测、优化Answerability、增加性能压测，并接入更多MCP数据源和业务Skill。
+Knowledge、Data 与 Mixed 三条链路，以及 Hybrid RAG、MCP 数据查询、Context / Memory、Trace 和离线评测均已完成。当前 `v1.0.2` 作为作品集交付版本冻结，不再扩展新的业务场景。
 
 公开仓库提供检索评测数据、排名记录和复核脚本。如需复制、修改或二次发布，请先联系作者。

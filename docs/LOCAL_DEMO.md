@@ -46,7 +46,7 @@ MySQL、etcd、MinIO和Milvus状态正常后执行：
 .\.venv\Scripts\python.exe scripts\verify_retrieval_v2_evidence.py
 ```
 
-## 运行三类Demo
+## 运行三类任务
 
 ```powershell
 # 企业知识问答
@@ -59,11 +59,13 @@ MySQL、etcd、MinIO和Milvus状态正常后执行：
 .\.venv\Scripts\python.exe scripts\run_local_demo.py mixed
 ```
 
-JSON结果包含请求ID、执行状态、路由、Skill、回答、Citation和Trace摘要。网页演示可以使用：
+JSON 结果包含请求 ID、执行状态、路由、Skill、回答、Citation 和 Trace 摘要。启动 Web 分析工作台：
 
 ```powershell
 .\.venv\Scripts\python.exe scripts\run_local_web_demo.py mixed
 ```
+
+网页中保持同一对话，可依次提问“哪些产品低于安全库存？”“其中风险最高的是哪个？”“结合库存制度给出建议。”；点击“新建对话”后会生成新的会话标识，不继承上一段对话。
 
 ## 查看执行结果
 

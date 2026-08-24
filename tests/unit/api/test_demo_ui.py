@@ -44,7 +44,7 @@ def test_root_and_package_local_assets_are_served() -> None:
     expected_styles = (Path(demo_web.__file__).parent / "styles.css").read_text(encoding="utf-8")
     assert styles.text
     assert styles.text.replace("\r\n", "\n") == expected_styles
-    assert "<title>企业决策 AI Agent</title>" in root.text
+    assert "<title>企业决策智能体</title>" in root.text
     assert '<link rel="stylesheet" href="/assets/styles.css" />' in root.text
     assert "--brand:" in styles.text
     for selector in (
@@ -53,7 +53,8 @@ def test_root_and_package_local_assets_are_served() -> None:
         ".page-shell",
         ".workspace-card",
         ".result-card",
-        "@media (max-width: 860px)",
+        ".workflow-strip",
+        "@media (max-width: 1040px)",
     ):
         assert selector in styles.text
     assert '"use strict"' in script.text
@@ -91,7 +92,10 @@ def test_html_has_accessible_form_status_and_result_regions() -> None:
     assert 'id="cancel-request"' in html
     assert 'id="trace-card"' in html
     assert 'id="trace-stages"' in html
-    assert "自动判断 Knowledge、Data 或 Mixed 路由" in html
+    assert 'id="chat-history"' in html
+    assert "支持连续追问" in html
+    assert "企业知识" in html
+    assert 'aria-label="Agent Workflow"' in html
 
 
 def test_script_uses_only_the_formal_api_contract_for_requests() -> None:
@@ -120,6 +124,8 @@ def test_session_request_identity_and_controls_are_browser_local() -> None:
     assert 'randomIdentifier("session")' in script
     assert "activeController !== null" in script
     assert "createAndStoreSession()" in script
+    assert "appendChatMessage" in script
+    assert "resetConversationView" in script
     assert "session_id=" not in script
 
 
@@ -233,8 +239,6 @@ def test_script_has_stable_public_error_messages_and_complete_response_fields() 
         "data.skill",
         "data.error_code",
         "data.memory_context_status",
-        "data.memory_persistence_status",
-        "data.memory_summarization_status",
         "renderTrace(data.trace)",
     ):
         assert token in script
